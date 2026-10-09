@@ -300,11 +300,31 @@ uint32 sub_8005B284(uint32 a1, uint32 a2)
 /* Accepted original SDK boundary: CompMatrix */
 uint32 sub_8005B614(uint32 a1, uint32 a2, uint32 a3)
 {
-    (void)a1;
-    (void)a2;
-    (void)a3;
-    tm3_draft_unimplemented("sub_8005B614 CompMatrix");
-    return 0u; /* Unreachable after the explicit missing SDK failure */
+    uint32 first[3], second[3], third[3], i;
+    for(i=0u;i<5u;++i) tm3_draft_gte_write_control(i,TM3_DRAFT_U32(a1+4u*i));
+    tm3_draft_gte_write_data(0u,TM3_DRAFT_U16(a2)|(TM3_DRAFT_U32(a2+4u)&0xFFFF0000u));
+    tm3_draft_gte_write_data(1u,TM3_DRAFT_U32(a2+12u));
+    tm3_draft_gte_command(0x486012u);
+    for(i=0u;i<3u;++i) first[i]=tm3_draft_gte_read_data(9u+i);
+    tm3_draft_gte_write_data(0u,TM3_DRAFT_U16(a2+2u)|(TM3_DRAFT_U32(a2+8u)<<16));
+    tm3_draft_gte_write_data(1u,(uint32)TM3_DRAFT_I16(a2+14u));
+    tm3_draft_gte_command(0x486012u);
+    for(i=0u;i<3u;++i) second[i]=tm3_draft_gte_read_data(9u+i);
+    tm3_draft_gte_write_data(0u,TM3_DRAFT_U16(a2+4u)|(TM3_DRAFT_U32(a2+8u)&0xFFFF0000u));
+    tm3_draft_gte_write_data(1u,TM3_DRAFT_U32(a2+16u));
+    tm3_draft_gte_command(0x486012u);
+    TM3_DRAFT_U32(a3)=(first[0]&0xFFFFu)|(second[0]<<16);
+    TM3_DRAFT_U32(a3+12u)=(first[2]&0xFFFFu)|(second[2]<<16);
+    for(i=0u;i<3u;++i) third[i]=tm3_draft_gte_read_data(9u+i);
+    TM3_DRAFT_U32(a3+16u)=third[2];
+    tm3_draft_gte_write_data(0u,TM3_DRAFT_U16(a2+20u)|(TM3_DRAFT_U32(a2+24u)<<16));
+    tm3_draft_gte_write_data(1u,TM3_DRAFT_U32(a2+28u));
+    tm3_draft_gte_command(0x486012u);
+    TM3_DRAFT_U32(a3+4u)=(third[0]&0xFFFFu)|(first[1]<<16);
+    TM3_DRAFT_U32(a3+8u)=(second[1]&0xFFFFu)|(third[1]<<16);
+    for(i=0u;i<3u;++i) third[i]=tm3_draft_gte_read_data(25u+i)+TM3_DRAFT_U32(a1+20u+4u*i);
+    for(i=0u;i<3u;++i) TM3_DRAFT_U32(a3+20u+4u*i)=third[i];
+    return a3;
 }
 
 /* Accepted original SDK boundary: ApplyMatrixLV */
@@ -402,7 +422,14 @@ uint32 sub_8005C364(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, uint3
 /* Accepted original SDK boundary: RotTrans */
 void sub_8005C3C4(uint32 a1, uint32 a2, uint32 a3)
 {
-    RotTrans((SVECTOR *)(a1 ? psx_addr(a1, sizeof(SVECTOR)) : NULL), (VECTOR *)(a2 ? psx_addr(a2, sizeof(VECTOR)) : NULL), (sint32 *)(a3 ? psx_addr(a3, sizeof(sint32)) : NULL));
+    VECTOR output;
+    sint32 flags;
+    RotTrans((SVECTOR *)psx_addr(a1, sizeof(SVECTOR)), &output, &flags);
+    /* The original stores three MAC words without VECTOR padding */
+    TM3_DRAFT_U32(a2) = xport_gte_read_data(25u);
+    TM3_DRAFT_U32(a2 + 4u) = xport_gte_read_data(26u);
+    TM3_DRAFT_U32(a2 + 8u) = xport_gte_read_data(27u);
+    TM3_DRAFT_U32(a3) = (uint32)flags;
 }
 
 /* Accepted original SDK boundary: RotTransPers4 */
@@ -798,4 +825,51 @@ uint32 sub_8006762C(void)
 
     tm3_draft_unimplemented("sub_8006762C chkRC2wait");
     return 0u; /* Unreachable after the explicit missing SDK failure */
+}
+
+/* Original in-place matrix product, including GTE saturation and padding store */
+uint32 sub_8005BA24(uint32 left, uint32 right)
+{
+    uint32 first[3], second[3], third[3], index;
+    for (index = 0; index < 5u; ++index)
+        tm3_draft_gte_write_control(index, TM3_DRAFT_U32(left + index * 4u));
+    tm3_draft_gte_write_data(0u, TM3_DRAFT_U16(right) | (TM3_DRAFT_U32(right + 4u) & 0xffff0000u));
+    tm3_draft_gte_write_data(1u, TM3_DRAFT_U32(right + 12u));
+    tm3_draft_gte_command(0x486012u);
+    for (index = 0; index < 3u; ++index)
+        first[index] = tm3_draft_gte_read_data(9u + index);
+    tm3_draft_gte_write_data(0u, TM3_DRAFT_U16(right + 2u) | (TM3_DRAFT_U32(right + 8u) << 16));
+    tm3_draft_gte_write_data(1u, (uint32)(sint32)TM3_DRAFT_I16(right + 14u));
+    tm3_draft_gte_command(0x486012u);
+    for (index = 0; index < 3u; ++index)
+        second[index] = tm3_draft_gte_read_data(9u + index);
+    tm3_draft_gte_write_data(0u, TM3_DRAFT_U16(right + 4u) | (TM3_DRAFT_U32(right + 8u) & 0xffff0000u));
+    tm3_draft_gte_write_data(1u, TM3_DRAFT_U32(right + 16u));
+    tm3_draft_gte_command(0x486012u);
+    TM3_DRAFT_U32(left) = (first[0] & 0xffffu) | (second[0] << 16);
+    TM3_DRAFT_U32(left + 12u) = (first[2] & 0xffffu) | (second[2] << 16);
+    for (index = 0; index < 3u; ++index)
+        third[index] = tm3_draft_gte_read_data(9u + index);
+    TM3_DRAFT_U32(left + 4u) = (third[0] & 0xffffu) | (first[1] << 16);
+    TM3_DRAFT_U32(left + 8u) = (second[1] & 0xffffu) | (third[1] << 16);
+    TM3_DRAFT_U32(left + 16u) = third[2];
+    return left;
+}
+
+/* Original geometry offset read in integer screen coordinates */
+void sub_8005BDD4(uint32 x_output, uint32 y_output)
+{
+    sint32 x, y;
+    ReadGeomOffset(&x, &y);
+    TM3_DRAFT_U32(x_output) = (uint32)x;
+    TM3_DRAFT_U32(y_output) = (uint32)y;
+}
+
+/* Original strcpy boundary returns zero for either null argument */
+uint32 sub_800567F4(uint32 destination, uint32 source)
+{
+    if (!destination || !source)
+        return 0u;
+    strcpy((char *)psx_addr(destination, 1u), (const char *)psx_addr(source, 1u));
+    return destination;
 }

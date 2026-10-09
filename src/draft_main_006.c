@@ -59,75 +59,54 @@ uint32 sub_800451B0(void)
 uint32 sub_80054284(uint32 a1)
 {
     FUNCTION_MARKER(0x80054284u, "SCUS_942.49");
-    /* TODO Original signed wrap, guest pointers and unresolved ABI effects remain unverified */
-
-  uint32 v1; 
-  int v2; 
-  uint32 v3; 
-  int v4; 
-  int v5; 
-  uint32 result; 
-
-  v1 = off_80089BE4;
-  TM3_DRAFT_U32(0x80089BE8u + (1) * 4u) = a1;
-  v2 = 0;
-  if ( TM3_DRAFT_U8(0x8007FF28u + (_DWORD)off_80089BE4 + 2146959596) )
-  {
-    v3 = (0x800804BCu + (a1) * 4u);
-    v4 = 0;
-    do
-    {
-      v5 = TM3_DRAFT_I32(v1 + (v4 + 7) * 4u);
-      if ( v5 && v5 != -2146617632 )
-        TM3_DRAFT_U32(v5 + 12) = TM3_DRAFT_I8(v3);
-      v1 = off_80089BE4;
-      ++v2;
-      v4 += 7;
+    uint32 menu = TM3_DRAFT_U32(0x80089BE4u);
+    uint32 index = 0u;
+    uint32 row_offset = 0u;
+    uint32 parent_slot = 0x800804BCu + 4u * a1;
+    TM3_DRAFT_U32(0x80089BECu) = a1;
+    if (TM3_DRAFT_U8(menu + 20u)) {
+        do {
+            uint32 child = TM3_DRAFT_U32(menu + row_offset + 28u);
+            if (child && child != 0x800D36E0u)
+                TM3_DRAFT_U32(child + 12u) = TM3_DRAFT_U32(parent_slot);
+            menu = TM3_DRAFT_U32(0x80089BE4u);
+            ++index;
+            row_offset += 28u;
+        } while (index < TM3_DRAFT_U8(menu + 20u));
     }
-    while ( v2 < TM3_DRAFT_U8(0x8007FF28u + (_DWORD)off_80089BE4 + 2146959596) );
-  }
-  result = 0x800806B0u;
-  TM3_DRAFT_U32(0x80089E38u + (4) * 4u) = 0;
-  dword_800806CC = dword_800806BC;
-  return result;
+    TM3_DRAFT_U32(0x80089E48u) = 0u;
+    TM3_DRAFT_U32(0x800806CCu) = TM3_DRAFT_U32(0x800806BCu);
+    return 0x800806B0u;
 }
 
 /* Unverified decompiler-derived draft */
 uint32 sub_80014C04(uint32 a1, uint32 a2, uint32 a3, uint32 a4)
 {
-    FUNCTION_MARKER(0x80014C04u, "SCUS_942.49");
-    /* TODO Original signed wrap, guest pointers and unresolved ABI effects remain unverified */
-
-  uint64 v4; 
-  int result; 
-  char v6; 
-  int v7; 
-  int v8; 
-
-  v4 = TM3_DRAFT_I32(a2) * (uint64)a3;
-  result = 32 - a4;
-  v6 = a4 - 1;
-  v7 = TM3_DRAFT_I32(a2 + (1) * 4u);
-  v8 = TM3_DRAFT_I32(a2 + (2) * 4u);
-  TM3_DRAFT_U32(a1) = (((unsigned int)v4 >> v6 >> 1) | (HIDWORD(v4) << result)) + (((unsigned int)v4 >> v6) & 1);
-  TM3_DRAFT_U32(a1 + (1) * 4u) = (((unsigned int)(v7 * a3) >> v6 >> 1) | ((uint64)(v7 * (uint64)a3) >> 32 << result))
-        + (((unsigned int)(v7 * a3) >> v6) & 1);
-  TM3_DRAFT_U32(a1 + (2) * 4u) = (((unsigned int)(v8 * a3) >> v6 >> 1) | ((uint64)(v8 * (uint64)a3) >> 32 << result))
-        + (((unsigned int)(v8 * a3) >> v6) & 1);
-  return result;
+  sint32 input[3];
+  uint32 i, high_shift=32u-a4, low_shift=(a4-1u)&31u;
+  FUNCTION_MARKER(0x80014C04u, "SCUS_942.49");
+  for(i=0u;i<3u;++i) input[i]=TM3_DRAFT_I32(a2+4u*i);
+  
+  for(i=0u;i<3u;++i)
+  {
+    sint64 product=(sint64)input[i]*(sint32)a3;
+    uint32 low=(uint32)product >> low_shift;
+    uint32 high=(uint32)((uint64)product >> 32);
+    TM3_DRAFT_U32(a1+4u*i)=((low>>1u)|(high<<(high_shift&31u)))+(low&1u);
+  }
+  return high_shift;
 }
 
 /* Unverified decompiler-derived draft */
-uint32 sub_80030A74(uint32 a1, uint32 a2)
+uint32 sub_80030A74(uint32 a1)
 {
     FUNCTION_MARKER(0x80030A74u, "SCUS_942.49");
-    /* TODO Original signed wrap, guest pointers and unresolved ABI effects remain unverified */
 
   uint32 v3; 
   uint8 v4; 
   int result; 
 
-  sub_8002EE68(a1, a2);
+  sub_8002EE68(a1);
   sub_80028B60((uint32)(a1 + 8), TM3_DRAFT_I16(dword_80089D14 + 74));
   if ( TM3_DRAFT_U8(a1 + 328) >= 2u )
   {
@@ -190,20 +169,14 @@ uint32 sub_800302CC(uint32 a1, uint32 a2)
 }
 
 /* Unverified decompiler-derived draft */
-uint32 sub_800529DC(uint32 a1, uint32 a2, uint32 a3)
+uint32 sub_800529DC(uint32 context, uint32 unused, uint32 selected)
 {
-    FUNCTION_MARKER(0x800529DCu, "SCUS_942.49");
-    /* TODO Original signed wrap, guest pointers and unresolved ABI effects remain unverified */
-
-  sint32 v4; 
-  int vars0; 
-  int vars4; 
-  int vars8; 
-  char _2C; 
-
-  v4 = sub_80052978();
-  return sub_8004E9B8(a1, a3, (int)0x800529DCu, 2, (int)off_800898A0, TM3_DRAFT_U32(0x800d2964u), 3, !v4);
+    uint32 enabled = sub_80052978();
+    (void)unused;
+    return sub_8004E9B8(context, selected, 0x800529DCu, 2u,
+        0x800898A0u, TM3_DRAFT_U32(0x800D2964u), 3u, enabled == 0u);
 }
+
 
 /* Unverified decompiler-derived draft */
 uint32 sub_80015538(uint32 a1, uint32 a2, uint32 a3)
@@ -431,9 +404,9 @@ uint32 sub_80013F78(uint32 a1, uint32 a2, uint32 a3)
   tm3_draft_gte_write_data(10u, ida_T1);
   tm3_draft_gte_write_data(11u, ida_T2);
   tm3_draft_gte_command(0x190003Du);
-  tm3_draft_unimplemented("TODO swc2    $25, 0($a0)");
-  tm3_draft_unimplemented("TODO swc2    $26, 4($a0)");
-  tm3_draft_unimplemented("TODO swc2    $27, 8($a0)");
+  TM3_DRAFT_U32(a1) = tm3_draft_gte_read_data(25u);
+  TM3_DRAFT_U32(a1 + 4u) = tm3_draft_gte_read_data(26u);
+  TM3_DRAFT_U32(a1 + 8u) = tm3_draft_gte_read_data(27u);
   return a1;
 }
 
@@ -443,23 +416,20 @@ uint32 sub_80014EA8(uint32 a1, uint32 a2, uint32 a3)
     FUNCTION_MARKER(0x80014EA8u, "SCUS_942.49");
     /* TODO Original signed wrap, guest pointers and unresolved ABI effects remain unverified */
 
-  int v5[4]; 
+  uint32 v5[4];
+  uint32 quaternion_address = TM3_DRAFT_LOCAL_ADDRESS(v5, sizeof(v5));
 
-  sub_80014CC4(a1, a2, v5);
-  return sub_80014D6C(v5, a3);
+  sub_80014CC4(a1, a2, quaternion_address);
+  return sub_80014D6C(quaternion_address, a3);
 }
 
 /* Unverified decompiler-derived draft */
-uint32 sub_80026F64(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, uint32 a6, uint32 a7, uint32 a8, uint32 a9, uint32 a10, uint32 a11, uint32 a12)
+uint32 sub_80026F64(uint32 object, uint32 owner, uint32 position, uint32 axis, uint32 length)
 {
-    FUNCTION_MARKER(0x80026F64u, "SCUS_942.49");
-    /* TODO Original signed wrap, guest pointers and unresolved ABI effects remain unverified */
-
-  a6 = a2;
-  a7 = a3;
-  a8 = a4;
-  return sub_80026E28(a1, &a6);
+    uint32 payload[4] = { owner, position, axis, length };
+    return sub_80026E28(object, TM3_DRAFT_LOCAL_ADDRESS(payload, sizeof(payload)));
 }
+
 
 /* Unverified decompiler-derived draft */
 uint32 sub_800496E0(uint32 a1, uint32 a2, uint32 a3, ...)

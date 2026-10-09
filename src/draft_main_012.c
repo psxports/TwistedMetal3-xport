@@ -17,11 +17,11 @@ uint32 sub_80045CF4(uint32 a1)
     uint32 hi_value, lo_value, condition_value;
     /* TODO Incoming volatile values not supplied by the provisional API remain unresolved */
     uint64 product;
-    uint8 local_storage[240];
+    uint32 local_words[46];
+    uint8 *local_storage = (uint8 *)local_words;
     /* TODO Local buffer address adapter and native aliases */
-    local_base = tm3_draft_local_address(local_storage, sizeof(local_storage));
-    temp_a0 = sub_80045CF4;
-    temp_a1 = a1;
+    local_base = tm3_draft_local_address(local_storage, sizeof(local_words));
+    temp_a0 = a1;
 label_80045cf4:  goto label_80045cf8;
 label_80045cf8: temp_v0 = 0x800d0000u; goto label_80045cfc;
 label_80045cfc:  goto label_80045d00;
@@ -218,11 +218,11 @@ label_80045ff4: temp_s1 = (temp_s2 + 0u); goto label_80045ff8;
 label_80045ff8: temp_v0 = (temp_s1 + temp_s0); goto label_80045ffc;
 label_80045ffc: temp_a0 = TM3_DRAFT_U16(temp_v0 + (uint32)(0)); goto label_80046000;
 label_80046000: temp_a1 = TM3_DRAFT_U8(temp_s4 + (uint32)(13)); goto label_80046004;
-label_80046004:  temp_v0 = tm3_draft_indirect(0x8004f78cu, 4u, temp_a0, temp_a1, temp_a2, temp_a3); goto label_8004600c;
+label_80046004:  temp_v0 = tm3_draft_indirect(0x8004f78cu, 2u, temp_a0, temp_a1); goto label_8004600c;
 label_80046008:  goto label_8004600c;
 label_8004600c: condition_value = (temp_v0 == 0u); temp_a0 = local_base + (uint32)(144); if (condition_value) goto label_8004601c; goto label_80046014;
 label_80046010: temp_a0 = local_base + (uint32)(144); goto label_80046014;
-label_80046014: temp_a1 = (temp_v0 + 0u); temp_v0 = tm3_draft_indirect(0x800566d4u, 4u, temp_a0, temp_a1, temp_a2, temp_a3); goto label_8004601c;
+label_80046014: temp_a1 = (temp_v0 + 0u); temp_v0 = sub_800566D4(temp_a0, temp_a1); goto label_8004601c;
 label_80046018: temp_a1 = (temp_v0 + 0u); goto label_8004601c;
 label_8004601c: temp_s0 = temp_s0 + (uint32)(2); goto label_80046020;
 label_80046020: temp_v0 = (temp_s1 + temp_s0); goto label_80046024;
@@ -239,7 +239,7 @@ label_80046048: temp_v0 = temp_s3 + (uint32)(88); goto label_8004604c;
 label_8004604c: *(uint32 *)(local_storage + 20) = (uint32)temp_v0; goto label_80046050;
 label_80046050: temp_v0 = 0u + (uint32)(4); goto label_80046054;
 label_80046054: *(uint32 *)(local_storage + 16) = (uint32)temp_s3; goto label_80046058;
-label_80046058: *(uint32 *)(local_storage + 24) = (uint32)temp_v0; temp_v0 = sub_80049284(temp_a0, temp_a1, temp_a2, temp_a3, *(uint32 *)(local_storage + 16), *(uint32 *)(local_storage + 20), *(uint32 *)(local_storage + 24), *(uint32 *)(local_storage + 28), *(uint32 *)(local_storage + 32), *(uint32 *)(local_storage + 36), *(uint32 *)(local_storage + 40), *(uint32 *)(local_storage + 44), *(uint32 *)(local_storage + 48), *(uint32 *)(local_storage + 52), *(uint32 *)(local_storage + 56), *(uint32 *)(local_storage + 60), *(uint32 *)(local_storage + 64), *(uint32 *)(local_storage + 68), *(uint32 *)(local_storage + 72)); goto label_80046060;
+label_80046058: *(uint32 *)(local_storage + 24) = (uint32)temp_v0; temp_v0 = sub_80049284(temp_a0, temp_a1, temp_a2, temp_a3, *(uint32 *)(local_storage + 16), *(uint32 *)(local_storage + 20), *(uint32 *)(local_storage + 24)); goto label_80046060;
 label_8004605c: *(uint32 *)(local_storage + 24) = (uint32)temp_v0; goto label_80046060;
 label_80046060:  goto label_800460a8;
 label_80046064:  goto label_80046068;
@@ -267,4 +267,10 @@ label_800460b8:  goto label_800460bc;
 label_800460bc:  goto label_800460c0;
 label_800460c0:  return temp_v0;
 label_800460c4:  return temp_v0;
+}
+
+uint32 sub_80045CD0(uint32 context, uint32 font, uint32 lines, uint32 count)
+{
+    FUNCTION_MARKER(0x80045CD0u, "SCUS_942.49");
+    return sub_80045B84(context, font, lines, count, 120u);
 }

@@ -35,23 +35,19 @@ LABEL_7:
 /* Unverified draft; TODO items require later review */
 uint32 sub_80014CC4(uint32 a1, uint32 a2, uint32 a3)
 {
+    sint32 half_angle = (sint32)(a2 + (a2 >> 31u)) >> 1;
+    uint32 product[3];
+    uint32 sine;
+    uint32 result;
     FUNCTION_MARKER(0x80014CC4u, "SCUS_942.49");
-  int v4; 
-  int v5; 
-  int v7; 
-  int v8; 
-  int result; 
-
-  v4 = a2 / 2;
-  v5 = sub_8005AF24(a2 / 2);
-  v7 = TM3_DRAFT_U16(a1 + 2u * (1)) * v5;
-  v8 = TM3_DRAFT_U16(a1 + 2u * (2)) * v5;
-  TM3_DRAFT_U32(a3) = (TM3_DRAFT_U16(a1) * v5 + 2048) >> 12;
-  TM3_DRAFT_U32(a3 + 4u * (1)) = (v7 + 2048) >> 12;
-  TM3_DRAFT_U32(a3 + 4u * (2)) = (v8 + 2048) >> 12;
-  result = sub_8005AFF4( v4);
-  TM3_DRAFT_U32(a3 + 4u * (3)) = result;
-  return result;
+    sine = sub_8005AF24((uint32)half_angle);
+    for (uint32 index = 0u; index < 3u; ++index)
+        product[index] = (uint32)(sint32)TM3_DRAFT_I16(a1 + 2u * index) * sine;
+    for (uint32 index = 0u; index < 3u; ++index)
+        TM3_DRAFT_U32(a3 + 4u * index) = (uint32)((sint32)(product[index] + 0x800u) >> 12);
+    result = sub_8005AFF4((uint32)half_angle);
+    TM3_DRAFT_U32(a3 + 12u) = result;
+    return result;
 }
 
 
@@ -72,9 +68,9 @@ uint32 sub_8003EF08(uint32 a1, uint32 a2, uint32 a3)
   v3 = a1;
   v4 = TM3_DRAFT_U32(a2 + 4u * (1));
   v5 = TM3_DRAFT_U32(a2 + 4u * (2));
-  TM3_DRAFT_U32(a1 + 96) = TM3_DRAFT_U32(a2);
-  TM3_DRAFT_U32(a1 + 104) = v4;
-  TM3_DRAFT_U32(a1 + 112) = v5;
+  TM3_DRAFT_U32(a1 + 48) = TM3_DRAFT_U32(a2);
+  TM3_DRAFT_U32(a1 + 52) = v4;
+  TM3_DRAFT_U32(a1 + 56) = v5;
   sub_8005B240(a3, a1 + 16u);
   v6 = TM3_DRAFT_U16(v3 + 2u * (10));
   v7 = TM3_DRAFT_U16(v3 + 2u * (8));
@@ -91,90 +87,20 @@ uint32 sub_8003EF08(uint32 a1, uint32 a2, uint32 a3)
 
 
 /* Unverified draft; TODO items require later review */
-uint32 sub_8004B468(uint32 a1, uint32 a2)
+uint32 sub_8004B468(uint32 vehicle, uint32 pickup)
 {
+    uint32 handler;
     FUNCTION_MARKER(0x8004B468u, "SCUS_942.49");
-    uint32 v0; /* TODO: Review undefined incoming or temporary value */
-    uint32 v1; /* TODO: Review undefined incoming or temporary value */
-    uint32 arg0 = a1;
-    uint32 arg1 = a2;
-    uint32 arg2; /* TODO: Review undefined incoming or temporary value */
-    uint32 arg3; /* TODO: Review undefined incoming or temporary value */
-    uint32 s0; /* TODO: Review undefined incoming or temporary value */
-    uint32 s1; /* TODO: Review undefined incoming or temporary value */
-    uint32 hi, lo;
-    uint8 local_bytes[128]; /* Required local storage; uninitialized original values remain TODO */
-    uint32 listing_local_address = TM3_DRAFT_LOCAL_ADDRESS(local_bytes, sizeof(local_bytes));
-    L_8004B468:;
-    L_8004B46C:;
-    L_8004B470:;
-    L_8004B474:;
-    s0 = arg1 + 0u;
-    L_8004B478:;
-    L_8004B47C:;
-    v1 = TM3_DRAFT_U8(s0 + (uint32)(1));
-    L_8004B480:;
-    v0 = 0u + (uint32)(2);
-    L_8004B484:;
+    if (TM3_DRAFT_U8(pickup + 1u) != 2u)
+        return 0u;
+    handler = TM3_DRAFT_U32(0x8007E0A8u + 8u * TM3_DRAFT_U8(pickup));
+    if (tm3_draft_indirect(handler, 2u, vehicle, pickup))
     {
-        uint32 branch = v1 == v0;
-        s1 = arg0 + 0u;
-        if (branch) goto L_8004B494;
+        sub_8004A294(22u, 5u, 5u, vehicle, 2000u);
+        TM3_DRAFT_U8(pickup + 1u) = 1u;
+        TM3_DRAFT_U16(pickup + 4u) = 0u;
     }
-    L_8004B48C:;
-    v0 = 0u + 0u;
-    goto L_8004B4EC;
-    L_8004B494:;
-    arg0 = s1 + 0u;
-    L_8004B498:;
-    v0 = 0x80080000u;
-    L_8004B49C:;
-    v1 = TM3_DRAFT_U8(s0 + (uint32)(0));
-    L_8004B4A0:;
-    v0 = v0 + (uint32)(-8024);
-    L_8004B4A4:;
-    v1 = v1 << 3u;
-    L_8004B4A8:;
-    v1 = v1 + v0;
-    L_8004B4AC:;
-    v0 = TM3_DRAFT_U32(v1 + (uint32)(0));
-    L_8004B4B0:;
-    L_8004B4B4:;
-    {
-        uint32 target = v0;
-        arg1 = s0 + 0u;
-        v0 = tm3_draft_indirect(target, 2u, arg0, arg1); /* TODO: Indirect callback adapter */
-    }
-    L_8004B4BC:;
-    {
-        uint32 branch = v0 == 0u;
-        arg0 = 0u + (uint32)(22);
-        if (branch) goto L_8004B4E8;
-    }
-    L_8004B4C4:;
-    arg1 = 0u + (uint32)(5);
-    L_8004B4C8:;
-    v0 = 0u + (uint32)(2000);
-    L_8004B4CC:;
-    arg2 = arg1 + 0u;
-    L_8004B4D0:;
-    arg3 = s1 + 0u;
-    L_8004B4D4:;
-    TM3_DRAFT_U32(listing_local_address + 16u) = (uint32)v0;
-    v0 = sub_8004A294(arg0, arg1, arg2, arg3, TM3_DRAFT_U32(listing_local_address + 16u) /* TODO: Caller stack argument */);
-    L_8004B4DC:;
-    v0 = 0u + (uint32)(1);
-    L_8004B4E0:;
-    TM3_DRAFT_U8(s0 + (uint32)(1)) = (uint8)v0;
-    L_8004B4E4:;
-    TM3_DRAFT_U16(s0 + (uint32)(4)) = (uint16)0u;
-    L_8004B4E8:;
-    v0 = 0u + (uint32)(1);
-    L_8004B4EC:;
-    L_8004B4F0:;
-    L_8004B4F4:;
-    L_8004B4F8:;
-    return v0;
+    return 1u;
 }
 
 
@@ -397,26 +323,22 @@ LABEL_4:
 
 
 /* Unverified draft; TODO items require later review */
-uint32 sub_800266D8(uint32 a1, uint32 a2, uint32 a3)
+uint32 sub_800266D8(uint32 object, uint32 variant, uint32 descriptor)
 {
+    sint32 x, y, z;
     FUNCTION_MARKER(0x800266D8u, "SCUS_942.49");
-  int v4; 
-  int v5; 
-  int v6; 
-
-  if ( a2 != TM3_DRAFT_U32(a1 + 4388) + 4 )
-    return 0;
-  v4 = TM3_DRAFT_U16(a3 + 2u * (8));
-  v5 = TM3_DRAFT_U16(a3 + 2u * (9));
-  v6 = TM3_DRAFT_U16(a3 + 2u * (10));
-  TM3_DRAFT_U32(0x1F8000B4u) = v4;
-  TM3_DRAFT_U32(0x1F8000B8u) = v5;
-  TM3_DRAFT_U32(0x1F8000BCu) = v6;
-  sub_8001434C(TM3_DRAFT_U32(a1 + 4384), 528482464);
-  sub_8005B614((uint32)0x1F800080, (uint32)0x1F8000A0, (uint32)0x1F8000A0);
-  return 528482464;
+    if (variant != TM3_DRAFT_U32(object + 4388u) + 4u)
+        return 0;
+    x = TM3_DRAFT_I16(descriptor + 16u);
+    y = TM3_DRAFT_I16(descriptor + 18u);
+    z = TM3_DRAFT_I16(descriptor + 20u);
+    TM3_DRAFT_U32(0x1F8000B4u) = (uint32)x;
+    TM3_DRAFT_U32(0x1F8000B8u) = (uint32)y;
+    TM3_DRAFT_U32(0x1F8000BCu) = (uint32)z;
+    sub_8001434C(TM3_DRAFT_U32(object + 4384u), 0x1F8000A0u);
+    sub_8005B614(0x1F800080u, 0x1F8000A0u, 0x1F8000A0u);
+    return 0x1F8000A0u;
 }
-
 
 /* Unverified draft; TODO items require later review */
 uint32 sub_80026B88(uint32 a1, uint32 a2, uint32 a3)
@@ -448,7 +370,13 @@ uint32 sub_8004A6AC(uint32 a1, uint32 a2)
     a1 = a2;
     a2 = v2;
   }
-  result = TM3_DRAFT_U32(0x8007F50Cu + 4u * (TM3_DRAFT_U32(a2) * (TM3_DRAFT_U32(a2) + 1) / 2 + TM3_DRAFT_U32(a1)));
+  /* Preserve the signed half of the wrapped multiplication result */
+  {
+    uint32 type = TM3_DRAFT_U32(a2);
+    uint32 product = type * (type + 1u);
+    uint32 half = (uint32)((sint32)(product + (product >> 31)) >> 1);
+    result = TM3_DRAFT_U32(0x8007F50Cu + 4u * (half + TM3_DRAFT_U32(a1)));
+  }
   v4 = a1 + 48;
   if ( result )
     return (uint32)tm3_draft_indirect(result, 2u, v4, a2 + 48) /* TODO: Guest callback adapter */;
@@ -563,32 +491,19 @@ uint32 sub_80023E54(uint32 a1)
   (*(sint16 (*)[4])psx_addr(original_local_address + 48u, sizeof(sint16[4])))[2] = v3;
   (*(sint16 (*)[4])psx_addr(original_local_address + 48u, sizeof(sint16[4])))[1] = v2;
   sub_80014EDC((uint32)(a1 + 1580), TM3_DRAFT_LOCAL_ADDRESS((*(sint16 (*)[4])psx_addr(original_local_address + 48u, sizeof(sint16[4]))), sizeof((*(sint16 (*)[4])psx_addr(original_local_address + 48u, sizeof(sint16[4]))))), 2048, TM3_DRAFT_LOCAL_ADDRESS((*(sint16 (*)[16])psx_addr(original_local_address + 16u, sizeof(sint16[16]))), sizeof((*(sint16 (*)[16])psx_addr(original_local_address + 16u, sizeof(sint16[16]))))));
-  sub_8005B614((uint32)(*(sint16 (*)[16])psx_addr(original_local_address + 16u, sizeof(sint16[16]))), (uint32)(a1 + 1536), (uint32)(a1 + 1536));
+  sub_8005B614(original_local_address + 16u, (uint32)(a1 + 1536), (uint32)(a1 + 1536));
   sub_80023B38(a1);
   return sub_80023BFC(a1);
 }
 
 
 /* Unverified draft; TODO items require later review */
-uint32 sub_80052908(uint32 a1, uint32 a2, uint32 a3)
+uint32 sub_80052908(uint32 context, uint32 unused, uint32 selected)
 {
-    FUNCTION_MARKER(0x80052908u, "SCUS_942.49");
-  int v4; 
-  int vars0; 
-  int vars4; 
-  int vars8; 
-  char _2C; 
-
-  v4 = sub_80052874();
-  return sub_8004E9B8(
-           a1,
-           a3,
-           0x80052908u,
-           2,
-           (int)TM3_DRAFT_U32(0x800898A0u),
-           TM3_DRAFT_U32(0x800D2968u),
-           3,
-           v4 == 0);
+    uint32 enabled = sub_80052874();
+    (void)unused;
+    return sub_8004E9B8(context, selected, 0x80052908u, 2u,
+        0x800898A0u, TM3_DRAFT_U32(0x800D2968u), 3u, enabled == 0u);
 }
 
 
@@ -658,17 +573,19 @@ uint32 sub_800272E8(uint32 a1)
 
 
 /* Unverified draft; TODO items require later review */
-uint32 sub_800336B4(uint32 a1, uint32 a2)
+uint32 sub_800336B4(uint32 object)
 {
+    uint32 table, product, denominator, quotient, result;
     FUNCTION_MARKER(0x800336B4u, "SCUS_942.49");
-  uint32 result; 
-
-  sub_8002EAE0(a1, a2);
-  result = ((uint32)(TM3_DRAFT_I16(2 * TM3_DRAFT_U8(a1 + 326) - 2146915968) * (TM3_DRAFT_U32(a1 + 148) << 12))
-          / TM3_DRAFT_U32(a1 + 152)
-          + 2048) >> 12;
-  TM3_DRAFT_U16(a1 + 104) = TM3_DRAFT_U16(2 * TM3_DRAFT_U8(a1 + 326) - 2146915968) + result;
-  return result;
+    sub_8002EAE0(object);
+    table = 0x8008A980u + 2u * TM3_DRAFT_U8(object + 326u);
+    product = (uint32)(sint32)TM3_DRAFT_I16(table)
+        * (TM3_DRAFT_U32(object + 148u) << 12u);
+    denominator = TM3_DRAFT_U32(object + 152u);
+    quotient = denominator ? product / denominator : 0xFFFFFFFFu;
+    result = (quotient + 2048u) >> 12u;
+    TM3_DRAFT_U16(object + 104u) = (uint16)(TM3_DRAFT_U16(table) + result);
+    return result;
 }
 
 
@@ -735,7 +652,7 @@ uint32 sub_80040804(uint32 a1)
     }
     while ( v2 );
   }
-  return sub_80061574(0, 1 << a1);
+  return sub_80061574(0, 1u << (a1 & 31u));
 }
 
 
@@ -796,22 +713,21 @@ uint32 sub_8001A390(uint32 a1)
 
 
 /* Unverified draft; TODO items require later review */
-uint32 sub_800265C0(uint32 a1, uint32 a2, uint32 a3)
+uint32 sub_800265C0(uint32 object, uint32 unused, uint32 descriptor)
 {
+    sint32 x, y, z;
     FUNCTION_MARKER(0x800265C0u, "SCUS_942.49");
-  int v3; 
-  int v4; 
-
-  v3 = TM3_DRAFT_U16(a3 + 2u * (9));
-  v4 = TM3_DRAFT_U16(a3 + 2u * (10));
-  TM3_DRAFT_U32(0x1F8000B4u) = TM3_DRAFT_U16(a3 + 2u * (8));
-  TM3_DRAFT_U32(0x1F8000B8u) = v3;
-  TM3_DRAFT_U32(0x1F8000BCu) = v4;
-  sub_8001434C(TM3_DRAFT_U32(a1 + 4384), 528482464);
-  sub_8005B614((uint32)0x1F800080, (uint32)0x1F8000A0, (uint32)0x1F8000A0);
-  return 528482464;
+    (void)unused;
+    x = TM3_DRAFT_I16(descriptor + 16u);
+    y = TM3_DRAFT_I16(descriptor + 18u);
+    z = TM3_DRAFT_I16(descriptor + 20u);
+    TM3_DRAFT_U32(0x1F8000B4u) = (uint32)x;
+    TM3_DRAFT_U32(0x1F8000B8u) = (uint32)y;
+    TM3_DRAFT_U32(0x1F8000BCu) = (uint32)z;
+    sub_8001434C(TM3_DRAFT_U32(object + 4384u), 0x1F8000A0u);
+    sub_8005B614(0x1F800080u, 0x1F8000A0u, 0x1F8000A0u);
+    return 0x1F8000A0u;
 }
-
 
 /* Unverified draft; TODO items require later review */
 uint32 sub_80048530(uint32 a1)
@@ -853,29 +769,21 @@ uint32 sub_800459B8(void)
 
 
 /* Unverified draft; TODO items require later review */
-uint32 sub_8001434C(uint32 a1, uint32 a2)
+uint32 sub_8001434C(uint32 angle, uint32 matrix)
 {
+    uint32 sign = (uint32)((sint32)angle >> 31);
+    uint32 index = ((angle + sign) ^ sign) & 0xFFFu;
+    uint32 packed = TM3_DRAFT_U32(0x80081E38u + 4u * index);
+    uint32 cosine = packed >> 16;
+    uint32 sine = ((uint32)(sint32)(sint16)packed + sign) ^ sign;
     FUNCTION_MARKER(0x8001434Cu, "SCUS_942.49");
-  int v2; 
-  uint32 v3; 
-  int result; 
-  int v5; 
-  int v6; 
-
-  v2 = a1 >> 31;
-  v3 = TM3_DRAFT_U32(0x80081E38u + 4u * (((uint16)(a1 + (a1 >> 31)) ^ (uint16)(a1 >> 31)) & 0xFFF));
-  result = a2;
-  v5 = v3 << 16;
-  v3 >>= 16;
-  v6 = ((v5 >> 16) + v2) ^ v2;
-  TM3_DRAFT_U32(result) = v3;
-  TM3_DRAFT_U32(result + 4) = (uint16)v6;
-  TM3_DRAFT_U32(result + 8) = 4096;
-  TM3_DRAFT_U32(result + 12) = (uint16)-(sint16)v6;
-  TM3_DRAFT_U16(result + 16) = v3;
-  return result;
+    TM3_DRAFT_U32(matrix) = cosine;
+    TM3_DRAFT_U32(matrix + 4u) = (uint16)sine;
+    TM3_DRAFT_U32(matrix + 8u) = 4096u;
+    TM3_DRAFT_U32(matrix + 12u) = (uint16)(0u - sine);
+    TM3_DRAFT_U16(matrix + 16u) = (uint16)cosine;
+    return matrix;
 }
-
 
 /* Unverified draft; TODO items require later review */
 uint32 sub_8003E828(uint32 a1, uint32 a2)
@@ -907,7 +815,7 @@ uint32 sub_800140C8(uint32 a1, uint32 a2, uint32 a3, uint32 a4)
     xport_gte_write_data(25u, (uint32)TM3_DRAFT_I16(a4));
     xport_gte_write_data(26u, (uint32)TM3_DRAFT_I16(a4 + 2u));
     xport_gte_write_data(27u, (uint32)TM3_DRAFT_I16(a4 + 4u));
-    xport_gte_execute(0x1A8003Eu);
+    tm3_draft_gte_command(0x1A8003Eu);
     TM3_DRAFT_U16(a1) = (uint16)xport_gte_read_data(25u);
     TM3_DRAFT_U16(a1 + 2u) = (uint16)xport_gte_read_data(26u);
     TM3_DRAFT_U16(a1 + 4u) = (uint16)xport_gte_read_data(27u);
@@ -956,15 +864,7 @@ uint32 sub_80048304(uint32 a1)
 /* Unverified draft; TODO items require later review */
 uint32 sub_800326CC(uint32 a1)
 {
-    uint32 original_local_words[6];
-    uint32 original_local_address = TM3_DRAFT_LOCAL_ADDRESS(original_local_words, sizeof(original_local_words));
-
     FUNCTION_MARKER(0x800326CCu, "SCUS_942.49");
-  int vars0; 
-  int vars0a; 
-  int vars4; 
-  int vars4a; 
-
   sub_8004A294(30, a1, 15, 15);
   return sub_8004A294(22, TM3_DRAFT_U8(TM3_DRAFT_U32(a1 + 4040) + 55), 5, a1, 1200);
 }
@@ -997,49 +897,11 @@ uint32 sub_80046840(void)
 
 
 /* Unverified draft; TODO items require later review */
-uint32 sub_800524F4(uint32 a1, uint32 a2, uint32 a3)
+uint32 sub_800524F4(uint32 context, uint32 unused, uint32 selected)
 {
-    FUNCTION_MARKER(0x800524F4u, "SCUS_942.49");
-    uint32 v0; /* TODO: Review undefined incoming or temporary value */
-    uint32 v1; /* TODO: Review undefined incoming or temporary value */
-    uint32 arg0 = a1;
-    uint32 arg1 = a2;
-    uint32 arg2 = a3;
-    uint32 arg3; /* TODO: Review undefined incoming or temporary value */
-    uint32 hi, lo;
-    uint8 local_bytes[128]; /* Required local storage; uninitialized original values remain TODO */
-    uint32 listing_local_address = TM3_DRAFT_LOCAL_ADDRESS(local_bytes, sizeof(local_bytes));
-    L_800524F4:;
-    L_800524F8:;
-    v0 = 0x80080000u;
-    L_800524FC:;
-    v1 = 0x800d0000u;
-    L_80052500:;
-    v0 = v0 + (uint32)(-308);
-    L_80052504:;
-    TM3_DRAFT_U32(listing_local_address + 16u) = (uint32)v0;
-    L_80052508:;
-    v0 = 0x80050000u;
-    L_8005250C:;
-    arg1 = arg2 + 0u;
-    L_80052510:;
-    arg2 = v0 + (uint32)(9460);
-    L_80052514:;
-    v1 = TM3_DRAFT_U32(v1 + (uint32)(10560));
-    L_80052518:;
-    arg3 = 0u + (uint32)(3);
-    L_8005251C:;
-    L_80052520:;
-    TM3_DRAFT_U32(listing_local_address + 24u) = (uint32)0u;
-    L_80052524:;
-    TM3_DRAFT_U32(listing_local_address + 28u) = (uint32)0u;
-    L_80052528:;
-    TM3_DRAFT_U32(listing_local_address + 20u) = (uint32)v1;
-    v0 = sub_8004E9B8(arg0, arg1, arg2, arg3, TM3_DRAFT_U32(listing_local_address + 16u) /* TODO: Caller stack argument */, TM3_DRAFT_U32(listing_local_address + 20u) /* TODO: Caller stack argument */, TM3_DRAFT_U32(listing_local_address + 24u) /* TODO: Caller stack argument */, TM3_DRAFT_U32(listing_local_address + 28u) /* TODO: Caller stack argument */);
-    L_80052530:;
-    L_80052534:;
-    L_80052538:;
-    return v0;
+    (void)unused;
+    return sub_8004E9B8(context, selected, 0x800524F4u, 3u,
+        0x8007FECCu, TM3_DRAFT_U32(0x800D2940u), 0u, 0u);
 }
 
 
@@ -1471,10 +1333,11 @@ uint32 sub_80033A4C(uint32 a1, uint32 a2)
 
 
 /* Unverified draft; TODO items require later review */
-uint32 sub_8002E698(uint32 a1)
+uint32 sub_8002E698(uint32 object, uint32 ordering_table, uint32 cursor, uint32 end, uint32 matrix)
 {
     FUNCTION_MARKER(0x8002E698u, "SCUS_942.49");
-  return tm3_draft_indirect(TM3_DRAFT_U32(TM3_DRAFT_U32(a1 + 156) + 12), 0u);
+    uint32 callback = TM3_DRAFT_U32(TM3_DRAFT_U32(object + 0x9cu) + 12u);
+    return tm3_draft_indirect(callback, 5u, object, ordering_table, cursor, end, matrix);
 }
 
 
@@ -1793,3 +1656,20 @@ void sub_80030558(void)
 }
 
 
+
+uint32 sub_80052388(void)
+{
+    FUNCTION_MARKER(0x80052388u, "SCUS_942.49");
+    uint32 maximum = sub_8005230C();
+    uint32 result = sub_8004EB10(TM3_DRAFT_U32(0x800D28B8u), 1u, maximum, 1u);
+    TM3_DRAFT_U32(0x800D28B8u) = result;
+    return result;
+}
+
+uint32 sub_800524B8(void)
+{
+    FUNCTION_MARKER(0x800524B8u, "SCUS_942.49");
+    uint32 result = sub_8004EB10(TM3_DRAFT_U32(0x800D2940u), 0u, 2u, 1u);
+    TM3_DRAFT_U32(0x800D2940u) = result;
+    return result;
+}

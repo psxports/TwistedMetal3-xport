@@ -450,14 +450,15 @@ LABEL_89:
 /* Unverified decompiler-derived draft */
 uint32 sub_80049710(uint32 a1, uint32 a2, uint32 a3)
 {
+    FUNCTION_MARKER(0x80049710u, "SCUS_942.49");
   uint32 v4; 
   int v6; 
-  int v7; 
+  uint32 v7; 
   uint32 v8; 
   unsigned int v9; 
   int v10; 
   unsigned int v11; 
-  int v12; 
+  uint32 v12; 
   int v13; 
   int v14; 
   int i; 
@@ -531,7 +532,7 @@ uint32 sub_80049710(uint32 a1, uint32 a2, uint32 a3)
           v32 = v10;
           if ( v10 < 0 )
           {
-            v32 = -v10;
+            v32 = (sint32)(0u - (uint32)v10);
             v31 |= 1u;
           }
           v6 = TM3_DRAFT_U8(v4 += 1u);
@@ -541,7 +542,7 @@ uint32 sub_80049710(uint32 a1, uint32 a2, uint32 a3)
           while ( v9 < 0xA )
           {
             (v4 += 1u);
-            v32 = 10 * v32 - 48 + v6;
+            v32 = (sint32)(10u * (uint32)v32 - 48u + (uint32)v6);
             v6 = TM3_DRAFT_U8(v4);
             v9 = v6 - 48;
           }
@@ -562,7 +563,7 @@ uint32 sub_80049710(uint32 a1, uint32 a2, uint32 a3)
             while ( v11 < 0xA )
             {
               (v4 += 1u);
-              v33 = 10 * v33 - 48 + v6;
+              v33 = (sint32)(10u * (uint32)v33 - 48u + (uint32)v6);
               v6 = TM3_DRAFT_U8(v4);
               v11 = v6 - 48;
             }
@@ -587,7 +588,7 @@ uint32 sub_80049710(uint32 a1, uint32 a2, uint32 a3)
               v12 = -2146617633;
               a3 += 4;
               i = 1;
-              TM3_DRAFT_U32(0x800d36dfu) = TM3_DRAFT_U8(a3 - 4);
+              TM3_DRAFT_U8(0x800d36dfu) = TM3_DRAFT_U8(a3 - 4);
               goto LABEL_107;
             case 'd':
             case 'i':
@@ -602,7 +603,7 @@ uint32 sub_80049710(uint32 a1, uint32 a2, uint32 a3)
               }
               else
               {
-                v14 = -v14;
+                v14 = (sint32)(0u - (uint32)v14);
                 BYTE1(v31) = 45;
               }
               goto LABEL_43;
@@ -671,14 +672,15 @@ LABEL_75:
               v12 = TM3_DRAFT_U32(a3 - 4);
               if ( ((v31 >> 2) & 1) != 0 )
               {
-                i = TM3_DRAFT_U8(v12)++;
+                i = TM3_DRAFT_U8(v12);
+                ++v12;
                 if ( (v31 & 0x10) != 0 && v33 < i )
                   i = v33;
               }
               else if ( (v31 & 0x10) != 0 )
               {
                 v26 = sub_80056554(TM3_DRAFT_U32(a3 - 4), 0, v33);
-                i = (int)(v26 + (-v12) * 1u);
+                i = (sint32)(v26 - v12);
                 if ( !v26 )
                   i = v33;
               }
@@ -700,7 +702,7 @@ LABEL_43:
                 {
                   v33 = v32;
                   if ( BYTE1(v31) )
-                    v33 = v32 - 1;
+                    v33 = (sint32)((uint32)v32 - 1u);
                 }
                 if ( v33 <= 0 )
                   v33 = 1;
@@ -750,7 +752,7 @@ LABEL_77:
                 {
                   v33 = v32;
                   if ( ((v31 >> 2) & 1) != 0 )
-                    v33 = v32 - 2;
+                    v33 = (sint32)((uint32)v32 - 2u);
                 }
                 if ( v33 <= 0 )
                   v33 = 1;
@@ -833,7 +835,7 @@ LABEL_115:
 }
 
 /* Unverified decompiler-derived draft */
-uint32 sub_80023F94(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, uint32 a6, ...)
+uint32 sub_80023F94(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, uint32 a6)
 {
   uint32 ida_A0, ida_A1, ida_A2, ida_V0, ida_V1; /* TODO Explicit adapter values */
   uint32 v15; 
@@ -891,12 +893,12 @@ uint32 sub_80023F94(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, uint3
   v15 = (uint32)(a5 + 4 * a6);
   v16 = TM3_DRAFT_U32(TM3_DRAFT_U32(v15) + 4);
   v17 = TM3_DRAFT_I32(a3);
-  result = TM3_DRAFT_I32(a3) + 40 * v16 + 8 < a4;
-  if ( TM3_DRAFT_I32(a3) + 40 * v16 + 8 < a4 )
+  result = TM3_DRAFT_U32(a3) + 40u * (uint32)v16 + 8u < a4;
+  if ( TM3_DRAFT_U32(a3) + 40u * (uint32)v16 + 8u < a4 )
   {
     result = TM3_DRAFT_U32(a5 + 56);
     v78 = TM3_DRAFT_U32(v15) + 36;
-    v19 = (result << 16) | (result << 8) | result;
+    v19 = ((uint32)result << 16) | ((uint32)result << 8) | (uint32)result;
     v81 = v19;
     v79 = TM3_DRAFT_U32(v15 + (3) * 4u);
     v83 = TM3_DRAFT_U32(a5 + 64);
@@ -970,7 +972,7 @@ uint32 sub_80023F94(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, uint3
             v28 = 528482336;
             goto LABEL_19;
           }
-          v37 = *(int ( **)(int, int, int))(a5 + 48);
+          v37 = TM3_DRAFT_U32(a5 + 48u);
           if ( v37 )
           {
             v28 = tm3_draft_indirect(v37, 3u, a5, v24, v78 + v22);
@@ -1010,21 +1012,21 @@ LABEL_19:
         while ( v47 > 0 )
         {
           /* TODO GTE adapters */
-  tm3_draft_unimplemented("TODO lwc2    $0, 0($v0)");
-  tm3_draft_unimplemented("TODO lwc2    $1, 4($v0)");
-  tm3_draft_unimplemented("TODO lwc2    $2, 8($v0)");
-  tm3_draft_unimplemented("TODO lwc2    $3, 0xC($v0)");
-  tm3_draft_unimplemented("TODO lwc2    $4, 0x10($v0)");
-  tm3_draft_unimplemented("TODO lwc2    $5, 0x14($v0)");
+  tm3_draft_gte_write_data(0u, TM3_DRAFT_U32(ida_V0 + 0u));
+  tm3_draft_gte_write_data(1u, TM3_DRAFT_U32(ida_V0 + 4u));
+  tm3_draft_gte_write_data(2u, TM3_DRAFT_U32(ida_V0 + 8u));
+  tm3_draft_gte_write_data(3u, TM3_DRAFT_U32(ida_V0 + 12u));
+  tm3_draft_gte_write_data(4u, TM3_DRAFT_U32(ida_V0 + 16u));
+  tm3_draft_gte_write_data(5u, TM3_DRAFT_U32(ida_V0 + 20u));
           v38 += 12;
           /* TODO GTE adapters */
   tm3_draft_gte_command(0x280030u);
           v47 -= 3;
           ida_V0 += 24;
           /* TODO GTE adapters */
-  tm3_draft_unimplemented("TODO swc2    $12, 0($v1)");
-  tm3_draft_unimplemented("TODO swc2    $13, 4($v1)");
-  tm3_draft_unimplemented("TODO swc2    $14, 8($v1)");
+  TM3_DRAFT_U32((uint32)v38 + 0u) = tm3_draft_gte_read_data(12u);
+  TM3_DRAFT_U32((uint32)v38 + 4u) = tm3_draft_gte_read_data(13u);
+  TM3_DRAFT_U32((uint32)v38 + 8u) = tm3_draft_gte_read_data(14u);
         }
         v49 = TM3_DRAFT_I16(v25 + (1) * 2u);
         if ( v49 > 0 )
@@ -1045,19 +1047,19 @@ LABEL_19:
               ida_V1 = 4 * TM3_DRAFT_U8(v50 + 3) + 528482528;
               ida_V0 = 4 * TM3_DRAFT_U8(v50 + 4) + 528482528;
               /* TODO GTE adapters */
-  tm3_draft_unimplemented("TODO lwc2    $12, 0($a0)");
-  tm3_draft_unimplemented("TODO lwc2    $13, 0($v1)");
-  tm3_draft_unimplemented("TODO lwc2    $14, 0($v0)");
+  tm3_draft_gte_write_data(12u, TM3_DRAFT_U32(ida_A0));
+  tm3_draft_gte_write_data(13u, TM3_DRAFT_U32(ida_V1));
+  tm3_draft_gte_write_data(14u, TM3_DRAFT_U32(ida_V0));
   tm3_draft_gte_command(0x1400006u);
   ida_V0 = tm3_draft_gte_read_data(24u);
-              if ( ida_V0 > 0 )
+              if ( (sint32)ida_V0 > 0 )
                 goto LABEL_34;
               ida_V0 = 4 * TM3_DRAFT_U8(v50 + 5) + 528482528;
               /* TODO GTE adapters */
-  tm3_draft_unimplemented("TODO lwc2    $12, 0($v0)");
+  tm3_draft_gte_write_data(12u, TM3_DRAFT_U32(ida_V0));
   tm3_draft_gte_command(0x1400006u);
   ida_V0 = tm3_draft_gte_read_data(24u);
-              if ( ida_V0 <= 0 )
+              if ( (sint32)ida_V0 <= 0 )
               {
 LABEL_34:
                 v17 += 40;
@@ -1098,12 +1100,12 @@ LABEL_36:
           ida_V1 = 4 * TM3_DRAFT_U8(v50 + 3) + 528482528;
           ida_V0 = 4 * TM3_DRAFT_U8(v50 + 4) + 528482528;
           /* TODO GTE adapters */
-  tm3_draft_unimplemented("TODO lwc2    $12, 0($a0)");
-  tm3_draft_unimplemented("TODO lwc2    $13, 0($v1)");
-  tm3_draft_unimplemented("TODO lwc2    $14, 0($v0)");
+  tm3_draft_gte_write_data(12u, TM3_DRAFT_U32(ida_A0));
+  tm3_draft_gte_write_data(13u, TM3_DRAFT_U32(ida_V1));
+  tm3_draft_gte_write_data(14u, TM3_DRAFT_U32(ida_V0));
   tm3_draft_gte_command(0x1400006u);
   ida_V0 = tm3_draft_gte_read_data(24u);
-          if ( ida_V0 > 0 )
+          if ( (sint32)ida_V0 > 0 )
           {
 LABEL_30:
             v58 = TM3_DRAFT_U32(4 * TM3_DRAFT_U8(v50 + 3) + 0x1F8000E0);
@@ -1769,141 +1771,77 @@ LABEL_42:
 }
 
 /* Unverified decompiler-derived draft */
-uint32 sub_8004AAD4(uint32 a1, uint32 a2)
+uint32 sub_8004AAD4(uint32 vehicle, uint32 projectile)
 {
-  int buffer_52[3];
-  int buffer_48[3];
-  int buffer_45[3];
-  int buffer_42[3];
-  int buffer_39[3];
-  sint16 buffer_36[3];
-  int buffer_33[3];
-  sint32 v4; 
-  uint32 v5; 
-  int v6; 
-  int v7; 
-  sint16 v8; 
-  int v9; 
-  int v10; 
-  sint16 v11; 
-  int v12; 
-  sint16 v13; 
-  int v14; 
-  int v15; 
-  int v16; 
-  int v17; 
-  int v18; 
-  int v19; 
-  int v20; 
-  int v21; 
-  int v22; 
-  int v23; 
-  int v24; 
-  int v25; 
-  int v26; 
-  int v27; 
-  int v28; 
-  int v29; 
-  int v30; 
-  int result; 
-  int v32[8]; 
-  sint16 v51[4]; 
-  char v55[4]; 
-  uint32 v56; 
-
-  v4 = TM3_DRAFT_U32(a2 +(6) * 4u) == a1;
-  v5 = (uint32)(a1 + 1536);
-  if ( v4 )
-    return 0;
-  sub_8005C5B4(v5, (int)v32);
-  sub_8005BD24(v32);
-  v6 = 0;
-  v7 = 1024;
-  v56 = v51;
-  v8 = TM3_DRAFT_I16(a2 + (6) * 2u);
-  v9 = TM3_DRAFT_U32(a1 + 1564);
-  v10 = TM3_DRAFT_I16(a2 + (5) * 2u) - TM3_DRAFT_U32(a1 + 1560);
-  buffer_36[0] = TM3_DRAFT_I16(a2 + (4) * 2u) - TM3_DRAFT_U16(a1 + 1556);
-  buffer_36[1] = v10;
-  buffer_36[2] = v8 - v9;
-  sub_80013DC4((int)&buffer_36[0], (int)&buffer_45[0]);
-  v11 = TM3_DRAFT_I16(a2 + (1) * 2u);
-  v12 = TM3_DRAFT_U32(a1 + 1560);
-  v13 = TM3_DRAFT_I16(a2 + (2) * 2u) - TM3_DRAFT_U32(a1 + 1564);
-  buffer_36[0] = TM3_DRAFT_I16(a2) - TM3_DRAFT_U16(a1 + 1556);
-  buffer_36[2] = v13;
-  buffer_36[1] = v11 - v12;
-  sub_80013DC4((int)&buffer_36[0], (int)&buffer_39[0]);
-  buffer_42[0] = buffer_45[0] - buffer_39[0];
-  buffer_42[1] = buffer_45[1] - buffer_39[1];
-  buffer_42[2] = buffer_45[2] - buffer_39[2];
-  buffer_48[0] = buffer_39[0] - buffer_45[0];
-  buffer_48[1] = buffer_39[1] - buffer_45[1];
-  buffer_48[2] = buffer_39[2] - buffer_45[2];
-  while ( sub_80014510((uint32)(a1 + v7), &buffer_39[0], 0, &buffer_33[0]) < 0 && sub_80014510((uint32)(a1 + v7), &buffer_45[0], 0, &buffer_33[0]) < 0 )
-  {
-    if ( TM3_DRAFT_I16(a1 + 936) < buffer_39[0]
-      && buffer_39[0] < TM3_DRAFT_I16(a1 + 944)
-      && (v14 = buffer_39[2], TM3_DRAFT_I16(a1 + 940) < buffer_39[2])
-      && buffer_39[2] < TM3_DRAFT_I16(a1 + 948)
-      && (v15 = buffer_39[1], TM3_DRAFT_I16(a1 + 938) < buffer_39[1])
-      && (v16 = buffer_39[0] << 12, buffer_39[1] < TM3_DRAFT_I16(a1 + 946))
-      || TM3_DRAFT_I16(a1 + 936) < buffer_45[0]
-      && buffer_45[0] < TM3_DRAFT_I16(a1 + 944)
-      && (v14 = buffer_45[2], TM3_DRAFT_I16(a1 + 940) < buffer_45[2])
-      && buffer_45[2] < TM3_DRAFT_I16(a1 + 948)
-      && (v15 = buffer_45[1], TM3_DRAFT_I16(a1 + 938) < buffer_45[1])
-      && (v16 = buffer_45[0] << 12, buffer_45[1] < TM3_DRAFT_I16(a1 + 946)) )
-    {
-      buffer_33[0] = v16;
-      buffer_33[1] = v15 << 12;
-      buffer_33[2] = v14 << 12;
-      break;
+    FUNCTION_MARKER(0x8004AAD4u, "SCUS_942.49");
+    if (TM3_DRAFT_U32(projectile + 24u) == vehicle) return 0u;
+    sint32 inverse[8];
+    sint16 delta[4];
+    sint32 previous[6];
+    sint32 current[6];
+    sint32 intersection[4];
+    sint16 point[4];
+    uint32 flags;
+    uint32 inverse_address = TM3_DRAFT_LOCAL_ADDRESS(inverse, sizeof(inverse));
+    uint32 delta_address = TM3_DRAFT_LOCAL_ADDRESS(delta, sizeof(delta));
+    uint32 previous_address = TM3_DRAFT_LOCAL_ADDRESS(previous, sizeof(previous));
+    uint32 current_address = TM3_DRAFT_LOCAL_ADDRESS(current, sizeof(current));
+    uint32 intersection_address = TM3_DRAFT_LOCAL_ADDRESS(intersection, sizeof(intersection));
+    sub_8005C5B4(vehicle + 1536u, inverse_address);
+    sub_8005BD24(inverse_address);
+    for (uint32 axis = 0; axis < 3u; ++axis)
+        delta[axis] = (sint16)((uint32)(sint32)TM3_DRAFT_I16(projectile + 8u + 2u * axis)
+                            - TM3_DRAFT_U32(vehicle + 1556u + 4u * axis));
+    sub_80013DC4(delta_address, current_address);
+    for (uint32 axis = 0; axis < 3u; ++axis)
+        delta[axis] = (sint16)((uint32)(sint32)TM3_DRAFT_I16(projectile + 2u * axis)
+                            - TM3_DRAFT_U32(vehicle + 1556u + 4u * axis));
+    sub_80013DC4(delta_address, previous_address);
+    for (uint32 axis = 0; axis < 3u; ++axis) {
+        previous[axis + 3u] = (sint32)((uint32)current[axis] - (uint32)previous[axis]);
+        current[axis + 3u] = (sint32)((uint32)previous[axis] - (uint32)current[axis]);
     }
-    ++v6;
-    v7 += 76;
-    if ( v6 >= 6 )
-      return 0;
-  }
-  v17 = (int)v56;
-  v18 = (buffer_33[0] + 2048) >> 12;
-  v19 = buffer_33[2];
-  v20 = (buffer_33[1] + 2048) >> 12;
-  v51[0] = v18;
-  TM3_DRAFT_I16(v56 + (1) * 2u) = v20;
-  v21 = (v19 + 2048) >> 12;
-  TM3_DRAFT_U16(v17 + 4) = v21;
-  if ( !TM3_DRAFT_U32(a2 +(22) * 4u) )
-    goto LABEL_20;
-  v22 = TM3_DRAFT_I16(a2 + (2) * 2u);
-  v23 = TM3_DRAFT_U32(a2 +(24) * 4u);
-  v24 = TM3_DRAFT_U32(a2 +(25) * 4u);
-  v25 = TM3_DRAFT_I16(a2 + (1) * 2u);
-  buffer_52[0] = TM3_DRAFT_U32(a2 +(23) * 4u) - TM3_DRAFT_I16(a2);
-  buffer_52[1] = v23 - v25;
-  buffer_52[2] = v24 - v22;
-  v26 = buffer_52[0] * buffer_52[0];
-  v27 = buffer_52[1] * buffer_52[1];
-  v28 = buffer_52[2] * buffer_52[2];
-  v29 = TM3_DRAFT_I16(a2 + (2) * 2u);
-  v30 = (sint16)v20 - TM3_DRAFT_I16(a2 + (1) * 2u);
-  buffer_52[0] = (sint16)v18 - TM3_DRAFT_I16(a2);
-  buffer_52[1] = v30;
-  buffer_52[2] = (sint16)v21 - v29;
-  result = 0;
-  if ( buffer_52[0] * buffer_52[0] + buffer_52[1] * buffer_52[1] + buffer_52[2] * buffer_52[2] < v26 + v27 + v28 )
-  {
-LABEL_20:
-    TM3_DRAFT_U32(a2 +(22) * 4u) = a1;
-    sub_8005BD24((uint32)(a1 + 1536));
-    sub_8005BDB4((uint32)(a1 + 1536));
-    sub_8005C3C4((int)v51, (int)((a2 + (46) * 2u)), v55);
-    result = 1;
-    if ( TM3_DRAFT_U8(a1 + 3328) == 1 )
-    {
-      sub_80047364(TM3_DRAFT_U32(a1 + 3924), 15);
-      return 1;
+    for (uint32 face = 0; ; ++face) {
+        uint32 plane = vehicle + 1024u + 76u * face;
+        if ((sint32)sub_80014510(plane, previous_address, 0u, intersection_address) >= 0
+            || (sint32)sub_80014510(plane, current_address, 0u, intersection_address) >= 0)
+            break;
+        sint32 *inside = 0;
+        if (TM3_DRAFT_I16(vehicle + 936u) < previous[0] && previous[0] < TM3_DRAFT_I16(vehicle + 944u)
+            && TM3_DRAFT_I16(vehicle + 940u) < previous[2] && previous[2] < TM3_DRAFT_I16(vehicle + 948u)
+            && TM3_DRAFT_I16(vehicle + 938u) < previous[1] && previous[1] < TM3_DRAFT_I16(vehicle + 946u))
+            inside = previous;
+        else if (TM3_DRAFT_I16(vehicle + 936u) < current[0] && current[0] < TM3_DRAFT_I16(vehicle + 944u)
+            && TM3_DRAFT_I16(vehicle + 940u) < current[2] && current[2] < TM3_DRAFT_I16(vehicle + 948u)
+            && TM3_DRAFT_I16(vehicle + 938u) < current[1] && current[1] < TM3_DRAFT_I16(vehicle + 946u))
+            inside = current;
+        if (inside != 0) {
+            for (uint32 axis = 0; axis < 3u; ++axis)
+                intersection[axis] = (sint32)((uint32)inside[axis] << 12);
+            break;
+        }
+        if (face >= 5u) return 0u;
     }
-  }
-  return result;
+    for (uint32 axis = 0; axis < 3u; ++axis)
+        point[axis] = (sint16)((sint32)((uint32)intersection[axis] + 2048u) >> 12);
+    if (TM3_DRAFT_U32(projectile + 88u) != 0u) {
+        uint32 old_distance = 0u;
+        uint32 new_distance = 0u;
+        for (uint32 axis = 0; axis < 3u; ++axis) {
+            uint32 origin = (uint32)(sint32)TM3_DRAFT_I16(projectile + 2u * axis);
+            uint32 old_delta = TM3_DRAFT_U32(projectile + 92u + 4u * axis) - origin;
+            uint32 new_delta = (uint32)(sint32)point[axis] - origin;
+            old_distance += old_delta * old_delta;
+            new_distance += new_delta * new_delta;
+        }
+        if ((sint32)new_distance >= (sint32)old_distance) return 0u;
+    }
+    TM3_DRAFT_U32(projectile + 88u) = vehicle;
+    sub_8005BD24(vehicle + 1536u);
+    sub_8005BDB4(vehicle + 1536u);
+    sub_8005C3C4(TM3_DRAFT_LOCAL_ADDRESS(point, sizeof(point)), projectile + 92u,
+                TM3_DRAFT_LOCAL_ADDRESS(&flags, sizeof(flags)));
+    if (TM3_DRAFT_I8(vehicle + 3328u) == 1)
+        sub_80047364(TM3_DRAFT_U32(vehicle + 3924u), 15u);
+    return 1u;
 }

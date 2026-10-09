@@ -1971,13 +1971,13 @@ LABEL_84:
       v39 = (int)sub_80039FD4() % 4096;
       v40 = (int)sub_80039FD4() % 5976 + 1024;
       v41 = (int)sub_80039FD4() % 1024 - 2048;
-      (*(int (*)[4])psx_addr(original_local_address + 32u, sizeof(int[4])))[0] = (v40 * sub_8005AF24(v39) + 2048) >> 12;
+      (*(int (*)[4])psx_addr(original_local_address + 32u, sizeof(int[4])))[0] = (sint32)((uint32)v40 * sub_8005AF24(v39) + 2048u) >> 12;
       (*(int (*)[4])psx_addr(original_local_address + 32u, sizeof(int[4])))[1] = v41;
-      (*(int (*)[4])psx_addr(original_local_address + 32u, sizeof(int[4])))[2] = (v40 * sub_8005AFF4(v39) + 2048) >> 12;
+      (*(int (*)[4])psx_addr(original_local_address + 32u, sizeof(int[4])))[2] = (sint32)((uint32)v40 * sub_8005AFF4(v39) + 2048u) >> 12;
       TM3_DRAFT_I32(original_local_address + 16u) = 0;
       TM3_DRAFT_I32(original_local_address + 20u) = 0;
       TM3_DRAFT_I32(original_local_address + 24u) = 0;
-      sub_8003EFA0((uint32)0x800D1DC0, TM3_DRAFT_LOCAL_ADDRESS((*(int (*)[4])psx_addr(original_local_address + 32u, sizeof(int[4]))), sizeof((*(int (*)[4])psx_addr(original_local_address + 32u, sizeof(int[4]))))), TM3_DRAFT_LOCAL_ADDRESS(&TM3_DRAFT_I32(original_local_address + 16u), sizeof(TM3_DRAFT_I32(original_local_address + 16u))) /* TODO: Local buffer adapter */);
+      sub_8003EFA0(0x800D1DC0u, original_local_address + 32u, original_local_address + 16u);
     }
     if ( (uint32)TM3_DRAFT_U32(0x80089C00u + 4u * (3)) != TM3_DRAFT_U32(0x80089BE4u) )
       TM3_DRAFT_U32(0x80089C00u + 4u * (3)) = (int)TM3_DRAFT_U32(0x80089BE4u);

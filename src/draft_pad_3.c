@@ -699,7 +699,7 @@ uint32 sub_800460C8(uint32 a1)
 /* Unverified draft; TODO items require later review */
 uint32 sub_80051D04(void)
 {
-    uint32 original_local_words[7];
+    uint32 original_local_words[10];
     uint32 original_local_address = TM3_DRAFT_LOCAL_ADDRESS(original_local_words, sizeof(original_local_words));
 
     FUNCTION_MARKER(0x80051D04u, "SCUS_942.49");
@@ -734,7 +734,7 @@ uint32 sub_80051D04(void)
 
   v0 = 0;
   TM3_DRAFT_U32(0x800D296Cu) = 0;
-  TM3_DRAFT_U32(TM3_DRAFT_U32(0x800804bcu) + 0x20u) = TM3_DRAFT_U32(0x80089AC0u);
+  TM3_DRAFT_U32(TM3_DRAFT_U32(0x800804bcu) + 0x20u) = 0x80089AC0u;
   TM3_DRAFT_U32(0x8008007Cu) = (int)0x8007FF14u;
   sub_80051C04();
   if ( sub_800474AC() )
@@ -756,7 +756,7 @@ uint32 sub_80051D04(void)
     v7 = 0;
     if ( v6 != 2 )
       v7 = 24;
-    if ( sub_80047630((uint32)(24 * TM3_DRAFT_U32(0x80089BE8u + 4u * (1)) - 2146624256), v5, TM3_DRAFT_LOCAL_ADDRESS((*(char (*)[10])psx_addr(original_local_address + 16u, sizeof(char[10]))), sizeof((*(char (*)[10])psx_addr(original_local_address + 16u, sizeof(char[10]))))), v7) == 1 )
+    if ( sub_80047630((uint32)(24 * TM3_DRAFT_U32(0x80089BE8u + 4u * (1)) - 2146624256), v5, original_local_address + 16u, v7) == 1 )
     {
       sub_80051C04();
       if ( sub_800474AC() == 1 )
@@ -766,7 +766,7 @@ uint32 sub_80051D04(void)
         {
           TM3_DRAFT_U16(24 * TM3_DRAFT_U32(0x80089BE8u + 4u * (1)) - 2146624256 + 10) |= 0x40u;
         }
-        else if ( ((*(char (*)[10])psx_addr(original_local_address + 16u, sizeof(char[10])))[8] & 0x10) != 0 )
+        else if ( ((*(char (*)[10])psx_addr(original_local_address + 16u, 24u))[8] & 0x10) != 0 )
         {
           v8 = 24 * TM3_DRAFT_U32(0x80089BE8u + 4u * (1)) - 2146624256;
           v9 = TM3_DRAFT_U16(v8);
@@ -793,12 +793,12 @@ LABEL_15:
       if ( sub_800474AC() == 1 && !v0 )
       {
         v14 = (uint32)TM3_DRAFT_U32(v12 + 4u * (8));
-        if ( v14 == TM3_DRAFT_U32(0x80089AC0u) )
+        if ( v14 == 0x80089AC0u )
         {
-          TM3_DRAFT_U32(v12 + 4u * (8)) = (uint32)TM3_DRAFT_U32(0x80089A98u);
+          TM3_DRAFT_U32(v12 + 4u * (8)) = (uint32)0x80089A98u;
           v14 = (uint32)TM3_DRAFT_U32(v12 + 4u * (8));
         }
-        if ( v14 == TM3_DRAFT_U32(0x80089A98u) )
+        if ( v14 == 0x80089A98u )
         {
           if ( (TM3_DRAFT_I16(original_local_address + 26u) & 0x40) != 0 )
             TM3_DRAFT_U32(v12 + 4u * (7)) = TM3_DRAFT_U32(0x800804BCu + 4u * (0));
@@ -809,12 +809,12 @@ LABEL_15:
       else
       {
         v13 = (uint32)TM3_DRAFT_U32(v12 + 4u * (8));
-        if ( v13 == TM3_DRAFT_U32(0x80089A98u) )
+        if ( v13 == 0x80089A98u )
         {
-          TM3_DRAFT_U32(v12 + 4u * (8)) = (uint32)TM3_DRAFT_U32(0x80089AC0u);
+          TM3_DRAFT_U32(v12 + 4u * (8)) = (uint32)0x80089AC0u;
           v13 = (uint32)TM3_DRAFT_U32(v12 + 4u * (8));
         }
-        if ( v13 == TM3_DRAFT_U32(0x80089AC0u) )
+        if ( v13 == 0x80089AC0u )
           TM3_DRAFT_U32(v12 + 4u * (7)) = (uint32)TM3_DRAFT_U32(0x80089BB4u + 4u * (TM3_DRAFT_U32(0x800D295Cu)));
       }
       ++v11;
@@ -841,9 +841,9 @@ LABEL_15:
 LABEL_37:
   TM3_DRAFT_U32(v15 + 12) = v16;
   v17 = 0;
-  if ( TM3_DRAFT_U32(0x800D28B8u) - 1 > 0 )
+  if ( (sint32)(TM3_DRAFT_U32(0x800D28B8u) - 1u) > 0 )
   {
-    v18 = TM3_DRAFT_U32(0x800804BCu);
+    v18 = 0x800804BCu;
     v19 = 1;
     do
     {
@@ -869,7 +869,7 @@ LABEL_37:
       ++v17;
       ++v19;
     }
-    while ( v17 < TM3_DRAFT_U32(0x800D28B8u) - 1 );
+    while ( v17 < (sint32)(TM3_DRAFT_U32(0x800D28B8u) - 1u) );
   }
   v23 = v17;
   result = (uint8)TM3_DRAFT_U8(TM3_DRAFT_U32(0x800804BCu + 4u * (v17)) + 20);
@@ -896,271 +896,126 @@ LABEL_37:
 
 
 /* Unverified draft; TODO items require later review */
-uint32 sub_80012EB4(uint32 a1)
+uint32 sub_80012EB4(uint32 resource)
 {
-    uint32 original_local_words[2];
-    uint32 original_local_address = TM3_DRAFT_LOCAL_ADDRESS(original_local_words, sizeof(original_local_words));
+    uint32 local_directions[2];
+    uint32 directions = TM3_DRAFT_LOCAL_ADDRESS(local_directions, sizeof(local_directions));
+    uint32 records, cursor, index, count, value, slot;
+    uint32 sector, block, polygons, vertices;
+    uint32 x, z, direction, neighbor_x, neighbor_z;
 
     FUNCTION_MARKER(0x80012EB4u, "SCUS_942.49");
-  int v1; 
-  int v2; 
-  uint32 v3; 
-  uint32 v4; 
-  uint32 v5; 
-  int v6; 
-  int v7; 
-  int v8; 
-  uint32 v9; 
-  int v10; 
-  int v11; 
-  int v12; 
-  int v13; 
-  uint32 v14; 
-  uint32 v15; 
-  int v16; 
-  int v17; 
-  int v18; 
-  uint32 v19; 
-  int v20; 
-  uint32 v21; 
-  int v22; 
-  uint32 v23; 
-  int v24; 
-  int v25; 
-  int v26; 
-  int v27; 
-  int v28; 
-  int v29; 
-  int v30; 
-  int v31; 
-  int v32; 
-  int v33; 
-  int v34; 
-  int v35; 
-  int v36; 
-  int v37; 
-  uint32 v38; 
-  int v39; 
-  int v40; 
-  uint32 v41; 
-  int v42; 
-  int v43; 
-  int v44; 
-  uint32 v45; 
-  int v46; 
-  uint32 v47; 
-  int v48; 
-  int i; 
-  int j; 
-  int v51; 
-  int v52; 
-  int v53; 
-  int v54; 
-  uint32 v55; 
-  int v56; 
-  uint32 v57; 
-  int v58; 
-  sint32 result; 
+    TM3_DRAFT_U32(0x80089C98u) = resource;
+    records = resource + 10300u + 56u * TM3_DRAFT_U16(resource + 10256u);
+    for (index = 0; index < 192u; index += 16u) {
+        uint32 words[4];
+        for (slot = 0; slot < 4u; ++slot)
+            words[slot] = TM3_DRAFT_U32(records + index + 4u * slot);
+        for (slot = 0; slot < 4u; ++slot)
+            TM3_DRAFT_U32(0x1F800340u + index + 4u * slot) = words[slot];
+    }
+    cursor = records + 24u * TM3_DRAFT_U16(resource + 10268u);
+    TM3_DRAFT_U32(0x80089CB4u) = cursor;
+    count = TM3_DRAFT_U32(resource + 10272u);
+    index = 0;
+    if (count != 0u) do {
+        uint32 kind = TM3_DRAFT_U8(cursor);
+        if (kind == 11u) {
+            slot = cursor + 52u;
+            value = TM3_DRAFT_U32(slot);
+            TM3_DRAFT_U32(slot) = (value & 0x1F800000u) == 0x1F800000u
+                ? records + 24u * ((value + 0xE07FFCC0u) / 24u) : value + resource;
+        } else if (kind == 23u) {
+            uint32 component = 0;
+            uint32 part = cursor;
+            if (TM3_DRAFT_U8(cursor + 27u) != 0u) do {
+                slot = part + 76u;
+                value = TM3_DRAFT_U32(slot);
+                TM3_DRAFT_U32(slot) = (value & 0x1F800000u) == 0x1F800000u
+                    ? records + 24u * ((value + 0xE07FFCC0u) / 24u) : value + resource;
+                ++component;
+                part += 52u;
+            } while ((sint32)component < (sint32)TM3_DRAFT_U8(cursor + 27u));
+        }
+        ++index;
+        value = TM3_DRAFT_U16(cursor + 10u);
+        count = TM3_DRAFT_U32(resource + 10272u);
+        cursor += value;
+    } while (index < count);
 
-  v1 = TM3_DRAFT_U16(a1 + 10256);
-  v2 = 528483136;
-  TM3_DRAFT_U32(0x80089C98u) = a1;
-  v4 = (uint32)(a1 + 56 * v1 + 10300);
-  v3 = v4;
-  if ( ((uint8)v4 & 3) != 0 )
-  {
-    v5 = v4 + 192;
-    do
-    {
-      v6 = TM3_DRAFT_U32(v4 + 4u * (1));
-      v7 = TM3_DRAFT_U32(v4 + 4u * (2));
-      v8 = TM3_DRAFT_U32(v4 + 4u * (3));
-      TM3_DRAFT_U32(v2) = TM3_DRAFT_U32(v4);
-      TM3_DRAFT_U32(v2 + 4) = v6;
-      TM3_DRAFT_U32(v2 + 8) = v7;
-      TM3_DRAFT_U32(v2 + 12) = v8;
-      v4 += 4u * (4);
-      v2 += 16;
-    }
-    while ( v4 != v5 );
-  }
-  else
-  {
-    v9 = v4 + 192;
-    do
-    {
-      v10 = TM3_DRAFT_U32(v4 + 4u * (1));
-      v11 = TM3_DRAFT_U32(v4 + 4u * (2));
-      v12 = TM3_DRAFT_U32(v4 + 4u * (3));
-      TM3_DRAFT_U32(v2) = TM3_DRAFT_U32(v4);
-      TM3_DRAFT_U32(v2 + 4) = v10;
-      TM3_DRAFT_U32(v2 + 8) = v11;
-      TM3_DRAFT_U32(v2 + 12) = v12;
-      v4 += 4u * (4);
-      v2 += 16;
-    }
-    while ( v4 != v9 );
-  }
-  v13 = TM3_DRAFT_U32(TM3_DRAFT_U32(0x80089C98u) + 10272);
-  v14 = (uint32)(v3 + 4u * (6 * TM3_DRAFT_U16(TM3_DRAFT_U32(0x80089C98u) + 10268)));
-  TM3_DRAFT_U32(0x80089CB4u) = (int)v14;
-  v15 = 0;
-  if ( v13 )
-  {
-    v16 = TM3_DRAFT_U32(0x80089C98u);
-    do
-    {
-      v17 = TM3_DRAFT_U8(v14);
-      if ( v17 == 11 )
-      {
-        v18 = TM3_DRAFT_U32(v14 + 52);
-        v19 = (uint32)(v18 + v16);
-        if ( (v18 & 0x1F800000) == 528482304 )
-          v19 = (v3 + 4u * (6 * ((v18 - 528483136) / 0x18u)));
-        TM3_DRAFT_U32(v14 + 52) = v19;
-      }
-      else if ( v17 == 23 )
-      {
-        v20 = 0;
-        if ( TM3_DRAFT_U8(v14 + 1u * (27)) )
-        {
-          v21 = v14;
-          do
-          {
-            v22 = TM3_DRAFT_U32(v21 + 76);
-            v23 = (uint32)(v22 + v16);
-            if ( (v22 & 0x1F800000) == 528482304 )
-              v23 = (v3 + 4u * (6 * ((v22 - 528483136) / 0x18u)));
-            TM3_DRAFT_U32(v21 + 76) = v23;
-            ++v20;
-            v21 += 52;
-          }
-          while ( v20 < TM3_DRAFT_U8(v14 + 1u * (27)) );
+    block = TM3_DRAFT_U32(0x80089CB4u) + TM3_DRAFT_U32(resource + 10276u);
+    sector = block + 4u * TM3_DRAFT_U32(resource + 10284u);
+    TM3_DRAFT_U32(0x80089C90u) = block;
+    block = sector + 316u * TM3_DRAFT_U32(resource + 10280u);
+    TM3_DRAFT_U32(0x80089EE8u) = block;
+    count = TM3_DRAFT_U16(resource + 10264u);
+    TM3_DRAFT_U32(0x80089EECu) = count;
+    block += 2u * count;
+    TM3_DRAFT_U32(0x80089EE0u) = block;
+    count = TM3_DRAFT_U16(resource + 10266u);
+    TM3_DRAFT_U32(0x80089CA4u) = sector;
+    TM3_DRAFT_U32(0x80089EE4u) = count;
+    block += 76u * count;
+    TM3_DRAFT_U32(0x80089DA4u) = block;
+    block += TM3_DRAFT_U16(resource + 10290u);
+    TM3_DRAFT_U32(0x80089DA8u) = block;
+    block += TM3_DRAFT_U32(resource + 10292u);
+    TM3_DRAFT_U32(0x80089C94u) = block;
+    polygons = block + 32u * TM3_DRAFT_U16(resource + 10270u);
+    TM3_DRAFT_U32(0x80089CC0u) = polygons;
+    cursor = polygons + 20u;
+    index = 0;
+    if (TM3_DRAFT_U16(resource + 10258u) != 0u) do {
+        uint32 kind = TM3_DRAFT_U8(cursor - 17u);
+        uint32 stride = 0;
+        if (kind == 36u || kind == 44u) {
+            slot = cursor - 8u;
+            stride = 16u;
+        } else if (kind == 52u || kind == 60u) {
+            slot = cursor;
+            stride = 24u;
         }
-      }
-      ++v15;
-      v14 += TM3_DRAFT_U16(v14 + 10);
-    }
-    while ( v15 < TM3_DRAFT_U32(v16 + 10272) );
-  }
-  v24 = TM3_DRAFT_U32(TM3_DRAFT_U32(0x80089C98u) + 10280);
-  v25 = TM3_DRAFT_U32(0x80089CB4u) + TM3_DRAFT_U32(TM3_DRAFT_U32(0x80089C98u) + 10276) + 4 * TM3_DRAFT_U32(TM3_DRAFT_U32(0x80089C98u) + 10284);
-  TM3_DRAFT_U32(0x80089C90u) = TM3_DRAFT_U32(0x80089CB4u) + TM3_DRAFT_U32(TM3_DRAFT_U32(0x80089C98u) + 10276);
-  TM3_DRAFT_U32(0x80089EE8u) = v25 + 316 * v24;
-  TM3_DRAFT_U32(0x80089EECu) = TM3_DRAFT_U16(TM3_DRAFT_U32(0x80089C98u) + 10264);
-  TM3_DRAFT_U32(0x80089EE0u) = v25 + 316 * v24 + 2 * TM3_DRAFT_U32(0x80089EECu);
-  v26 = TM3_DRAFT_U16(TM3_DRAFT_U32(0x80089C98u) + 10266);
-  TM3_DRAFT_U32(0x80089CA4u) = v25;
-  TM3_DRAFT_U32(0x80089EE4u) = v26;
-  v27 = TM3_DRAFT_U32(0x80089EE0u) + 76 * v26;
-  v28 = TM3_DRAFT_U16(TM3_DRAFT_U32(0x80089C98u) + 10290);
-  v29 = TM3_DRAFT_U32(TM3_DRAFT_U32(0x80089C98u) + 10292);
-  v30 = TM3_DRAFT_U16(TM3_DRAFT_U32(0x80089C98u) + 10270);
-  v31 = TM3_DRAFT_U16(TM3_DRAFT_U32(0x80089C98u) + 10258);
-  TM3_DRAFT_U32(0x80089DA4u) = v27;
-  v32 = v27 + v28;
-  v33 = v32 + v29;
-  v34 = v33 + 32 * v30;
-  v35 = v34;
-  TM3_DRAFT_U32(0x80089DA8u) = v32;
-  TM3_DRAFT_U32(0x80089C94u) = v33;
-  TM3_DRAFT_U32(0x80089CC0u) = v34;
-  v36 = 0;
-  if ( v31 )
-  {
-    v37 = TM3_DRAFT_U32(0x80089C98u);
-    v38 = (uint32)(v34 + 20);
-    while ( 1 )
-    {
-      v39 = TM3_DRAFT_U8(v38 - 68);
-      if ( v39 == 52 )
-        break;
-      if ( TM3_DRAFT_U8(v38 - 68) >= 0x35u )
-      {
-        if ( v39 == 60 )
-          break;
-      }
-      else if ( v39 == 36 || v39 == 44 )
-      {
-        v40 = TM3_DRAFT_U32(v38 - 8);
-        v41 = (uint32)(v40 + v37);
-        if ( (v40 & 0x1F800000) == 528482304 )
-          v41 = (v3 + 4u * (6 * ((v40 - 528483136) / 0x18u)));
-        TM3_DRAFT_U32(v38 - 8) = v41;
-        v38 += 4u * (4);
-        v35 += 16;
-      }
-LABEL_35:
-      if ( ++v36 >= TM3_DRAFT_U16(v37 + 10258) )
-        goto LABEL_36;
-    }
-    v42 = TM3_DRAFT_U32(v38) + v37;
-    if ( (TM3_DRAFT_U32(v38) & 0x1F800000) == 528482304 )
-      v42 = (int)(v3 + 4u * (6 * ((TM3_DRAFT_U32(v38) - 528483136) / 0x18u)));
-    TM3_DRAFT_U32(v38) = v42;
-    v38 += 4u * (6);
-    v35 += 24;
-    goto LABEL_35;
-  }
-LABEL_36:
-  TM3_DRAFT_U32(0x80089CB0u) = v35;
-  v43 = TM3_DRAFT_U32(TM3_DRAFT_U32(0x80089C98u) + 10296);
-  v44 = v35 + 8 * TM3_DRAFT_U32(TM3_DRAFT_U32(0x80089C98u) + 10260);
-  TM3_DRAFT_U32(0x80089CA8u) = v44;
-  v45 = 0;
-  if ( v43 )
-  {
-    v46 = TM3_DRAFT_U32(0x80089C98u);
-    v47 = (uint32)(v44 + 48);
-    do
-    {
-      v48 = TM3_DRAFT_U32(v47) + v46;
-      if ( (TM3_DRAFT_U32(v47) & 0x1F800000) == 528482304 )
-        v48 = (int)(v3 + 4u * (6 * ((TM3_DRAFT_U32(v47) - 528483136) / 0x18u)));
-      TM3_DRAFT_U32(v47) = v48;
-      ++v45;
-      v47 += 4u * (13);
-    }
-    while ( v45 < TM3_DRAFT_U32(v46 + 10296) );
-  }
-  for ( i = 0; i < 64; result = i < 64 )
-  {
-    for ( j = 0; j < 64; ++j )
-    {
-      (*(int (*)[2])psx_addr(original_local_address + 0u, sizeof(int[2])))[0] = TM3_DRAFT_U32(0x80089698u);
-      (*(int (*)[2])psx_addr(original_local_address + 0u, sizeof(int[2])))[1] = TM3_DRAFT_U32(0x8008969Cu);
-      v51 = TM3_DRAFT_U16(TM3_DRAFT_U32(0x80089C98u) + 2 * j + (i << 7));
-      if ( v51 != 0xFFFF )
-      {
-        v52 = 0;
-        v53 = TM3_DRAFT_U32(0x80089C98u);
-        v54 = TM3_DRAFT_U32(0x80089C98u) + 56 * v51 + 10300;
-        v55 = TM3_DRAFT_LOCAL_ADDRESS((*(int (*)[2])psx_addr(original_local_address + 0u, sizeof(int[2]))), sizeof((*(int (*)[2])psx_addr(original_local_address + 0u, sizeof(int[2])))));
-        do
-        {
-          v56 = i + TM3_DRAFT_I8(v55 + 4);
-          v57 = j + TM3_DRAFT_I8(v55);
-          if ( v57 >= 0x40
-            || v56 < 0
-            || v56 >= 64
-            || (v58 = TM3_DRAFT_U16(v53 + 2 * v57 + (v56 << 7)), v58 == 0xFFFF) )
-          {
-            TM3_DRAFT_U32(v54 + 24) = 0;
-          }
-          else
-          {
-            TM3_DRAFT_U32(v54 + 24) = v53 + 56 * v58 + 10300;
-          }
-          v54 += 4;
-          ++v52;
-          v55 = (uint32)((uint32)v55 + 8);
+        if (stride != 0u) {
+            value = TM3_DRAFT_U32(slot);
+            TM3_DRAFT_U32(slot) = (value & 0x1F800000u) == 0x1F800000u
+                ? records + 24u * ((value + 0xE07FFCC0u) / 24u) : value + resource;
+            cursor += stride;
+            polygons += stride;
         }
-        while ( v52 < 4 );
-      }
+        ++index;
+    } while ((sint32)index < (sint32)TM3_DRAFT_U16(resource + 10258u));
+    TM3_DRAFT_U32(0x80089CB0u) = polygons;
+    vertices = polygons + 8u * TM3_DRAFT_U32(resource + 10260u);
+    TM3_DRAFT_U32(0x80089CA8u) = vertices;
+    index = 0;
+    cursor = vertices + 48u;
+    if (TM3_DRAFT_U32(resource + 10296u) != 0u) do {
+        value = TM3_DRAFT_U32(cursor);
+        TM3_DRAFT_U32(cursor) = (value & 0x1F800000u) == 0x1F800000u
+            ? records + 24u * ((value + 0xE07FFCC0u) / 24u) : value + resource;
+        ++index;
+        count = TM3_DRAFT_U32(resource + 10296u);
+        cursor += 52u;
+    } while (index < count);
+
+    for (z = 0; z < 64u; ++z) for (x = 0; x < 64u; ++x) {
+        local_directions[0] = TM3_DRAFT_U32(0x80089698u);
+        local_directions[1] = TM3_DRAFT_U32(0x8008969Cu);
+        value = TM3_DRAFT_U16(resource + 2u * x + (z << 7));
+        if (value == 0xFFFFu) continue;
+        sector = resource + 10300u + 56u * value;
+        for (direction = 0; direction < 4u; ++direction) {
+            neighbor_z = z + (uint32)(sint32)TM3_DRAFT_I8(directions + 2u * direction + 1u);
+            neighbor_x = x + (uint32)(sint32)TM3_DRAFT_I8(directions + 2u * direction);
+            value = 0;
+            if (neighbor_x < 64u && (sint32)neighbor_z >= 0 && (sint32)neighbor_z < 64) {
+                value = TM3_DRAFT_U16(resource + 2u * neighbor_x + (neighbor_z << 7));
+                value = value == 0xFFFFu ? 0u : resource + 10300u + 56u * value;
+            }
+            TM3_DRAFT_U32(sector + 24u + 4u * direction) = value;
+        }
     }
-    ++i;
-  }
-  return result;
+    return 0;
 }
 
 

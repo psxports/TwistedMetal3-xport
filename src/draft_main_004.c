@@ -764,90 +764,46 @@ uint32 sub_800435FC(uint32 a1, uint32 a2, ...)
 }
 
 /* Unverified decompiler-derived draft */
-uint32 sub_80026C08(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5)
+uint32 sub_80026C08(uint32 asset, uint32 old_x, uint32 old_y, uint32 new_x, uint32 new_y)
 {
     FUNCTION_MARKER(0x80026C08u, "SCUS_942.49");
-    /* TODO Original signed wrap, guest pointers and unresolved ABI effects remain unverified */
-
-  int v14; 
-  int v15; 
-  sint16 v16; 
-  int v17; 
-  int v18; 
-  uint32 v19; 
-  int v20; 
-  uint32 v21; 
-  sint16 v22; 
-  unsigned int v23; 
-  sint16 v24; 
-  char v25; 
-  int v26; 
-  char v27; 
-  unsigned int v28; 
-  char v29; 
-  char v30; 
-  int v31; 
-  char v32; 
-  char v33; 
-  char v34; 
-  sint32 result; 
-
-  v14 = a4 - a2;
-  v15 = 0;
-  v16 = a5 - a3;
-  do
-  {
-    v17 = 4 * v15 + a1;
-    v18 = TM3_DRAFT_U32(v17 + 4);
-    if ( v18 != TM3_DRAFT_U32(v17 + 8) )
-    {
-      v19 = (uint32)(v18 + a1 + TM3_DRAFT_U32(v18 + a1));
-      v20 = 0;
-      if ( (int)TM3_DRAFT_U32(v19 + (1) * 4u) > 0 )
-      {
-        v21 = &TM3_DRAFT_U32(v19 + (6 * TM3_DRAFT_U32(v19) + 9) * 4u);
-        do
-        {
-          v22 = sub_8005AD74(16 * (TM3_DRAFT_U16((v21 + (3) * 4u)) & 0x3F) + v14, (TM3_DRAFT_U16((v21 + (3) * 4u)) >> 6) + v16);
-          v23 = TM3_DRAFT_U16((v21 + (5) * 4u));
-          ++v20;
-          TM3_DRAFT_U16((v21 + (3) * 4u)) = v22;
-          v24 = ((_WORD)v23 << 6) & 0x7C0;
-          v25 = ((_BYTE)v23 << 6) + TM3_DRAFT_U8((v21 + (4) * 4u)) + v14;
-          v26 = (16 * v23) & 0x100 | (v23 >> 2) & 0x200;
-          v27 = TM3_DRAFT_U8((v21 + (5) * 4u));
-          LOWORD(v23) = v23 & 0x1E0 | ((((uint16)v26 + v16) & 0x100) >> 4) | (((v24 + (uint16)v14) & 0x3FF) >> 6) | (4 * ((v26 + v16) & 0x200));
-          TM3_DRAFT_U16((v21 + (5) * 4u)) = v23;
-          v28 = (uint16)v23;
-          v29 = (_BYTE)v23 << 6;
-          LOBYTE(v23) = TM3_DRAFT_U8((v21 + (8) * 4u));
-          TM3_DRAFT_U8((v21 + (4) * 4u)) = v25 - v29;
-          v30 = v24 + v23 + v14;
-          v31 = (16 * v28) & 0x100 | (v28 >> 2) & 0x200;
-          LOBYTE(v28) = TM3_DRAFT_U8((v21 + (9) * 4u));
-          TM3_DRAFT_U8((v21 + (5) * 4u)) = v27 + v16 - v31;
-          TM3_DRAFT_U8((v21 + (8) * 4u)) = v30 - v29;
-          v32 = v26 + v28 + v16;
-          LOBYTE(v28) = TM3_DRAFT_U8((v21 + (12) * 4u));
-          TM3_DRAFT_U8((v21 + (9) * 4u)) = v32 - v31;
-          v33 = v24 + v28 + v14;
-          LOBYTE(v28) = TM3_DRAFT_U8((v21 + (13) * 4u));
-          TM3_DRAFT_U8((v21 + (12) * 4u)) = v33 - v29;
-          v34 = v24 + TM3_DRAFT_U8((v21 + (14) * 4u)) + v14;
-          LOBYTE(v24) = v26 + v28 + v16 - v31;
-          LOBYTE(v28) = TM3_DRAFT_U8((v21 + (15) * 4u));
-          TM3_DRAFT_U8((v21 + (13) * 4u)) = v24;
-          TM3_DRAFT_U8((v21 + (14) * 4u)) = v34 - v29;
-          TM3_DRAFT_U8((v21 + (15) * 4u)) = v26 + v28 + v16 - v31;
-          v21 += (5) * 4u;
-        }
-        while ( v20 < TM3_DRAFT_U32(v19 + (1) * 4u) );
-      }
+    uint32 dx = (uint16)new_x - (uint32)(uint16)old_x;
+    uint32 dy = (uint16)new_y - (uint32)(uint16)old_y;
+    for (uint32 lod = 0; lod < 3u; ++lod) {
+        uint32 offset = TM3_DRAFT_U32(asset + 4u + 4u * lod);
+        if (offset == TM3_DRAFT_U32(asset + 8u + 4u * lod)) continue;
+        uint32 block = asset + offset;
+        uint32 geometry = block + TM3_DRAFT_U32(block);
+        uint32 polygon = geometry + 24u * TM3_DRAFT_U32(geometry) + 36u;
+        sint32 index = 0;
+        if (TM3_DRAFT_I32(geometry + 4u) <= 0) continue;
+        do {
+            uint32 clut = TM3_DRAFT_U16(polygon + 6u);
+            TM3_DRAFT_U16(polygon + 6u) = (uint16)sub_8005AD74(16u * (clut & 63u) + dx,
+                                                               (clut >> 6) + dy);
+            uint32 page = TM3_DRAFT_U16(polygon + 10u);
+            uint32 old_page_x = (page << 6) & 0x7C0u;
+            uint32 old_page_y = ((page << 4) & 0x100u) | ((page >> 2) & 0x200u);
+            uint32 shifted_y = old_page_y + dy;
+            uint16 relocated = (uint16)((page & 0x1E0u) | ((shifted_y & 0x100u) >> 4)
+                             | (((old_page_x + dx) & 0x3FFu) >> 6) | ((shifted_y & 0x200u) << 2));
+            TM3_DRAFT_U16(polygon + 10u) = relocated;
+            uint32 new_page_x = ((uint32)relocated << 6) & 0x7C0u;
+            uint32 new_page_y = (((uint32)relocated << 4) & 0x100u)
+                                | (((uint32)relocated >> 2) & 0x200u);
+            const uint32 uv_offsets[4] = {4u, 8u, 12u, 14u};
+            for (uint32 vertex = 0; vertex < 4u; ++vertex) {
+                uint32 uv = polygon + uv_offsets[vertex];
+                uint32 u = TM3_DRAFT_U8(uv);
+                uint32 v = TM3_DRAFT_U8(uv + 1u);
+                TM3_DRAFT_U8(uv) = (uint8)(old_page_x + u + dx - new_page_x);
+                TM3_DRAFT_U8(uv + 1u) = (uint8)(old_page_y + v + dy - new_page_y);
+            }
+            ++index;
+            polygon += 20u;
+        } while (index < TM3_DRAFT_I32(geometry + 4u));
     }
-    result = ++v15 < 3;
-  }
-  while ( v15 < 3 );
-  return result;
+    return 0u;
 }
 
 /* Unverified decompiler-derived draft */
@@ -974,11 +930,11 @@ uint32 sub_8004D628(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, uint3
              1,
              1);
   if ( TM3_DRAFT_U32(0x800d2f20u) == 2 )
-    v21 = TM3_DRAFT_U32(0x80089C00u + (4) * 4u) + 409;
+    v21 = (sint32)(TM3_DRAFT_U32(0x80089C00u + (4) * 4u) + 409u);
   else
-    v21 = TM3_DRAFT_U32(0x80089C00u + (4) * 4u) + 273;
+    v21 = (sint32)(TM3_DRAFT_U32(0x80089C00u + (4) * 4u) + 273u);
   TM3_DRAFT_U32(0x80089C00u + (4) * 4u) = v21;
-  v22 = sub_8005AF24(v21) / 2 + 4096;
+  v22 = (sint32)sub_8005AF24((uint32)v21) / 2 + 4096;
   v23 = 0;
   if ( a7 && (TM3_DRAFT_U16(24 * TM3_DRAFT_U32(0x80089BE8u + (1) * 4u) - 2146624256) & (uint16)a6) != 0 )
     v23 = a5 != -1;
@@ -1109,54 +1065,42 @@ uint32 sub_800220D4(uint32 a1, uint32 a2)
 #undef v22
 
 /* Unverified decompiler-derived draft */
-uint32 sub_80030F2C(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, uint32 a6, uint32 a7, uint32 a8, uint32 a9, uint32 a10, uint32 a11, uint32 a12, uint32 a13)
+uint32 sub_80030F2C(uint32 object, uint32 ordering_table, uint32 cursor, uint32 end, uint32 view)
 {
+    uint32 matrix[8];
+    sint16 vertices[4][4] = {
+        {-70, 0, -400, 0}, {70, 0, -400, 0},
+        {-70, 0, 0, 0}, {70, 0, 0, 0}
+    };
+    uint32 matrix_address = TM3_DRAFT_LOCAL_ADDRESS(matrix, sizeof(matrix));
+    uint32 vertices_address = TM3_DRAFT_LOCAL_ADDRESS(vertices, sizeof(vertices));
+    uint32 geometry, texture, result;
     FUNCTION_MARKER(0x80030F2Cu, "SCUS_942.49");
-    /* TODO Original signed wrap, guest pointers and unresolved ABI effects remain unverified */
-
-  int result; 
-  int v18; 
-  int v19; 
-  int v20; 
-  int v21; 
-  int v22; 
-  int v23; 
-  int v24; 
-  int v25; 
-  int v26; 
-  int v27; 
-  int v28; 
-  int v29; 
-  int v30; 
-  unsigned int v31; 
-  sint16 v32; 
-  int v33[8]; 
-
-  if ( TM3_DRAFT_U8(a1 + 321) == 1 )
-    sub_8002E2D4(a1, a2, a3, a4);
-  result = TM3_DRAFT_U16(a1 + 110);
-  if ( !TM3_DRAFT_U16(a1 + 110) )
-  {
-    sub_8002A190(a1 + 8, TM3_DRAFT_I16(dword_80089D14 + 74), TM3_DRAFT_I16(dword_80089D14 + 76), 10485760, TM3_DRAFT_U32(dword_80089D14 + 80), a2, a3, 1, a4);
+    if (TM3_DRAFT_U8(object + 321u) == 1u)
+        sub_8002E2D4(object, ordering_table, cursor, end);
+    result = TM3_DRAFT_U16(object + 110u);
+    if (result != 0u)
+        return result;
+    geometry = TM3_DRAFT_U32(0x80089D14u);
+    sub_8002A190(object + 8u, (uint32)(sint32)TM3_DRAFT_I16(geometry + 74u),
+        (uint32)(sint32)TM3_DRAFT_I16(geometry + 76u), 0x00A00000u,
+        TM3_DRAFT_U32(geometry + 80u), ordering_table, cursor, 1u, end);
     sub_8005B8D4();
-    sub_8005B614((uint32)a9, (uint32)(a1 + 116), v33);
-    sub_8005BD24(v33);
-    sub_8005BDB4(v33);
-    v18 = TM3_DRAFT_U32(TM3_DRAFT_U32(a1 + 340) + 4 * TM3_DRAFT_U8(a1 + 329) + 8);
-    v31 = 70;
-    LOWORD(v28) = -400;
-    LOWORD(v26) = -400;
-    v32 = 0;
-    LOWORD(v30) = 0;
-    sub_8002A72C((int)&v25, 10485760, v18, a2, a3, 1, a4, 64);
-    v31 = -4587520;
-    sub_8002A72C((int)&v25, 10485760, v18, a2, a3, 1, a4, 64);
+    sub_8005B614(view, object + 116u, matrix_address);
+    sub_8005BD24(matrix_address);
+    sub_8005BDB4(matrix_address);
+    texture = TM3_DRAFT_U32(TM3_DRAFT_U32(object + 340u) +
+        4u * TM3_DRAFT_U8(object + 329u) + 8u);
+    sub_8002A72C(vertices_address, 0x00A00000u, texture, ordering_table, cursor, 1u, end, 64u);
+    vertices[0][0] = vertices[1][0] = vertices[2][0] = vertices[3][0] = 0;
+    vertices[0][1] = vertices[2][1] = 70;
+    vertices[1][1] = vertices[3][1] = -70;
+    sub_8002A72C(vertices_address, 0x00A00000u, texture, ordering_table, cursor, 1u, end, 64u);
     sub_8005B978();
-    result = TM3_DRAFT_U8(a1 + 335);
-    if ( TM3_DRAFT_U8(a1 + 335) )
-      return sub_8002E6CC(a1, a2, a3, a4);
-  }
-  return result;
+    result = TM3_DRAFT_U8(object + 335u);
+    if (result != 0u)
+        return sub_8002E6CC(object, ordering_table, cursor, end);
+    return result;
 }
 
 /* Unverified decompiler-derived draft */
@@ -1549,7 +1493,7 @@ uint32 sub_80046F1C(uint32 a1)
   int v7; 
 
   v2 = 0;
-  if ( TM3_DRAFT_U32(0x800d340cu) <= 0 )
+  if ( TM3_DRAFT_I32(0x800d340cu) <= 0 )
   {
 LABEL_5:
     result = TM3_DRAFT_U32(4 * v2 - 2146619768 + 1424);
@@ -1563,7 +1507,7 @@ LABEL_5:
     {
       ++v2;
       v3 += 4;
-      if ( v2 >= TM3_DRAFT_U32(0x800d340cu) )
+      if ( v2 >= TM3_DRAFT_I32(0x800d340cu) )
         goto LABEL_5;
     }
   }
@@ -1589,7 +1533,7 @@ LABEL_5:
       sub_80046AA8(TM3_DRAFT_U32(a1 + 3920), TM3_DRAFT_U32(a1 + 3924));
     }
   }
-  if ( v2 < TM3_DRAFT_U32(0x800d340cu) - 1 )
+  if ( v2 < (sint32)(TM3_DRAFT_U32(0x800d340cu) - 1u) )
   {
     v7 = 4 * v2;
     do
@@ -1597,94 +1541,57 @@ LABEL_5:
       TM3_DRAFT_U32(v7 - 2146619768 + 1424) = TM3_DRAFT_U32(4 * ++v2 - 2146619768 + 1424);
       v7 = 4 * v2;
     }
-    while ( v2 < TM3_DRAFT_U32(0x800d340cu) - 1 );
+    while ( v2 < (sint32)(TM3_DRAFT_U32(0x800d340cu) - 1u) );
   }
   --TM3_DRAFT_U32(0x800d340cu);
-  if ( TM3_DRAFT_U32(a1 + 3920) >= TM3_DRAFT_U32(0x800d2e90u) )
+  if ( TM3_DRAFT_I32(a1 + 3920) >= TM3_DRAFT_I32(0x800d2e90u) )
     return --TM3_DRAFT_U32(0x800d3410u);
   else
     return --TM3_DRAFT_U32(0x800d3414u);
 }
 
 /* Unverified decompiler-derived draft */
-uint32 sub_800150FC(uint32 a1, uint32 a2, uint32 a3)
+uint32 sub_800150FC(uint32 matrix, uint32 fixed_column, uint32 other_column)
 {
     FUNCTION_MARKER(0x800150FCu, "SCUS_942.49");
-    /* TODO Original signed wrap, guest pointers and unresolved ABI effects remain unverified */
+    sint16 other[4], cross[4], fixed[4];
+    uint32 remaining_column, other_ptr, fixed_ptr, cross_ptr;
+    uint32 other_address = matrix + (other_column << 1);
+    uint32 fixed_address = matrix + (fixed_column << 1);
+    uint32 column, component;
 
-  int v3; 
-  int v6; 
-  uint32 v7; 
-  sint16 v8; 
-  sint16 v9; 
-  uint32 v10; 
-  sint16 v11; 
-  int v12; 
-  int v13; 
-  uint32 v14; 
-  int result; 
-  sint16 v16; 
-  sint16 v17; 
-  sint16 v18; 
-  sint16 v19[4]; 
-  sint16 v20; 
-  sint16 v21; 
-  uint16 v22; 
-
-  if ( a2 == 1 )
-  {
-    v3 = 2 * (a3 == 0);
-    goto LABEL_11;
-  }
-  if ( a2 >= 2 )
-  {
-    if ( a2 != 2 )
+    if (fixed_column == 0u)
+        remaining_column = other_column == 1u ? 2u : 1u;
+    else if (fixed_column == 1u)
+        remaining_column = other_column == 0u ? 2u : 0u;
+    else if (fixed_column == 2u)
+        remaining_column = other_column == 0u ? 1u : 0u;
+    else
     {
-      v7 = (uint32)(a1 + 2 * a3);
-      goto LABEL_12;
+        /* TODO The original leaves the remaining column register undefined here */
+        tm3_draft_unimplemented("150FC undefined remaining matrix column");
+        return 0u;
     }
-    v3 = a3 == 0;
-LABEL_11:
-    v7 = (uint32)(a1 + 2 * a3);
-    goto LABEL_12;
-  }
-  v6 = 2 * a3;
-  if ( !a2 )
-  {
-    v3 = 1;
-    v7 = (uint32)(a1 + v6);
-    if ( a3 != 1 )
-      goto LABEL_12;
-    v3 = 2;
-    goto LABEL_11;
-  }
-  v7 = (uint32)(a1 + v6);
-LABEL_12:
-  v8 = TM3_DRAFT_I16(v7 + (3) * 2u);
-  v9 = TM3_DRAFT_I16(v7 + (6) * 2u);
-  v10 = (uint32)(a1 + 2 * a2);
-  v16 = TM3_DRAFT_I16(v7);
-  v17 = v8;
-  v18 = v9;
-  v11 = TM3_DRAFT_I16(v10 + (3) * 2u);
-  v12 = TM3_DRAFT_I16(v10 + (6) * 2u);
-  v20 = TM3_DRAFT_I16(v10);
-  v21 = v11;
-  v22 = v12;
-  sub_8005B284((int)&v20, (int)&v20);
-  sub_80013EC8(TM3_DRAFT_LOCAL_ADDRESS(&v20, sizeof(v20)), TM3_DRAFT_LOCAL_ADDRESS(&v16, sizeof(v16)), v19);
-  sub_8005B284((int)v19, (int)v19);
-  sub_80013EC8(v19, TM3_DRAFT_LOCAL_ADDRESS(&v20, sizeof(v20)), TM3_DRAFT_LOCAL_ADDRESS(&v16, sizeof(v16)));
-  TM3_DRAFT_I16(v7) = v16;
-  TM3_DRAFT_I16(v7 + (3) * 2u) = v17;
-  TM3_DRAFT_I16(v7 + (6) * 2u) = v18;
-  v14 = (uint32)(a1 + 2 * v3);
-  TM3_DRAFT_U16(v14) = v19[0];
-  TM3_DRAFT_U16(v14 + (3) * 2u) = v19[1];
-  TM3_DRAFT_U16(v14 + (6) * 2u) = v19[2];
-  TM3_DRAFT_I16(v10) = v20;
-  TM3_DRAFT_I16(v10 + (3) * 2u) = v21;
-  result = v22;
-  TM3_DRAFT_I16(v10 + (6) * 2u) = v22;
-  return result;
+
+    for (component = 0u; component < 3u; ++component)
+    {
+        other[component] = TM3_DRAFT_I16(other_address + component * 6u);
+        fixed[component] = TM3_DRAFT_I16(fixed_address + component * 6u);
+    }
+    other_ptr = TM3_DRAFT_LOCAL_ADDRESS(other, sizeof(other));
+    fixed_ptr = TM3_DRAFT_LOCAL_ADDRESS(fixed, sizeof(fixed));
+    cross_ptr = TM3_DRAFT_LOCAL_ADDRESS(cross, sizeof(cross));
+    sub_8005B284(fixed_ptr, fixed_ptr);
+    sub_80013EC8(fixed_ptr, other_ptr, cross_ptr);
+    sub_8005B284(cross_ptr, cross_ptr);
+    sub_80013EC8(cross_ptr, fixed_ptr, other_ptr);
+
+    column = matrix + (remaining_column << 1);
+    for (component = 0u; component < 3u; ++component)
+        TM3_DRAFT_U16(other_address + component * 6u) = (uint16)other[component];
+    for (component = 0u; component < 3u; ++component)
+        TM3_DRAFT_U16(column + component * 6u) = (uint16)cross[component];
+    for (component = 0u; component < 3u; ++component)
+        TM3_DRAFT_U16(fixed_address + component * 6u) = (uint16)fixed[component];
+    return (uint16)fixed[2];
 }

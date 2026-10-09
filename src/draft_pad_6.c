@@ -29,7 +29,7 @@ uint32 sub_8001F82C(uint32 a1)
   int result; 
 
   v2 = TM3_DRAFT_U32(a1 + 3948);
-  if ( (uint32)(v2 - 2) < 4 )
+  if ( ((uint32)v2 - 2u) < 4 )
   {
     if ( TM3_DRAFT_I32(a1 + 4044) >= 1228 && v2 < 5 )
       TM3_DRAFT_U32(a1 + 3948) = v2 + 1;
@@ -42,7 +42,7 @@ uint32 sub_8001F82C(uint32 a1)
   }
   v4 = TM3_DRAFT_U32(a1 + 4072);
   v5 = v4 <= 0;
-  v6 = v4 - 1;
+  v6 = (sint32)((uint32)v4 - 1u);
   if ( v5 )
   {
     if ( TM3_DRAFT_I16(a1 + 1544) >= 0 )
@@ -61,9 +61,9 @@ uint32 sub_8001F82C(uint32 a1)
       v10 = TM3_DRAFT_U32(a1 + 1564);
       v11 = TM3_DRAFT_U32(a1 + 1572);
       v12 = TM3_DRAFT_U32(a1 + 1576);
-      TM3_DRAFT_I32(original_local_address + 16u) = v7 - v8;
-      TM3_DRAFT_I32(original_local_address + 20u) = v9 - v11;
-      TM3_DRAFT_I32(original_local_address + 24u) = v10 - v12;
+      TM3_DRAFT_I32(original_local_address + 16u) = (sint32)((uint32)v7 - (uint32)v8);
+      TM3_DRAFT_I32(original_local_address + 20u) = (sint32)((uint32)v9 - (uint32)v11);
+      TM3_DRAFT_I32(original_local_address + 24u) = (sint32)((uint32)v10 - (uint32)v12);
       v13 = sub_80013E98((int)TM3_DRAFT_LOCAL_ADDRESS(&TM3_DRAFT_I32(original_local_address + 16u), sizeof( TM3_DRAFT_I32(original_local_address + 16u))) /* TODO: Local buffer adapter */);
       if ( TM3_DRAFT_I32(a1 + 3304) >= 24 || v13 <= 0 )
         TM3_DRAFT_U32(a1 + 4072) = 12;
@@ -1044,125 +1044,60 @@ uint32 sub_8001F668(uint32 a1)
 
 
 /* Unverified draft; TODO items require later review */
-uint32 sub_800138A0(uint32 a1, uint32 a2)
+uint32 sub_800138A0(uint32 triangle, uint32 segment)
 {
-    uint32 cpu_t3;
-    uint32 cpu_t4;
-    uint32 cpu_t5;
-    uint32 cpu_v0;
-    uint32 cpu_v1;
-    uint32 temporary_3;
-    uint32 temporary_4;
-    uint32 temporary_5;
     FUNCTION_MARKER(0x800138A0u, "SCUS_942.49");
-  int v2; 
-  int v3; 
-  int v4; 
-  int v5; 
-  int v6; 
-  int v7; 
-  sint64 v8; 
-  sint64 v9; 
-  sint64 v10; 
-  sint64 v11; 
-  int v12; 
-  int v13; 
-  int v14; 
-  int v15; 
-  int v16; 
-  uint32 v17; 
-  uint32 v18; 
-  sint32 v19; 
-  sint64 v20; 
-  uint32 v21; 
-  int v22; 
-  int v23; 
-  int v24; 
-  int v25; 
-  int v26; 
-  int v27; 
-  int v28; 
-  int v29; 
-  sint64 v39; 
-
-  v2 = TM3_DRAFT_U32(a2 + 4u * (3));
-  v3 = TM3_DRAFT_U32(a2 + 4u * (4));
-  v4 = TM3_DRAFT_U32(a2 + 4u * (5));
-  v5 = TM3_DRAFT_U32(a1);
-  v6 = TM3_DRAFT_U32(a1 + 4u * (1));
-  v7 = TM3_DRAFT_U32(a1 + 4u * (2));
-  v8 = v2 * (sint64)TM3_DRAFT_U32(a1);
-  v9 = v3 * (sint64)v6;
-  LODWORD(v8) = v8 + v9;
-  HIDWORD(v8) += ((uint32)v8 < (uint32)v9) + HIDWORD(v9);
-  v10 = v4 * (sint64)v7;
-  LODWORD(v11) = v8 + v10;
-  HIDWORD(v11) = HIDWORD(v8) + ((uint32)v11 < (uint32)v10) + HIDWORD(v10);
-  v12 = TM3_DRAFT_I16(a1 + 48);
-  if ( v11 < 0 )
-  {
-    v13 = TM3_DRAFT_U32(a2);
-    v14 = TM3_DRAFT_U32(a2 + 4u * (1));
-    v15 = TM3_DRAFT_U32(a2 + 4u * (2));
-    v16 = (uint64)((v12 - TM3_DRAFT_U32(a2)) * (sint64)v5) >> 32;
-    v17 = (TM3_DRAFT_I16(a1 + 56) - v14) * v6;
-    v18 = (v12 - TM3_DRAFT_U32(a2)) * v5 + v17;
-    v19 = v18 < v17;
-    v20 = (TM3_DRAFT_I16(a1 + 64) - v15) * (sint64)v7;
-    v21 = v18 + v20;
-    v22 = v16
-        + v19
-        + ((uint64)((TM3_DRAFT_I16(a1 + 56) - v14) * (sint64)v6) >> 32)
-        + (v21 < (uint32)v20)
-        + HIDWORD(v20);
-    if ( v22 <= 0 && (v22 < 0 || !v21) )
+    uint32 origin[3], displacement[3], endpoint[3];
+    sint32 normal[3];
+    uint64 denominator = 0u;
+    for (uint32 axis = 0u; axis < 3u; ++axis)
     {
-      v23 = v13 + v2;
-      if ( __SPAIR64__(v22, v21) >= v11 )
-      {
-        v24 = v14 + v3;
-        v25 = v15 + v4;
-        v26 = TM3_DRAFT_I16(a1 + 72);
-        while ( 1 )
-        {
-          v27 = TM3_DRAFT_I16(a1 + 48);
-          v28 = TM3_DRAFT_I16(a1 + 56);
-          v29 = TM3_DRAFT_I16(a1 + 64);
-          cpu_v0 = v23 - v27;
-          cpu_v1 = v24 - v28;
-          xport_gte_write_control(0u, (uint32)cpu_v0);
-xport_gte_write_control(2u, (uint32)cpu_v1);
-          cpu_v0 = v25 - v29;
-          xport_gte_write_control(4u, (uint32)cpu_v0);
-          temporary_3 = v13 - v27;
-          temporary_4 = v14 - v28;
-          temporary_5 = v15 - v29;
-          xport_gte_write_data(9u, (uint32)v27);
-xport_gte_write_data(10u, (uint32)v28);
-xport_gte_write_data(11u, (uint32)v29);
-xport_gte_execute(0x170000Cu);
-cpu_t4 = xport_gte_read_data(25u);
-cpu_v1 = xport_gte_read_data(26u);
-cpu_v0 = xport_gte_read_data(27u);
-          --v26;
-          if ( (((uint64)(temporary_4 * (sint64)TM3_DRAFT_I16(a1 + 176)
-                                  + cpu_v1 * (sint64)TM3_DRAFT_I16(a1 + 184)
-                                  + cpu_v0 * (sint64)TM3_DRAFT_I16(a1 + 192)) >> 32) & 0x80000000) != 0LL )
-            break;
-          a1 += 4u * (2);
-          if ( v26 <= 0 )
-          {
-            LODWORD(v39) = v21 << 12;
-            HIDWORD(v39) = (v22 << 12) | (v21 >> 20);
-            return sub_80062664((uint32)v39, (uint32)((uint64)v39 >> 32), (uint32)v11, (uint32)((uint64)v11 >> 32));
-          }
-        }
-      }
+        origin[axis] = TM3_DRAFT_U32(segment + axis * 4u);
+        displacement[axis] = TM3_DRAFT_U32(segment + 12u + axis * 4u);
+        endpoint[axis] = origin[axis] + displacement[axis];
+        normal[axis] = TM3_DRAFT_I32(triangle + axis * 4u);
+        denominator += (uint64)((sint64)(sint32)displacement[axis] * normal[axis]);
     }
-  }
-  return -1;
+    if ((sint64)denominator >= 0)
+        return 0xffffffffu;
+    uint64 numerator = 0u;
+    for (uint32 axis = 0u; axis < 3u; ++axis)
+    {
+        uint32 distance = (uint32)(sint32)TM3_DRAFT_I16(triangle + 12u + axis * 2u) - origin[axis];
+        numerator += (uint64)((sint64)(sint32)distance * normal[axis]);
+    }
+    if ((sint64)numerator > 0 || (sint64)numerator < (sint64)denominator)
+        return 0xffffffffu;
+    sint32 edges = TM3_DRAFT_I16(triangle + 18u);
+    for (;;)
+    {
+        for (uint32 axis = 0u; axis < 3u; ++axis)
+        {
+            uint32 vertex = (uint32)(sint32)TM3_DRAFT_I16(triangle + 12u + axis * 2u);
+            xport_gte_write_control(axis * 2u, endpoint[axis] - vertex);
+        }
+        for (uint32 axis = 0u; axis < 3u; ++axis)
+        {
+            uint32 vertex = (uint32)(sint32)TM3_DRAFT_I16(triangle + 12u + axis * 2u);
+            xport_gte_write_data(9u + axis, origin[axis] - vertex);
+        }
+        xport_gte_execute(0x170000cu);
+        uint32 mac[3] = {xport_gte_read_data(25u), xport_gte_read_data(26u), xport_gte_read_data(27u)};
+        uint64 edge_dot = 0u;
+        for (uint32 axis = 0u; axis < 3u; ++axis)
+            edge_dot += (uint64)((sint64)(sint32)mac[axis] * TM3_DRAFT_I16(triangle + 44u + axis * 2u));
+        edges = (sint32)((uint32)edges - 1u);
+        if ((sint64)edge_dot < 0)
+            return 0xffffffffu;
+        triangle += 8u;
+        if (edges <= 0)
+        {
+            uint64 scaled = numerator << 12u;
+            return sub_80062664((uint32)scaled, (uint32)(scaled >> 32u),
+                (uint32)denominator, (uint32)(denominator >> 32u));
+        }
+    }
 }
-
 
 /* Unverified draft; TODO items require later review */
 uint32 sub_8001A1C8(uint32 a1)
@@ -1314,72 +1249,47 @@ uint32 sub_800294B8(uint32 a1)
 /* Unverified draft; TODO items require later review */
 uint32 sub_800262D0(uint32 a1, uint32 a2, uint32 a3)
 {
-    uint32 original_local_words[2];
-    uint32 original_local_address = TM3_DRAFT_LOCAL_ADDRESS(original_local_words, sizeof(original_local_words));
-
     FUNCTION_MARKER(0x800262D0u, "SCUS_942.49");
-  uint32 v3; 
-  int result; 
-  int v5; 
-  int v6; 
-  uint32 v7; 
-  int v8; 
-  uint32 v9; 
-
-  TM3_DRAFT_U16(a2) = 9999;
-  TM3_DRAFT_U16(a2 + 2u * (1)) = 9999;
-  TM3_DRAFT_U16(a2 + 2u * (2)) = 9999;
-  TM3_DRAFT_U16(a3) = -9999;
-  TM3_DRAFT_U16(a3 + 2u * (1)) = -9999;
-  TM3_DRAFT_U16(a3 + 2u * (2)) = -9999;
-  v3 = TM3_DRAFT_U32(a1);
-  result = TM3_DRAFT_U32(TM3_DRAFT_U32(a1));
-  v5 = 0;
-  if ( result > 0 )
-  {
-    v6 = 9;
-    do
-    {
-      v7 = (v3 + 4u * (v6));
-      v8 = 0;
-      if ( SHIWORD(TM3_DRAFT_U32(v3 + 4u * (v6 + 1))) > 0 )
-      {
-        v9 = TM3_DRAFT_U32(a1 + 24u) + 8u * (sint16)TM3_DRAFT_U32(v3 + 4u * (v6 + 1u));
-        do
-        {
-          TM3_DRAFT_I16(original_local_address + 0u) = TM3_DRAFT_U16(v9);
-          TM3_DRAFT_I16(original_local_address + 2u) = TM3_DRAFT_U16(v9 + 2u * (1));
-          TM3_DRAFT_I16(original_local_address + 4u) = TM3_DRAFT_U16(v9 + 2u * (2));
-          if ( TM3_DRAFT_U8(v7 + 88) )
-          {
-            TM3_DRAFT_I16(original_local_address + 0u) = TM3_DRAFT_U16(v9) + TM3_DRAFT_U16(v7 + 64);
-            TM3_DRAFT_I16(original_local_address + 2u) = TM3_DRAFT_U16(v9 + 2u * (1)) + TM3_DRAFT_U16(v7 + 72);
-            TM3_DRAFT_I16(original_local_address + 4u) = TM3_DRAFT_U16(v9 + 2u * (2)) + TM3_DRAFT_U16(v7 + 80);
-          }
-          if ( TM3_DRAFT_I16(original_local_address + 0u) < TM3_DRAFT_U16(a2) )
-            TM3_DRAFT_U16(a2) = TM3_DRAFT_I16(original_local_address + 0u);
-          if ( TM3_DRAFT_I16(original_local_address + 2u) < TM3_DRAFT_U16(a2 + 2u * (1)) )
-            TM3_DRAFT_U16(a2 + 2u * (1)) = TM3_DRAFT_I16(original_local_address + 2u);
-          if ( TM3_DRAFT_I16(original_local_address + 4u) < TM3_DRAFT_U16(a2 + 2u * (2)) )
-            TM3_DRAFT_U16(a2 + 2u * (2)) = TM3_DRAFT_I16(original_local_address + 4u);
-          if ( TM3_DRAFT_U16(a3) < TM3_DRAFT_I16(original_local_address + 0u) )
-            TM3_DRAFT_U16(a3) = TM3_DRAFT_I16(original_local_address + 0u);
-          if ( TM3_DRAFT_U16(a3 + 2u * (1)) < TM3_DRAFT_I16(original_local_address + 2u) )
-            TM3_DRAFT_U16(a3 + 2u * (1)) = TM3_DRAFT_I16(original_local_address + 2u);
-          if ( TM3_DRAFT_U16(a3 + 2u * (2)) < TM3_DRAFT_I16(original_local_address + 4u) )
-            TM3_DRAFT_U16(a3 + 2u * (2)) = TM3_DRAFT_I16(original_local_address + 4u);
-          ++v8;
-          v9 += 2u * (4);
-        }
-        while ( v8 < TM3_DRAFT_I16(v7 + 24) );
-      }
-      v3 = TM3_DRAFT_U32(a1);
-      result = ++v5 < TM3_DRAFT_U32(TM3_DRAFT_U32(a1));
-      v6 += 6;
+    for (uint32 axis = 0; axis < 3u; ++axis) {
+        TM3_DRAFT_U16(a2 + 2u * axis) = 9999u;
+        TM3_DRAFT_U16(a3 + 2u * axis) = (uint16)-9999;
     }
-    while ( v5 < TM3_DRAFT_U32(TM3_DRAFT_U32(a1)) );
-  }
-  return result;
+    uint32 model = TM3_DRAFT_U32(a1);
+    sint32 result = TM3_DRAFT_I32(model);
+    sint32 index = 0;
+    uint32 record_offset = 36u;
+    if (result <= 0) return (uint32)result;
+    do {
+        uint32 record = model + record_offset;
+        sint32 vertex_index = 0;
+        uint32 vertex = TM3_DRAFT_U32(a1 + 24u)
+                      + ((uint32)(sint32)TM3_DRAFT_I16(record + 4u) << 3);
+        if (TM3_DRAFT_I16(record + 6u) > 0) {
+            do {
+                sint16 point[3];
+                for (uint32 axis = 0; axis < 3u; ++axis)
+                    point[axis] = TM3_DRAFT_I16(vertex + 2u * axis);
+                if (TM3_DRAFT_U8(record + 22u) != 0u) {
+                    for (uint32 axis = 0; axis < 3u; ++axis)
+                        point[axis] = (sint16)((sint32)point[axis]
+                                      + TM3_DRAFT_I16(record + 16u + 2u * axis));
+                }
+                for (uint32 axis = 0; axis < 3u; ++axis) {
+                    if (point[axis] < TM3_DRAFT_I16(a2 + 2u * axis))
+                        TM3_DRAFT_U16(a2 + 2u * axis) = (uint16)point[axis];
+                    if (TM3_DRAFT_I16(a3 + 2u * axis) < point[axis])
+                        TM3_DRAFT_U16(a3 + 2u * axis) = (uint16)point[axis];
+                }
+                ++vertex_index;
+                vertex += 8u;
+            } while (vertex_index < TM3_DRAFT_I16(record + 6u));
+        }
+        model = TM3_DRAFT_U32(a1);
+        ++index;
+        result = index < TM3_DRAFT_I32(model);
+        record_offset += 24u;
+    } while (result != 0);
+    return (uint32)result;
 }
 
 
@@ -1609,67 +1519,45 @@ uint32 sub_8001BF10(uint32 a1, uint32 a2)
 
 
 /* Unverified draft; TODO items require later review */
-uint32 sub_80014510(uint32 a1, uint32 a2, uint32 a3, uint32 a4)
+uint32 sub_80014510(uint32 triangle, uint32 segment, uint32 mode, uint32 output)
 {
-    uint32 original_local_words[14];
-    uint32 original_local_address = TM3_DRAFT_LOCAL_ADDRESS(original_local_words, sizeof(original_local_words));
-
     FUNCTION_MARKER(0x80014510u, "SCUS_942.49");
-  int v8; 
-  int result; 
-  int v10; 
-  int v11; 
-  int v12; 
-  int v13; 
-  int v14; 
-  int v15; 
-  int v16; 
-  int v17; 
-  int v18; 
-  int v19; 
-  int v20; 
-  int v21; 
+    uint32 locals[10];
+    uint32 local_address = TM3_DRAFT_LOCAL_ADDRESS(locals, sizeof(locals));
+    uint32 normal = local_address + 16u;
+    uint32 difference = local_address + 24u;
+    uint32 fraction = sub_800138A0(triangle, segment);
+    if ((sint32)fraction < 0)
+        return 0xffffffffu;
 
-  v8 = sub_800138A0(a1, a2);
-  result = -1;
-  if ( v8 >= 0 )
-  {
-    v10 = TM3_DRAFT_U32(a2 + 4u * (3)) * v8;
-    v11 = TM3_DRAFT_U32(a2 + 4u * (5)) * v8;
-    v12 = TM3_DRAFT_U32(a2 + 4u * (2)) << 12;
-    v13 = TM3_DRAFT_U32(a2);
-    TM3_DRAFT_U32(a4 + 4u * (1)) = (TM3_DRAFT_U32(a2 + 4u * (1)) << 12) + TM3_DRAFT_U32(a2 + 4u * (4)) * v8;
-    TM3_DRAFT_U32(a4) = (v13 << 12) + v10;
-    TM3_DRAFT_U32(a4 + 4u * (2)) = v12 + v11;
-    if ( a3 < 3 && a3 )
+    uint32 origin[3], displacement[3];
+    for (uint32 axis = 0u; axis < 3u; ++axis)
     {
-      v14 = TM3_DRAFT_U32(a2 + 4u * (1));
-      v15 = (TM3_DRAFT_U32(a2 + 4u * (2)) + TM3_DRAFT_U32(a2 + 4u * (5))) << 12;
-      v16 = TM3_DRAFT_U32(a2 + 4u * (4));
-      TM3_DRAFT_I32(original_local_address + 16u) = (TM3_DRAFT_U32(a2) + TM3_DRAFT_U32(a2 + 4u * (3))) << 12;
-      TM3_DRAFT_I32(original_local_address + 24u) = v15;
-      TM3_DRAFT_I32(original_local_address + 20u) = (v14 + v16) << 12;
-      v17 = TM3_DRAFT_U32(a4 + 4u * (1)) - TM3_DRAFT_I32(original_local_address + 20u);
-      v18 = TM3_DRAFT_U32(a4 + 4u * (2)) - v15;
-      (*(int (*)[4])psx_addr(original_local_address + 40u, sizeof(int[4])))[0] = TM3_DRAFT_U32(a4) - TM3_DRAFT_I32(original_local_address + 16u);
-      (*(int (*)[4])psx_addr(original_local_address + 40u, sizeof(int[4])))[1] = v17;
-      (*(int (*)[4])psx_addr(original_local_address + 40u, sizeof(int[4])))[2] = v18;
-      sub_800146A4(a1, TM3_DRAFT_LOCAL_ADDRESS((*(sint16 (*)[4])psx_addr(original_local_address + 32u, sizeof(sint16[4]))), sizeof((*(sint16 (*)[4])psx_addr(original_local_address + 32u, sizeof(sint16[4]))))) /* TODO: Local buffer adapter */);
-      v19 = sub_80013A90( TM3_DRAFT_LOCAL_ADDRESS((*(int (*)[4])psx_addr(original_local_address + 40u, sizeof(int[4]))), sizeof((*(int (*)[4])psx_addr(original_local_address + 40u, sizeof(int[4]))))), TM3_DRAFT_LOCAL_ADDRESS((*(sint16 (*)[4])psx_addr(original_local_address + 32u, sizeof(sint16[4]))), sizeof((*(sint16 (*)[4])psx_addr(original_local_address + 32u, sizeof(sint16[4]))))));
-      if ( a3 == 2 )
-        v19 *= 2;
-      sub_800148DC(TM3_DRAFT_LOCAL_ADDRESS(&TM3_DRAFT_I32(original_local_address + 16u), sizeof(TM3_DRAFT_I32(original_local_address + 16u))) /* TODO: Local buffer adapter */, TM3_DRAFT_LOCAL_ADDRESS((*(sint16 (*)[4])psx_addr(original_local_address + 32u, sizeof(sint16[4]))), sizeof((*(sint16 (*)[4])psx_addr(original_local_address + 32u, sizeof(sint16[4]))))), v19 + 6144, 12);
-      v20 = TM3_DRAFT_I32(original_local_address + 20u);
-      v21 = TM3_DRAFT_I32(original_local_address + 24u);
-      TM3_DRAFT_U32(a4) = TM3_DRAFT_I32(original_local_address + 16u);
-      TM3_DRAFT_U32(a4 + 4u * (1)) = v20;
-      TM3_DRAFT_U32(a4 + 4u * (2)) = v21;
+        origin[axis] = TM3_DRAFT_U32(segment + axis * 4u);
+        displacement[axis] = TM3_DRAFT_U32(segment + 12u + axis * 4u);
     }
-    return v8;
-  }
-  return result;
+    TM3_DRAFT_U32(output + 4u) = (origin[1] << 12u) + displacement[1] * fraction;
+    TM3_DRAFT_U32(output) = (origin[0] << 12u) + displacement[0] * fraction;
+    TM3_DRAFT_U32(output + 8u) = (origin[2] << 12u) + displacement[2] * fraction;
+    if (mode != 0u && mode < 3u)
+    {
+        /* Reload the segment after the original output writes */
+        for (uint32 axis = 0u; axis < 3u; ++axis)
+            locals[axis] = (TM3_DRAFT_U32(segment + axis * 4u)
+                + TM3_DRAFT_U32(segment + 12u + axis * 4u)) << 12u;
+        for (uint32 axis = 0u; axis < 3u; ++axis)
+            locals[6u + axis] = TM3_DRAFT_U32(output + axis * 4u) - locals[axis];
+        sub_800146A4(triangle, normal);
+        uint32 correction = sub_80013A90(difference, normal);
+        if (mode == 2u)
+            correction <<= 1u;
+        sub_800148DC(local_address, normal, correction + 6144u, 12u);
+        TM3_DRAFT_U32(output) = locals[0];
+        TM3_DRAFT_U32(output + 4u) = locals[1];
+        TM3_DRAFT_U32(output + 8u) = locals[2];
+    }
+    return fraction;
 }
-
 
 /* Unverified draft; TODO items require later review */
 uint32 sub_800239C0(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, ...)
@@ -1688,27 +1576,27 @@ uint32 sub_800239C0(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, ...)
     if ( sub_80048078(24) )
     {
       result = 1;
-      if ( a3 < TM3_DRAFT_U32(a1 + 4092) )
+      if ( (sint32)a3 < TM3_DRAFT_I32(a1 + 4092) )
         return result;
     }
   }
-  v14 = TM3_DRAFT_U32(a1 + 4092);
+  v14 = TM3_DRAFT_I32(a1 + 4092);
   result = 0;
   if ( v14 <= 0 )
     return result;
-  v15 = v14 - a3;
+  v15 = (sint32)((uint32)v14 - a3);
   if ( TM3_DRAFT_U32(0x800D2F20u) != 2 )
   {
     TM3_DRAFT_U32(a1 + 4092) = v15;
     if ( v15 > 0 )
     {
-      v16 = TM3_DRAFT_U32(a1 + 4092);
+      v16 = TM3_DRAFT_I32(a1 + 4092);
       goto LABEL_19;
     }
     if ( TM3_DRAFT_U32(0x800D2F18u) == 1 && TM3_DRAFT_U32(0x800D2F20u) == 1 && TM3_DRAFT_U32(a1 + 3920) < 2u )
       TM3_DRAFT_U32(a1 + 4092) = 1;
   }
-  v16 = TM3_DRAFT_U32(a1 + 4092);
+  v16 = TM3_DRAFT_I32(a1 + 4092);
   if ( v16 <= 0 )
   {
     if ( a5 )
@@ -1725,7 +1613,7 @@ uint32 sub_800239C0(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, ...)
     return 0;
   }
 LABEL_19:
-  v18 = TM3_DRAFT_U32(a1 + 4096);
+  v18 = TM3_DRAFT_I32(a1 + 4096);
   if ( v18 < v16 )
     TM3_DRAFT_U32(a1 + 4092) = v18;
   sub_80025F14((uint32)a1);

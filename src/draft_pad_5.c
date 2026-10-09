@@ -225,46 +225,46 @@ uint32 sub_8001FA88(uint32 a1)
         v21 = sub_80013A90( TM3_DRAFT_LOCAL_ADDRESS((*(int (*)[4])psx_addr(original_local_address + 48u, sizeof(int[4]))), sizeof((*(int (*)[4])psx_addr(original_local_address + 48u, sizeof(int[4]))))), TM3_DRAFT_LOCAL_ADDRESS((*(sint16 (*)[4])psx_addr(original_local_address + 64u, sizeof(sint16[4]))), sizeof((*(sint16 (*)[4])psx_addr(original_local_address + 64u, sizeof(sint16[4])))))) - TM3_DRAFT_U32(v3);
         v20 = sub_80013A90( TM3_DRAFT_LOCAL_ADDRESS((*(int (*)[4])psx_addr(original_local_address + 16u, sizeof(int[4]))), sizeof((*(int (*)[4])psx_addr(original_local_address + 16u, sizeof(int[4]))))), TM3_DRAFT_LOCAL_ADDRESS((*(sint16 (*)[4])psx_addr(original_local_address + 64u, sizeof(sint16[4]))), sizeof((*(sint16 (*)[4])psx_addr(original_local_address + 64u, sizeof(sint16[4]))))));
         v22 = sub_80015684(1024, v20, 12);
-        sub_80014B6C(TM3_DRAFT_LOCAL_ADDRESS(&TM3_DRAFT_I32(original_local_address + 32u), sizeof(TM3_DRAFT_I32(original_local_address + 32u))) /* TODO: Local buffer adapter */, TM3_DRAFT_LOCAL_ADDRESS((*(sint16 (*)[4])psx_addr(original_local_address + 64u, sizeof(sint16[4]))), sizeof((*(sint16 (*)[4])psx_addr(original_local_address + 64u, sizeof(sint16[4]))))), -(8 * v21 + v22), 12);
+        sub_80014B6C((original_local_address + 32u), TM3_DRAFT_LOCAL_ADDRESS((*(sint16 (*)[4])psx_addr(original_local_address + 64u, sizeof(sint16[4]))), sizeof((*(sint16 (*)[4])psx_addr(original_local_address + 64u, sizeof(sint16[4]))))), 0u - (((uint32)v21 << 3u) + (uint32)v22), 12);
         sub_800155A4( TM3_DRAFT_LOCAL_ADDRESS((*(int (*)[4])psx_addr(original_local_address + 48u, sizeof(int[4]))), sizeof((*(int (*)[4])psx_addr(original_local_address + 48u, sizeof(int[4]))))), TM3_DRAFT_LOCAL_ADDRESS((*(sint16 (*)[4])psx_addr(original_local_address + 64u, sizeof(sint16[4]))), sizeof((*(sint16 (*)[4])psx_addr(original_local_address + 64u, sizeof(sint16[4]))))), TM3_DRAFT_LOCAL_ADDRESS((*(int (*)[4])psx_addr(original_local_address + 72u, sizeof(int[4]))), sizeof((*(int (*)[4])psx_addr(original_local_address + 72u, sizeof(int[4]))))));
         sub_800155A4( TM3_DRAFT_LOCAL_ADDRESS((*(int (*)[4])psx_addr(original_local_address + 16u, sizeof(int[4]))), sizeof((*(int (*)[4])psx_addr(original_local_address + 16u, sizeof(int[4]))))), TM3_DRAFT_LOCAL_ADDRESS((*(sint16 (*)[4])psx_addr(original_local_address + 64u, sizeof(sint16[4]))), sizeof((*(sint16 (*)[4])psx_addr(original_local_address + 64u, sizeof(sint16[4]))))), TM3_DRAFT_LOCAL_ADDRESS((*(int (*)[4])psx_addr(original_local_address + 16u, sizeof(int[4]))), sizeof((*(int (*)[4])psx_addr(original_local_address + 16u, sizeof(int[4]))))));
         v23 = sub_800146A4( TM3_DRAFT_LOCAL_ADDRESS((*(int (*)[4])psx_addr(original_local_address + 72u, sizeof(int[4]))), sizeof((*(int (*)[4])psx_addr(original_local_address + 72u, sizeof(int[4]))))), TM3_DRAFT_LOCAL_ADDRESS((*(sint16 (*)[4])psx_addr(original_local_address + 64u, sizeof(sint16[4]))), sizeof((*(sint16 (*)[4])psx_addr(original_local_address + 64u, sizeof(sint16[4]))))));
-        sub_800148DC(TM3_DRAFT_LOCAL_ADDRESS(&TM3_DRAFT_I32(original_local_address + 32u), sizeof(TM3_DRAFT_I32(original_local_address + 32u))) /* TODO: Local buffer adapter */, TM3_DRAFT_LOCAL_ADDRESS((*(sint16 (*)[4])psx_addr(original_local_address + 64u, sizeof(sint16[4]))), sizeof((*(sint16 (*)[4])psx_addr(original_local_address + 64u, sizeof(sint16[4]))))), -8 * v23, 12);
+        sub_800148DC((original_local_address + 32u), TM3_DRAFT_LOCAL_ADDRESS((*(sint16 (*)[4])psx_addr(original_local_address + 64u, sizeof(sint16[4]))), sizeof((*(sint16 (*)[4])psx_addr(original_local_address + 64u, sizeof(sint16[4]))))), 0u - ((uint32)v23 << 3u), 12);
         v24 = sub_800146A4( TM3_DRAFT_LOCAL_ADDRESS((*(int (*)[4])psx_addr(original_local_address + 16u, sizeof(int[4]))), sizeof((*(int (*)[4])psx_addr(original_local_address + 16u, sizeof(int[4]))))), TM3_DRAFT_LOCAL_ADDRESS((*(sint16 (*)[4])psx_addr(original_local_address + 64u, sizeof(sint16[4]))), sizeof((*(sint16 (*)[4])psx_addr(original_local_address + 64u, sizeof(sint16[4]))))));
         v25 = sub_80015684(512, v24, 12);
-        sub_800148DC(TM3_DRAFT_LOCAL_ADDRESS(&TM3_DRAFT_I32(original_local_address + 32u), sizeof(TM3_DRAFT_I32(original_local_address + 32u))) /* TODO: Local buffer adapter */, TM3_DRAFT_LOCAL_ADDRESS((*(sint16 (*)[4])psx_addr(original_local_address + 64u, sizeof(sint16[4]))), sizeof((*(sint16 (*)[4])psx_addr(original_local_address + 64u, sizeof(sint16[4]))))), -v25, 12);
+        sub_800148DC((original_local_address + 32u), TM3_DRAFT_LOCAL_ADDRESS((*(sint16 (*)[4])psx_addr(original_local_address + 64u, sizeof(sint16[4]))), sizeof((*(sint16 (*)[4])psx_addr(original_local_address + 64u, sizeof(sint16[4]))))), 0u - (uint32)v25, 12);
       }
       else
       {
         v16 = sub_800146A4( TM3_DRAFT_LOCAL_ADDRESS((*(int (*)[4])psx_addr(original_local_address + 48u, sizeof(int[4]))), sizeof((*(int (*)[4])psx_addr(original_local_address + 48u, sizeof(int[4]))))), v4) - TM3_DRAFT_U32(v3);
         v15 = sub_80013A90( TM3_DRAFT_LOCAL_ADDRESS((*(int (*)[4])psx_addr(original_local_address + 16u, sizeof(int[4]))), sizeof((*(int (*)[4])psx_addr(original_local_address + 16u, sizeof(int[4]))))), v4);
         v17 = sub_80015684(512, v15, 12);
-        sub_80014B6C(TM3_DRAFT_LOCAL_ADDRESS(&TM3_DRAFT_I32(original_local_address + 32u), sizeof(TM3_DRAFT_I32(original_local_address + 32u))) /* TODO: Local buffer adapter */, v4, -(8 * v16 + v17), 12);
+        sub_80014B6C((original_local_address + 32u), v4, 0u - (((uint32)v16 << 3u) + (uint32)v17), 12);
       }
       v26 = TM3_DRAFT_U32(v6 + 4u * (12));
       v27 = TM3_DRAFT_I32(original_local_address + 36u);
       v28 = TM3_DRAFT_U32(v6 + 4u * (13)) - TM3_DRAFT_I32(original_local_address + 40u);
       TM3_DRAFT_U32(v6 + 4u * (11)) -= TM3_DRAFT_I32(original_local_address + 32u);
       TM3_DRAFT_U32(v6 + 4u * (13)) = v28;
-      TM3_DRAFT_U32(v6 + 4u * (12)) = v26 - v27;
+      TM3_DRAFT_U32(v6 + 4u * (12)) = (uint32)v26 - (uint32)v27;
       v29 = TM3_DRAFT_U32(v6 + 4u * (15));
       v30 = TM3_DRAFT_I32(original_local_address + 36u);
       v31 = TM3_DRAFT_U32(v6 + 4u * (16)) - TM3_DRAFT_I32(original_local_address + 40u);
       TM3_DRAFT_U32(v6 + 4u * (14)) -= TM3_DRAFT_I32(original_local_address + 32u);
       TM3_DRAFT_U32(v6 + 4u * (16)) = v31;
-      TM3_DRAFT_U32(v6 + 4u * (15)) = v29 - v30;
+      TM3_DRAFT_U32(v6 + 4u * (15)) = (uint32)v29 - (uint32)v30;
       v32 = TM3_DRAFT_U32(v5 + 4u * (12));
       v33 = TM3_DRAFT_I32(original_local_address + 36u);
       v34 = TM3_DRAFT_U32(v5 + 4u * (13)) + TM3_DRAFT_I32(original_local_address + 40u);
       TM3_DRAFT_U32(v5 + 4u * (11)) += TM3_DRAFT_I32(original_local_address + 32u);
       TM3_DRAFT_U32(v5 + 4u * (13)) = v34;
-      TM3_DRAFT_U32(v5 + 4u * (12)) = v32 + v33;
+      TM3_DRAFT_U32(v5 + 4u * (12)) = (uint32)v32 + (uint32)v33;
       v35 = TM3_DRAFT_U32(v5 + 4u * (15));
       v36 = TM3_DRAFT_I32(original_local_address + 36u);
       v37 = TM3_DRAFT_U32(v5 + 4u * (16)) + TM3_DRAFT_I32(original_local_address + 40u);
       TM3_DRAFT_U32(v5 + 4u * (14)) += TM3_DRAFT_I32(original_local_address + 32u);
       TM3_DRAFT_U32(v5 + 4u * (16)) = v37;
-      TM3_DRAFT_U32(v5 + 4u * (15)) = v35 + v36;
+      TM3_DRAFT_U32(v5 + 4u * (15)) = (uint32)v35 + (uint32)v36;
       v3 += 24;
       v4 += 2u * (12);
       result = (uint32)(TM3_DRAFT_I32(original_local_address + 88u) + 24) < TM3_DRAFT_U32(a1 + 3164);
@@ -737,142 +737,81 @@ uint32 sub_80026F98(uint32 a1, uint32 a2, uint32 a3, uint32 a4)
 /* Unverified draft; TODO items require later review */
 uint32 sub_800447D4(void)
 {
-    FUNCTION_MARKER(0x800447D4u, "SCUS_942.49");
-  int v0; 
-  int i; 
-  int v2; 
-  int v3; 
-  int v4; 
-  int v5; 
-  int v6; 
-  sint32 v7; 
-  int v8; 
-  int v9; 
-  uint32 v10; 
-  uint32 v11; 
-  sint32 v12; 
-  int v13; 
-  int v14; 
-  int v15; 
-  int v16; 
-  int result; 
+    uint32 base = 0x800D2E88u;
+    uint32 index;
+    uint32 cursor;
+    uint32 sum;
+    uint32 limit;
+    uint32 difference;
+    uint32 selected;
+    uint32 candidate;
+    uint32 scan;
+    sint32 special;
+    int duplicate;
 
-  v0 = -2146619768;
-  if ( TM3_DRAFT_U32(0x800D2F4Cu) )
-  {
-    for ( i = 0; i < TM3_DRAFT_U32(0x800D2E90u); v0 += 144 )
+    FUNCTION_MARKER(0x800447D4u, "SCUS_942.49");
+    if (TM3_DRAFT_U32(base + 0xC4u))
     {
-      TM3_DRAFT_U32(v0 + 388) = 2;
-      TM3_DRAFT_U32(v0 + 400) = 0;
-      ++i;
-    }
-    v2 = TM3_DRAFT_U32(0x800D2E90u);
-    if ( TM3_DRAFT_U32(0x800D2E90u) < TM3_DRAFT_U32(0x800D2E90u) + TM3_DRAFT_U32(0x800D2F38u) )
-    {
-      v3 = 144 * TM3_DRAFT_U32(0x800D2E90u) - 2146619768;
-      do
-      {
-        TM3_DRAFT_U32(v3 + 388) = 2;
-        TM3_DRAFT_U32(v3 + 400) = 1;
-        ++v2;
-        v3 += 144;
-      }
-      while ( v2 < TM3_DRAFT_U32(0x800D2E90u) + TM3_DRAFT_U32(0x800D2F38u) );
-    }
-    if ( TM3_DRAFT_U32(0x800D2F3Cu) )
-    {
-      TM3_DRAFT_U32(0x800D2F3Cu) = 0;
-      TM3_DRAFT_U32(0x800D296Cu) = 0;
-    }
-    else
-    {
-      TM3_DRAFT_U32(0x800D2E9Cu) = 0;
-    }
-    TM3_DRAFT_U32(0x800D2F5Cu) = -1;
-  }
-  else
-  {
-    ++TM3_DRAFT_U32(0x800D2E9Cu);
-  }
-  if ( SHIBYTE(TM3_DRAFT_U32(0x8007EA18u + 4u * (2 * TM3_DRAFT_U32(0x800D2E9Cu)))) == -1 )
-    v5 = 8;
-  else
-    v5 = 7;
-  v6 = 0;
-  v4 = TM3_DRAFT_U8((0x8007EA18u + 4u * (2 * TM3_DRAFT_U32(0x800D2E9Cu))) + TM3_DRAFT_U32(0x800D2F10u));
-  TM3_DRAFT_U32(0x800D2E94u) = ((v4 - (v5 - (TM3_DRAFT_U32(0x800D2E90u) + TM3_DRAFT_U32(0x800D2F38u)))) & ((v4
-                                                                                  - (v5
-                                                                                   - (TM3_DRAFT_U32(0x800D2E90u)
-                                                                                    + TM3_DRAFT_U32(0x800D2F38u)))) >> 31))
-                     + v5
-                     - (TM3_DRAFT_U32(0x800D2E90u)
-                      + TM3_DRAFT_U32(0x800D2F38u));
-  TM3_DRAFT_U32(0x800D2E98u) = TM3_DRAFT_U32(0x800D2E90u) + TM3_DRAFT_U32(0x800D2F38u) + TM3_DRAFT_U32(0x800D2E94u);
-  if ( TM3_DRAFT_U32(0x800D2E94u) > 0 )
-  {
-    while ( 1 )
-    {
-      v7 = sub_80039FD4();
-      v8 = v7 >> 4;
-      if ( v7 < 0 )
-        v8 = (v7 + 15) >> 4;
-      v9 = v7 - 16 * v8;
-      v10 = 0;
-      v11 = TM3_DRAFT_U32(0x8007EA18u);
-      while ( 1 )
-      {
-        v12 = v10 < 8;
-        if ( v9 == TM3_DRAFT_I8(v11 + 12) )
-          break;
-        ++v10;
-        v11 += 4u * (2);
-        if ( v10 >= 8 )
+        for (index = 0, cursor = base; (sint32)index < TM3_DRAFT_I32(base + 8u); ++index, cursor += 144u)
         {
-          v12 = v10 < 8;
-          break;
+            TM3_DRAFT_U32(cursor + 0x184u) = 2;
+            TM3_DRAFT_U32(cursor + 0x190u) = 0;
         }
-      }
-      v13 = 0;
-      if ( !v12 )
-      {
-        v14 = 0;
-        if ( TM3_DRAFT_U32(0x800D2E90u) + TM3_DRAFT_U32(0x800D2F38u) + v6 > 0 )
+        index = TM3_DRAFT_U32(base + 8u);
+        sum = index + TM3_DRAFT_U32(base + 0xB0u);
+        cursor = base + 144u * index;
+        while ((sint32)index < (sint32)sum)
         {
-          v15 = -2146619768;
-          do
-          {
-            if ( v9 == TM3_DRAFT_U32(v15 + 24) )
-              v14 = 1;
-            ++v13;
-            v15 += 4;
-          }
-          while ( v13 < TM3_DRAFT_U32(0x800D2E90u) + TM3_DRAFT_U32(0x800D2F38u) + v6 );
+            TM3_DRAFT_U32(cursor + 0x184u) = 2;
+            TM3_DRAFT_U32(cursor + 0x190u) = 1;
+            ++index;
+            sum = TM3_DRAFT_U32(base + 8u) + TM3_DRAFT_U32(base + 0xB0u);
+            cursor += 144u;
         }
-        if ( !v14 )
+        if (TM3_DRAFT_U32(base + 0xB4u))
         {
-          TM3_DRAFT_U32(4 * (TM3_DRAFT_U32(0x800D2E90u) + TM3_DRAFT_U32(0x800D2F38u) + v6++) - 2146619768 + 24) = v9;
-          if ( v6 >= TM3_DRAFT_U32(0x800D2E94u) )
-            break;
+            TM3_DRAFT_U32(base + 0xB4u) = 0;
+            TM3_DRAFT_U32(0x800D296Cu) = 0;
         }
-      }
+        else TM3_DRAFT_U32(base + 0x14u) = 0;
+        TM3_DRAFT_U32(base + 0xD4u) = 0xFFFFFFFFu;
     }
-  }
-  if ( TM3_DRAFT_U32(0x800D2E98u) < 16 )
-  {
-    v16 = SHIBYTE(TM3_DRAFT_U32(0x8007EA18u + 4u * (2 * TM3_DRAFT_U32(0x800D2E9Cu))));
-    if ( v16 == -1 )
-      v16 = 16;
-    TM3_DRAFT_U32(4 * TM3_DRAFT_U32(0x800D2E98u) - 2146619768 + 24) = v16;
-  }
-  result = -2146619768;
-  TM3_DRAFT_U32(0x800D2F50u) = 0;
-  TM3_DRAFT_U32(0x800D2F4Cu) = 0;
-  TM3_DRAFT_U32(0x800D2F54u) = 0;
-  TM3_DRAFT_U32(0x800D2F58u) = 0;
-  TM3_DRAFT_U32(0x800D2F40u) = 0;
-  TM3_DRAFT_U32(0x800D2F44u) = 0;
-  TM3_DRAFT_U32(0x800D2F48u) = 0;
-  return result;
+    else ++TM3_DRAFT_U32(base + 0x14u);
+    cursor = 0x8007EA18u + (TM3_DRAFT_U32(base + 0x14u) << 3);
+    special = TM3_DRAFT_I8(cursor + 3u);
+    limit = (special == -1 ? 8u : 7u) - (TM3_DRAFT_U32(base + 8u) + TM3_DRAFT_U32(base + 0xB0u));
+    difference = (uint32)TM3_DRAFT_U8(cursor + TM3_DRAFT_U32(base + 0x88u)) - limit;
+    TM3_DRAFT_U32(base + 0xCu) = limit + (difference & (uint32)((sint32)difference >> 31));
+    TM3_DRAFT_U32(base + 0x10u) = TM3_DRAFT_U32(base + 8u) + TM3_DRAFT_U32(base + 0xB0u) + TM3_DRAFT_U32(base + 0xCu);
+    selected = 0;
+    while ((sint32)selected < TM3_DRAFT_I32(base + 0xCu))
+    {
+        candidate = (uint32)((sint32)sub_80039FD4() % 16);
+        for (scan = 0; scan < 8u; ++scan)
+            if (candidate == (uint32)(sint32)TM3_DRAFT_I8(0x8007EA1Bu + scan * 8u)) break;
+        if (scan < 8u) continue;
+        sum = TM3_DRAFT_U32(base + 8u) + TM3_DRAFT_U32(base + 0xB0u) + selected;
+        duplicate = 0;
+        for (scan = 0; (sint32)scan < (sint32)sum; ++scan)
+            if (candidate == TM3_DRAFT_U32(base + 0x18u + scan * 4u)) duplicate = 1;
+        if (duplicate) continue;
+        TM3_DRAFT_U32(base + 0x18u + sum * 4u) = candidate;
+        ++selected;
+    }
+    sum = TM3_DRAFT_U32(base + 0x10u);
+    if ((sint32)sum < 16)
+    {
+        special = TM3_DRAFT_I8(0x8007EA1Bu + (TM3_DRAFT_U32(base + 0x14u) << 3));
+        TM3_DRAFT_U32(base + 0x18u + sum * 4u) = special == -1 ? 16u : (uint32)special;
+    }
+    TM3_DRAFT_U32(base + 0xC8u) = 0;
+    TM3_DRAFT_U32(base + 0xC4u) = 0;
+    TM3_DRAFT_U32(base + 0xCCu) = 0;
+    TM3_DRAFT_U32(base + 0xD0u) = 0;
+    TM3_DRAFT_U32(base + 0xB8u) = 0;
+    TM3_DRAFT_U32(base + 0xBCu) = 0;
+    TM3_DRAFT_U32(base + 0xC0u) = 0;
+    return base;
 }
 
 
@@ -895,10 +834,10 @@ uint32 sub_8003CD8C(uint32 a1)
   uint32 v11; 
   sint32 result; 
 
-  v2 = TM3_DRAFT_U32(r_u32(0x8007e894u + 4u * (r_u32(0x800d2e88u) - 1u))) + 4u * (18u * TM3_DRAFT_U32(4u * (r_u32(0x800d2e88u) - 1u) + 0x800d2e88u + 116u) + 1u);
+  v2 = r_u32(0x8007e894u + 4u * (r_u32(0x800d2e88u) - 1u)) + 4u * (18u * TM3_DRAFT_U32(4u * (r_u32(0x800d2e88u) - 1u) + 0x800d2e88u + 116u) + 1u);
   sub_8005BE34(TM3_DRAFT_U16(v2));
-  v3 = TM3_DRAFT_U16(v2 + 16);
-  TM3_DRAFT_U16(0x80089E02u) = TM3_DRAFT_U16(v2 + 24);
+  v3 = TM3_DRAFT_U16(v2 + 4);
+  TM3_DRAFT_U16(0x80089E02u) = TM3_DRAFT_U16(v2 + 6);
   TM3_DRAFT_U16(0x80089E00u) = v3;
   if ( TM3_DRAFT_U32(0x800D2F20u) == 2 )
     v4 = (uint16)TM3_DRAFT_U16(0x80089E02u) >> 1;
@@ -913,7 +852,7 @@ uint32 sub_8003CD8C(uint32 a1)
     if ( !v5 )
       v7 = 0;
     TM3_DRAFT_U32(v6) = v5;
-    sub_800572E4((int)TM3_DRAFT_LOCAL_ADDRESS(&TM3_DRAFT_I32(original_local_address + 24u), sizeof(TM3_DRAFT_I32(original_local_address + 24u))) /* TODO: Local buffer adapter */, v7, 0, 320, 240);
+    sub_800572E4((int)(original_local_address + 24u), v7, 0, 320, 240);
     sub_80057398(v6 + 4, 320 - v7, 0, 320, 240);
     TM3_DRAFT_U16(v6 + 12) = TM3_DRAFT_U16(0x800D2EE0u);
     v8 = TM3_DRAFT_U16(0x800D2EE4u);
@@ -927,18 +866,18 @@ uint32 sub_8003CD8C(uint32 a1)
     TM3_DRAFT_I16(original_local_address + 40u) = 0;
     TM3_DRAFT_I16(original_local_address + 42u) = 0;
     TM3_DRAFT_I8(original_local_address + 46u) = TM3_DRAFT_U8(0x800D2EF0u);
-    sub_80058678(v6 + 24, (uint32)TM3_DRAFT_LOCAL_ADDRESS(&TM3_DRAFT_I32(original_local_address + 24u), sizeof(TM3_DRAFT_I32(original_local_address + 24u))) /* TODO: Local buffer adapter */);
+    sub_80058678(v6 + 24, (uint32)(original_local_address + 24u));
     v9 = 0;
-    if ( TM3_DRAFT_U32(0x800D2E88u) > 0 )
+    if ( TM3_DRAFT_I32(0x800D2E88u) > 0 )
     {
       v10 = 0;
       v11 = v2;
       do
       {
         sub_800572E4(
-          (int)TM3_DRAFT_LOCAL_ADDRESS(&TM3_DRAFT_I32(original_local_address + 24u), sizeof(TM3_DRAFT_I32(original_local_address + 24u))) /* TODO: Local buffer adapter */,
-          TM3_DRAFT_U16(v11 + 32) + v7,
-          TM3_DRAFT_U16(v11 + 40),
+          (int)(original_local_address + 24u),
+          TM3_DRAFT_U16(v11 + 8) + v7,
+          TM3_DRAFT_U16(v11 + 10),
           TM3_DRAFT_U16(0x80089E00u),
           (uint16)TM3_DRAFT_U16(0x80089E02u));
         TM3_DRAFT_I8(original_local_address + 48u) = 1;
@@ -948,14 +887,14 @@ uint32 sub_8003CD8C(uint32 a1)
         TM3_DRAFT_I16(original_local_address + 40u) = 0;
         TM3_DRAFT_I16(original_local_address + 42u) = 0;
         TM3_DRAFT_I8(original_local_address + 46u) = TM3_DRAFT_U8(0x800D2EF0u);
-        sub_8003E190(TM3_DRAFT_LOCAL_ADDRESS(&TM3_DRAFT_I8(original_local_address + 49u), sizeof(TM3_DRAFT_I8(original_local_address + 49u))) /* TODO: Local buffer adapter */, TM3_DRAFT_LOCAL_ADDRESS(&TM3_DRAFT_I8(original_local_address + 50u), sizeof(TM3_DRAFT_I8(original_local_address + 50u))) /* TODO: Local buffer adapter */, TM3_DRAFT_LOCAL_ADDRESS((*(char (*)[69])psx_addr(original_local_address + 51u, sizeof(char[69]))), sizeof((*(char (*)[69])psx_addr(original_local_address + 51u, sizeof(char[69]))))));
-        sub_80058678(v6 + v10 + 138376, (uint32)TM3_DRAFT_LOCAL_ADDRESS(&TM3_DRAFT_I32(original_local_address + 24u), sizeof(TM3_DRAFT_I32(original_local_address + 24u))) /* TODO: Local buffer adapter */);
-        if ( TM3_DRAFT_U8(v2 + 12) )
+        sub_8003E190((original_local_address + 49u), (original_local_address + 50u), (original_local_address + 51u));
+        sub_80058678(v6 + v10 + 138376, (uint32)(original_local_address + 24u));
+        if ( TM3_DRAFT_U8(v2 + 3) )
         {
           sub_800572E4(
-            (int)TM3_DRAFT_LOCAL_ADDRESS(&TM3_DRAFT_I32(original_local_address + 24u), sizeof(TM3_DRAFT_I32(original_local_address + 24u))) /* TODO: Local buffer adapter */,
-            TM3_DRAFT_U16(v11 + 80) + v7,
-            TM3_DRAFT_U16(v11 + 88),
+            (int)(original_local_address + 24u),
+            TM3_DRAFT_I16(v11 + 20) + v7,
+            TM3_DRAFT_I16(v11 + 22),
             TM3_DRAFT_U16(0x80089E00u),
             (uint16)TM3_DRAFT_U16(0x80089E02u));
           TM3_DRAFT_I8(original_local_address + 48u) = 1;
@@ -967,12 +906,12 @@ uint32 sub_8003CD8C(uint32 a1)
         {
           TM3_DRAFT_I8(original_local_address + 48u) = 0;
         }
-        sub_80058678(v6 + v10 + 138376 + 64, (uint32)TM3_DRAFT_LOCAL_ADDRESS(&TM3_DRAFT_I32(original_local_address + 24u), sizeof(TM3_DRAFT_I32(original_local_address + 24u))) /* TODO: Local buffer adapter */);
+        sub_80058678(v6 + v10 + 138376 + 64, (uint32)(original_local_address + 24u));
         v10 += 1728;
         ++v9;
         v11 += 4u * (4);
       }
-      while ( v9 < TM3_DRAFT_U32(0x800D2E88u) );
+      while ( v9 < TM3_DRAFT_I32(0x800D2E88u) );
     }
     v6 += 145288;
     result = ++v5 < 2;
@@ -1460,92 +1399,59 @@ LABEL_24:
 /* Unverified draft; TODO items require later review */
 uint32 sub_80021E44(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, ...)
 {
-    uint32 original_local_words[15];
-    uint32 original_local_address = TM3_DRAFT_LOCAL_ADDRESS(original_local_words, sizeof(original_local_words));
-
+    uint32 point[3];
+    sint32 scale[3];
+    sint16 plane[3] = { 0, 0, 0 };
+    uint32 axis;
+    uint32 selected;
     FUNCTION_MARKER(0x80021E44u, "SCUS_942.49");
-  int v17; 
-  int v18; 
-  int v19; 
-  uint32 v20; 
-  int v21; 
-  int v22; 
-  uint32 v23; 
-  int v24; 
-  int v25; 
-  int v26; 
-  uint32 v27; 
-  int v28; 
-  int v29; 
-  int v30; 
-  int v31; 
 
-  TM3_DRAFT_I32(original_local_address + 32u) = TM3_DRAFT_U32(a2);
-  TM3_DRAFT_I32(original_local_address + 36u) = TM3_DRAFT_U32(a2 + 4u * (1));
-  TM3_DRAFT_I32(original_local_address + 40u) = TM3_DRAFT_U32(a2 + 4u * (2));
-  TM3_DRAFT_I32(original_local_address + 16u) = TM3_DRAFT_I32(original_local_address + 32u);
-  TM3_DRAFT_I32(original_local_address + 20u) = TM3_DRAFT_I32(original_local_address + 36u);
-  TM3_DRAFT_I32(original_local_address + 24u) = TM3_DRAFT_I32(original_local_address + 40u);
-  sub_800566A4(TM3_DRAFT_LOCAL_ADDRESS(&TM3_DRAFT_I32(original_local_address + 32u), sizeof(TM3_DRAFT_I32(original_local_address + 32u))) /* TODO: Local buffer adapter */, 0, 6);
-  TM3_DRAFT_I32(original_local_address + 48u) = TM3_DRAFT_U32(0x80088020u);
-  TM3_DRAFT_I32(original_local_address + 52u) = TM3_DRAFT_U32(0x80088024u);
-  TM3_DRAFT_I32(original_local_address + 56u) = TM3_DRAFT_U32(0x80088028u);
-  v17 = 0;
-  if ( a1 )
-  {
-    TM3_DRAFT_I32(original_local_address + 16u) += TM3_DRAFT_U16(a1);
-    TM3_DRAFT_I32(original_local_address + 20u) += TM3_DRAFT_U16(a1 + 2u * (1));
-    TM3_DRAFT_I32(original_local_address + 24u) += TM3_DRAFT_U16(a1 + 2u * (2));
-  }
-  v18 = 0;
-  do
-  {
-    v19 = v18 >> 16;
-    v20 = 4 * (v18 >> 16);
-    v21 = v17 + 1;
-    if ( !TM3_DRAFT_U32(a2 + 4u * (v20 / 4)) )
-      goto LABEL_10;
-    v22 = 2 * v19;
-    v23 = (uint32)(2 * v19 + a3);
-    v24 = TM3_DRAFT_U16(v23);
-    v25 = TM3_DRAFT_I32((uint32)TM3_DRAFT_LOCAL_ADDRESS(&TM3_DRAFT_I32(original_local_address + 16u), sizeof(TM3_DRAFT_I32(original_local_address + 16u))) /* TODO: Local buffer adapter */ + v20);
-    if ( v25 >= v24 )
+    for (axis = 0; axis < 3u; ++axis)
+        point[axis] = TM3_DRAFT_U32(a2 + 4u * axis);
+    for (axis = 0; axis < 3u; ++axis)
+        scale[axis] = TM3_DRAFT_I32(0x80088020u + 4u * axis);
+    if (a1)
+        for (axis = 0; axis < 3u; ++axis)
+            point[axis] += (uint32)(sint32)TM3_DRAFT_I16(a1 + 2u * axis);
+
+    for (axis = 0; axis < 3u; ++axis)
     {
-      v23 = (uint32)(v22 + a4);
-      v26 = TM3_DRAFT_I16(v22 + a4);
-      v21 = v17 + 1;
-      if ( v26 >= v25 )
-        goto LABEL_10;
-      TM3_DRAFT_U32(v20 + a5) = v26;
-      TM3_DRAFT_U16((uint32)TM3_DRAFT_LOCAL_ADDRESS(&TM3_DRAFT_I32(original_local_address + 32u), sizeof(TM3_DRAFT_I32(original_local_address + 32u))) /* TODO: Local buffer adapter */ + v22) = v17;
+        sint32 velocity = TM3_DRAFT_I32(a2 + 4u * axis);
+        sint32 boundary;
+        uint32 boundary_address;
+        sint32 numerator;
+        if (!velocity)
+            continue;
+        boundary_address = a3 + 2u * axis;
+        boundary = TM3_DRAFT_I16(boundary_address);
+        if ((sint32)point[axis] < boundary)
+            plane[axis] = (sint16)(axis + 3u);
+        else
+        {
+            boundary_address = a4 + 2u * axis;
+            boundary = TM3_DRAFT_I16(boundary_address);
+            if (boundary >= (sint32)point[axis])
+                continue;
+            plane[axis] = (sint16)axis;
+        }
+        TM3_DRAFT_U32(a5 + 4u * axis) = (uint32)boundary;
+        numerator = (sint32)((point[axis] - (uint32)(sint32)TM3_DRAFT_I16(boundary_address)) << 18);
+        scale[axis] = numerator == (sint32)0x80000000u && velocity == -1
+                    ? (sint32)0x80000000u : numerator / velocity;
     }
-    else
+    selected = scale[1] >= scale[0] ? 1u : 0u;
+    if (scale[2] >= scale[selected])
+        selected = 2u;
+    for (axis = 0; axis < 3u; ++axis)
     {
-      TM3_DRAFT_U32(v20 + a5) = v24;
-      TM3_DRAFT_U16((uint32)TM3_DRAFT_LOCAL_ADDRESS(&TM3_DRAFT_I32(original_local_address + 32u), sizeof(TM3_DRAFT_I32(original_local_address + 32u))) /* TODO: Local buffer adapter */ + v22) = v17 + 3;
+        if (axis != selected)
+        {
+            uint32 product = (uint32)scale[selected] * TM3_DRAFT_U32(a2 + 4u * axis);
+            sint32 displacement = (sint32)(product + 0x20000u) >> 18;
+            TM3_DRAFT_U32(a5 + 4u * axis) = point[axis] - (uint32)displacement;
+        }
     }
-    TM3_DRAFT_I32((uint32)TM3_DRAFT_LOCAL_ADDRESS(&TM3_DRAFT_I32(original_local_address + 48u), sizeof(TM3_DRAFT_I32(original_local_address + 48u))) /* TODO: Local buffer adapter */ + v20) = ((TM3_DRAFT_I32((uint32)TM3_DRAFT_LOCAL_ADDRESS(&TM3_DRAFT_I32(original_local_address + 16u), sizeof(TM3_DRAFT_I32(original_local_address + 16u))) /* TODO: Local buffer adapter */ + v20) - TM3_DRAFT_U16(v23)) << 18) / TM3_DRAFT_U32(a2 + 4u * (v20 / 4));
-    v21 = v17 + 1;
-LABEL_10:
-    v17 = v21;
-    v27 = (sint16)v21 < 3;
-    v18 = v21 << 16;
-  }
-  while ( v27 );
-  v28 = TM3_DRAFT_I32(original_local_address + 52u) >= TM3_DRAFT_I32(original_local_address + 48u);
-  if ( TM3_DRAFT_I32(original_local_address + 56u) >= ((int *)(void *)&TM3_DRAFT_I32(original_local_address + 48u))[v28] )
-    v28 = 2;
-  v29 = 0;
-  v30 = 0;
-  do
-  {
-    v31 = v30 >> 16;
-    if ( v31 != v28 )
-      TM3_DRAFT_U32(4 * v31 + a5) = ((int *)(void *)&TM3_DRAFT_I32(original_local_address + 16u))[v31] - ((((int *)(void *)&TM3_DRAFT_I32(original_local_address + 48u))[v28] * TM3_DRAFT_U32(a2 + 4u * (v31)) + 0x20000) >> 18);
-    v30 = ++v29 << 16;
-  }
-  while ( (sint16)v29 < 3 );
-  return ((sint16 *)(void *)&TM3_DRAFT_I32(original_local_address + 32u))[v28];
+    return (uint32)(sint32)plane[selected];
 }
 
 
@@ -1621,232 +1527,172 @@ uint32 sub_8002E2D4(uint32 a1, uint32 a2, uint32 a3, uint32 a4)
 
 
 /* Unverified draft; TODO items require later review */
-uint32 sub_80041FA4(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, uint32 a6, ...)
+uint32 sub_80041FA4(uint32 descriptor, uint32 polygons, uint32 vertices, uint32 ordering_table, uint32 cursor_address, uint32 end)
 {
-    uint32 cpu_a2;
-    uint32 cpu_t1;
-    uint32 cpu_t2;
-    uint32 cpu_v0;
-    uint32 cpu_v1;
-    uint32 temporary_1;
-    uint32 temporary_2;
+    uint32 cursor, available, polygon_count, difference, scratch, polygon;
+    uint32 projected[3], fourth, type, double_sided, packet_words, packet_bytes;
+    sint32 remaining, clip_first, clip_second;
+    unsigned index;
     FUNCTION_MARKER(0x80041FA4u, "SCUS_942.49");
-  int v14; 
-  int v15; 
-  uint32 v16; 
-  int v17; 
-  int v18; 
-  uint32 v19; 
-  int v21; 
-  uint32 v22; 
-  int result; 
-  int v24; 
-  int v25; 
-  uint32 v26; 
-  int v27; 
-  int v28; 
-  int v29; 
-  char v30; 
-  int v34; 
-  int v36; 
-  int v40; 
-  uint32 v41; 
-  int v42; 
-
-  v16 = TM3_DRAFT_U32(a5);
-  v17 = 528482292;
-  v18 = TM3_DRAFT_U8(a1);
-  v19 = (uint32)(a2 + TM3_DRAFT_U32(a1 + 4));
-  cpu_a2 = a3 + 8 * TM3_DRAFT_U16(a1 + 2);
-  v21 = TM3_DRAFT_U8(a1 + 1u * (1));
-  v22 = (a6 - TM3_DRAFT_U32(a5)) / 0x24u;
-  result = (v21 - v22) & ((int)(v21 - v22) >> 31);
-  v24 = result + v22;
-  while ( v18 > 0 )
-  {
-    xport_gte_write_data(0u, TM3_DRAFT_U32(cpu_a2 + 0u));
-xport_gte_write_data(1u, TM3_DRAFT_U32(cpu_a2 + 4u));
-xport_gte_write_data(2u, TM3_DRAFT_U32(cpu_a2 + 8u));
-xport_gte_write_data(3u, TM3_DRAFT_U32(cpu_a2 + 0xCu));
-xport_gte_write_data(4u, TM3_DRAFT_U32(cpu_a2 + 0x10u));
-xport_gte_write_data(5u, TM3_DRAFT_U32(cpu_a2 + 0x14u));
-    v17 += 12;
-    xport_gte_execute(0x280030u);
-    v18 -= 3;
-    cpu_a2 += 24;
-    TM3_DRAFT_U32(v17 + 0u) = xport_gte_read_data(12u);
-TM3_DRAFT_U32(v17 + 4u) = xport_gte_read_data(13u);
-TM3_DRAFT_U32(v17 + 8u) = xport_gte_read_data(14u);
-  }
-  v25 = 0;
-  if ( v24 > 0 )
-  {
-    v26 = v19 + 12;
-    do
+    cursor = TM3_DRAFT_U32(cursor_address);
+    available = (end - cursor) / 36u;
+    polygon_count = TM3_DRAFT_U8(descriptor + 1u);
+    difference = polygon_count - available;
+    polygon_count = available + (difference & (uint32)((sint32)difference >> 31));
+    remaining = TM3_DRAFT_U8(descriptor);
+    polygons += TM3_DRAFT_U32(descriptor + 4u);
+    vertices += 8u * TM3_DRAFT_U16(descriptor + 2u);
+    scratch = 0x1F7FFFF4u;
+    while (remaining > 0)
     {
-      v27 = TM3_DRAFT_U8(v26 - 32);
-      v28 = TM3_DRAFT_U8(v26 - 28);
-      v29 = TM3_DRAFT_U8(v26 - 24);
-      v30 = TM3_DRAFT_U8(v26 + 12);
-      cpu_a2 = 4 * v27 + 528482304;
-      temporary_1 = 4 * v28 + 528482304;
-      temporary_2 = 4 * v29 + 528482304;
-      xport_gte_write_data(12u, TM3_DRAFT_U32(cpu_a2 + 0u));
-xport_gte_write_data(13u, TM3_DRAFT_U32(temporary_1));
-xport_gte_write_data(14u, TM3_DRAFT_U32(temporary_2));
-      v34 = TM3_DRAFT_U8(v26 - 36);
-      if ( v34 == 56 )
-      {
-        TM3_DRAFT_U32(v16 + 4u * (2)) = TM3_DRAFT_U32(4 * v27 + 0x1F800000);
-        xport_gte_execute(0x1400006u);
-        TM3_DRAFT_U32(v16 + 4u * (4)) = TM3_DRAFT_U32(4 * v28 + 0x1F800000);
-        TM3_DRAFT_U32(v16 + 4u * (6)) = TM3_DRAFT_U32(4 * v29 + 0x1F800000);
-        cpu_a2 = xport_gte_read_data(24u);
-        v36 = TM3_DRAFT_U8(v26 - 20);
-        cpu_v0 = 4 * v36 + 528482304;
-        xport_gte_write_data(12u, TM3_DRAFT_U32(cpu_v0 + 0u));
-xport_gte_execute(0x1400006u);
-cpu_v1 = xport_gte_read_data(24u);
-        if ( v30 || cpu_v1 <= 0 || cpu_a2 > 0 )
-        {
-          TM3_DRAFT_U32(v16 + 4u * (8)) = TM3_DRAFT_U32(4 * v36 + 0x1F800000);
-          TM3_DRAFT_U32(v16 + 4u * (1)) = TM3_DRAFT_U32(v19);
-          TM3_DRAFT_U32(v16 + 4u * (3)) = TM3_DRAFT_U32(v26 - 4);
-          v14 = 8;
-          TM3_DRAFT_U32(v16 + 4u * (5)) = TM3_DRAFT_U32(v26);
-          v15 = 36;
-          TM3_DRAFT_U32(v16 + 4u * (7)) = TM3_DRAFT_U32(v26 + 4u * (1));
-          goto LABEL_16;
-        }
-      }
-      else
-      {
-        if ( v34 != 48 )
-          goto LABEL_16;
-        xport_gte_execute(0x1400006u);
-cpu_a2 = xport_gte_read_data(24u);
-        v40 = 4 * v27;
-        if ( TM3_DRAFT_U8(v26 + 12) )
-        {
-          v41 = (uint32)(v40 + 528482304);
-LABEL_15:
-          TM3_DRAFT_U32(v16 + 4u * (2)) = TM3_DRAFT_U32(v41);
-          TM3_DRAFT_U32(v16 + 4u * (4)) = TM3_DRAFT_U32(4 * v28 + 0x1F800000);
-          TM3_DRAFT_U32(v16 + 4u * (6)) = TM3_DRAFT_U32(4 * v29 + 0x1F800000);
-          TM3_DRAFT_U32(v16 + 4u * (1)) = TM3_DRAFT_U32(v19);
-          v14 = 6;
-          TM3_DRAFT_U32(v16 + 4u * (3)) = TM3_DRAFT_U32(v26 - 4);
-          v15 = 28;
-          TM3_DRAFT_U32(v16 + 4u * (5)) = TM3_DRAFT_U32(v26);
-LABEL_16:
-          v26 += 4u * (5);
-          v19 += 4u * (5);
-          TM3_DRAFT_U32(v16) = TM3_DRAFT_U32(a4) & 0xFFFFFF | (v14 << 24);
-          v42 = (uint32)v16 & 0xFFFFFF;
-          v16 = (uint32)((uint32)v16 + v15);
-          TM3_DRAFT_U32(a4) = v42;
-          goto LABEL_17;
-        }
-        v41 = (uint32)(v40 + 528482304);
-        if ( cpu_a2 > 0 )
-          goto LABEL_15;
-      }
-      v26 += 4u * (5);
-      v19 += 4u * (5);
-LABEL_17:
-      result = ++v25 < v24;
+        for (index = 0; index < 6; ++index)
+            xport_gte_write_data(index, TM3_DRAFT_U32(vertices + 4u * index));
+        scratch += 12u;
+        tm3_draft_gte_command(0x280030u);
+        remaining -= 3;
+        vertices += 24u;
+        for (index = 0; index < 3; ++index)
+            TM3_DRAFT_U32(scratch + 4u * index) = xport_gte_read_data(12u + index);
     }
-    while ( v25 < v24 );
-  }
-  TM3_DRAFT_U32(a5) = v16;
-  return result;
+    for (index = 0; (sint32)index < (sint32)polygon_count; ++index, polygons += 20u)
+    {
+        polygon = polygons;
+        projected[0] = TM3_DRAFT_U32(0x1F800000u + 4u * TM3_DRAFT_U8(polygon + 4u));
+        projected[1] = TM3_DRAFT_U32(0x1F800000u + 4u * TM3_DRAFT_U8(polygon + 5u));
+        projected[2] = TM3_DRAFT_U32(0x1F800000u + 4u * TM3_DRAFT_U8(polygon + 6u));
+        xport_gte_write_data(12u, projected[0]);
+        xport_gte_write_data(13u, projected[1]);
+        xport_gte_write_data(14u, projected[2]);
+        type = TM3_DRAFT_U8(polygon + 3u);
+        double_sided = TM3_DRAFT_U8(polygon + 15u);
+        if (type == 0x38u)
+        {
+            TM3_DRAFT_U32(cursor + 8u) = projected[0];
+            tm3_draft_gte_command(0x1400006u);
+            TM3_DRAFT_U32(cursor + 16u) = projected[1];
+            TM3_DRAFT_U32(cursor + 24u) = projected[2];
+            clip_first = (sint32)xport_gte_read_data(24u);
+            fourth = TM3_DRAFT_U32(0x1F800000u + 4u * TM3_DRAFT_U8(polygon + 7u));
+            xport_gte_write_data(12u, fourth);
+            tm3_draft_gte_command(0x1400006u);
+            clip_second = (sint32)xport_gte_read_data(24u);
+            if (!double_sided && clip_second > 0 && clip_first <= 0)
+                continue;
+            TM3_DRAFT_U32(cursor + 32u) = fourth;
+            TM3_DRAFT_U32(cursor + 4u) = TM3_DRAFT_U32(polygon);
+            TM3_DRAFT_U32(cursor + 12u) = TM3_DRAFT_U32(polygon + 8u);
+            TM3_DRAFT_U32(cursor + 20u) = TM3_DRAFT_U32(polygon + 12u);
+            TM3_DRAFT_U32(cursor + 28u) = TM3_DRAFT_U32(polygon + 16u);
+            packet_words = 8u;
+            packet_bytes = 36u;
+        }
+        else if (type == 0x30u)
+        {
+            tm3_draft_gte_command(0x1400006u);
+            clip_first = (sint32)xport_gte_read_data(24u);
+            if (!double_sided && clip_first <= 0)
+                continue;
+            TM3_DRAFT_U32(cursor + 8u) = projected[0];
+            TM3_DRAFT_U32(cursor + 16u) = projected[1];
+            TM3_DRAFT_U32(cursor + 24u) = projected[2];
+            TM3_DRAFT_U32(cursor + 4u) = TM3_DRAFT_U32(polygon);
+            TM3_DRAFT_U32(cursor + 12u) = TM3_DRAFT_U32(polygon + 8u);
+            TM3_DRAFT_U32(cursor + 20u) = TM3_DRAFT_U32(polygon + 12u);
+            packet_words = 6u;
+            packet_bytes = 28u;
+        }
+        else
+        {
+            /* TODO Original unknown encodings retain unspecified incoming S0 and T9 */
+            /* The packet size carries over after a previously accepted polygon */
+        }
+        TM3_DRAFT_U32(cursor) = (TM3_DRAFT_U32(ordering_table) & 0xFFFFFFu) | (packet_words << 24);
+        TM3_DRAFT_U32(ordering_table) = cursor & 0xFFFFFFu;
+        cursor += packet_bytes;
+    }
+    TM3_DRAFT_U32(cursor_address) = cursor;
+    /* The render caller ignores the original volatile return carrier */
+    return 0;
 }
-
 
 /* Unverified draft; TODO items require later review */
 uint32 sub_800277CC(uint32 a1, uint32 a2)
 {
-    uint32 original_local_words[10];
-    uint32 original_local_address = TM3_DRAFT_LOCAL_ADDRESS(original_local_words, sizeof(original_local_words));
-
+    uint32 kind = TM3_DRAFT_U32(a2);
+    uint32 position = TM3_DRAFT_U32(a2 + 4u);
+    uint32 direction = TM3_DRAFT_U32(a2 + 8u);
+    uint32 size = TM3_DRAFT_U32(a2 + 12u);
+    uint32 variant = TM3_DRAFT_U32(a2 + 16u);
+    sint32 sound_owner = TM3_DRAFT_I32(a2 + 20u);
+    uint32 lifetime = TM3_DRAFT_U32(a2 + 24u);
+    sint16 velocity[3];
+    uint32 value;
+    uint32 delta;
     FUNCTION_MARKER(0x800277CCu, "SCUS_942.49");
-  uint32 v2; 
-  uint32 v3; 
-  uint32 v4; 
-  int v5; 
-  uint32 v6; 
-  uint32 v7; 
-  uint32 v8; 
-  int v9; 
-  sint16 v11; 
-  sint16 v12; 
-  int v13; 
-  uint32 v14; 
-  int v15; 
-  int v16; 
-  int v17; 
 
-  v2 = (uint32)(a2 + 4);
-  v3 = TM3_DRAFT_U32(v2);
-  v4 = TM3_DRAFT_U32(v2 + 4u * (5));
-  v5 = (int)TM3_DRAFT_U16(v2 - 4);
-  v6 = TM3_DRAFT_U32(v2 + 4u * (1));
-  v7 = TM3_DRAFT_U32(v2 + 4u * (2));
-  v8 = TM3_DRAFT_U32(v2 + 4u * (3));
-  v9 = (int)TM3_DRAFT_U32(v2 + 4u * (4));
-  TM3_DRAFT_U16(a1 + 8) = TM3_DRAFT_U32(TM3_DRAFT_U32(v2));
-  TM3_DRAFT_U16(a1 + 12) = TM3_DRAFT_U16(v3 + 2u * (2));
-  if ( !v5 || v5 == 2 || v5 == 4 )
-    TM3_DRAFT_U16(a1 + 10) = TM3_DRAFT_U16(v3 + 2u * (1));
-  else
-    TM3_DRAFT_U16(a1 + 10) = TM3_DRAFT_U16(v3 + 2u * (1)) - (int)v7 / 2;
-  v11 = TM3_DRAFT_U16(a1 + 10);
-  v12 = TM3_DRAFT_U16(a1 + 12);
-  TM3_DRAFT_U16(a1 - 20) = TM3_DRAFT_U16(a1 + 8);
-  v13 = a1 - 20;
-  TM3_DRAFT_U16(v13 + 2) = v11;
-  TM3_DRAFT_U16(v13 + 4) = v12;
-  if ( v6 )
-  {
-    TM3_DRAFT_I16(original_local_address + 32u) = TM3_DRAFT_U16(v6);
-    TM3_DRAFT_I32(original_local_address + 34u) = TM3_DRAFT_U32(v6 + 2);
-  }
-  else
-  {
-    TM3_DRAFT_I16(original_local_address + 32u) = 0;
-    TM3_DRAFT_I32(original_local_address + 34u) = 65280;
-  }
-  TM3_DRAFT_U16(a1) = (136 * TM3_DRAFT_I16(original_local_address + 32u) + 2048) >> 12;
-  TM3_DRAFT_U16(a1 + 2) = (136 * (sint16)TM3_DRAFT_I32(original_local_address + 34u) + 2048) >> 12;
-  TM3_DRAFT_U16(a1 + 14) = 0;
-  TM3_DRAFT_U16(a1 + 4) = (136 * SHIWORD(TM3_DRAFT_I32(original_local_address + 34u)) + 2048) >> 12;
-  if ( v9 == -2 )
-  {
-    TM3_DRAFT_U16(a1 + 16) = -1;
-  }
-  else
-  {
-    v14 = (0x8007DFB8u + 4u * ((uint32)v8 + 18 * v5));
-    TM3_DRAFT_U16(a1 + 16) = TM3_DRAFT_U16(v14);
-    v15 = TM3_DRAFT_I16(a1 + 16);
-    TM3_DRAFT_U16(a1 + 18) = TM3_DRAFT_U16(v14 + 8);
-    if ( v15 != -1 )
+    TM3_DRAFT_U16(a1 + 8u) = TM3_DRAFT_U16(position);
+    TM3_DRAFT_U16(a1 + 12u) = TM3_DRAFT_U16(position + 4u);
+    if (kind == 0u || kind == 2u || kind == 4u)
+        TM3_DRAFT_U16(a1 + 10u) = TM3_DRAFT_U16(position + 2u);
+    else
     {
-      if ( v9 == -1 )
-        sub_8004A294(22, v15, 22, TM3_DRAFT_U16(v3), TM3_DRAFT_U16(v3 + 2u * (1)), TM3_DRAFT_U16(v3 + 2u * (2)), TM3_DRAFT_I16(a1 + 18));
-      else
-        sub_8004A294(22, v15, 30, TM3_DRAFT_U16(v3), TM3_DRAFT_U16(v3 + 2u * (1)), TM3_DRAFT_U16(v3 + 2u * (2)), TM3_DRAFT_I16(a1 + 18), v9);
+        sint32 half_size = (sint32)(size + (size >> 31u)) >> 1;
+        TM3_DRAFT_U16(a1 + 10u) = TM3_DRAFT_U16(position + 2u) - (uint32)half_size;
     }
-  }
-  v16 = 1 - ((1 - (uint32)v4) & ((1 - (int)v4) >> 31)) - 30;
-  v17 = TM3_DRAFT_U32(0x80089CE8u);
-  TM3_DRAFT_U16(a1 + 20) = (uint16)v7;
-  TM3_DRAFT_U16(a1 + 22) = (uint16)v7;
-  TM3_DRAFT_U32(a1 + 28) = v17 + 104 * v5;
-  TM3_DRAFT_U32(a1 + 24) = TM3_DRAFT_U32(0x8007E090u + 4u * (v5));
-  TM3_DRAFT_U8(a1 + 27) = 0;
-  TM3_DRAFT_U16(a1 + 6) = 30 / ((v16 & (v16 >> 31)) + 30);
-  return 1;
+    TM3_DRAFT_U16(a1 - 20u) = TM3_DRAFT_U16(a1 + 8u);
+    TM3_DRAFT_U16(a1 - 18u) = TM3_DRAFT_U16(a1 + 10u);
+    TM3_DRAFT_U16(a1 - 16u) = TM3_DRAFT_U16(a1 + 12u);
+    if (direction)
+    {
+        for (uint32 index = 0u; index < 3u; ++index)
+            velocity[index] = TM3_DRAFT_I16(direction + 2u * index);
+    }
+    else
+    {
+        velocity[0] = 0;
+        velocity[1] = -256;
+        velocity[2] = 0;
+    }
+    TM3_DRAFT_U16(a1) = (136 * velocity[0] + 2048) >> 12;
+    TM3_DRAFT_U16(a1 + 2u) = (136 * velocity[1] + 2048) >> 12;
+    TM3_DRAFT_U16(a1 + 14u) = 0;
+    TM3_DRAFT_U16(a1 + 4u) = (136 * velocity[2] + 2048) >> 12;
+    if (sound_owner == -2)
+        TM3_DRAFT_U16(a1 + 16u) = 0xffffu;
+    else
+    {
+        uint32 sound_entry = 0x8007DFB8u + 4u * (9u * kind + variant);
+        sint32 sound;
+        TM3_DRAFT_U16(a1 + 16u) = TM3_DRAFT_U16(sound_entry);
+        sound = TM3_DRAFT_I16(a1 + 16u);
+        TM3_DRAFT_U16(a1 + 18u) = TM3_DRAFT_U16(sound_entry + 2u);
+        if (sound != -1)
+        {
+            if (sound_owner == -1)
+                sub_8004A294(22u, (uint32)sound, 22u,
+                    (uint32)(sint32)TM3_DRAFT_I16(position),
+                    (uint32)(sint32)TM3_DRAFT_I16(position + 2u),
+                    (uint32)(sint32)TM3_DRAFT_I16(position + 4u),
+                    (uint32)(sint32)TM3_DRAFT_I16(a1 + 18u));
+            else
+                sub_8004A294(22u, (uint32)sound, 30u,
+                    (uint32)(sint32)TM3_DRAFT_I16(position),
+                    (uint32)(sint32)TM3_DRAFT_I16(position + 2u),
+                    (uint32)(sint32)TM3_DRAFT_I16(position + 4u),
+                    (uint32)(sint32)TM3_DRAFT_I16(a1 + 18u), (uint32)sound_owner);
+        }
+    }
+    delta = 1u - lifetime;
+    value = 1u - (delta & (uint32)((sint32)delta >> 31));
+    delta = value - 30u;
+    lifetime = 30u + (delta & (uint32)((sint32)delta >> 31));
+    TM3_DRAFT_U16(a1 + 20u) = size;
+    TM3_DRAFT_U16(a1 + 22u) = size;
+    TM3_DRAFT_U32(a1 + 28u) = TM3_DRAFT_U32(0x80089CE8u) + 104u * kind;
+    TM3_DRAFT_U32(a1 + 24u) = TM3_DRAFT_U32(0x8007E090u + 4u * kind);
+    TM3_DRAFT_U8(a1 + 27u) = 0;
+    TM3_DRAFT_U16(a1 + 6u) = 30 / (sint32)lifetime;
+    return 1u;
 }
 
 

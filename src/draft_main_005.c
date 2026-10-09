@@ -1,5 +1,30 @@
 #include "game_draft_signatures.h"
 
+uint32 sub_800312F0(uint32 object, uint32 parameters)
+{
+    FUNCTION_MARKER(0x800312F0u, "SCUS_942.49");
+    uint32 source = TM3_DRAFT_U32(parameters);
+    for (uint32 axis = 0; axis < 3u; ++axis)
+        TM3_DRAFT_U16(object + 40u + 2u * axis) = TM3_DRAFT_U16(source + 2u * axis);
+    for (uint32 axis = 0; axis < 3u; ++axis)
+        TM3_DRAFT_U16(object + 32u + 2u * axis) = TM3_DRAFT_U16(source + 2u * axis);
+    source = TM3_DRAFT_U32(parameters + 4u);
+    uint16 x = TM3_DRAFT_U16(source);
+    uint16 y = TM3_DRAFT_U16(source + 2u);
+    uint16 z = TM3_DRAFT_U16(source + 4u);
+    TM3_DRAFT_U16(object + 48u) = x;
+    uint32 resource = TM3_DRAFT_U32(0x80089CF0u);
+    TM3_DRAFT_U16(object + 50u) = y;
+    TM3_DRAFT_U16(object + 52u) = z;
+    TM3_DRAFT_U16(object + 46u) = 800u;
+    TM3_DRAFT_U32(object - 24u) = 100u;
+    TM3_DRAFT_U32(object + 56u) = 0u;
+    TM3_DRAFT_U16(object + 62u) = 0u;
+    TM3_DRAFT_U16(object + 60u) = 0u;
+    TM3_DRAFT_U32(object + 64u) = resource + 312u;
+    return 1u;
+}
+
 /* Unverified drafts, pending guest buffers and original ABI integration */
 extern void tm3_draft_gte_write_control(uint32 index, uint32 value);
 extern void tm3_draft_gte_write_data(uint32 index, uint32 value);
@@ -30,140 +55,75 @@ extern uint32 tm3_draft_local_address(const void *pointer, uint32 bytes);
 #define dword_8007EA0C TM3_DRAFT_U32(0x8007EA0Cu)
 
 /* Unverified decompiler-derived draft */
-uint32 sub_800288AC(uint32 a1, uint32 a2, uint32 a3)
+uint32 sub_800288AC(uint32 links, uint32 position, uint32 owner)
 {
-  union { uint64 align; uint8 bytes[0x38u]; } native_local_storage;
-  uint8 *native_locals = native_local_storage.bytes;
-  /* Original adjacent local buffers share one native storage area */
-#define v15 (*((int *)(native_locals + 0x10u)))
-#define v16 (*((int *)(native_locals + 0x14u)))
-#define v17 (*((int *)(native_locals + 0x18u)))
-#define v18 (*((int *)(native_locals + 0x1Cu)))
     FUNCTION_MARKER(0x800288ACu, "SCUS_942.49");
-    /* TODO Original signed wrap, guest pointers and unresolved ABI effects remain unverified */
-
-  uint32 v6; 
-  sint32 v7; 
-  uint32 v8; 
-  uint32 v9; 
-  uint32 v10; 
-  sint32 result; 
-  int v12; 
-  uint32 v13; 
-  int v14; 
-
-
-
-  TM3_DRAFT_U32(a1) = 0;
-  LOWORD(v15) = TM3_DRAFT_U16(a2) + 1024;
-  HIWORD(v15) = TM3_DRAFT_U16(a2 + (1) * 2u);
-  LOWORD(v16) = TM3_DRAFT_U16(a2 + (2) * 2u) + 1024;
-  v6 = sub_8004A294(16, (int)&v15, (int)&v17, a3);
-  v7 = v6 != 0;
-  TM3_DRAFT_U32(a1 + (1) * 4u) = v6;
-  LOWORD(v15) = TM3_DRAFT_U16(a2) + 1024;
-  HIWORD(v15) = TM3_DRAFT_U16(a2 + (1) * 2u);
-  LOWORD(v16) = TM3_DRAFT_U16(a2 + (2) * 2u) - 1024;
-  v8 = sub_8004A294(16, (int)&v15, (int)&v17, a3);
-  TM3_DRAFT_U32(a1 + (2) * 4u) = v8;
-  if ( !v8 )
-    v7 = 0;
-  LOWORD(v15) = TM3_DRAFT_U16(a2) - 1024;
-  HIWORD(v15) = TM3_DRAFT_U16(a2 + (1) * 2u);
-  LOWORD(v16) = TM3_DRAFT_U16(a2 + (2) * 2u) - 1024;
-  v9 = sub_8004A294(16, (int)&v15, (int)&v17, a3);
-  TM3_DRAFT_U32(a1 + (3) * 4u) = v9;
-  if ( !v9 )
-    v7 = 0;
-  LOWORD(v15) = TM3_DRAFT_U16(a2) - 1024;
-  HIWORD(v15) = TM3_DRAFT_U16(a2 + (1) * 2u);
-  LOWORD(v16) = TM3_DRAFT_U16(a2 + (2) * 2u) + 1024;
-  v10 = sub_8004A294(16, (int)&v15, (int)&v17, a3);
-  TM3_DRAFT_U32(a1 + (4) * 4u) = v10;
-  if ( !v10 )
-    v7 = 0;
-  result = v7;
-  if ( !v7 )
-  {
-    v12 = 0;
-    v13 = a1;
-    do
-    {
-      v14 = TM3_DRAFT_U32(v13 + (1) * 4u);
-      if ( v14 )
-        sub_8004A570(v14);
-      ++v12;
-      (v13 += 4u);
+    uint32 locals[4] = {0u, 0u, 2949u, 0u};
+    uint32 address = TM3_DRAFT_LOCAL_ADDRESS(locals, sizeof(locals));
+    uint32 success = 1u;
+    uint32 index;
+    /* TODO Original unused vector padding and trailing local word are unspecified */
+    TM3_DRAFT_U32(links) = 0u;
+    for (index = 0u; index < 4u; ++index) {
+        uint32 dx = index < 2u ? 1024u : 0u - 1024u;
+        uint32 dz = index == 0u || index == 3u ? 1024u : 0u - 1024u;
+        TM3_DRAFT_U16(address) = TM3_DRAFT_U16(position) + dx;
+        TM3_DRAFT_U16(address + 2u) = TM3_DRAFT_U16(position + 2u);
+        TM3_DRAFT_U16(address + 4u) = TM3_DRAFT_U16(position + 4u) + dz;
+        uint32 object = sub_8004A294(16u, address, address + 8u, owner,
+            TM3_DRAFT_U32(address), TM3_DRAFT_U32(address + 4u),
+            TM3_DRAFT_U32(address + 8u), TM3_DRAFT_U32(address + 12u));
+        TM3_DRAFT_U32(links + 4u + 4u * index) = object;
+        if (object == 0u)
+            success = 0u;
     }
-    while ( v12 < 4 );
-    return 0;
-  }
-  return result;
+    if (success == 0u) {
+        for (index = 0u; index < 4u; ++index) {
+            uint32 object = TM3_DRAFT_U32(links + 4u + 4u * index);
+            if (object != 0u)
+                sub_8004A570(object);
+        }
+    }
+    return success;
 }
 
-#undef v15
-#undef v16
-#undef v17
-#undef v18
 
 /* Unverified decompiler-derived draft */
-uint32 sub_80031A10(uint32 a1)
+uint32 sub_80031A10(uint32 object)
 {
     FUNCTION_MARKER(0x80031A10u, "SCUS_942.49");
-    /* TODO Original signed wrap, guest pointers and unresolved ABI effects remain unverified */
-
-  int v2; 
-  sint16 v3; 
-  sint16 v4; 
-  int v5; 
-  int v6; 
-  int v7; 
-  int v8; 
-  int v9; 
-  int v10; 
-  int result; 
-  sint16 v12[4]; 
-  sint16 v13[4]; 
-  int v14; 
-  int v15; 
-  int v16; 
-  int v17; 
-  int v18; 
-  int v19; 
-
-  v2 = 682;
-  v3 = TM3_DRAFT_U16(a1 + 126);
-  v4 = TM3_DRAFT_U16(a1 + 132);
-  v13[0] = TM3_DRAFT_U16(a1 + 120);
-  v13[1] = v3;
-  v13[2] = v4;
-  v5 = TM3_DRAFT_I16(a1 + 18);
-  v6 = TM3_DRAFT_I16(a1 + 20);
-  v14 = TM3_DRAFT_I16(a1 + 16);
-  v15 = v5;
-  v16 = v6;
-  v7 = sub_80013A90(TM3_DRAFT_LOCAL_ADDRESS(&v14, sizeof(v14)), v13);
-  sub_80013FB4((int)&v14, v7 / 8, v13);
-  v8 = 0;
-  do
-  {
-    v17 = (768 * sub_8005AFF4(v2) + 2048) >> 12;
-    v18 = -1536;
-    v9 = sub_8005AF24(v2);
-    v2 += 682;
-    ++v8;
-    v19 = (768 * v9 + 2048) >> 12;
-    v12[0] = v17 + v14;
-    v12[2] = v19 + v16;
-    v12[1] = v18 + v15;
-    sub_8004A294(17, a1 + 8, (int)v12, v19 + v16, TM3_DRAFT_I32(v12), *(int *)&v12[2], TM3_DRAFT_I32(v13), *(int *)&v13[2]);
-  }
-  while ( v8 < 6 );
-  v10 = TM3_DRAFT_U32(a1 + 160);
-  result = sub_800470DC(v10);
-  if ( result )
-    return sub_80033E94(v10, TM3_DRAFT_U8(a1 + 327));
-  return result;
+    /* TODO Original padding halfwords remain uninitialized */
+    uint32 words[12];
+    uint32 local = TM3_DRAFT_LOCAL_ADDRESS(words, sizeof(words));
+    uint32 normal = local + 8u;
+    uint32 velocity = local + 16u;
+    TM3_DRAFT_U16(normal) = TM3_DRAFT_U16(object + 120u);
+    TM3_DRAFT_U16(normal + 2u) = TM3_DRAFT_U16(object + 126u);
+    TM3_DRAFT_U16(normal + 4u) = TM3_DRAFT_U16(object + 132u);
+    for (uint32 axis = 0u; axis < 3u; ++axis)
+        TM3_DRAFT_U32(velocity + 4u * axis) = (uint32)(sint32)TM3_DRAFT_I16(object + 16u + 2u * axis);
+    sint32 projection = (sint32)sub_80013A90(velocity, normal);
+    sub_80013FB4(velocity, (uint32)(projection / 8), normal);
+    uint32 angle = 682u;
+    for (uint32 index = 0u; index < 6u; ++index) {
+        uint32 sine = sub_8005AFF4(angle);
+        uint32 x = (uint32)((sint32)((sine * 768u) + 2048u) >> 12);
+        uint32 cosine = sub_8005AF24(angle);
+        uint32 z = (uint32)((sint32)((cosine * 768u) + 2048u) >> 12);
+        angle += 682u;
+        uint32 result_z = z + TM3_DRAFT_U32(velocity + 8u);
+        TM3_DRAFT_U16(local) = (uint16)(x + TM3_DRAFT_U32(velocity));
+        TM3_DRAFT_U16(local + 4u) = (uint16)result_z;
+        TM3_DRAFT_U16(local + 2u) = (uint16)(0u - 1536u + TM3_DRAFT_U32(velocity + 4u));
+        sub_8004A294(17u, object + 8u, local, result_z,
+                    TM3_DRAFT_U32(local), TM3_DRAFT_U32(local + 4u),
+                    TM3_DRAFT_U32(normal), TM3_DRAFT_U32(normal + 4u));
+    }
+    uint32 owner = TM3_DRAFT_U32(object + 160u);
+    uint32 result = sub_800470DC(owner);
+    if (result != 0u)
+        return sub_80033E94(owner, TM3_DRAFT_U8(object + 327u));
+    return result;
 }
 
 /* Unverified decompiler-derived draft */
@@ -233,138 +193,82 @@ LABEL_7:
 }
 
 /* Unverified decompiler-derived draft */
-uint32 sub_80028354(uint32 a1)
+uint32 sub_80028354(uint32 object)
 {
     FUNCTION_MARKER(0x80028354u, "SCUS_942.49");
-    /* TODO Original signed wrap, guest pointers and unresolved ABI effects remain unverified */
-
-  int v2; 
-  int v3; 
-  sint16 v4; 
-  sint16 v5; 
-  int v6; 
-  int v7; 
-  int v8; 
-  int v9; 
-  int v10; 
-  int v11; 
-  int v12; 
-  int v13; 
-  sint16 v14; 
-  int result; 
-  sint16 v16[4]; 
-
-  v2 = TM3_DRAFT_U32(a1 + 136);
-  v3 = TM3_DRAFT_U32(a1 + 268) - TM3_DRAFT_U32(a1 + 132);
-  v4 = TM3_DRAFT_U16(a1 + 128) + 1;
-  TM3_DRAFT_U16(a1 + 128) = v4;
-  TM3_DRAFT_U32(a1 + 268) = v3;
-  if ( v4 < v2 / 4 )
-    v5 = TM3_DRAFT_U16(a1 + 144);
-  else
-    v5 = TM3_DRAFT_U16(a1 + 146);
-  TM3_DRAFT_U16(a1 + 130) += v5;
-  v6 = TM3_DRAFT_I16(a1 + 252);
-  v7 = TM3_DRAFT_I16(a1 + 254);
-  v8 = TM3_DRAFT_U32(a1 + 300);
-  TM3_DRAFT_U32(a1 - 24) = TM3_DRAFT_I16(a1 + 130);
-  v9 = TM3_DRAFT_U32(a1 + 296);
-  TM3_DRAFT_U32(a1 + 300) = v8 + v7;
-  v10 = TM3_DRAFT_I16(a1 + 256);
-  TM3_DRAFT_U32(a1 + 296) = v9 + v6;
-  v11 = TM3_DRAFT_U32(a1 + 304) + v10;
-  v12 = TM3_DRAFT_U32(a1 + 300);
-  TM3_DRAFT_U16(a1 - 20) = TM3_DRAFT_U32(a1 + 296);
-  v13 = a1 - 20;
-  TM3_DRAFT_U32(a1 + 304) = v11;
-  TM3_DRAFT_U16(v13 + 4) = v11;
-  TM3_DRAFT_U16(v13 + 2) = v12;
-  if ( TM3_DRAFT_U32(a1 + 136) < TM3_DRAFT_I16(a1 + 128) )
-  {
-    sub_80028A3C(a1 + 228);
-    return sub_8004A570(a1);
-  }
-  if ( TM3_DRAFT_U16(a1 + 258) )
-  {
-    v14 = TM3_DRAFT_U16(v13 + 2);
-    v16[0] = TM3_DRAFT_U16(a1 - 20);
-    v16[1] = v14;
-    v16[2] = v11;
-    sub_80028A3C(a1 + 228);
-    result = sub_800288AC((uint32)(a1 + 228), v16, a1);
-    if ( result )
-      return result;
-    return sub_8004A570(a1);
-  }
-  sub_80028B0C((uint32)(a1 + 228));
-  return 0u; /* Return register is not used by the caller */
+    sint16 point[4];
+    sint16 age = (sint16)(TM3_DRAFT_U16(object + 128u) + 1u);
+    sint32 lifetime = TM3_DRAFT_I32(object + 136u);
+    uint32 component, position, result;
+    TM3_DRAFT_U16(object + 128u) = (uint16)age;
+    TM3_DRAFT_U32(object + 268u) -= TM3_DRAFT_U32(object + 132u);
+    TM3_DRAFT_U16(object + 130u) = (uint16)(TM3_DRAFT_U16(object + 130u) + TM3_DRAFT_U16(object + ((sint32)age < lifetime / 4 ? 144u : 146u)));
+    TM3_DRAFT_U32(object - 24u) = (uint32)(sint32)TM3_DRAFT_I16(object + 130u);
+    for (component = 0u; component < 3u; ++component)
+    {
+        position = TM3_DRAFT_U32(object + 296u + component * 4u) + (uint32)(sint32)TM3_DRAFT_I16(object + 252u + component * 2u);
+        TM3_DRAFT_U32(object + 296u + component * 4u) = position;
+        TM3_DRAFT_U16(object - 20u + component * 2u) = (uint16)position;
+    }
+    if (TM3_DRAFT_I32(object + 136u) < (sint32)TM3_DRAFT_I16(object + 128u))
+    {
+        sub_80028A3C(object + 228u);
+        return sub_8004A570(object);
+    }
+    if (TM3_DRAFT_I16(object + 258u))
+    {
+        for (component = 0u; component < 3u; ++component)
+            point[component] = TM3_DRAFT_I16(object - 20u + component * 2u);
+        sub_80028A3C(object + 228u);
+        result = sub_800288AC(object + 228u, TM3_DRAFT_LOCAL_ADDRESS(point, sizeof(point)), object);
+        return result ? result : sub_8004A570(object);
+    }
+    sub_80028B0C(object + 228u);
+    return 0u; /* The void helper return carrier is unused by the update caller */
 }
 
 /* Unverified decompiler-derived draft */
-uint32 sub_80017A48(uint32 a1)
+uint32 sub_80017A48(uint32 object)
 {
-    FUNCTION_MARKER(0x80017A48u, "SCUS_942.49");
-    /* TODO Original signed wrap, guest pointers and unresolved ABI effects remain unverified */
+    sint32 index;
+    sint32 best = -1;
+    sint32 minimum = 999999;
+    uint32 entry;
+    uint32 result = TM3_DRAFT_U32(0x800896A0u);
+    if (!result)
+        return result;
 
-  int result; 
-  int v3; 
-  int v4; 
-  int v5; 
-  int v6; 
-  uint32 v7; 
-  int v8; 
-  int v9; 
-  int v10; 
-  int v11; 
-  int v12; 
-  signed int v13; 
-  uint32 v14; 
-  int v15; 
-
-  result = dword_800896A0;
-  if ( dword_800896A0 )
-  {
-    v3 = -1;
-    v4 = HIWORD(dword_80089EF8) - 1;
-    v5 = 999999;
-    if ( v4 >= 0 )
+    index = (sint32)TM3_DRAFT_U16(0x80089EFAu) - 1;
+    for (; index >= 0; --index)
     {
-      v6 = 28 * v4;
-      do
-      {
-        v7 = (uint32)(v6 + dword_80089F00);
-        v8 = 40 * TM3_DRAFT_U8(v6 + dword_80089F00 + 10) - 2146918384;
-        v9 = TM3_DRAFT_U32(a1 + (9) * 4u);
-        if ( v9 < TM3_DRAFT_I16(v8 + 16) && v9 >= TM3_DRAFT_I16(v8 + 18) )
+        uint32 node = TM3_DRAFT_U32(0x80089F00u) + 28u * (uint32)index;
+        uint32 area = 0x8008A010u + 40u * TM3_DRAFT_U8(node + 10u);
+        sint32 height = TM3_DRAFT_I32(object + 36u);
+        if (height < TM3_DRAFT_I16(area + 16u) && height >= TM3_DRAFT_I16(area + 18u))
         {
-          v10 = TM3_DRAFT_I16(v7) - TM3_DRAFT_U32(a1 + (8) * 4u);
-          v11 = v10 * v10;
-          v12 = TM3_DRAFT_I16(v7 + (1) * 2u) - TM3_DRAFT_U32(a1 + (10) * 4u);
-          v13 = sub_8005B124(v11 + v12 * v12);
-          if ( v13 < v5 )
-          {
-            v5 = v13;
-            v3 = v4;
-          }
+            uint32 x = (uint32)(sint32)TM3_DRAFT_I16(node) - TM3_DRAFT_U32(object + 32u);
+            uint32 z = (uint32)(sint32)TM3_DRAFT_I16(node + 2u) - TM3_DRAFT_U32(object + 40u);
+            sint32 distance = (sint32)sub_8005B124(x * x + z * z);
+            if (distance < minimum)
+            {
+                minimum = distance;
+                best = index;
+            }
         }
-        --v4;
-        v6 -= 28;
-      }
-      while ( v4 >= 0 );
     }
-    result = -2146893824;
-    if ( v3 >= 0 )
+    result = 0x80090000u;
+    if (best >= 0)
     {
-      result = (int)dword_80089F10;
-      v14 = (0x80089F10u + (2 * TM3_DRAFT_U32(0x800896A4u + (1) * 4u)) * 4u);
-      v15 = TM3_DRAFT_U32(0x800896A4u + (1) * 4u) + 1;
-      TM3_DRAFT_U16((v14 + (2) * 4u)) = v3;
-      TM3_DRAFT_I32(v14) = (int)a1;
-      TM3_DRAFT_U32(0x800896A4u + (1) * 4u) = v15;
+        uint32 count = TM3_DRAFT_U32(0x800896A8u);
+        result = 0x80089F10u;
+        entry = result + 8u * count;
+        TM3_DRAFT_U16(entry + 4u) = (uint16)best;
+        TM3_DRAFT_U32(entry) = object;
+        TM3_DRAFT_U32(0x800896A8u) = count + 1u;
     }
-  }
-  return result;
+    return result;
 }
+
 
 /* Unverified decompiler-derived draft */
 uint32 sub_80030CD8(uint32 a1, uint32 a2)
@@ -479,47 +383,31 @@ uint32 sub_80046944(uint32 a1)
 }
 
 /* Unverified decompiler-derived draft */
-uint32 sub_8003163C(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, uint32 a6, uint32 a7, uint32 a8, uint32 a9, uint32 a10, uint32 a11, uint32 a12, uint32 a13)
+uint32 sub_8003163C(uint32 object, uint32 ordering_table, uint32 cursor, uint32 end, uint32 view)
 {
-  uint32 tail_result;
+    uint32 matrix[8];
+    sint16 vertices[4][4] = {
+        {-70, 0, -400, 0}, {70, 0, -400, 0},
+        {-70, 0, 0, 0}, {70, 0, 0, 0}
+    };
+    uint32 matrix_address = TM3_DRAFT_LOCAL_ADDRESS(matrix, sizeof(matrix));
+    uint32 vertices_address = TM3_DRAFT_LOCAL_ADDRESS(vertices, sizeof(vertices));
+    uint32 geometry = TM3_DRAFT_U32(0x80089D14u);
+    uint32 texture, result;
     FUNCTION_MARKER(0x8003163Cu, "SCUS_942.49");
-    /* TODO Original signed wrap, guest pointers and unresolved ABI effects remain unverified */
-
-  int v17; 
-  int v18; 
-  int v20; 
-  int v21; 
-  int v22; 
-  int v23; 
-  int v24; 
-  int v25; 
-  int v26; 
-  unsigned int v27; 
-  int v28; 
-  unsigned int v29; 
-  sint16 v30[16]; 
-
-  sub_8002A190(a1 + 40, TM3_DRAFT_I16(dword_80089D14 + 74), TM3_DRAFT_I16(dword_80089D14 + 76), -2139062144, TM3_DRAFT_U32(dword_80089D14 + 80), a2, a3, 1, a4);
-  sub_8005B8D4();
-  sub_8005B614((uint32)a9, (uint32)a1, TM3_DRAFT_LOCAL_ADDRESS(&v23, sizeof(v23)));
-  sub_8005BD24(TM3_DRAFT_LOCAL_ADDRESS(&v23, sizeof(v23)));
-  sub_8005BDB4(TM3_DRAFT_LOCAL_ADDRESS(&v23, sizeof(v23)));
-  v17 = TM3_DRAFT_U32(TM3_DRAFT_U32(a1 + 64) + 4 * TM3_DRAFT_U16(a1 + 60) + 8);
-  v30[8] = -70;
-  v30[0] = -70;
-  v30[12] = 70;
-  v30[4] = 70;
-  v30[6] = -400;
-  v30[2] = -400;
-  v30[14] = 0;
-  v30[10] = 0;
-  v30[13] = 0;
-  v30[9] = 0;
-  v30[5] = 0;
-  v30[1] = 0;
-  tail_result = sub_8002A72C((int)v30, 8421504, v17, a2, a3, 1, a4, 64);
-  sub_8005B978();
-  return tail_result;
+    sub_8002A190(object + 40u, (uint32)(sint32)TM3_DRAFT_I16(geometry + 74u),
+        (uint32)(sint32)TM3_DRAFT_I16(geometry + 76u), 0x80808080u,
+        TM3_DRAFT_U32(geometry + 80u), ordering_table, cursor, 1u, end);
+    sub_8005B8D4();
+    sub_8005B614(view, object, matrix_address);
+    sub_8005BD24(matrix_address);
+    sub_8005BDB4(matrix_address);
+    texture = TM3_DRAFT_U32(TM3_DRAFT_U32(object + 64u) +
+        4u * TM3_DRAFT_U16(object + 60u) + 8u);
+    result = sub_8002A72C(vertices_address, 0x808080u, texture, ordering_table, cursor, 1u, end, 64u);
+    sub_8005B978();
+    /* TODO Original PopMatrix return register is unspecified and ignored by caller */
+    return result;
 }
 
 /* Unverified decompiler-derived draft */
@@ -598,7 +486,7 @@ void sub_8004A734()
   ida_V0 = tm3_draft_gte_read_data(25u);
   ida_A1 = tm3_draft_gte_read_data(26u);
   ida_A2 = tm3_draft_gte_read_data(27u);
-            if ( ida_V0 + ida_A1 + ida_A2 < (v9 + v6) * (v9 + v6) )
+            if ( (sint32)(ida_V0 + ida_A1 + ida_A2) < (sint32)(((uint32)v9 + (uint32)v6) * ((uint32)v9 + (uint32)v6)) )
               sub_8004A6AC((uint32)j, (uint32)v2);
           }
           v2 = TM3_DRAFT_U32(v2 + 16);
@@ -856,54 +744,47 @@ LABEL_5:
 }
 
 /* Unverified decompiler-derived draft */
-uint32 sub_80028C74(uint32 a1, uint32 a2)
+uint32 sub_80028C74(uint32 object, uint32 parameters)
 {
+    uint32 record, index;
+    uint16 z, y, height;
+    uint8 flags, appearance;
+    sint16 radius;
     FUNCTION_MARKER(0x80028C74u, "SCUS_942.49");
-    /* TODO Original signed wrap, guest pointers and unresolved ABI effects remain unverified */
 
-  int v3; 
-  sint16 v4; 
-  sint16 v5; 
-  int v6; 
-  sint16 v7; 
-  int v8; 
-  int v10; 
-  int vars0; 
-  int _1C; 
-
-  v3 = TM3_DRAFT_I32(a2);
-  TM3_DRAFT_U16(a1) = TM3_DRAFT_U16(TM3_DRAFT_I32(a2) + 4);
-  TM3_DRAFT_U16(a1 + 2) = TM3_DRAFT_U16(v3 + 6);
-  v4 = TM3_DRAFT_U16(v3 + 8);
-  v5 = TM3_DRAFT_U16(a1 + 2);
-  TM3_DRAFT_U16(a1 - 20) = TM3_DRAFT_U16(a1);
-  v6 = a1 - 20;
-  TM3_DRAFT_U16(a1 + 4) = v4;
-  TM3_DRAFT_U16(v6 + 2) = v5;
-  TM3_DRAFT_U16(v6 + 4) = v4;
-  TM3_DRAFT_U8(a1 + 6) = 0;
-  LOBYTE(v5) = TM3_DRAFT_U8(v3 + 13);
-  TM3_DRAFT_U8(a1 + 10) = 10;
-  TM3_DRAFT_U8(a1 + 11) = 10;
-  TM3_DRAFT_U8(a1 + 8) = 0;
-  TM3_DRAFT_U8(a1 + 9) = 0;
-  TM3_DRAFT_U8(a1 + 13) = 20;
-  TM3_DRAFT_U8(a1 + 7) = v5;
-  TM3_DRAFT_U32(a1 + 24) = dword_80089CF0 + 104 * TM3_DRAFT_U8(v3 + 12);
-  TM3_DRAFT_U16(a1 + 14) = TM3_DRAFT_U16(v3 + 16);
-  v7 = TM3_DRAFT_U16(v3 + 18);
-  TM3_DRAFT_U8(a1 + 18) = 0x80;
-  TM3_DRAFT_U8(a1 + 19) = 0x80;
-  TM3_DRAFT_U8(a1 + 20) = 0x80;
-  TM3_DRAFT_U8(a1 + 21) = 0;
-  TM3_DRAFT_U16(a1 + 16) = v7;
-  v8 = TM3_DRAFT_U16(a1 + 14) << 16;
-  TM3_DRAFT_U8(a1 + 12) = TM3_DRAFT_U8(v3 + 14);
-  TM3_DRAFT_U32(a1 - 24) = (int)((v8 >> 16) + ((unsigned int)v8 >> 31)) >> 1;
-  sub_8004A294(22, TM3_DRAFT_U8(a1 + 11), 5, a1, 1400);
-  return 1;
+    record = TM3_DRAFT_U32(parameters);
+    TM3_DRAFT_U16(object) = TM3_DRAFT_U16(record + 4u);
+    TM3_DRAFT_U16(object + 2u) = TM3_DRAFT_U16(record + 6u);
+    z = TM3_DRAFT_U16(record + 8u);
+    y = TM3_DRAFT_U16(object + 2u);
+    TM3_DRAFT_U16(object - 20u) = TM3_DRAFT_U16(object);
+    TM3_DRAFT_U16(object + 4u) = z;
+    TM3_DRAFT_U16(object - 18u) = y;
+    TM3_DRAFT_U16(object - 16u) = z;
+    TM3_DRAFT_U8(object + 6u) = 0;
+    flags = TM3_DRAFT_U8(record + 13u);
+    TM3_DRAFT_U8(object + 10u) = 10;
+    TM3_DRAFT_U8(object + 11u) = 10;
+    TM3_DRAFT_U8(object + 8u) = 0;
+    TM3_DRAFT_U8(object + 9u) = 0;
+    TM3_DRAFT_U8(object + 13u) = 20;
+    TM3_DRAFT_U8(object + 7u) = flags;
+    index = TM3_DRAFT_U8(record + 12u);
+    TM3_DRAFT_U32(object + 24u) = TM3_DRAFT_U32(0x80089CF0u) + 104u * index;
+    TM3_DRAFT_U16(object + 14u) = TM3_DRAFT_U16(record + 16u);
+    height = TM3_DRAFT_U16(record + 18u);
+    TM3_DRAFT_U8(object + 18u) = 128;
+    TM3_DRAFT_U8(object + 19u) = 128;
+    TM3_DRAFT_U8(object + 20u) = 128;
+    TM3_DRAFT_U8(object + 21u) = 0;
+    TM3_DRAFT_U16(object + 16u) = height;
+    appearance = TM3_DRAFT_U8(record + 14u);
+    radius = TM3_DRAFT_I16(object + 14u);
+    TM3_DRAFT_U8(object + 12u) = appearance;
+    TM3_DRAFT_U32(object - 24u) = (uint32)((sint32)radius / 2);
+    sub_8004A294(22u, TM3_DRAFT_U8(object + 11u), 5u, object, 1400u);
+    return 1;
 }
-
 /* Unverified decompiler-derived draft */
 uint32 sub_8004B75C(uint32 a1, uint32 a2)
 {
@@ -975,32 +856,29 @@ uint32 sub_80032C64(uint32 a1, uint32 a2)
 }
 
 /* Unverified decompiler-derived draft */
-uint32 sub_80031104(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, uint32 a6, uint32 a7, uint32 a8, uint32 a9, uint32 a10, uint32 a11, uint32 a12, uint32 a13)
+uint32 sub_80031104(uint32 object, uint32 ordering_table, uint32 cursor, uint32 end, uint32 view)
 {
+    uint32 matrix[8];
+    uint32 matrix_address = TM3_DRAFT_LOCAL_ADDRESS(matrix, sizeof(matrix));
+    uint32 geometry, result;
     FUNCTION_MARKER(0x80031104u, "SCUS_942.49");
-    /* TODO Original signed wrap, guest pointers and unresolved ABI effects remain unverified */
-
-  int result; 
-  int v18; 
-  int v19; 
-  int v20[8]; 
-
-  if ( TM3_DRAFT_U8(a1 + 321) == 1 )
-    sub_8002E2D4(a1, a2, a3, a4);
-  result = TM3_DRAFT_U16(a1 + 110);
-  if ( !TM3_DRAFT_U16(a1 + 110) )
-  {
+    if (TM3_DRAFT_U8(object + 321u) == 1u)
+        sub_8002E2D4(object, ordering_table, cursor, end);
+    result = TM3_DRAFT_U16(object + 110u);
+    if (result != 0u)
+        return result;
     sub_8005B8D4();
-    sub_8005B614((uint32)a9, (uint32)(a1 + 116), v20);
-    sub_8005BD24(v20);
-    sub_8005BDB4(v20);
-    sub_80029660((uint32)(dword_80089D14 + 32), TM3_DRAFT_U32(dword_80089D14 + 912), TM3_DRAFT_U32(dword_80089D14 + 916), 0, a2, a3, a4);
+    sub_8005B614(view, object + 116u, matrix_address);
+    sub_8005BD24(matrix_address);
+    sub_8005BDB4(matrix_address);
+    geometry = TM3_DRAFT_U32(0x80089D14u);
+    sub_80029660(geometry + 32u, TM3_DRAFT_U32(geometry + 912u),
+        TM3_DRAFT_U32(geometry + 916u), 0u, ordering_table, cursor, end);
     sub_8005B978();
-    result = TM3_DRAFT_U8(a1 + 335);
-    if ( TM3_DRAFT_U8(a1 + 335) )
-      return sub_8002E6CC(a1, a2, a3, a4);
-  }
-  return result;
+    result = TM3_DRAFT_U8(object + 335u);
+    if (result != 0u)
+        return sub_8002E6CC(object, ordering_table, cursor, end);
+    return result;
 }
 
 /* Unverified decompiler-derived draft */
@@ -1506,59 +1384,41 @@ void sub_8004A410(uint32 a1)
 }
 
 /* Unverified decompiler-derived draft */
-uint32 sub_8002F2A8(uint32 a1)
+uint32 sub_8002F2A8(uint32 object)
 {
     FUNCTION_MARKER(0x8002F2A8u, "SCUS_942.49");
-    /* TODO Original signed wrap, guest pointers and unresolved ABI effects remain unverified */
-
-  int v3; 
-  int v4; 
-  int v5; 
-  int v6; 
-  int v7; 
-  int v8; 
-  int vars0; 
-  int vars4; 
-  int vars8; 
-
-  sub_800276AC(a1, 0, 1200, 0, (int)&v5, -1);
-  LOWORD(v6) = 0;
-  sub_800276AC(a1, 1, 1200, 0, (int)&v5, -1);
-  return sub_8004A294(5, a1, (int)&v7, (int)&v8);
+    uint32 parameters[4];
+    uint32 address = TM3_DRAFT_LOCAL_ADDRESS(parameters, sizeof(parameters));
+    TM3_DRAFT_U32(address) = TM3_DRAFT_U32(0x80089760u);
+    TM3_DRAFT_U32(address + 4u) = TM3_DRAFT_U32(0x80089764u);
+    TM3_DRAFT_U32(address + 8u) = 32u;
+    TM3_DRAFT_U32(address + 12u) = 36u;
+    sub_800276AC(object, 0u, 1200u, 0u, address, 0xFFFFFFFFu);
+    TM3_DRAFT_U16(address) = 0u;
+    TM3_DRAFT_U16(address + 2u) = 0u;
+    TM3_DRAFT_U16(address + 4u) = 0u;
+    sub_800276AC(object, 1u, 1200u, 0u, address, 0xFFFFFFFFu);
+    return sub_8004A294(5u, object, address + 8u, address + 12u,
+        address, 0xFFFFFFFFu, TM3_DRAFT_U32(address), TM3_DRAFT_U32(address + 4u));
 }
 
+
 /* Unverified decompiler-derived draft */
-uint32 sub_80028E84(uint32 a1, uint32 a2, uint32 a3, uint32 a4)
+uint32 sub_80028E84(uint32 object, uint32 ordering_table, uint32 cursor, uint32 end)
 {
+    sint16 position[4];
+    uint32 animation = TM3_DRAFT_U32(object + 24u);
+    uint32 frame = TM3_DRAFT_U8(object + 21u);
+    sint32 height = TM3_DRAFT_I16(object + 16u);
     FUNCTION_MARKER(0x80028E84u, "SCUS_942.49");
-    /* TODO Original signed wrap, guest pointers and unresolved ABI effects remain unverified */
-
-  uint32 v5; 
-  int v6; 
-  int result; 
-  int v8; 
-  sint16 v9; 
-  sint16 v10; 
-  int v11; 
-  int v12; 
-  int v13; 
-  unsigned int vars0; 
-
-  v5 = TM3_DRAFT_U32(a1 + 24);
-  v6 = TM3_DRAFT_U8(a1 + 21);
-  result = v6 < TM3_DRAFT_I16(v5);
-  if ( v6 < TM3_DRAFT_I16(v5) )
-  {
-    v8 = TM3_DRAFT_U32(v5 + (2 * v6 + 4) * 2u);
-    v9 = TM3_DRAFT_U16(a1 - 20 + 2);
-    v10 = TM3_DRAFT_U16(a1 - 20 + 4);
-    LOWORD(v12) = TM3_DRAFT_U16(a1 - 20);
-    HIWORD(v12) = v9;
-    LOWORD(v13) = v10;
-    HIWORD(v12) = v9 - TM3_DRAFT_I16(a1 + 16) / 2;
-    return sub_8002A190((int)&v12, TM3_DRAFT_I16(a1 + 14), TM3_DRAFT_I16(a1 + 16), 3158064, v8, a2, a3, 1, a4);
-  }
-  return result;
+    if ((sint32)frame >= TM3_DRAFT_I16(animation))
+        return 0u;
+    position[0] = TM3_DRAFT_I16(object - 20u);
+    position[1] = (sint16)((uint32)TM3_DRAFT_U16(object - 18u) - (uint32)(height / 2));
+    position[2] = TM3_DRAFT_I16(object - 16u);
+    return sub_8002A190(TM3_DRAFT_LOCAL_ADDRESS(position, sizeof(position)),
+        (uint32)(sint32)TM3_DRAFT_I16(object + 14u), (uint32)height, 0x303030u,
+        TM3_DRAFT_U32(animation + 8u + frame * 4u), ordering_table, cursor, 1u, end);
 }
 
 /* Unverified decompiler-derived draft */
@@ -1586,25 +1446,19 @@ uint32 sub_80039EC0(uint32 a1, uint32 a2)
 }
 
 /* Unverified decompiler-derived draft */
-uint32 sub_80032118(uint32 a1, uint32 a2)
+uint32 sub_80032118(uint32 object, uint32 mode)
 {
     FUNCTION_MARKER(0x80032118u, "SCUS_942.49");
-    /* TODO Original signed wrap, guest pointers and unresolved ABI effects remain unverified */
-
-  int v4; 
-  uint32 v5; 
-  int v7; 
-  int v8; 
-  int v9; 
-  sint16 v10[4]; 
-  char v11[32]; 
-
-  v4 = sub_8002E964(a2, a1, (int)v11);
-  sub_80026B88(a1, 2, v10);
-  v5 = sub_8004A294(8, 15, 15, a1, v4, (int)v10, (int)v11, a2);
-  if ( v5 )
-    TM3_DRAFT_I32(v5 + (21) * 4u) = 0;
-  return sub_8004A294(22, TM3_DRAFT_U8(TM3_DRAFT_U32(a1 + 4040) + 55), 5, a1, 1200);
+    sint16 position[4];
+    sint32 matrix[8];
+    uint32 matrix_address = TM3_DRAFT_LOCAL_ADDRESS(matrix, sizeof(matrix));
+    uint32 position_address = TM3_DRAFT_LOCAL_ADDRESS(position, sizeof(position));
+    uint32 target = sub_8002E964(mode, object, matrix_address);
+    sub_80026B88(object, 2u, position_address);
+    uint32 projectile = sub_8004A294(8u, 15u, 15u, object, target, position_address, matrix_address, mode);
+    if (projectile != 0u) TM3_DRAFT_U32(projectile + 84u) = 0u;
+    return sub_8004A294(22u, TM3_DRAFT_U8(TM3_DRAFT_U32(object + 4040u) + 55u),
+                       5u, object, 1200u, position_address, matrix_address, mode);
 }
 
 /* Unverified decompiler-derived draft */
@@ -1656,44 +1510,40 @@ LABEL_12:
 }
 
 /* Unverified decompiler-derived draft */
-uint32 sub_800384BC(uint32 a1, uint32 a2)
+uint32 sub_800384BC(uint32 object, uint32 parameters)
 {
     FUNCTION_MARKER(0x800384BCu, "SCUS_942.49");
-    /* TODO Original signed wrap, guest pointers and unresolved ABI effects remain unverified */
+    const uint32 position = TM3_DRAFT_U32(parameters);
+    const uint32 axis = TM3_DRAFT_U32(parameters + 4u);
+    const uint32 distance = TM3_DRAFT_U32(parameters + 8u);
+    const uint32 subtype = TM3_DRAFT_U32(parameters + 12u);
+    uint32 first, second, color, x, y, z;
 
-  int v2; 
-  uint32 v3; 
-  uint32 v4; 
-  int v5; 
-  int v6; 
-  char v7; 
-  unsigned int result; 
-  unsigned int v9; 
-  unsigned int v10; 
+    sub_80038444(object, position, axis, distance);
+    first = TM3_DRAFT_U32(object + 4u);
+    second = TM3_DRAFT_U32(object + 8u);
+    TM3_DRAFT_U32(object + 20u) = first;
+    TM3_DRAFT_U32(object + 24u) = second;
+    first = TM3_DRAFT_U32(object + 12u);
+    second = TM3_DRAFT_U32(object + 16u);
+    TM3_DRAFT_U32(object + 28u) = first;
+    TM3_DRAFT_U32(object + 32u) = second;
+    TM3_DRAFT_U32(object) = 0u;
 
-  v2 = a1;
-  v3 = TM3_DRAFT_U32(a2);
-  v4 = TM3_DRAFT_I32(a2 + (3) * 4u);
-  sub_80038444(a1, TM3_DRAFT_I32(a2), TM3_DRAFT_I32(a2 + (1) * 4u), TM3_DRAFT_I32(a2 + (2) * 4u));
-  v5 = TM3_DRAFT_U32(v2 + 8);
-  TM3_DRAFT_U32(v2 + 20) = TM3_DRAFT_U32(v2 + 4);
-  TM3_DRAFT_U32(v2 + 24) = v5;
-  v6 = TM3_DRAFT_U32(v2 + 16);
-  TM3_DRAFT_U32(v2 + 28) = TM3_DRAFT_U32(v2 + 12);
-  TM3_DRAFT_U32(v2 + 32) = v6;
-  TM3_DRAFT_U32(v2) = 0;
-  v7 = sub_80012388(TM3_DRAFT_U32(v3), TM3_DRAFT_U32(v3 + (2) * 4u));
-  TM3_DRAFT_U8(v2 + 36) = 17 * v7;
-  TM3_DRAFT_U8(v2 + 37) = 17 * v7;
-  TM3_DRAFT_U8(v2 + 38) = (_BYTE)v4;
-  result = TM3_DRAFT_U32(v3);
-  v9 = TM3_DRAFT_U32(v3 + (1) * 4u);
-  v10 = TM3_DRAFT_U32(v3 + (2) * 4u);
-  TM3_DRAFT_U16(v2 - 20) = TM3_DRAFT_U32(v3);
-  v2 -= 20;
-  TM3_DRAFT_U16(v2 + 2) = v9;
-  TM3_DRAFT_U16(v2 + 4) = v10;
-  return result;
+    color = sub_80012388(TM3_DRAFT_U32(position),
+                         TM3_DRAFT_U32(position + 8u));
+    color = (color << 4u) + color;
+    TM3_DRAFT_U8(object + 36u) = (uint8)color;
+    TM3_DRAFT_U8(object + 37u) = (uint8)color;
+    TM3_DRAFT_U8(object + 38u) = (uint8)subtype;
+
+    x = TM3_DRAFT_U32(position);
+    y = TM3_DRAFT_U32(position + 4u);
+    z = TM3_DRAFT_U32(position + 8u);
+    TM3_DRAFT_U16(object - 20u) = (uint16)x;
+    TM3_DRAFT_U16(object - 18u) = (uint16)y;
+    TM3_DRAFT_U16(object - 16u) = (uint16)z;
+    return x;
 }
 
 /* Unverified decompiler-derived draft */
@@ -1718,26 +1568,27 @@ uint32 sub_80031DFC(uint32 a1, uint32 a2)
 /* Unverified decompiler-derived draft */
 uint32 sub_80038398(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5)
 {
+    uint32 x, y, z, distance, half;
     FUNCTION_MARKER(0x80038398u, "SCUS_942.49");
-    /* TODO Original signed wrap, guest pointers and unresolved ABI effects remain unverified */
 
-  int v16; 
-  int v17; 
-  int v18; 
-  int v19; 
+    x = TM3_DRAFT_U32(a3);
+    y = TM3_DRAFT_U32(a3 + 4u);
+    z = TM3_DRAFT_U32(a3 + 8u);
+    half = (uint32)((sint32)(a5 + (a5 >> 31u)) >> 1u);
+    TM3_DRAFT_U16(a1) = (uint16)x;
+    TM3_DRAFT_U16(a1 + 2u) = (uint16)y;
+    TM3_DRAFT_U16(a1 + 4u) = (uint16)z;
+    sub_8001477C(a1, a4, half, 12u);
 
-  v16 = TM3_DRAFT_U32(a3 + (1) * 4u);
-  v17 = TM3_DRAFT_U32(a3 + (2) * 4u);
-  TM3_DRAFT_U16(a1) = TM3_DRAFT_U32(a3);
-  TM3_DRAFT_U16(a1 + (1) * 2u) = v16;
-  TM3_DRAFT_U16(a1 + (2) * 2u) = v17;
-  sub_8001477C(a1, a4, a5 / 2, 12);
-  v18 = TM3_DRAFT_U32(a3 + (1) * 4u);
-  v19 = TM3_DRAFT_U32(a3 + (2) * 4u);
-  TM3_DRAFT_U16(a2) = TM3_DRAFT_U32(a3);
-  TM3_DRAFT_U16(a2 + (1) * 2u) = v18;
-  TM3_DRAFT_U16(a2 + (2) * 2u) = v19;
-  return sub_8001477C(a2, a4, ((a5 > 0) - a5) >> 1, 12);
+    distance = 0u - a5;
+    half = (uint32)((sint32)(distance + (distance >> 31u)) >> 1u);
+    x = TM3_DRAFT_U32(a3);
+    y = TM3_DRAFT_U32(a3 + 4u);
+    z = TM3_DRAFT_U32(a3 + 8u);
+    TM3_DRAFT_U16(a2) = (uint16)x;
+    TM3_DRAFT_U16(a2 + 2u) = (uint16)y;
+    TM3_DRAFT_U16(a2 + 4u) = (uint16)z;
+    return sub_8001477C(a2, a4, half, 12u);
 }
 
 /* Unverified decompiler-derived draft */
@@ -1746,13 +1597,17 @@ uint32 sub_80033754(uint32 a1, uint32 a2, uint32 a3)
     FUNCTION_MARKER(0x80033754u, "SCUS_942.49");
     /* TODO Original signed wrap, guest pointers and unresolved ABI effects remain unverified */
 
-  int v6; 
-  sint16 v8[4]; 
-  char v9[32]; 
+  uint32 v6;
+  sint16 v8[4];
+  uint32 v9[8];
+  uint32 point_address = TM3_DRAFT_LOCAL_ADDRESS(v8, sizeof(v8));
+  uint32 matrix_address = TM3_DRAFT_LOCAL_ADDRESS(v9, sizeof(v9));
 
-  v6 = sub_8002E964(a3, a1, (int)v9);
-  sub_80026B88(a1, 2, v8);
-  return sub_8004A294(8, a2, TM3_DRAFT_I16(a1 + 16 * a2 + 4124), a1, v6, (int)v8, (int)v9, a3);
+  v6 = sub_8002E964(a3, a1, matrix_address);
+  sub_80026B88(a1, 2u, point_address);
+  return sub_8004A294(8u, a2,
+      (uint32)(sint32)TM3_DRAFT_I16(a1 + 16u * a2 + 4124u),
+      a1, v6, point_address, matrix_address, a3);
 }
 
 /* Unverified decompiler-derived draft */
@@ -1796,31 +1651,19 @@ uint32 sub_80027A58(uint32 a1)
 /* Unverified decompiler-derived draft */
 uint32 sub_8001498C(uint32 a1, uint32 a2, uint32 a3, uint32 a4)
 {
-    FUNCTION_MARKER(0x8001498Cu, "SCUS_942.49");
-    /* TODO Original signed wrap, guest pointers and unresolved ABI effects remain unverified */
-
-  int result; 
-  char v5; 
-  int v6; 
-  int v7; 
-  int v8; 
-  int v9; 
-
-  result = 32 - a4;
-  v5 = a4 - 1;
-  v6 = TM3_DRAFT_I32(a2 + (1) * 4u);
-  v7 = TM3_DRAFT_I32(a2 + (2) * 4u);
-  v8 = TM3_DRAFT_U32(a1 + (1) * 4u);
-  v9 = TM3_DRAFT_U32(a1 + (2) * 4u);
-  TM3_DRAFT_U32(a1) += (((unsigned int)(TM3_DRAFT_I32(a2) * a3) >> v5 >> 1) | ((uint64)(TM3_DRAFT_I32(a2) * (uint64)a3) >> 32 << result))
-       + (((unsigned int)(TM3_DRAFT_I32(a2) * a3) >> v5) & 1);
-  TM3_DRAFT_U32(a1 + (1) * 4u) = (((unsigned int)(v6 * a3) >> v5 >> 1) | ((uint64)(v6 * (uint64)a3) >> 32 << result))
-        + (((unsigned int)(v6 * a3) >> v5) & 1)
-        + v8;
-  TM3_DRAFT_U32(a1 + (2) * 4u) = (((unsigned int)(v7 * a3) >> v5 >> 1) | ((uint64)(v7 * (uint64)a3) >> 32 << result))
-        + (((unsigned int)(v7 * a3) >> v5) & 1)
-        + v9;
-  return result;
+  sint32 input[3];
+  uint32 previous[3], i, high_shift=32u-a4, low_shift=(a4-1u)&31u;
+  FUNCTION_MARKER(0x8001498Cu, "SCUS_942.49");
+  for(i=0u;i<3u;++i) input[i]=TM3_DRAFT_I32(a2+4u*i);
+  for(i=0u;i<3u;++i) previous[i]=TM3_DRAFT_U32(a1+4u*i);
+  for(i=0u;i<3u;++i)
+  {
+    sint64 product=(sint64)input[i]*(sint32)a3;
+    uint32 low=(uint32)product >> low_shift;
+    uint32 high=(uint32)((uint64)product >> 32);
+    TM3_DRAFT_U32(a1+4u*i)=((low>>1u)|(high<<(high_shift&31u)))+(low&1u)+previous[i];
+  }
+  return high_shift;
 }
 
 /* Unverified decompiler-derived draft */

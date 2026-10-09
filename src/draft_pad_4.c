@@ -15,8 +15,7 @@ uint32 sub_8001DDD8(uint32 a1)
     uint32 s1; /* TODO: Review undefined incoming or temporary value */
     uint32 s2; /* TODO: Review undefined incoming or temporary value */
     uint32 hi, lo;
-    uint8 local_bytes[128]; /* Required local storage; uninitialized original values remain TODO */
-    uint32 listing_local_address = TM3_DRAFT_LOCAL_ADDRESS(local_bytes, sizeof(local_bytes));
+    uint32 collision_output;
     L_8001DDD8:;
     L_8001DDDC:;
     L_8001DDE0:;
@@ -299,40 +298,40 @@ uint32 sub_8001DDD8(uint32 a1)
     L_8001DFD4:;
     v0 = s1 + (uint32)(3372);
     L_8001DFD8:;
-    TM3_DRAFT_U32(listing_local_address + 16u) = (uint32)v0;
+    collision_output = (uint32)v0;
     L_8001DFDC:;
     arg0 = TM3_DRAFT_U32(s1 + (uint32)(3396));
     L_8001DFE0:;
     arg1 = TM3_DRAFT_U32(s1 + (uint32)(3400));
     L_8001DFE4:;
     arg3 = s1 + (uint32)(3356);
-    v0 = sub_800163A0(arg0, arg1, arg2, arg3, TM3_DRAFT_U32(listing_local_address + 16u) /* TODO: Caller stack argument */);
+    v0 = sub_800163A0(arg0, arg1, arg2, arg3, collision_output);
     L_8001DFEC:;
     s2 = v0 + 0u;
     L_8001DFF0:;
     arg2 = s0 + 0u;
     L_8001DFF4:;
-    TM3_DRAFT_U32(listing_local_address + 16u) = (uint32)0u;
+    collision_output = (uint32)0u;
     L_8001DFF8:;
     arg0 = TM3_DRAFT_U32(s1 + (uint32)(3396));
     L_8001DFFC:;
     arg1 = TM3_DRAFT_U32(s1 + (uint32)(3400));
     L_8001E000:;
     arg3 = s1 + (uint32)(3360);
-    v0 = sub_800163A0(arg0, arg1, arg2, arg3, TM3_DRAFT_U32(listing_local_address + 16u) /* TODO: Caller stack argument */);
+    v0 = sub_800163A0(arg0, arg1, arg2, arg3, collision_output);
     L_8001E008:;
     arg2 = s0 + 0u;
     L_8001E00C:;
     arg3 = s1 + (uint32)(3364);
     L_8001E010:;
-    TM3_DRAFT_U32(listing_local_address + 16u) = (uint32)0u;
+    collision_output = (uint32)0u;
     L_8001E014:;
     arg0 = TM3_DRAFT_U32(s1 + (uint32)(3396));
     L_8001E018:;
     arg1 = TM3_DRAFT_U32(s1 + (uint32)(3400));
     L_8001E01C:;
     s0 = v0 + 0u;
-    v0 = sub_800163A0(arg0, arg1, arg2, arg3, TM3_DRAFT_U32(listing_local_address + 16u) /* TODO: Caller stack argument */);
+    v0 = sub_800163A0(arg0, arg1, arg2, arg3, collision_output);
     L_8001E024:;
     {
         uint32 branch = s0 == 0u;
@@ -621,14 +620,14 @@ uint32 sub_8001DDD8(uint32 a1)
     L_8001E234:;
     TM3_DRAFT_U16(s1 + (uint32)(3366)) = (uint16)0u;
     L_8001E238:;
-    TM3_DRAFT_U32(listing_local_address + 16u) = (uint32)v0;
+    collision_output = (uint32)v0;
     L_8001E23C:;
     arg0 = TM3_DRAFT_U32(s1 + (uint32)(3396));
     L_8001E240:;
     arg1 = TM3_DRAFT_U32(s1 + (uint32)(3400));
     L_8001E244:;
     arg3 = s1 + (uint32)(3356);
-    v0 = sub_800163A0(arg0, arg1, arg2, arg3, TM3_DRAFT_U32(listing_local_address + 16u) /* TODO: Caller stack argument */);
+    v0 = sub_800163A0(arg0, arg1, arg2, arg3, collision_output);
     L_8001E24C:;
     v1 = TM3_DRAFT_I16(s1 + (uint32)(3338));
     L_8001E250:;
@@ -693,7 +692,7 @@ uint32 sub_80025AC0(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, ...)
     uint32 cpu_v0;
     uint32 cpu_v1;
     FUNCTION_MARKER(0x80025AC0u, "SCUS_942.49");
-  uint32 v13; 
+  uint32 v13 = 0u; /* TODO: Original T0 is undefined only for a degenerate zero matrix */ 
   uint32 v16; 
   uint32 result; 
   int v19; 
@@ -722,8 +721,8 @@ uint32 sub_80025AC0(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, ...)
   int v69; 
 
   v16 = TM3_DRAFT_U32(a3);
-  result = (uint32)(TM3_DRAFT_U32(a3) + 8) < a4;
-  if ( (uint32)(TM3_DRAFT_U32(a3) + 8) < a4 )
+  result = (uint32)(TM3_DRAFT_U32(a3) + 32) < a4;
+  if ( (uint32)(TM3_DRAFT_U32(a3) + 32) < a4 )
   {
     v19 = 0;
     v20 = 0;
@@ -732,8 +731,8 @@ uint32 sub_80025AC0(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, ...)
     v23 = a1;
     do
     {
-      v24 = TM3_DRAFT_I16(v23 + 6168);
-      v25 = abs16(TM3_DRAFT_U16(v23 + 6168));
+      v24 = TM3_DRAFT_I16(v23 + 1542);
+      v25 = abs16(TM3_DRAFT_U16(v23 + 1542));
       if ( v19 >= v25 )
       {
         if ( v20 < v25 )
@@ -754,7 +753,7 @@ uint32 sub_80025AC0(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, ...)
           v21 = v22 + 3;
       }
       ++v22;
-      v23 = (uint32)((uint32)v23 + 8);
+      v23 = (uint32)((uint32)v23 + 2);
     }
     while ( v22 < 3 );
     v26 = v21 < v13;
@@ -769,7 +768,7 @@ uint32 sub_80025AC0(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, ...)
     }
     if ( v26 )
     {
-      if ( v13 >= 3 &TM3_DRAFT_LOCAL_ADDRESS(&v21, sizeof(v21)) /* TODO: Local buffer adapter */ < v13 - 3 )
+      if ( v13 >= 3 && v21 < v13 - 3 )
         --v13;
       --v13;
     }
@@ -790,10 +789,10 @@ uint32 sub_80025AC0(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, ...)
       TM3_DRAFT_I32(original_local_address + 92u) = v40;
       TM3_DRAFT_I32(original_local_address + 96u) = v41;
       TM3_DRAFT_I32(original_local_address + 100u) = v42;
-      (*(int (*)[4])psx_addr(original_local_address + 104u, sizeof(int[4])))[0] = (int)(abs32(TM3_DRAFT_U32(a1 + 4u * (1018)) - 6) << 12) / 6;
+      (*(int (*)[4])psx_addr(original_local_address + 104u, sizeof(int[4])))[0] = (sint32)((uint32)abs32(TM3_DRAFT_U32(a1 + 4u * (1018)) - 6u) << 12) / 6;
       (*(int (*)[4])psx_addr(original_local_address + 104u, sizeof(int[4])))[1] = (*(int (*)[4])psx_addr(original_local_address + 104u, sizeof(int[4])))[0];
       (*(int (*)[4])psx_addr(original_local_address + 104u, sizeof(int[4])))[2] = (*(int (*)[4])psx_addr(original_local_address + 104u, sizeof(int[4])))[0];
-      sub_8005BBE4(TM3_DRAFT_LOCAL_ADDRESS(&TM3_DRAFT_I32(original_local_address + 72u), sizeof(TM3_DRAFT_I32(original_local_address + 72u))) /* TODO: Local buffer adapter */, TM3_DRAFT_LOCAL_ADDRESS((*(int (*)[4])psx_addr(original_local_address + 104u, sizeof(int[4]))), sizeof((*(int (*)[4])psx_addr(original_local_address + 104u, sizeof(int[4]))))));
+      sub_8005BBE4(original_local_address + 72u, TM3_DRAFT_LOCAL_ADDRESS((*(int (*)[4])psx_addr(original_local_address + 104u, sizeof(int[4]))), sizeof((*(int (*)[4])psx_addr(original_local_address + 104u, sizeof(int[4]))))));
       cpu_v0 = TM3_DRAFT_I32(original_local_address + 72u);
       cpu_v1 = TM3_DRAFT_I32(original_local_address + 76u);
       cpu_a0 = TM3_DRAFT_I32(original_local_address + 80u);
@@ -841,7 +840,7 @@ xport_gte_execute(0x480012u);
 cpu_v0 = xport_gte_read_data(25u);
 cpu_v1 = xport_gte_read_data(27u);
       TM3_DRAFT_U16(v51) = cpu_v0;
-      TM3_DRAFT_U16(v51 + 16) = cpu_v1;
+      TM3_DRAFT_U16(v51 + 4) = cpu_v1;
       ++v36;
       v51 += 4u * (2);
     }
@@ -851,7 +850,7 @@ cpu_v1 = xport_gte_read_data(27u);
     do
     {
       v57 = (uint32)(a1 + 4u * (28 * TM3_DRAFT_U8(v27 + v55++)));
-      TM3_DRAFT_U16(v56 + 8) = sub_80013420(TM3_DRAFT_U16(v57 + 2u * (802)), TM3_DRAFT_U16(v57 + 2u * (803)), TM3_DRAFT_U16(v57 + 2u * (804)));
+      TM3_DRAFT_U16(v56 + 2) = sub_80013420(TM3_DRAFT_I16(v57 + 2u * (802)), TM3_DRAFT_I16(v57 + 2u * (803)), TM3_DRAFT_I16(v57 + 2u * (804)));
       v56 += 4u * (2);
     }
     while ( v55 < 4 );
@@ -888,7 +887,7 @@ xport_gte_write_control(7u, (uint32)cpu_a1);
     v67 = (uint32)v16 & 0xFFFFFF;
     v68 = (uint32)(v16 + 24);
     TM3_DRAFT_U32(a2) = v67;
-    TM3_DRAFT_U8(v68 + 12) = 1;
+    TM3_DRAFT_U8(v68 + 3) = 1;
     v69 = -520093696;
     if ( TM3_DRAFT_U32(0x800D2EF0u) )
       v69 = -520093184;
@@ -1484,20 +1483,20 @@ uint32 sub_800417CC(uint32 a1, uint32 a2, uint32 a3)
 uint32 sub_8002B914(uint32 a1, uint32 a2)
 {
     FUNCTION_MARKER(0x8002B914u, "SCUS_942.49");
-  int v2; 
-  int v4; 
+  uint32 v2; 
+  uint32 v4; 
   uint32 v5; 
   int result; 
   int v7; 
   int v8; 
-  int v9; 
-  int v10; 
+  uint32 v9; 
+  uint32 v10; 
   int v11; 
   uint32 v12; 
   uint32 v13; 
   uint32 v14; 
   uint32 v15; 
-  int v16; 
+  uint32 v16; 
   sint32 v17; 
   int v18; 
   uint32 v19; 
@@ -1521,7 +1520,7 @@ uint32 sub_8002B914(uint32 a1, uint32 a2)
     if ( TM3_DRAFT_U16(a1 + 8) != 255 )
     {
       if ( TM3_DRAFT_U8(a1) && TM3_DRAFT_U8(a1) != 15 )
-        TM3_DRAFT_U16(a1 + 8) = 30 * ((TM3_DRAFT_I16(TM3_DRAFT_U32(0x80089CBCu) + 270) * TM3_DRAFT_U16(a1 + 8) + 2048) >> 12);
+        TM3_DRAFT_U16(a1 + 8) = 30u * (uint16)((sint32)((uint32)((sint32)TM3_DRAFT_I16(TM3_DRAFT_U32(0x80089CBCu) + 270) * (sint32)TM3_DRAFT_U16(a1 + 8)) + 2048u) >> 12);
       else
         TM3_DRAFT_U16(a1 + 8) = 0;
     }
@@ -1542,13 +1541,13 @@ uint32 sub_8002B914(uint32 a1, uint32 a2)
         v7 = 1;
       }
       if ( sub_80048078(18) )
-        TM3_DRAFT_U16(2 * v7++ - 2146917272) = 2;
+        TM3_DRAFT_U16(0x8008A468u + 2u * (uint32)v7++) = 2;
       if ( sub_80048078(19) )
-        TM3_DRAFT_U16(2 * v7++ - 2146917272) = 3;
+        TM3_DRAFT_U16(0x8008A468u + 2u * (uint32)v7++) = 3;
       if ( sub_80048078(20) )
-        TM3_DRAFT_U16(2 * v7++ - 2146917272) = 7;
+        TM3_DRAFT_U16(0x8008A468u + 2u * (uint32)v7++) = 7;
       if ( v7 )
-        TM3_DRAFT_U8(a1) = TM3_DRAFT_U8(2 * ((int)sub_80039FD4() % v7) - 2146917272);
+        TM3_DRAFT_U8(a1) = TM3_DRAFT_U8(0x8008A468u + ((uint32)((sint32)sub_80039FD4() % v7) << 1));
     }
     v8 = TM3_DRAFT_U32(TM3_DRAFT_U32(a1 + 48) + 16);
     if ( v8 < 0 )
@@ -1557,7 +1556,7 @@ uint32 sub_8002B914(uint32 a1, uint32 a2)
     }
     else
     {
-      v9 = 316 * v8 + TM3_DRAFT_U32(0x80089CA4u);
+      v9 = 316u * (uint32)v8 + TM3_DRAFT_U32(0x80089CA4u);
       v10 = TM3_DRAFT_U32(v9 + 296);
       v11 = 0;
       if ( v10 )
@@ -1607,21 +1606,21 @@ uint32 sub_8002B914(uint32 a1, uint32 a2)
     if ( v17 < 0 )
       v18 = (v17 + 1023) >> 10;
     v19 = (uint32)TM3_DRAFT_U32(a1 + 48);
-    TM3_DRAFT_U16(a1 + 6) = v17 - ((uint16)v18 << 10);
+    TM3_DRAFT_U16(a1 + 6) = (uint16)(v17 % 1024);
     v20 = TM3_DRAFT_U16(v19 + 2u * (2));
     v21 = TM3_DRAFT_U16(v19 + 2u * (3));
-    LOWORD(v19) = TM3_DRAFT_U16(v19 + 2u * (4));
-    TM3_DRAFT_U16(a1 - 10) = v20;
+    v19 = TM3_DRAFT_U16(v19 + 8u);
+    TM3_DRAFT_U16(a1 - 20u) = v20;
     v22 = a1 - 20;
     TM3_DRAFT_U16(v22 + 2) = v21;
     TM3_DRAFT_U16(v22 + 4) = (uint16)v19;
     v23 = (uint32)TM3_DRAFT_U32(a1 + 48);
     v24 = TM3_DRAFT_U8(a1);
-    TM3_DRAFT_U32(a1 + 32) = TM3_DRAFT_U16(v23 + 2u * (2));
-    TM3_DRAFT_U32(a1 + 36) = TM3_DRAFT_U16(v23 + 2u * (3));
-    v25 = TM3_DRAFT_U16(v23 + 2u * (4));
+    TM3_DRAFT_U32(a1 + 32) = (uint32)TM3_DRAFT_I16(v23 + 4u);
+    TM3_DRAFT_U32(a1 + 36) = (uint32)TM3_DRAFT_I16(v23 + 6u);
+    v25 = TM3_DRAFT_I16(v23 + 8u);
     v26 = TM3_DRAFT_U8(a1);
-    TM3_DRAFT_U32(a1 - 6) = 40;
+    TM3_DRAFT_U32(a1 - 24u) = 40;
     TM3_DRAFT_U32(a1 + 44) = TM3_DRAFT_U32(0x80089CF8u) + 8 * v26;
     TM3_DRAFT_U32(a1 + 40) = v25;
     if ( !v24 || (result = 1, v24 == 15) )
@@ -1775,9 +1774,6 @@ LABEL_34:
 /* Unverified draft; TODO items require later review */
 uint32 sub_80027FE0(uint32 a1, uint32 a2)
 {
-    uint32 original_local_words[8];
-    uint32 original_local_address = TM3_DRAFT_LOCAL_ADDRESS(original_local_words, sizeof(original_local_words));
-
     FUNCTION_MARKER(0x80027FE0u, "SCUS_942.49");
   int v3; 
   uint32 v4; 
@@ -1831,7 +1827,7 @@ uint32 sub_80027FE0(uint32 a1, uint32 a2)
   TM3_DRAFT_U16(a1 + 144) = 32 - ((32 - v8) & ((32 - v8) >> 31));
   v9 = TM3_DRAFT_U32(v3 - 4);
   v3 += 4;
-  TM3_DRAFT_U32(a1 + 136) = 1 - ((1 - v9) & ((1 - v9) >> 31));
+  TM3_DRAFT_U32(a1 + 136) = 1u - ((1u - (uint32)v9) & (uint32)((sint32)(1u - (uint32)v9) >> 31));
   v10 = TM3_DRAFT_U32(v3 - 4);
   v11 = v3 + 4;
   TM3_DRAFT_U32(a1 + 224) = v10;
@@ -1851,22 +1847,22 @@ uint32 sub_80027FE0(uint32 a1, uint32 a2)
     TM3_DRAFT_U16(a1 + 258) = 0;
   }
   v14 = (uint32)(v11 + 4);
-  v15 = (uint32)TM3_DRAFT_U32(v14 - 2);
+  v15 = (uint32)TM3_DRAFT_U32(v14 - 4u);
   v14 += 2u * (2);
-  v16 = TM3_DRAFT_U32(v14 - 2);
+  v16 = TM3_DRAFT_U32(v14 - 4u);
   v14 += 2u * (2);
   TM3_DRAFT_U32(a1 + 272) = v16;
-  v17 = TM3_DRAFT_U32(v14 - 2);
+  v17 = TM3_DRAFT_U32(v14 - 4u);
   v14 += 2u * (2);
   TM3_DRAFT_U32(a1 + 248) = v17;
-  v18 = TM3_DRAFT_U32(v14 - 2);
+  v18 = TM3_DRAFT_U32(v14 - 4u);
   v14 += 2u * (2);
   TM3_DRAFT_U32(a1 + 148) = v18;
-  v19 = TM3_DRAFT_U32(v14 - 2);
+  v19 = TM3_DRAFT_U32(v14 - 4u);
   v20 = TM3_DRAFT_U32(a1 + 148);
   TM3_DRAFT_U32(a1 + 152) = v19;
   TM3_DRAFT_U16(a1 + 264) = TM3_DRAFT_U16(v14);
-  TM3_DRAFT_U32(a1 + 156) = (v20 + v19) / 4;
+  TM3_DRAFT_U32(a1 + 156) = (sint32)((uint32)v20 + (uint32)v19) / 4;
   if ( v15 )
   {
     v21 = TM3_DRAFT_U32(v15 + 4u * (1));
@@ -1892,9 +1888,9 @@ uint32 sub_80027FE0(uint32 a1, uint32 a2)
     TM3_DRAFT_U32(a1 + 284) = 4096;
     TM3_DRAFT_U16(a1 + 292) = 4096;
   }
-  TM3_DRAFT_U32(a1 + 296) = TM3_DRAFT_U16(v4);
-  TM3_DRAFT_U32(a1 + 300) = TM3_DRAFT_U16(v4 + 2u * (1));
-  TM3_DRAFT_U32(a1 + 304) = TM3_DRAFT_U16(v4 + 2u * (2));
+  TM3_DRAFT_U32(a1 + 296) = (uint32)TM3_DRAFT_I16(v4);
+  TM3_DRAFT_U32(a1 + 300) = (uint32)TM3_DRAFT_I16(v4 + 2u * (1));
+  TM3_DRAFT_U32(a1 + 304) = (uint32)TM3_DRAFT_I16(v4 + 2u * (2));
   v27 = TM3_DRAFT_U16(v4 + 2u * (1));
   v28 = TM3_DRAFT_U16(v4 + 2u * (2));
   TM3_DRAFT_U16(a1 - 20) = TM3_DRAFT_U16(v4);
@@ -1908,18 +1904,25 @@ uint32 sub_80027FE0(uint32 a1, uint32 a2)
   TM3_DRAFT_U16(a1 + 146) = 16 - ((16 - v30 / 4) & ((16 - v30 / 4) >> 31));
   v31 = (uint32)a1;
   v32 = 0;
-  v33 = TM3_DRAFT_U32(0x80081E38u);
-  v34 = TM3_DRAFT_U32(0x80081E38u);
-  TM3_DRAFT_U32(a1 + 132) = ((uint8)((uint8)BYTE2(TM3_DRAFT_U32(v5)) / TM3_DRAFT_I32(a1 + 136)) << 16) | ((uint8)((uint8)BYTE1(TM3_DRAFT_U32(v5)) / TM3_DRAFT_I32(a1 + 136)) << 8) | (uint8)((uint8)TM3_DRAFT_U32(v5) / TM3_DRAFT_I32(a1 + 136));
+  v33 = 0x80081E38u;
+  v34 = 0x80081E38u;
+  {
+    uint32 color = TM3_DRAFT_U32(v5);
+    sint32 divisor = TM3_DRAFT_I32(a1 + 136);
+    uint32 red = divisor ? (uint32)((sint32)(color & 255u) / divisor) : 0xFFFFFFFFu;
+    uint32 green = divisor ? (uint32)((sint32)((color >> 8) & 255u) / divisor) : 0xFFFFFFFFu;
+    uint32 blue = divisor ? (uint32)((sint32)((color >> 16) & 255u) / divisor) : 0xFFFFFFFFu;
+    TM3_DRAFT_U32(a1 + 132) = ((blue & 255u) << 16) | ((green & 255u) << 8) | (red & 255u);
+  }
   do
   {
     TM3_DRAFT_U16(v31) = HIWORD(TM3_DRAFT_U32(0x80081E38u + 4u * (abs32(v32 << 7))));
     if ( (v32 & 0x1000000) != 0 )
-      LOWORD(v35) = TM3_DRAFT_U16(v33);
+      v35 = TM3_DRAFT_I16(v33);
     else
       v35 = -TM3_DRAFT_I16(v34);
     TM3_DRAFT_U16(v31 + 2u * (1)) = v35;
-    v33 -= 128;
+    v33 -= 512u;
     v34 += 4u * (128);
     ++v32;
     v31 += 2u * (2);
@@ -1936,7 +1939,7 @@ uint32 sub_80027FE0(uint32 a1, uint32 a2)
   while ( v36 >= 0 );
   TM3_DRAFT_U16(a1 + 260) = 26;
   TM3_DRAFT_U16(a1 + 262) = 1200;
-  sub_8004A294(22, TM3_DRAFT_I16(a1 + 260), 22, TM3_DRAFT_U16(v4), TM3_DRAFT_U16(v4 + 2u * (1)), TM3_DRAFT_U16(v4 + 2u * (2)), TM3_DRAFT_I16(a1 + 262));
+  sub_8004A294(22, (uint32)TM3_DRAFT_I16(a1 + 260), 22, (uint32)TM3_DRAFT_I16(v4), (uint32)TM3_DRAFT_I16(v4 + 2u), (uint32)TM3_DRAFT_I16(v4 + 4u), (uint32)TM3_DRAFT_I16(a1 + 262));
   TM3_DRAFT_U32(a1 + 268) = TM3_DRAFT_U32(v5);
   return sub_800288AC((uint32)(a1 + 228), v4, a1);
 }

@@ -245,7 +245,7 @@ LABEL_8:
                   do
                   {
                     v141 = v42;
-                    tm3_draft_indirect(TM3_DRAFT_U32(v42 + 44u), 4u, v42 + 48u, (uint32)v143, TM3_DRAFT_LOCAL_ADDRESS(&v140, sizeof(v140)), a4);
+                    tm3_draft_indirect(TM3_DRAFT_U32(v42 + 44u), 5u, v42 + 48u, (uint32)v143, TM3_DRAFT_LOCAL_ADDRESS(&v140, sizeof(v140)), a4, a6 + 0x3Cu);
                     v42 = TM3_DRAFT_U32(v141 + 12);
                   }
                   while ( v42 );
@@ -694,7 +694,7 @@ uint32 sub_800115C4(uint32 a1, uint32 a2, uint32 a3, uint32 a4)
 }
 
 /* Unverified decompiler-derived draft */
-uint32 sub_800254A0(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, ...)
+uint32 sub_800254A0(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5)
 {
     FUNCTION_MARKER(0x800254A0u, "SCUS_942.49");
     /* TODO Original signed wrap, guest pointers and unresolved ABI effects remain unverified */
@@ -742,7 +742,7 @@ uint32 sub_800254A0(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, ...)
   uint32 v68; 
   sint32 scale_vector[4];
   uint32 scalar_result; 
-  v16 = 108 * dword_80089828 - 2146624064;
+  v16 = (sint32)(0x800D1DC0u + 108u * (uint32)dword_80089828);
   if ( TM3_DRAFT_U32(v16 + 100) || (result = TM3_DRAFT_U32(v16 + 104), result != a1) )
   {
     result = a1 + 1556;
@@ -805,7 +805,7 @@ uint32 sub_800254A0(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, ...)
           sub_8002A47C(a1 + 4112, TM3_DRAFT_I16(dword_80089D14 + 698) / 4, TM3_DRAFT_I16(dword_80089D14 + 700) / 4, 4210752, TM3_DRAFT_U32(dword_80089D14 + 704), a2 + 4 * v31, (int)a3, 1, a4);
         }
         v32 = (uint32)(a2 + 4 * v24);
-        v33 = (uint32)(108 * dword_80089828 - 2146624016);
+        v33 = 0x800D1DF0u + 108u * (uint32)dword_80089828;
         v34 = TM3_DRAFT_U32(a1 + 1560) - TM3_DRAFT_U32(v33 + (1) * 4u);
         v35 = TM3_DRAFT_U32(a1 + 1564) - TM3_DRAFT_U32(v33 + (2) * 4u);
         TM3_DRAFT_U32(0x1f800000u) = TM3_DRAFT_U32(a1 + 1556) - TM3_DRAFT_U32(v33);
@@ -835,7 +835,11 @@ uint32 sub_800254A0(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, ...)
           v44 = TM3_DRAFT_U32(a1 + 1564);
           TM3_DRAFT_U32(0x1f800098u) = TM3_DRAFT_U32(a1 + 1560);
           TM3_DRAFT_U32(0x1f80009cu) = v44;
-          scale_vector[0] = (int)(abs32(TM3_DRAFT_U32(a1 + 4072) - 6) << 12) / 6;
+          uint32 phase = TM3_DRAFT_U32(a1 + 4072u) - 6u;
+          uint32 magnitude = (sint32)phase < 0 ? 0u - phase : phase;
+          sint32 scaled_phase = (sint32)(magnitude << 12);
+          sint64 division_product = (sint64)scaled_phase * 0x2AAAAAAB;
+          scale_vector[0] = (sint32)(division_product >> 32) - (scaled_phase >> 31);
           scale_vector[1] = scale_vector[0];
           scale_vector[2] = scale_vector[0];
           sub_8005BBE4((uint32)0x1F800080, TM3_DRAFT_LOCAL_ADDRESS(scale_vector, sizeof(scale_vector)));
@@ -860,7 +864,8 @@ uint32 sub_800254A0(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, ...)
           v45 += sub_80012388(v48, v49);
         }
         while ( v46 >= 0 );
-        v50 = (((255 * v45 / 0x3Cu) << 11) + 2048) >> 12;
+        v50 = (uint32)(((uint64)((uint32)v45 * 255u) * 0x88888889u) >> 32) >> 5;
+        v50 = ((v50 << 11) + 2048u) >> 12;
         v51 = v50 + ((TM3_DRAFT_U32(a1 + 60) * v50 + 2048) >> 12);
         if ( v51 >= 0x20 )
         {
@@ -875,7 +880,7 @@ uint32 sub_800254A0(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, ...)
         TM3_DRAFT_U32(a1 + 56) = v51;
         if ( v52 )
         {
-          if ( TM3_DRAFT_U32(a1 + 64) && TM3_DRAFT_U32(108 * dword_80089828 - 2146624064 + 104) != a1 )
+          if ( TM3_DRAFT_U32(a1 + 64) && TM3_DRAFT_U32(0x800D1DC0u + 108u * (uint32)dword_80089828 + 104u) != a1 )
             v53 = 0x80024DF0u;
           else
             v53 = 0x80024648u;
@@ -1571,7 +1576,7 @@ LABEL_43:
 #undef v72
 
 /* Unverified decompiler-derived draft */
-uint32 sub_8004E4B8(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, uint32 a6, uint32 a7, uint32 a8, uint32 a9, uint32 a10, uint32 a11, uint32 a12, uint32 a13, uint32 a14, uint32 a15, uint32 a16)
+uint32 sub_8004E4B8(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, uint32 a6, uint32 a7, uint32 a8)
 {
     FUNCTION_MARKER(0x8004E4B8u, "SCUS_942.49");
     /* TODO Original signed wrap, guest pointers and unresolved ABI effects remain unverified */
@@ -1629,13 +1634,13 @@ uint32 sub_8004E4B8(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, uint3
 
   v20 = 0;
   v21 = 0;
-  if ( a9 > 0 )
+  if ( (sint32)a5 > 0 )
   {
-    v22 = (uint32)a10;
+    v22 = (uint32)a6;
     do
     {
-      v23 = sub_80049130(a3, TM3_DRAFT_U8(v22));
-      if ( (a12 & 1) != 0 )
+      v23 = sub_80049130(a3, TM3_DRAFT_U32(v22));
+      if ( (a8 & 1) != 0 )
       {
         v20 += v23;
       }
@@ -1644,27 +1649,27 @@ uint32 sub_8004E4B8(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, uint3
         v20 = v23;
       }
       ++v21;
-      (v22 += 1u);
+      (v22 += 4u);
     }
-    while ( v21 < a9 );
+    while ( v21 < (sint32)a5 );
   }
   TM3_DRAFT_U16(a1 + 134448) = 8;
   TM3_DRAFT_U16(a1 + 134450) = 4;
-  if ( (a12 & 1) != 0 )
+  if ( (a8 & 1) != 0 )
   {
-    TM3_DRAFT_U16(a1 + 134448) = TM3_DRAFT_U16(a1 + 134448) - 7 + v20 + 7 * a9;
+    TM3_DRAFT_U16(a1 + 134448) = TM3_DRAFT_U16(a1 + 134448) - 7 + v20 + 7 * a5;
     v24 = TM3_DRAFT_U16(a1 + 134450) + TM3_DRAFT_U8(a3 + 20);
   }
   else
   {
     TM3_DRAFT_U16(a1 + 134448) += v20;
-    v24 = TM3_DRAFT_U16(a1 + 134450) - 5 + a9 * (TM3_DRAFT_U8(a3 + 20) + 5);
+    v24 = TM3_DRAFT_U16(a1 + 134450) - 5 + a5 * (TM3_DRAFT_U8(a3 + 20) + 5);
   }
   TM3_DRAFT_U16(a1 + 134450) = v24;
   v25 = TM3_DRAFT_U16(a1 + 134450) + 4;
   TM3_DRAFT_U16(a1 + 134448) += 8;
   TM3_DRAFT_U16(a1 + 134450) = v25;
-  if ( (a12 & 2) != 0 )
+  if ( (a8 & 2) != 0 )
     a4 -= (v25 + 2) / 2;
   v26 = TM3_DRAFT_U16(a1 + 134448);
   v27 = -20 - v26;
@@ -1672,7 +1677,7 @@ uint32 sub_8004E4B8(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, uint3
     v27 = word_80089E00 - 20 - v26;
   TM3_DRAFT_U16(a1 + 134444) = v27;
   v28 = a4 + 1;
-  if ( a4 + TM3_DRAFT_I16(a1 + 134450) + 1 >= 202 )
+  if ( (sint32)(a4 + (uint32)(sint32)TM3_DRAFT_I16(a1 + 134450) + 1u) >= 202 )
     v28 = 200 - TM3_DRAFT_U16(a1 + 134450);
   TM3_DRAFT_U16(a1 + 134446) = v28;
   v29 = TM3_DRAFT_U16(a1 + 134444);
@@ -1721,14 +1726,14 @@ uint32 sub_8004E4B8(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, uint3
   v47 = sub_8005AF24(v46);
   v49 = 0;
   v50 = 0;
-  if ( a9 > 0 )
+  if ( (sint32)a5 > 0 )
   {
     v63 = 127 * (v47 / 2 + 4096);
-    v51 = (uint32)a10;
+    v51 = (uint32)a6;
     do
     {
       v52 = 40;
-      if ( v50 == a11 )
+      if ( v50 == a7 )
       {
         v52 = v63 >> 12;
         v53 = v63 >> 12;
@@ -1739,15 +1744,15 @@ uint32 sub_8004E4B8(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, uint3
         v53 = 35;
         v54 = 45;
       }
-      sub_80049284(TM3_DRAFT_I8(v51), a3, TM3_DRAFT_I16(a1 + 134444) + v49 + 8, TM3_DRAFT_I16(a1 + 134446) + v48 + 4, a1, (int)a2, 2, v53, v52, v54);
-      if ( (a12 & 1) != 0 )
-        v49 += 7 + sub_80049130(a3, TM3_DRAFT_I8(v51));
+      sub_80049284(TM3_DRAFT_U32(v51), a3, TM3_DRAFT_I16(a1 + 134444) + v49 + 8, TM3_DRAFT_I16(a1 + 134446) + v48 + 4, a1, (int)a2, 2, v53, v52, v54, 0u, 0u);
+      if ( (a8 & 1) != 0 )
+        v49 += 7 + sub_80049130(a3, TM3_DRAFT_U32(v51));
       else
         v48 += 5 + TM3_DRAFT_U8(a3 + 20);
       ++v50;
-      (v51 += 1u);
+      (v51 += 4u);
     }
-    while ( v50 < a9 );
+    while ( v50 < (sint32)a5 );
   }
   v55 = 0;
   v56 = 134372;

@@ -1049,7 +1049,7 @@ uint32 sub_8003F24C(uint32 a1, uint32 a2)
   int v110; 
 
 
-  _WORD v119[4]; 
+  #define v119 ((uint16 *)(native_locals + 0x50u)) 
 
 
 
@@ -1062,10 +1062,7 @@ uint32 sub_8003F24C(uint32 a1, uint32 a2)
     TM3_DRAFT_U32(v3 + (9) * 4u) = TM3_DRAFT_U32(v3 + (12) * 4u);
     TM3_DRAFT_U32(v3 + (10) * 4u) = v6;
     TM3_DRAFT_U32(v3 + (11) * 4u) = v7;
-    v8 = TM3_DRAFT_U16(38 * TM3_DRAFT_U8(a2 + 13)
-                  + 144 * ((-1431655765 * (a2 + 2146624256)) >> 3)
-                  - 2146619768
-                  + 284);
+    v8 = TM3_DRAFT_U16(0x800D2FA4u + 38u * TM3_DRAFT_U8(a2 + 13u) + 144u * (uint32)((sint32)((a2 - 0x800D1D00u) * 0xAAAAAAABu) >> 3));
     if ( (TM3_DRAFT_U16(a2) & v8) == 0 || TM3_DRAFT_U32(0x800d2f20u) )
     {
       v9 = TM3_DRAFT_U32(v3 + (25) * 4u);
@@ -1084,8 +1081,8 @@ uint32 sub_8003F24C(uint32 a1, uint32 a2)
             v11 = TM3_DRAFT_U16(v4 + 1552);
             v115 = TM3_DRAFT_U16(v4 + 1540);
             v116 = v11;
-            sub_8005B284((int)&v115, (int)&v115);
-            sub_80014080((int)((v3 + (12) * 4u)), TM3_DRAFT_I16(dword_8007E9E0 + TM3_DRAFT_U32(v3 + (25) * 4u)), (sint16 *)&v115, v4 + 1580);
+            sub_8005B284(TM3_DRAFT_LOCAL_ADDRESS(native_locals + 0x20u, 8u), TM3_DRAFT_LOCAL_ADDRESS(native_locals + 0x20u, 8u));
+            sub_80014080((int)((v3 + (12) * 4u)), TM3_DRAFT_I16(0x8007E9E0u + 2u * TM3_DRAFT_U32(v3 + (25) * 4u)), TM3_DRAFT_LOCAL_ADDRESS(native_locals + 0x20u, 8u), v4 + 1580);
             TM3_DRAFT_U32(v3 + (13) * 4u) -= 192;
             v12 = TM3_DRAFT_U32(v4 + 1584);
             v13 = TM3_DRAFT_U32(v3 + (13) * 4u);
@@ -1094,13 +1091,13 @@ uint32 sub_8003F24C(uint32 a1, uint32 a2)
             v114 = v14;
             v113 = v12 - v13;
             sub_8005B240(TM3_DRAFT_LOCAL_ADDRESS(native_locals + 0x10u, 12u), v3 + 16u);
-            v15 = TM3_DRAFT_U16((v3 + (10) * 4u));
-            v16 = TM3_DRAFT_U16((v3 + (8) * 4u));
-            TM3_DRAFT_U16((v3 + (1) * 4u)) = 0;
+            v15 = TM3_DRAFT_U16((v3 + (10) * 2u));
+            v16 = TM3_DRAFT_U16((v3 + (8) * 2u));
+            TM3_DRAFT_U16((v3 + (1) * 2u)) = 0;
             TM3_DRAFT_U16(v3) = v15;
-            TM3_DRAFT_U16((v3 + (2) * 4u)) = -v16;
+            TM3_DRAFT_U16((v3 + (2) * 2u)) = -v16;
             sub_8005B284((int)v3, (int)v3);
-            sub_80013EC8((uint32)(v3 + (8) * 4u), (uint32)v3, (uint32)(v3 + (4) * 4u));
+            sub_80013EC8(v3 + 16u, (uint32)v3, v3 + 8u);
             sub_8005B284((int)((v3 + (2) * 4u)), (int)((v3 + (2) * 4u)));
           }
           TM3_DRAFT_U32(v3 + (23) * 4u) = 0;
@@ -1134,19 +1131,19 @@ uint32 sub_8003F24C(uint32 a1, uint32 a2)
       }
       v115 = (uint16)v20;
       v116 = -v19;
-      sub_8005B284((int)&v115, (int)&v115);
+      sub_8005B284(TM3_DRAFT_LOCAL_ADDRESS(native_locals + 0x20u, 8u), TM3_DRAFT_LOCAL_ADDRESS(native_locals + 0x20u, 8u));
       v21 = TM3_DRAFT_U32(v3 + (23) * 4u) & 0xFFF;
       if ( TM3_DRAFT_U32(v3 + (23) * 4u) )
       {
         TM3_DRAFT_U32(v3 + (23) * 4u) = v21;
-        sub_8001434C(v21, (int)v117);
-        sub_8005BB84(v117, (int)&v115, TM3_DRAFT_LOCAL_ADDRESS(&v115, sizeof(v115)));
+        sub_8001434C(v21, TM3_DRAFT_LOCAL_ADDRESS(native_locals + 0x28u, 32u));
+        sub_8005BB84( TM3_DRAFT_LOCAL_ADDRESS(native_locals + 0x28u, 32u), TM3_DRAFT_LOCAL_ADDRESS(native_locals + 0x20u, 8u), TM3_DRAFT_LOCAL_ADDRESS(native_locals + 0x20u, 8u));
       }
       if ( (TM3_DRAFT_U16(a2 + 6) & v8) != 0 && (v22 = (int)((v3 + (12) * 4u)), !TM3_DRAFT_U32(0x800d2f20u))
         || (v22 = (int)((v3 + (12) * 4u)), TM3_DRAFT_U32(v3 + (24) * 4u))
         || TM3_DRAFT_U32(v3 + (23) * 4u) )
       {
-        sub_80014080(v22, TM3_DRAFT_I16(dword_8007E9E0 + TM3_DRAFT_U32(v3 + (25) * 4u)), (sint16 *)&v115, v4 + 1580);
+        sub_80014080(v22, TM3_DRAFT_I16(0x8007E9E0u + 2u * TM3_DRAFT_U32(v3 + (25) * 4u)), TM3_DRAFT_LOCAL_ADDRESS(native_locals + 0x20u, 8u), v4 + 1580);
       }
       else
       {
@@ -1156,18 +1153,18 @@ uint32 sub_8003F24C(uint32 a1, uint32 a2)
         v112 = TM3_DRAFT_U32(v4 + 1580) - TM3_DRAFT_U32(v3 + (12) * 4u);
         v113 = v25;
         v114 = v23 - v24;
-        v113 = v25 - TM3_DRAFT_I16(dword_8007E9D4 + TM3_DRAFT_U32(v3 + (25) * 4u));
+        v113 = v25 - TM3_DRAFT_I16(0x8007E9D4u + 2u * TM3_DRAFT_U32(v3 + (25) * 4u));
         v26 = sub_8005B240(TM3_DRAFT_LOCAL_ADDRESS(native_locals + 0x10u, 12u), TM3_DRAFT_LOCAL_ADDRESS(native_locals + 0x48u, 8u));
         v27 = sub_8005B124(v26);
-        sub_80014080((int)((v3 + (12) * 4u)), v27 - TM3_DRAFT_I16(dword_8007E9E0 + TM3_DRAFT_U32(v3 + (25) * 4u)), v118, (int)((v3 + (12) * 4u)));
+        sub_80014080((int)((v3 + (12) * 4u)), v27 - TM3_DRAFT_I16(0x8007E9E0u + 2u * TM3_DRAFT_U32(v3 + (25) * 4u)), TM3_DRAFT_LOCAL_ADDRESS(native_locals + 0x48u, 8u), (int)((v3 + (12) * 4u)));
         v28 = TM3_DRAFT_U32(v3 + (14) * 4u) - TM3_DRAFT_U32(v4 + 1588);
         v112 = TM3_DRAFT_U32(v3 + (12) * 4u) - TM3_DRAFT_U32(v4 + 1580);
         v113 = 0;
         v114 = v28;
         sub_8005B240(TM3_DRAFT_LOCAL_ADDRESS(native_locals + 0x10u, 12u), TM3_DRAFT_LOCAL_ADDRESS(native_locals + 0x48u, 8u));
-        sub_80013EC8(v118, (sint16 *)&v115, v119);
-        v29 = v119[1];
-        v30 = sub_80013E20((int)v118, TM3_DRAFT_LOCAL_ADDRESS(&v115, sizeof(v115))) >= 0;
+        sub_80013EC8( TM3_DRAFT_LOCAL_ADDRESS(native_locals + 0x48u, 8u), TM3_DRAFT_LOCAL_ADDRESS(native_locals + 0x20u, 8u), TM3_DRAFT_LOCAL_ADDRESS(native_locals + 0x50u, 8u));
+        v29 = (sint16)v119[1];
+        v30 = (sint32)sub_80013E20(TM3_DRAFT_LOCAL_ADDRESS(native_locals + 0x48u, 8u), TM3_DRAFT_LOCAL_ADDRESS(native_locals + 0x20u, 8u)) >= 0;
         v31 = v29 + 16;
         if ( !v30 )
         {
@@ -1177,14 +1174,14 @@ uint32 sub_8003F24C(uint32 a1, uint32 a2)
             v32 = 0x2000 - v29;
           v31 = v32 + 16;
         }
-        sub_8001434C(v31 >> 5, (int)v117);
+        sub_8001434C(v31 >> 5, TM3_DRAFT_LOCAL_ADDRESS(native_locals + 0x28u, 32u));
         v37 = TM3_DRAFT_U32(v3 + (13) * 4u);
         v38 = TM3_DRAFT_U32(v4 + 1584);
         v39 = TM3_DRAFT_U32(v3 + (14) * 4u) - TM3_DRAFT_U32(v4 + 1588);
         v112 = TM3_DRAFT_U32(v3 + (12) * 4u) - TM3_DRAFT_U32(v4 + 1580);
         v114 = v39;
         v113 = v37 - v38;
-        sub_8005B774(v117, TM3_DRAFT_LOCAL_ADDRESS(&v112, sizeof(v112)), TM3_DRAFT_LOCAL_ADDRESS(&v112, sizeof(v112)));
+        sub_8005B774( TM3_DRAFT_LOCAL_ADDRESS(native_locals + 0x28u, 32u), TM3_DRAFT_LOCAL_ADDRESS(native_locals + 0x10u, 12u), TM3_DRAFT_LOCAL_ADDRESS(native_locals + 0x10u, 12u));
         v40 = v113;
         v41 = TM3_DRAFT_U32(v4 + 1584);
         v42 = v114 + TM3_DRAFT_U32(v4 + 1588);
@@ -1193,10 +1190,10 @@ uint32 sub_8003F24C(uint32 a1, uint32 a2)
         TM3_DRAFT_U32(v3 + (13) * 4u) = v40 + v41;
       }
       v43 = TM3_DRAFT_U32(v4 + 1584) - 68;
-      if ( v43 < TM3_DRAFT_U32(v3 + (13) * 4u) )
+      if ( v43 < TM3_DRAFT_I32(v3 + (13) * 4u) )
         TM3_DRAFT_U32(v3 + (13) * 4u) = v43;
-      v44 = sub_80013420(TM3_DRAFT_U32(v3 + (12) * 4u), TM3_DRAFT_U32(v3 + (13) * 4u), TM3_DRAFT_U32(v3 + (14) * 4u)) - TM3_DRAFT_I16(dword_8007E9D4 + TM3_DRAFT_U32(v3 + (25) * 4u));
-      if ( v44 < TM3_DRAFT_U32(v3 + (13) * 4u) )
+      v44 = sub_80013420(TM3_DRAFT_U32(v3 + (12) * 4u), TM3_DRAFT_U32(v3 + (13) * 4u), TM3_DRAFT_U32(v3 + (14) * 4u)) - TM3_DRAFT_I16(0x8007E9D4u + 2u * TM3_DRAFT_U32(v3 + (25) * 4u));
+      if ( v44 < TM3_DRAFT_I32(v3 + (13) * 4u) )
         TM3_DRAFT_U32(v3 + (13) * 4u) = v44;
       v45 = TM3_DRAFT_U32(v3 + (13) * 4u);
       v46 = TM3_DRAFT_U32(v3 + (10) * 4u);
@@ -1204,7 +1201,7 @@ uint32 sub_8003F24C(uint32 a1, uint32 a2)
       v112 = TM3_DRAFT_U32(v3 + (12) * 4u) - TM3_DRAFT_U32(v3 + (9) * 4u);
       v114 = v47;
       v113 = v45 - v46;
-      v30 = sub_80013E98((int)&v112) >= 64;
+      v30 = (sint32)sub_80013E98(TM3_DRAFT_LOCAL_ADDRESS(native_locals + 0x10u, 12u)) >= 64;
       v48 = v4 + 1580;
       if ( !v30 )
       {
@@ -1226,7 +1223,7 @@ uint32 sub_8003F24C(uint32 a1, uint32 a2)
       v127 = TM3_DRAFT_U32(v3 + (12) * 4u);
       v128 = v54;
       v129 = v55;
-      while ( sub_80013484(TM3_DRAFT_LOCAL_ADDRESS(&v124, sizeof(v124)), (uint16 *)&v127, 1u, TM3_DRAFT_LOCAL_ADDRESS(&v120, sizeof(v120))) == 1 )
+      while ( sub_80013484(TM3_DRAFT_LOCAL_ADDRESS(native_locals + 0x78u, 8u), TM3_DRAFT_LOCAL_ADDRESS(native_locals + 0x80u, 8u), 1u, TM3_DRAFT_LOCAL_ADDRESS(native_locals + 0x58u, 32u)) == 1 )
       {
         if ( ++v51 >= 4 )
         {
@@ -1240,7 +1237,7 @@ uint32 sub_8003F24C(uint32 a1, uint32 a2)
           v127 = TM3_DRAFT_U32(v3 + (12) * 4u);
           v128 = v58;
           v129 = v59;
-          sub_80013484(TM3_DRAFT_LOCAL_ADDRESS(&v124, sizeof(v124)), (uint16 *)&v127, 0, TM3_DRAFT_LOCAL_ADDRESS(&v120, sizeof(v120)));
+          sub_80013484(TM3_DRAFT_LOCAL_ADDRESS(native_locals + 0x78u, 8u), TM3_DRAFT_LOCAL_ADDRESS(native_locals + 0x80u, 8u), 0, TM3_DRAFT_LOCAL_ADDRESS(native_locals + 0x58u, 32u));
           v51 = 0;
           v60 = (v121 + 2048) >> 12;
           v61 = (v122 + 2048) >> 12;
@@ -1282,13 +1279,13 @@ uint32 sub_8003F24C(uint32 a1, uint32 a2)
             v68 = (TM3_DRAFT_LOCAL_ADDRESS(v130, sizeof(v130)) + (2 * v64 + 11) * 4u);
             v69 = (TM3_DRAFT_LOCAL_ADDRESS(v130, sizeof(v130)) + (2 * ((v64 + 1) % v134) + 3) * 4u);
             v70 = TM3_DRAFT_U16(v69);
-            v71 = TM3_DRAFT_U16((v69 + (1) * 4u));
-            v72 = TM3_DRAFT_U16((v69 + (2) * 4u));
-            LOWORD(v69) = TM3_DRAFT_U16((v67 + (1) * 4u));
-            v73 = v72 - TM3_DRAFT_U16((v67 + (2) * 4u));
+            v71 = TM3_DRAFT_U16(v69 + 2u);
+            v72 = TM3_DRAFT_U16(v69 + 4u);
+            v69 = (uint32)TM3_DRAFT_I16(v67 + 2u);
+            v73 = v72 - TM3_DRAFT_U16(v67 + 4u);
             TM3_DRAFT_U16(v68) = v70 - TM3_DRAFT_U16(v67);
-            TM3_DRAFT_U16((v68 + (1) * 4u)) = v71 - (_WORD)v69;
-            TM3_DRAFT_U16((v68 + (2) * 4u)) = v73;
+            TM3_DRAFT_U16(v68 + 2u) = v71 - (_WORD)v69;
+            TM3_DRAFT_U16(v68 + 4u) = v73;
             ++v64;
           }
           while ( v64 < v134 );
@@ -1298,10 +1295,10 @@ uint32 sub_8003F24C(uint32 a1, uint32 a2)
           v152[0] = v148;
           v152[1] = v149;
           v152[2] = v150;
-          sub_8005C1C0((uint32)v151, (uint32)v152, TM3_DRAFT_LOCAL_ADDRESS(native_locals + 0xF8u, 12u));
-          v130[0] = v152[4];
-          v130[1] = v152[5];
-          v130[2] = v152[6];
+          sub_8005C1C0(TM3_DRAFT_LOCAL_ADDRESS(native_locals + 0xD8u, 12u), TM3_DRAFT_LOCAL_ADDRESS(native_locals + 0xE8u, 12u), TM3_DRAFT_LOCAL_ADDRESS(native_locals + 0xF8u, 12u));
+          v130[0] = *(sint32 *)(native_locals + 0xF8u);
+          v130[1] = *(sint32 *)(native_locals + 0xFCu);
+          v130[2] = *(sint32 *)(native_locals + 0x100u);
           v74 = v123;
           v75 = 0;
           if ( TM3_DRAFT_I16(v123 + 18) > 0 )
@@ -1324,7 +1321,7 @@ uint32 sub_8003F24C(uint32 a1, uint32 a2)
               v154[3] = v83;
               v154[4] = v84;
               v154[5] = v85;
-              v86 = sub_80014510(v130, v154, 0, v153);
+              v86 = sub_80014510( TM3_DRAFT_LOCAL_ADDRESS(native_locals + 0x88u, 80u), TM3_DRAFT_LOCAL_ADDRESS(native_locals + 0x118u, 24u), 0, TM3_DRAFT_LOCAL_ADDRESS(native_locals + 0x108u, 12u));
               v75 = v81;
               if ( v86 >= 0 )
                 break;
@@ -1341,8 +1338,8 @@ uint32 sub_8003F24C(uint32 a1, uint32 a2)
             v127 -= TM3_DRAFT_U16(v4 + 1580);
             v129 -= v33;
             v128 -= v34;
-            sub_8005B284((int)&v127, (int)&v127);
-            sub_80013FF0(TM3_DRAFT_LOCAL_ADDRESS(&v127, sizeof(v127)), TM3_DRAFT_I16(dword_8007E9E0 + TM3_DRAFT_U32(v3 + (25) * 4u)), TM3_DRAFT_LOCAL_ADDRESS(&v127, sizeof(v127)));
+            sub_8005B284(TM3_DRAFT_LOCAL_ADDRESS(native_locals + 0x80u, 8u), TM3_DRAFT_LOCAL_ADDRESS(native_locals + 0x80u, 8u));
+            sub_80013FF0(TM3_DRAFT_LOCAL_ADDRESS(native_locals + 0x80u, 8u), TM3_DRAFT_I16(0x8007E9E0u + 2u * TM3_DRAFT_U32(v3 + (25) * 4u)), TM3_DRAFT_LOCAL_ADDRESS(native_locals + 0x80u, 8u));
             v35 = TM3_DRAFT_U32(v4 + 1584);
             v36 = v129 + TM3_DRAFT_U32(v4 + 1588);
             v127 += TM3_DRAFT_U16(v4 + 1580);
@@ -1365,30 +1362,31 @@ LABEL_52:
       v113 = v89 - v91;
       v114 = v90 - v92;
       sub_8005B254(TM3_DRAFT_LOCAL_ADDRESS(native_locals + 0x10u, 12u), TM3_DRAFT_LOCAL_ADDRESS(native_locals + 0x10u, 12u));
-      v93 = TM3_DRAFT_I16((v3 + (9) * 4u));
-      v94 = v114 - TM3_DRAFT_I16((v3 + (10) * 4u));
-      v112 -= TM3_DRAFT_I16((v3 + (8) * 4u));
+      v93 = TM3_DRAFT_I16((v3 + (9) * 2u));
+      v94 = v114 - TM3_DRAFT_I16((v3 + (10) * 2u));
+      v112 -= TM3_DRAFT_I16((v3 + (8) * 2u));
       v114 = v94;
       v113 -= v93;
-      if ( sub_80013E98((int)&v112) >= 256 )
+      if ( (sint32)sub_80013E98(TM3_DRAFT_LOCAL_ADDRESS(native_locals + 0x10u, 12u)) >= 256 )
       {
-        v96 = TM3_DRAFT_I16((v3 + (9) * 4u));
+        v96 = TM3_DRAFT_I16((v3 + (9) * 2u));
         v97 = v113;
-        v98 = TM3_DRAFT_U16((v3 + (10) * 4u)) + v114;
-        TM3_DRAFT_U16((v3 + (8) * 4u)) += v112;
-        TM3_DRAFT_U16((v3 + (10) * 4u)) = v98;
+        v98 = TM3_DRAFT_U16((v3 + (10) * 2u)) + v114;
+        TM3_DRAFT_U16((v3 + (8) * 2u)) += v112;
+        TM3_DRAFT_U16((v3 + (10) * 2u)) = v98;
         v95 = v96 + v97;
-        TM3_DRAFT_U16((v3 + (9) * 4u)) = v95;
+        TM3_DRAFT_U16((v3 + (9) * 2u)) = v95;
       }
       v99 = (int)v3;
-      if ( !TM3_DRAFT_U16((v3 + (8) * 4u)) )
+      if ( !TM3_DRAFT_U16((v3 + (8) * 2u)) )
       {
-        v100 = TM3_DRAFT_U16((v3 + (10) * 4u));
+        v100 = TM3_DRAFT_U16((v3 + (10) * 2u));
         if ( !v100 )
         {
           v101 = -TM3_DRAFT_I16(v4 + 1552);
-          TM3_DRAFT_U32(v3 + (2) * 4u) = (uint16)-TM3_DRAFT_U16(v4 + 1540);
-          TM3_DRAFT_U16((v3 + (6) * 4u)) = v101;
+          TM3_DRAFT_U16(v3 + 8u) = (uint16)-TM3_DRAFT_U16(v4 + 1540);
+          TM3_DRAFT_U16(v3 + 10u) = 0u;
+          TM3_DRAFT_U16((v3 + (6) * 2u)) = v101;
           sub_8005B284((int)((v3 + (2) * 4u)), (int)((v3 + (2) * 4u)));
           v102 = (uint32)((v3 + (2) * 4u));
           v103 = (uint32)((v3 + (4) * 4u));
@@ -1398,12 +1396,12 @@ LABEL_63:
           goto LABEL_67;
         }
 LABEL_65:
-        v109 = TM3_DRAFT_U16((v3 + (8) * 4u));
-        TM3_DRAFT_U16((v3 + (1) * 4u)) = 0;
+        v109 = TM3_DRAFT_U16((v3 + (8) * 2u));
+        TM3_DRAFT_U16((v3 + (1) * 2u)) = 0;
         TM3_DRAFT_U16(v3) = v100;
-        TM3_DRAFT_U16((v3 + (2) * 4u)) = -v109;
+        TM3_DRAFT_U16((v3 + (2) * 2u)) = -v109;
         sub_8005B284(v99, (int)v3);
-        sub_80013EC8((uint32)(v3 + (8) * 4u), (uint32)v3, (uint32)(v3 + (4) * 4u));
+        sub_80013EC8(v3 + 16u, (uint32)v3, v3 + 8u);
         sub_8005B284((int)((v3 + (2) * 4u)), (int)((v3 + (2) * 4u)));
 LABEL_66:
         TM3_DRAFT_U32(v3 + (24) * 4u) = 0;
@@ -1421,7 +1419,7 @@ LABEL_67:
       }
       sub_8003FEFC((v3 + (12) * 4u), (uint32)(v4 + 1580));
       v104 = sub_80013420(TM3_DRAFT_U32(v3 + (12) * 4u), TM3_DRAFT_U32(v3 + (13) * 4u), TM3_DRAFT_U32(v3 + (14) * 4u)) - 68;
-      if ( v104 < TM3_DRAFT_U32(v3 + (13) * 4u) )
+      if ( v104 < TM3_DRAFT_I32(v3 + (13) * 4u) )
         TM3_DRAFT_U32(v3 + (13) * 4u) = v104;
       v105 = TM3_DRAFT_U32(v4 + 1584);
       v106 = TM3_DRAFT_U32(v3 + (13) * 4u);
@@ -1431,14 +1429,15 @@ LABEL_67:
       v113 = v105 - v106;
       sub_8005B240(TM3_DRAFT_LOCAL_ADDRESS(native_locals + 0x10u, 12u), v3 + 16u);
       v99 = (int)v3;
-      if ( !TM3_DRAFT_U16((v3 + (8) * 4u)) )
+      if ( !TM3_DRAFT_U16((v3 + (8) * 2u)) )
       {
-        v100 = TM3_DRAFT_U16((v3 + (10) * 4u));
+        v100 = TM3_DRAFT_U16((v3 + (10) * 2u));
         if ( !v100 )
         {
           v108 = -TM3_DRAFT_I16(v4 + 1552);
-          TM3_DRAFT_U32(v3 + (2) * 4u) = (uint16)-TM3_DRAFT_U16(v4 + 1540);
-          TM3_DRAFT_U16((v3 + (6) * 4u)) = v108;
+          TM3_DRAFT_U16(v3 + 8u) = (uint16)-TM3_DRAFT_U16(v4 + 1540);
+          TM3_DRAFT_U16(v3 + 10u) = 0u;
+          TM3_DRAFT_U16((v3 + (6) * 2u)) = v108;
           sub_8005B284((int)((v3 + (2) * 4u)), (int)((v3 + (2) * 4u)));
           v102 = (uint32)((v3 + (2) * 4u));
           v103 = (uint32)((v3 + (4) * 4u));
@@ -1447,7 +1446,7 @@ LABEL_67:
         goto LABEL_65;
       }
     }
-    v100 = TM3_DRAFT_U16((v3 + (10) * 4u));
+    v100 = TM3_DRAFT_U16((v3 + (10) * 2u));
     goto LABEL_65;
   }
   return sub_8003EFF0((int)a1);
@@ -1460,6 +1459,7 @@ LABEL_67:
 #undef v116
 #undef v117
 #undef v118
+#undef v119
 #undef v120
 #undef v121
 #undef v122

@@ -20,14 +20,12 @@ uint32 sub_80049F50(uint32 a1)
     return result;
 }
 
-uint32 sub_80038A10(uint32 a1)
+void sub_80038A10(uint32 a1)
 {
     FUNCTION_MARKER(0x80038A10u, "SCUS_942.49");
     sint32 value = (sint32)r_u32(a1 + 8u);
-    if (value >= 0) return sub_80040804((uint32)value);
-    /* TODO Original negative path leaves the volatile return register unresolved */
-    tm3_draft_unimplemented("sub_80038A10 negative return register");
-    return 0u;
+    /* Cleanup caller discards the volatile return register */
+    if (value >= 0) sub_80040804((uint32)value);
 }
 
 uint32 sub_8004A4E4(uint32 a1, uint32 a2)
@@ -45,8 +43,8 @@ uint32 sub_8002E668(uint32 a1)
 {
     FUNCTION_MARKER(0x8002E668u, "SCUS_942.49");
     uint32 table = r_u32(a1 + 156u);
-    /* TODO Bind the original indirect target during integration */
-    return tm3_draft_indirect(r_u32(table + 8u), 0u);
+    /* The descriptor update receives the same object in A0 */
+    return tm3_draft_indirect(r_u32(table + 8u), 1u, a1);
 }
 
 uint32 sub_80039FD4(void)
@@ -317,28 +315,29 @@ uint32 sub_80015684(uint32 a1, uint32 a2, uint32 a3)
     FUNCTION_MARKER(0x80015684u, "SCUS_942.49");
     sint64 product = (sint64)(sint32)a1 * (sint32)a2;
     uint32 low = (uint32)product, high = (uint32)((uint64)product >> 32);
-    uint32 shift = (uint8)a3;
-    /* TODO Revisit C shifts at the original zero and out-of-range shift cases */
-    return ((low >> (shift - 1u) >> 1u) | (high << (32u - shift))) + ((low >> (shift - 1u)) & 1u);
+    uint32 shifted_low = low >> ((a3 - 1u) & 31u);
+    return ((shifted_low >> 1u) | (high << ((32u - a3) & 31u))) + (shifted_low & 1u);
 }
 
 uint32 sub_80015764(uint32 a1, uint32 a2, uint32 a3)
 {
     FUNCTION_MARKER(0x80015764u, "SCUS_942.49");
-    sint32 x = abs((sint32)a1), y = abs((sint32)a2), z = abs((sint32)a3);
+    sint32 x = (sint32)((sint32)a1 < 0 ? 0u-a1 : a1);
+    sint32 y = (sint32)((sint32)a2 < 0 ? 0u-a2 : a2);
+    sint32 z = (sint32)((sint32)a3 < 0 ? 0u-a3 : a3);
     if (z < x) { sint32 t=x; x=z; z=t; }
     if (y < x) { sint32 t=x; x=y; y=t; }
     if (z < y) { sint32 t=y; y=z; z=t; }
     /* TODO Preserve original abs and signed-add overflow behavior during integration */
-    return (uint32)(z + y / 2 + x / 4);
+    return (uint32)z + (uint32)(y / 2) + (uint32)(x / 4);
 }
 
 uint32 sub_80013A90(uint32 a1, uint32 a2)
 {
     FUNCTION_MARKER(0x80013A90u, "SCUS_942.49");
-    sint64 product = (sint64)(sint32)r_u32(a1) * (sint16)r_u16(a2)
-                   + (sint64)(sint32)r_u32(a1 + 4u) * (sint16)r_u16(a2 + 2u)
-                   + (sint64)(sint32)r_u32(a1 + 8u) * (sint16)r_u16(a2 + 4u);
+    sint64 product = (sint64)(sint32)TM3_DRAFT_U32(a1) * (sint16)TM3_DRAFT_U16(a2)
+                   + (sint64)(sint32)TM3_DRAFT_U32(a1 + 4u) * (sint16)TM3_DRAFT_U16(a2 + 2u)
+                   + (sint64)(sint32)TM3_DRAFT_U32(a1 + 8u) * (sint16)TM3_DRAFT_U16(a2 + 4u);
     return (uint32)(product >> 12) + (((uint32)product >> 11) & 1u);
 }
 
@@ -575,3 +574,29 @@ uint32 sub_80043858(uint32 a1)
     }
 }
 
+
+uint32 sub_8003FEFC(uint32 output, uint32 target)
+{
+    sint32 closest=0x7FFFFFFF;
+    FUNCTION_MARKER(0x8003FEFCu, "SCUS_942.49");
+    w_u32(output,(uint32)(sint16)r_u16(0x8008981Cu));
+    w_u32(output+4u,(uint32)(sint16)r_u16(0x8008981Eu));
+    w_u32(output+8u,(uint32)(sint16)r_u16(0x80089820u));
+    for(uint32 i=0u;i<128u;++i)
+    {
+        uint32 table=r_u32(0x80089C98u), point=table+0x2400u+8u*i;
+        if(r_u8(point+6u)==1u)
+        {
+            sint32 distance=(sint32)sub_80015764(r_u32(target)-(uint32)(sint16)r_u16(point),r_u32(target+4u)-(uint32)(sint16)r_u16(point+2u),r_u32(target+8u)-(uint32)(sint16)r_u16(point+4u));
+            if(distance<closest)
+            {
+                point=r_u32(0x80089C98u)+0x2400u+8u*i;
+                closest=distance;
+                w_u32(output,(uint32)(sint16)r_u16(point));
+                w_u32(output+4u,(uint32)(sint16)r_u16(point+2u));
+                w_u32(output+8u,(uint32)(sint16)r_u16(point+4u));
+            }
+        }
+    }
+    return 0u;
+}

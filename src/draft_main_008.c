@@ -17,11 +17,7 @@ uint32 sub_80018D60(uint32 a1)
     uint32 hi_value, lo_value, condition_value;
     /* TODO Incoming volatile values not supplied by the provisional API remain unresolved */
     uint64 product;
-    uint8 local_storage[72];
-    /* TODO Local buffer address adapter and native aliases */
-    local_base = tm3_draft_local_address(local_storage, sizeof(local_storage));
-    temp_a0 = sub_80018D60;
-    temp_a1 = a1;
+    temp_a0 = a1;
 label_80018d60:  goto label_80018d64;
 label_80018d64:  goto label_80018d68;
 label_80018d68: temp_s3 = (temp_a0 + 0u); goto label_80018d6c;
@@ -648,7 +644,7 @@ label_80019718: temp_a1 = 0x80080000u; goto label_8001971c;
 label_8001971c: TM3_DRAFT_U32(temp_s0 + (uint32)(64)) = (uint32)temp_v0; goto label_80019720;
 label_80019720: temp_a0 = TM3_DRAFT_U32(temp_s3 + (uint32)(3924)); goto label_80019724;
 label_80019724: temp_a2 = TM3_DRAFT_U32(temp_a2 + (uint32)(0)); goto label_80019728;
-label_80019728: temp_a1 = temp_a1 + (uint32)(32520); temp_v0 = sub_8004179C(temp_a0, temp_a1, temp_a2, temp_a3, *(uint32 *)(local_storage + 16), *(uint32 *)(local_storage + 20), *(uint32 *)(local_storage + 24)); goto label_80019730;
+label_80019728: temp_a1 = temp_a1 + (uint32)(32520); temp_v0 = sub_8004179C(temp_a0, temp_a1, temp_a2); goto label_80019730;
 label_8001972c: temp_a1 = temp_a1 + (uint32)(32520); goto label_80019730;
 label_80019730: temp_a0 = (temp_s3 + 0u); goto label_80019764;
 label_80019734: temp_a0 = (temp_s3 + 0u); goto label_80019738;

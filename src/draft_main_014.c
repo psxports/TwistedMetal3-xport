@@ -10,130 +10,51 @@ extern uint32 tm3_draft_gte_read_data(uint32 index);
 extern void tm3_draft_gte_command(uint32 instruction);
 
 /* Unverified listing-derived control flow */
-uint32 sub_8004AFA8(uint32 a1, uint32 a2)
+uint32 sub_8004AFA8(uint32 vehicle, uint32 effect)
 {
+    uint32 delta[4], force[4];
+    uint16 direction[4];
+    uint32 delta_address, force_address, direction_address;
+    uint32 slot, distance, value, product, attenuation;
+    unsigned axis;
     FUNCTION_MARKER(0x8004AFA8u, "SCUS_942.49");
-    uint32 temp_at, temp_v0, temp_v1, temp_a0, temp_a1, temp_a2, temp_a3, temp_t0, temp_t1, temp_t2, temp_t3, temp_t4, temp_t5, temp_t6, temp_t7, temp_s0, temp_s1, temp_s2, temp_s3, temp_s4, temp_s5, temp_s6, temp_s7, temp_t8, temp_t9, temp_k0, temp_k1, local_base, temp_fp;
-    uint32 hi_value, lo_value, condition_value;
-    /* TODO Incoming volatile values not supplied by the provisional API remain unresolved */
-    uint64 product;
-    uint8 local_storage[136];
-    /* TODO Local buffer address adapter and native aliases */
-    local_base = tm3_draft_local_address(local_storage, sizeof(local_storage));
-    temp_a0 = sub_8004AFA8;
-    temp_a1 = a1;
-    temp_a2 = a2;
-label_8004afa8:  goto label_8004afac;
-label_8004afac:  goto label_8004afb0;
-label_8004afb0: temp_s4 = (temp_a0 + 0u); goto label_8004afb4;
-label_8004afb4:  goto label_8004afb8;
-label_8004afb8: temp_s3 = (temp_a1 + 0u); goto label_8004afbc;
-label_8004afbc: temp_a0 = temp_s3 + (uint32)(228); goto label_8004afc0;
-label_8004afc0: temp_a1 = (temp_s4 + 0u); goto label_8004afc4;
-label_8004afc4:  goto label_8004afc8;
-label_8004afc8:  goto label_8004afcc;
-label_8004afcc:  goto label_8004afd0;
-label_8004afd0:  temp_v0 = sub_80028A88(temp_a0, temp_a1); goto label_8004afd8;
-label_8004afd4:  goto label_8004afd8;
-label_8004afd8: condition_value = (temp_v0 == 0u); temp_v0 = (0u + 0u); if (condition_value) goto label_8004b14c; goto label_8004afe0;
-label_8004afdc: temp_v0 = (0u + 0u); goto label_8004afe0;
-label_8004afe0: temp_v0 = TM3_DRAFT_I16(temp_s3 + (uint32)(264)); goto label_8004afe4;
-label_8004afe4:  goto label_8004afe8;
-label_8004afe8: condition_value = (temp_v0 != 0u);  if (condition_value) goto label_8004b000; goto label_8004aff0;
-label_8004afec:  goto label_8004aff0;
-label_8004aff0: temp_v0 = TM3_DRAFT_U32(temp_s3 + (uint32)(224)); goto label_8004aff4;
-label_8004aff4:  goto label_8004aff8;
-label_8004aff8: condition_value = (temp_v0 == temp_s4); temp_v0 = (0u + 0u); if (condition_value) goto label_8004b14c; goto label_8004b000;
-label_8004affc: temp_v0 = (0u + 0u); goto label_8004b000;
-label_8004b000: temp_a0 = TM3_DRAFT_U32(temp_s3 + (uint32)(248)); goto label_8004b004;
-label_8004b004: temp_v0 = 0u + (uint32)(1); goto label_8004b008;
-label_8004b008: condition_value = (temp_a0 != temp_v0); temp_v0 = temp_s4 + (uint32)(-20); if (condition_value) goto label_8004b038; goto label_8004b010;
-label_8004b00c: temp_v0 = temp_s4 + (uint32)(-20); goto label_8004b010;
-label_8004b010: temp_v0 = TM3_DRAFT_U32(temp_s4 + (uint32)(3920)); goto label_8004b014;
-label_8004b014:  goto label_8004b018;
-label_8004b018: temp_v0 = (uint32)(temp_v0 << 2); goto label_8004b01c;
-label_8004b01c: temp_v1 = (temp_s3 + temp_v0); goto label_8004b020;
-label_8004b020: temp_v0 = TM3_DRAFT_U32(temp_v1 + (uint32)(160)); goto label_8004b024;
-label_8004b024:  goto label_8004b028;
-label_8004b028: condition_value = (temp_v0 != 0u); temp_v0 = (0u + 0u); if (condition_value) goto label_8004b14c; goto label_8004b030;
-label_8004b02c: temp_v0 = (0u + 0u); goto label_8004b030;
-label_8004b030: TM3_DRAFT_U32(temp_v1 + (uint32)(160)) = (uint32)temp_a0; goto label_8004b034;
-label_8004b034: temp_v0 = temp_s4 + (uint32)(-20); goto label_8004b038;
-label_8004b038: temp_a1 = TM3_DRAFT_I16(temp_v0 + (uint32)(2)); goto label_8004b03c;
-label_8004b03c: temp_a2 = TM3_DRAFT_I16(temp_v0 + (uint32)(4)); goto label_8004b040;
-label_8004b040: temp_v0 = local_base + (uint32)(56); goto label_8004b044;
-label_8004b044: temp_s1 = local_base + (uint32)(40); goto label_8004b048;
-label_8004b048: temp_v1 = TM3_DRAFT_I16(temp_s4 + (uint32)(-20)); goto label_8004b04c;
-label_8004b04c: temp_a0 = (temp_s1 + 0u); goto label_8004b050;
-label_8004b050: *(uint16 *)(local_storage + 56) = (uint16)temp_v1; goto label_8004b054;
-label_8004b054: TM3_DRAFT_U16(temp_v0 + (uint32)(2)) = (uint16)temp_a1; goto label_8004b058;
-label_8004b058: TM3_DRAFT_U16(temp_v0 + (uint32)(4)) = (uint16)temp_a2; goto label_8004b05c;
-label_8004b05c: temp_v0 = temp_s3 + (uint32)(-20); goto label_8004b060;
-label_8004b060: temp_a3 = TM3_DRAFT_I16(temp_s3 + (uint32)(-20)); goto label_8004b064;
-label_8004b064: temp_t0 = TM3_DRAFT_I16(temp_v0 + (uint32)(2)); goto label_8004b068;
-label_8004b068: temp_t1 = TM3_DRAFT_I16(temp_v0 + (uint32)(4)); goto label_8004b06c;
-label_8004b06c: temp_v0 = local_base + (uint32)(64); goto label_8004b070;
-label_8004b070: temp_v1 = (temp_v1 - temp_a3); goto label_8004b074;
-label_8004b074: temp_a1 = (temp_a1 - temp_t0); goto label_8004b078;
-label_8004b078: temp_a2 = (temp_a2 - temp_t1); goto label_8004b07c;
-label_8004b07c: *(uint16 *)(local_storage + 64) = (uint16)temp_a3; goto label_8004b080;
-label_8004b080: TM3_DRAFT_U16(temp_v0 + (uint32)(2)) = (uint16)temp_t0; goto label_8004b084;
-label_8004b084: TM3_DRAFT_U16(temp_v0 + (uint32)(4)) = (uint16)temp_t1; goto label_8004b088;
-label_8004b088: *(uint32 *)(local_storage + 40) = (uint32)temp_v1; goto label_8004b08c;
-label_8004b08c: TM3_DRAFT_U32(temp_s1 + (uint32)(4)) = (uint32)temp_a1; goto label_8004b090;
-label_8004b090: TM3_DRAFT_U32(temp_s1 + (uint32)(8)) = (uint32)temp_a2; temp_v0 = sub_80013D64(temp_a0); goto label_8004b098;
-label_8004b094: TM3_DRAFT_U32(temp_s1 + (uint32)(8)) = (uint32)temp_a2; goto label_8004b098;
-label_8004b098: temp_v1 = TM3_DRAFT_U32(temp_s3 + (uint32)(148)); goto label_8004b09c;
-label_8004b09c: temp_s2 = (temp_v0 + 0u); goto label_8004b0a0;
-label_8004b0a0: product = (uint64)((sint64)(sint32)temp_v1 * (sint64)(sint32)temp_s2); lo_value = (uint32)product; hi_value = (uint32)(product >> 32); goto label_8004b0a4;
-label_8004b0a4: temp_s0 = lo_value; goto label_8004b0a8;
-label_8004b0a8: condition_value = ((sint32)temp_s0 >= 0); temp_a0 = (temp_s1 + 0u); if (condition_value) goto label_8004b0b4; goto label_8004b0b0;
-label_8004b0ac: temp_a0 = (temp_s1 + 0u); goto label_8004b0b0;
-label_8004b0b0: temp_s0 = temp_s0 + (uint32)(2047); goto label_8004b0b4;
-label_8004b0b4: temp_s1 = local_base + (uint32)(72); goto label_8004b0b8;
-label_8004b0b8: temp_a1 = (temp_s1 + 0u); goto label_8004b0bc;
-label_8004b0bc: temp_s0 = (uint32)((sint32)temp_s0 >> 11); goto label_8004b0c0;
-label_8004b0c0: temp_s0 = (temp_v1 - temp_s0); temp_v0 = tm3_draft_indirect(0x8005b240u, 4u, temp_a0, temp_a1, temp_a2, temp_a3); goto label_8004b0c8;
-label_8004b0c4: temp_s0 = (temp_v1 - temp_s0); goto label_8004b0c8;
-label_8004b0c8: temp_a0 = local_base + (uint32)(24); goto label_8004b0cc;
-label_8004b0cc: temp_a1 = (temp_s0 + 0u); goto label_8004b0d0;
-label_8004b0d0: temp_a2 = (temp_s1 + 0u); temp_v0 = sub_80013F78(temp_a0, temp_a1, temp_a2); goto label_8004b0d8;
-label_8004b0d4: temp_a2 = (temp_s1 + 0u); goto label_8004b0d8;
-label_8004b0d8: temp_v1 = TM3_DRAFT_U32(temp_s3 + (uint32)(152)); goto label_8004b0dc;
-label_8004b0dc:  goto label_8004b0e0;
-label_8004b0e0: product = (uint64)((sint64)(sint32)temp_v1 * (sint64)(sint32)temp_s2); lo_value = (uint32)product; hi_value = (uint32)(product >> 32); goto label_8004b0e4;
-label_8004b0e4: temp_v0 = lo_value; goto label_8004b0e8;
-label_8004b0e8: condition_value = ((sint32)temp_v0 >= 0); temp_a0 = (temp_s4 + 0u); if (condition_value) goto label_8004b0f4; goto label_8004b0f0;
-label_8004b0ec: temp_a0 = (temp_s4 + 0u); goto label_8004b0f0;
-label_8004b0f0: temp_v0 = temp_v0 + (uint32)(2047); goto label_8004b0f4;
-label_8004b0f4: temp_a1 = local_base + (uint32)(24); goto label_8004b0f8;
-label_8004b0f8: temp_v0 = (uint32)((sint32)temp_v0 >> 11); goto label_8004b0fc;
-label_8004b0fc: temp_v0 = (temp_v1 - temp_v0); goto label_8004b100;
-label_8004b100: temp_v1 = *(uint32 *)(local_storage + 28); goto label_8004b104;
-label_8004b104: temp_v0 = (uint32)(temp_v0 << 12); goto label_8004b108;
-label_8004b108: temp_v1 = (temp_v1 - temp_v0); goto label_8004b10c;
-label_8004b10c: *(uint32 *)(local_storage + 28) = (uint32)temp_v1; temp_v0 = sub_80033D4C(temp_a0, temp_a1); goto label_8004b114;
-label_8004b110: *(uint32 *)(local_storage + 28) = (uint32)temp_v1; goto label_8004b114;
-label_8004b114: temp_v1 = TM3_DRAFT_U32(temp_s3 + (uint32)(156)); goto label_8004b118;
-label_8004b118:  goto label_8004b11c;
-label_8004b11c: product = (uint64)((sint64)(sint32)temp_v1 * (sint64)(sint32)temp_s2); lo_value = (uint32)product; hi_value = (uint32)(product >> 32); goto label_8004b120;
-label_8004b120: temp_v0 = lo_value; goto label_8004b124;
-label_8004b124: condition_value = ((sint32)temp_v0 >= 0); temp_a0 = (temp_s4 + 0u); if (condition_value) goto label_8004b130; goto label_8004b12c;
-label_8004b128: temp_a0 = (temp_s4 + 0u); goto label_8004b12c;
-label_8004b12c: temp_v0 = temp_v0 + (uint32)(2047); goto label_8004b130;
-label_8004b130: temp_a2 = (uint32)((sint32)temp_v0 >> 11); goto label_8004b134;
-label_8004b134: temp_a2 = (temp_v1 - temp_a2); goto label_8004b138;
-label_8004b138: *(uint32 *)(local_storage + 16) = (uint32)0u; goto label_8004b13c;
-label_8004b13c: temp_a1 = TM3_DRAFT_U32(temp_s3 + (uint32)(224)); goto label_8004b140;
-label_8004b140: temp_a3 = (0u + 0u); temp_v0 = sub_800239C0(temp_a0, temp_a1, temp_a2, temp_a3, *(uint32 *)(local_storage + 16), *(uint32 *)(local_storage + 20), *(uint32 *)(local_storage + 24), *(uint32 *)(local_storage + 28), *(uint32 *)(local_storage + 32), *(uint32 *)(local_storage + 36)); goto label_8004b148;
-label_8004b144: temp_a3 = (0u + 0u); goto label_8004b148;
-label_8004b148: temp_v0 = 0u + (uint32)(1); goto label_8004b14c;
-label_8004b14c:  goto label_8004b150;
-label_8004b150:  goto label_8004b154;
-label_8004b154:  goto label_8004b158;
-label_8004b158:  goto label_8004b15c;
-label_8004b15c:  goto label_8004b160;
-label_8004b160:  goto label_8004b164;
-label_8004b164:  return temp_v0;
-label_8004b168:  return temp_v0;
+    if (!sub_80028A88(effect + 228u, vehicle))
+        return 0;
+    if (TM3_DRAFT_I16(effect + 264u) == 0 && TM3_DRAFT_U32(effect + 224u) == vehicle)
+        return 0;
+    if (TM3_DRAFT_U32(effect + 248u) == 1u)
+    {
+        slot = effect + (TM3_DRAFT_U32(vehicle + 3920u) << 2) + 160u;
+        if (TM3_DRAFT_U32(slot))
+            return 0;
+        TM3_DRAFT_U32(slot) = 1;
+    }
+    for (axis = 0; axis < 3; ++axis)
+        delta[axis] = (uint32)(sint32)TM3_DRAFT_I16(vehicle - 20u + 2u * axis)
+                    - (uint32)(sint32)TM3_DRAFT_I16(effect - 20u + 2u * axis);
+    delta_address = TM3_DRAFT_LOCAL_ADDRESS(delta, sizeof(delta));
+    force_address = TM3_DRAFT_LOCAL_ADDRESS(force, sizeof(force));
+    direction_address = TM3_DRAFT_LOCAL_ADDRESS(direction, sizeof(direction));
+    distance = sub_80013D64(delta_address);
+    value = TM3_DRAFT_U32(effect + 148u);
+    product = (uint32)((sint64)(sint32)value * (sint64)(sint32)distance);
+    if ((sint32)product < 0)
+        product += 2047u;
+    attenuation = value - (uint32)((sint32)product >> 11);
+    sub_8005B240(delta_address, direction_address);
+    sub_80013F78(force_address, attenuation, direction_address);
+    value = TM3_DRAFT_U32(effect + 152u);
+    product = (uint32)((sint64)(sint32)value * (sint64)(sint32)distance);
+    if ((sint32)product < 0)
+        product += 2047u;
+    attenuation = value - (uint32)((sint32)product >> 11);
+    force[1] -= attenuation << 12;
+    sub_80033D4C(vehicle, force_address);
+    value = TM3_DRAFT_U32(effect + 156u);
+    product = (uint32)((sint64)(sint32)value * (sint64)(sint32)distance);
+    if ((sint32)product < 0)
+        product += 2047u;
+    attenuation = value - (uint32)((sint32)product >> 11);
+    sub_800239C0(vehicle, TM3_DRAFT_U32(effect + 224u), attenuation, 0u, 0u);
+    return 1;
 }

@@ -13,7 +13,7 @@ uint32 sub_80022510(uint32 a1, uint32 a2)
     uint32 hi_value, lo_value, condition_value;
     uint64 product;
     uint8 local_storage[384];
-    /* TODO Local buffer address adapter and native aliases */
+    /* Original collision vectors and matrices share contiguous native storage */
     local_base = TM3_DRAFT_LOCAL_ADDRESS(local_storage, sizeof(local_storage));
     temp_a0 = a1;
     temp_a1 = a2;
@@ -138,7 +138,7 @@ label_800226e4: temp_a3 = TM3_DRAFT_U32(temp_s2 + (uint32)(0)); goto label_80022
 label_800226e8: temp_s7 = temp_s7 + (uint32)(12); goto label_800226ec;
 label_800226ec: TM3_DRAFT_U32(local_base + 16u) = (uint32)temp_s0; goto label_800226f0;
 label_800226f0: temp_a2 = temp_a3 + (uint32)(868); goto label_800226f4;
-label_800226f4: temp_a3 = temp_a3 + (uint32)(876); temp_v0 = sub_80021E44(temp_a0, temp_a1, temp_a2, temp_a3, TM3_DRAFT_U32(local_base + 16u), TM3_DRAFT_U32(local_base + 20u), TM3_DRAFT_U32(local_base + 24u), TM3_DRAFT_U32(local_base + 28u), TM3_DRAFT_U32(local_base + 32u), TM3_DRAFT_U32(local_base + 36u), TM3_DRAFT_U32(local_base + 40u), TM3_DRAFT_U32(local_base + 44u), TM3_DRAFT_U32(local_base + 48u)); goto label_800226fc;
+label_800226f4: temp_a3 = temp_a3 + (uint32)(876); temp_v0 = sub_80021E44(temp_a0, temp_a1, temp_a2, temp_a3, TM3_DRAFT_U32(local_base + 16u)); goto label_800226fc;
 label_800226f8: temp_a3 = temp_a3 + (uint32)(876); goto label_800226fc;
 label_800226fc: temp_a0 = (temp_s0 + 0u); goto label_80022700;
 label_80022700: temp_s1 = local_base + (uint32)(40); goto label_80022704;
@@ -593,7 +593,7 @@ label_80022e00: temp_a3 = TM3_DRAFT_U32(temp_s7 + (uint32)(0)); goto label_80022
 label_80022e04: temp_s0 = (temp_s0 + temp_v0); goto label_80022e08;
 label_80022e08: TM3_DRAFT_U32(local_base + 16u) = (uint32)temp_s0; goto label_80022e0c;
 label_80022e0c: temp_a2 = temp_a3 + (uint32)(868); goto label_80022e10;
-label_80022e10: temp_a3 = temp_a3 + (uint32)(876); temp_v0 = sub_80021E44(temp_a0, temp_a1, temp_a2, temp_a3, TM3_DRAFT_U32(local_base + 16u), TM3_DRAFT_U32(local_base + 20u), TM3_DRAFT_U32(local_base + 24u), TM3_DRAFT_U32(local_base + 28u), TM3_DRAFT_U32(local_base + 32u), TM3_DRAFT_U32(local_base + 36u), TM3_DRAFT_U32(local_base + 40u), TM3_DRAFT_U32(local_base + 44u), TM3_DRAFT_U32(local_base + 48u)); goto label_80022e18;
+label_80022e10: temp_a3 = temp_a3 + (uint32)(876); temp_v0 = sub_80021E44(temp_a0, temp_a1, temp_a2, temp_a3, TM3_DRAFT_U32(local_base + 16u)); goto label_80022e18;
 label_80022e14: temp_a3 = temp_a3 + (uint32)(876); goto label_80022e18;
 label_80022e18: temp_a0 = (temp_s0 + 0u); goto label_80022e1c;
 label_80022e1c: temp_s0 = (temp_v0 + 0u); temp_v0 = sub_80013D64(temp_a0); goto label_80022e24;
@@ -1040,7 +1040,7 @@ label_800234fc: temp_t8 = lo_value; goto label_80023500;
 label_80023500: temp_v0 = temp_t8 + (uint32)(2048); goto label_80023504;
 label_80023504: temp_v0 = (uint32)((sint32)temp_v0 >> 12); goto label_80023508;
 label_80023508: temp_a2 = (uint32)(temp_v0 << 14); goto label_8002350c;
-label_8002350c: temp_a2 = (uint32)((sint32)temp_a2 >> 12); temp_v0 = sub_800239C0(temp_a0, temp_a1, temp_a2, temp_a3, TM3_DRAFT_U32(local_base + 16u), TM3_DRAFT_U32(local_base + 20u), TM3_DRAFT_U32(local_base + 24u), TM3_DRAFT_U32(local_base + 28u), TM3_DRAFT_U32(local_base + 32u), TM3_DRAFT_U32(local_base + 36u)); goto label_80023514;
+label_8002350c: temp_a2 = (uint32)((sint32)temp_a2 >> 12); temp_v0 = sub_800239C0(temp_a0, temp_a1, temp_a2, temp_a3, TM3_DRAFT_U32(local_base + 16u), TM3_DRAFT_U32(local_base + 20u)); goto label_80023514;
 label_80023510: temp_a2 = (uint32)((sint32)temp_a2 >> 12); goto label_80023514;
 label_80023514: temp_v0 = TM3_DRAFT_U32(temp_s2 + (uint32)(0)); goto label_80023518;
 label_80023518:  goto label_8002351c;
@@ -1096,7 +1096,7 @@ label_800235dc: temp_v0 = (temp_v0 + temp_t0); goto label_800235e0;
 label_800235e0: temp_v1 = (uint32)(temp_v0 >> 31); goto label_800235e4;
 label_800235e4: temp_v0 = (temp_v0 + temp_v1); goto label_800235e8;
 label_800235e8: temp_v0 = (uint32)((sint32)temp_v0 >> 1); goto label_800235ec;
-label_800235ec: TM3_DRAFT_U32(local_base + 20u) = (uint32)temp_v0; temp_v0 = sub_8004A294(temp_a0, temp_a1, temp_a2, temp_a3, TM3_DRAFT_U32(local_base + 16u), TM3_DRAFT_U32(local_base + 20u), TM3_DRAFT_U32(local_base + 24u), TM3_DRAFT_U32(local_base + 28u), TM3_DRAFT_U32(local_base + 32u), TM3_DRAFT_U32(local_base + 36u), TM3_DRAFT_U32(local_base + 40u), TM3_DRAFT_U32(local_base + 44u)); goto label_800235f4;
+label_800235ec: TM3_DRAFT_U32(local_base + 20u) = (uint32)temp_v0; temp_v0 = sub_8004A294(temp_a0, temp_a1, temp_a2, temp_a3, TM3_DRAFT_U32(local_base + 16u), TM3_DRAFT_U32(local_base + 20u), TM3_DRAFT_U32(local_base + 24u)); goto label_800235f4;
 label_800235f0: TM3_DRAFT_U32(local_base + 20u) = (uint32)temp_v0; goto label_800235f4;
 label_800235f4: temp_v0 = TM3_DRAFT_U32(local_base + 244u); goto label_800235f8;
 label_800235f8:  goto label_800235fc;

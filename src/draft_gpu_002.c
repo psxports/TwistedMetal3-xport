@@ -395,207 +395,106 @@ LABEL_17:
 }
 
 /* Unverified decompiler-derived draft */
-uint32 sub_80029660(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, uint32 a6, uint32 a7, ...)
+uint32 sub_80029660(uint32 geometry, uint32 primitives, uint32 vertices, uint32 texture_index,
+                      uint32 ordering_table, uint32 packet_pointer, uint32 packet_end, ...)
 {
-  uint32 ida_A0, ida_A2, ida_A3, ida_T0, ida_T6, ida_V0; /* TODO Explicit adapter values */
-  uint32 v16; 
-  int result; 
-  int v18; 
-  int v19; 
-  int v20; 
-  uint32 v21; 
-  int v23; 
-  int v24; 
-  uint32 v25; 
-  uint32 v26; 
-  char v27; 
-  char v28; 
-  int v29; 
-  int v30; 
-  int v32; 
-  int v34; 
-  int v37; 
-  int v39; 
-  char v41; 
-  int v42; 
-  uint32 v43; 
-  int v44; 
-  char v45; 
-  int v46; 
-  int v47; 
-  int v49; 
-  int v51; 
-  int v53; 
-  char v55; 
+  uint32 packet = TM3_DRAFT_U32(packet_pointer);
+  uint32 primitive = primitives + TM3_DRAFT_U32(geometry + 4u);
+  uint32 projected = 0x1F800000u;
+  uint32 depths = 0x1F800200u;
+  uint32 vertex = vertices + 8u * TM3_DRAFT_U16(geometry + 2u);
+  sint32 remaining = TM3_DRAFT_U8(geometry);
+  uint32 count, i, j, opcode, texture, index[4], screen[3], depth_sum;
+  uint32 size, bucket, gray, double_sided;
+  sint32 area, second_area, depth;
 
-  v16 = TM3_DRAFT_U32(a6);
-  if ( TM3_DRAFT_U32(a6) + 52 * (unsigned int)TM3_DRAFT_U8(a1 + (1) * 1u) >= a7 )
+  if (packet + 52u * TM3_DRAFT_U8(geometry + 1u) >= packet_end)
     return 0;
-  v18 = 528482292;
-  v19 = 528482804;
-  v20 = TM3_DRAFT_U8(a1);
-  v21 = (uint32)(a2 + TM3_DRAFT_U32(a1 +(1) * 4u));
-  ida_A2 = a3 + 8 * TM3_DRAFT_U16(a1 +(1) * 2u);
-  if ( TM3_DRAFT_U8(a1) )
+  while (remaining > 0)
   {
-    do
+    for (j = 0; j < 6u; ++j)
+      tm3_draft_gte_write_data(j, TM3_DRAFT_U32(vertex + 4u * j));
+    tm3_draft_gte_command(0x280030u);
+    for (j = 0; j < 3u; ++j)
     {
-      /* TODO GTE adapters */
-  tm3_draft_unimplemented("TODO lwc2    $0, 0($a2)");
-  tm3_draft_unimplemented("TODO lwc2    $1, 4($a2)");
-  tm3_draft_unimplemented("TODO lwc2    $2, 8($a2)");
-  tm3_draft_unimplemented("TODO lwc2    $3, 0xC($a2)");
-  tm3_draft_unimplemented("TODO lwc2    $4, 0x10($a2)");
-  tm3_draft_unimplemented("TODO lwc2    $5, 0x14($a2)");
-      v19 += 12;
-      v18 += 12;
-      /* TODO GTE adapters */
-  tm3_draft_gte_command(0x280030u);
-      v20 -= 3;
-      ida_A2 += 24;
-      /* TODO GTE adapters */
-  tm3_draft_unimplemented("TODO swc2    $12, 0($t0)");
-  tm3_draft_unimplemented("TODO swc2    $13, 4($t0)");
-  tm3_draft_unimplemented("TODO swc2    $14, 8($t0)");
-  tm3_draft_unimplemented("TODO swc2    $17, 0($a0)");
-  tm3_draft_unimplemented("TODO swc2    $18, 4($a0)");
-  tm3_draft_unimplemented("TODO swc2    $19, 8($a0)");
+      TM3_DRAFT_U32(projected + 4u * j) = tm3_draft_gte_read_data(12u + j);
+      TM3_DRAFT_U32(depths + 4u * j) = tm3_draft_gte_read_data(17u + j);
     }
-    while ( v20 > 0 );
+    projected += 12u;
+    depths += 12u;
+    remaining -= 3;
+    vertex += 24u;
   }
-  v23 = 0;
-  if ( TM3_DRAFT_U8(a1 + (1) * 1u) )
+
+  count = TM3_DRAFT_U8(geometry + 1u);
+  for (i = 0; i < count; ++i, primitive += 12u)
   {
-    v24 = 12 * a4;
-    v25 = (uint32)(v16 + (7) * 4u);
-    v26 = v21 + 6;
-    while ( 1 )
+    opcode = TM3_DRAFT_U8(primitive + 3u);
+    if (opcode != 0x24u && opcode != 0x26u && opcode != 0x2Cu && opcode != 0x2Eu)
+      return 0;
+    double_sided = TM3_DRAFT_U8(primitive + 1u);
+    texture = TM3_DRAFT_U32(primitive + 8u) + 12u * texture_index;
+    for (j = 0; j < 3u; ++j)
     {
-      v27 = TM3_DRAFT_U8(v26 - 3);
-      if ( v27 == 38 )
-        goto LABEL_20;
-      if ( TM3_DRAFT_U8(v26 - 3) < 0x27u )
-        break;
-      if ( v27 != 44 )
-      {
-        result = 0;
-        if ( v27 != 46 )
-          return result;
-      }
-      v28 = TM3_DRAFT_U8(v26 - 5);
-      v29 = TM3_DRAFT_U32(v26 + 2) + v24;
-      v30 = 4 * TM3_DRAFT_U8(v26 - 2);
-      ida_A0 = v30 + 528482304;
-      v32 = 4 * TM3_DRAFT_U8(v26 - 1);
-      ida_A2 = v32 + 528482304;
-      v34 = 4 * TM3_DRAFT_U8(v26);
-      ida_A3 = v34 + 528482304;
-      /* TODO GTE adapters */
-  tm3_draft_unimplemented("TODO lwc2    $12, 0($a0)");
-  tm3_draft_unimplemented("TODO lwc2    $13, 0($a2)");
-  tm3_draft_unimplemented("TODO lwc2    $14, 0($a3)");
-      TM3_DRAFT_U32(v25 + 5) = TM3_DRAFT_U32(v29);
-      TM3_DRAFT_U32(v25 + 13) = TM3_DRAFT_U32(v29 + 4);
-      /* TODO GTE adapters */
-  tm3_draft_gte_command(0x1400006u);
-      TM3_DRAFT_U32(v25 + 1) = TM3_DRAFT_U32(v30 + 528482304);
-      TM3_DRAFT_U32(v25 + 9) = TM3_DRAFT_U32(v32 + 528482304);
-      TM3_DRAFT_U32(v25 + 17) = TM3_DRAFT_U32(v34 + 528482304);
-      /* TODO GTE adapters */
-  ida_A2 = tm3_draft_gte_read_data(24u);
-      v37 = TM3_DRAFT_U8(v26 + (1) * 1u);
-      ida_V0 = 4 * v37 + 528482304;
-      /* TODO GTE adapters */
-  tm3_draft_unimplemented("TODO lwc2    $12, 0($v0)");
-      TM3_DRAFT_U16(v25 + 21) = TM3_DRAFT_U16(v29 + 8);
-      TM3_DRAFT_U16(v25 + 29) = TM3_DRAFT_U16(v29 + 10);
-      /* TODO GTE adapters */
-  tm3_draft_gte_command(0x1400006u);
-      v39 = (TM3_DRAFT_U32(v30 + 528482816)
-           + TM3_DRAFT_U32(v32 + 528482816)
-           + TM3_DRAFT_U32(v34 + 528482816)
-           + TM3_DRAFT_U32(4 * v37 + 0x1F800200)) >> 4;
-      /* TODO GTE adapters */
-  ida_A0 = tm3_draft_gte_read_data(24u);
-      if ( (v28 || ida_A0 <= 0 || ida_A2 > 0) && v39 >= 41 )
-      {
-        v41 = TM3_DRAFT_U8(v21);
-        TM3_DRAFT_I8(v25 - 1) = TM3_DRAFT_U8(v21);
-        TM3_DRAFT_I8(v25 - 2) = v41;
-        TM3_DRAFT_I8(v25 - 3) = v41;
-        v42 = TM3_DRAFT_U32(4 * v37 + 0x1F800000);
-        TM3_DRAFT_I8(v25) = v27;
-        TM3_DRAFT_U32(v25 + 25) = v42;
-        if ( v39 >= dword_80089DD0 )
-          v39 = dword_80089DD0 - 1;
-        v26 += (12) * 1u;
-        v21 += (12) * 1u;
-        v43 = (uint32)(4 * v39 + a5);
-        v25 += (40) * 1u;
-        v44 = (unsigned int)v16 & 0xFFFFFF;
-        TM3_DRAFT_I32(v16) = TM3_DRAFT_I32(v43) & 0xFFFFFF | 0x9000000;
-        v16 += (10) * 4u;
-        goto LABEL_27;
-      }
-LABEL_23:
-      v26 += (12) * 1u;
-      v21 += (12) * 1u;
-LABEL_28:
-      if ( ++v23 >= TM3_DRAFT_U8(a1 + (1) * 1u) )
-        return 1;
+      index[j] = TM3_DRAFT_U8(primitive + 4u + j);
+      screen[j] = TM3_DRAFT_U32(0x1F800000u + 4u * index[j]);
+      tm3_draft_gte_write_data(12u + j, screen[j]);
     }
-    result = 0;
-    if ( v27 != 36 )
-      return result;
-LABEL_20:
-    v45 = TM3_DRAFT_U8(v26 - 5);
-    v46 = TM3_DRAFT_U32(v26 + 2) + v24;
-    v47 = 4 * TM3_DRAFT_U8(v26 - 2);
-    ida_A3 = (uint32)(v47 + 528482304);
-    v49 = 4 * TM3_DRAFT_U8(v26 - 1);
-    ida_T6 = (uint32)(v49 + 528482304);
-    v51 = 4 * TM3_DRAFT_U8(v26);
-    ida_T0 = (uint32)(v51 + 528482304);
-    /* TODO GTE adapters */
-  tm3_draft_unimplemented("TODO lwc2    $12, 0($a3)");
-  tm3_draft_unimplemented("TODO lwc2    $13, 0($t6)");
-  tm3_draft_unimplemented("TODO lwc2    $14, 0($t0)");
-    TM3_DRAFT_U32(v25 + 5) = TM3_DRAFT_U32(v46);
-    TM3_DRAFT_U32(v25 + 13) = TM3_DRAFT_U32(v46 + 4);
-    /* TODO GTE adapters */
-  tm3_draft_gte_command(0x1400006u);
-    v53 = (TM3_DRAFT_U32(v47 + 528482816)
-         + TM3_DRAFT_U32(v49 + 528482816)
-         + TM3_DRAFT_U32(v51 + 528482816)
-         + TM3_DRAFT_U32(v47 + 528482816)) >> 4;
-    /* TODO GTE adapters */
-  ida_A2 = tm3_draft_gte_read_data(24u);
-    TM3_DRAFT_U16(v25 + 21) = TM3_DRAFT_U16(v46 + 8);
-    if ( (v45 || ida_A2 > 0) && v53 >= 41 )
+    TM3_DRAFT_U32(packet + 12u) = TM3_DRAFT_U32(texture);
+    TM3_DRAFT_U32(packet + 20u) = TM3_DRAFT_U32(texture + 4u);
+    tm3_draft_gte_command(0x1400006u);
+    area = (sint32)tm3_draft_gte_read_data(24u);
+    depth_sum = TM3_DRAFT_U32(0x1F800200u + 4u * index[0])
+              + TM3_DRAFT_U32(0x1F800200u + 4u * index[1])
+              + TM3_DRAFT_U32(0x1F800200u + 4u * index[2]);
+    if (opcode == 0x2Cu || opcode == 0x2Eu)
     {
-      TM3_DRAFT_U32(v25 + 1) = TM3_DRAFT_U32(ida_A3);
-      TM3_DRAFT_U32(v25 + 9) = TM3_DRAFT_U32(ida_T6);
-      TM3_DRAFT_U32(v25 + 17) = TM3_DRAFT_U32(ida_T0);
-      v55 = TM3_DRAFT_U8(v21);
-      TM3_DRAFT_I8(v25) = v27;
-      TM3_DRAFT_I8(v25 - 1) = v55;
-      TM3_DRAFT_I8(v25 - 2) = v55;
-      TM3_DRAFT_I8(v25 - 3) = v55;
-      if ( v53 >= dword_80089DD0 )
-        v53 = dword_80089DD0 - 1;
-      v26 += (12) * 1u;
-      v21 += (12) * 1u;
-      v43 = (uint32)(4 * v53 + a5);
-      v25 += (32) * 1u;
-      v44 = (unsigned int)v16 & 0xFFFFFF;
-      TM3_DRAFT_I32(v16) = TM3_DRAFT_I32(v43) & 0xFFFFFF | 0x7000000;
-      v16 += (8) * 4u;
-LABEL_27:
-      TM3_DRAFT_I32(v43) = v44;
-      TM3_DRAFT_U32(a6) = v16;
-      goto LABEL_28;
+      /* The second clipping triangle replaces the first screen vertex */
+      for (j = 0; j < 3u; ++j)
+        TM3_DRAFT_U32(packet + 8u + 8u * j) = screen[j];
+      index[3] = TM3_DRAFT_U8(primitive + 7u);
+      tm3_draft_gte_write_data(12u, TM3_DRAFT_U32(0x1F800000u + 4u * index[3]));
+      TM3_DRAFT_U16(packet + 28u) = TM3_DRAFT_U16(texture + 8u);
+      TM3_DRAFT_U16(packet + 36u) = TM3_DRAFT_U16(texture + 10u);
+      tm3_draft_gte_command(0x1400006u);
+      depth_sum += TM3_DRAFT_U32(0x1F800200u + 4u * index[3]);
+      depth = (sint32)depth_sum >> 4;
+      second_area = (sint32)tm3_draft_gte_read_data(24u);
+      if ((!double_sided && second_area > 0 && area <= 0) || depth < 41)
+        continue;
+      gray = TM3_DRAFT_U8(primitive);
+      TM3_DRAFT_U8(packet + 6u) = (uint8)gray;
+      TM3_DRAFT_U8(packet + 5u) = (uint8)gray;
+      TM3_DRAFT_U8(packet + 4u) = (uint8)gray;
+      TM3_DRAFT_U8(packet + 7u) = (uint8)opcode;
+      TM3_DRAFT_U32(packet + 32u) = TM3_DRAFT_U32(0x1F800000u + 4u * index[3]);
+      size = 40u;
     }
-    goto LABEL_23;
+    else
+    {
+      /* Original triangle depth weights the first vertex twice */
+      depth_sum += TM3_DRAFT_U32(0x1F800200u + 4u * index[0]);
+      depth = (sint32)depth_sum >> 4;
+      TM3_DRAFT_U16(packet + 28u) = TM3_DRAFT_U16(texture + 8u);
+      if ((!double_sided && area <= 0) || depth < 41)
+        continue;
+      for (j = 0; j < 3u; ++j)
+        TM3_DRAFT_U32(packet + 8u + 8u * j) = screen[j];
+      gray = TM3_DRAFT_U8(primitive);
+      TM3_DRAFT_U8(packet + 7u) = (uint8)opcode;
+      TM3_DRAFT_U8(packet + 6u) = (uint8)gray;
+      TM3_DRAFT_U8(packet + 5u) = (uint8)gray;
+      TM3_DRAFT_U8(packet + 4u) = (uint8)gray;
+      size = 32u;
+    }
+    if (depth >= TM3_DRAFT_I32(0x80089DD0u))
+      depth = (sint32)(TM3_DRAFT_U32(0x80089DD0u) - 1u);
+    bucket = ordering_table + 4u * (uint32)depth;
+    TM3_DRAFT_U32(packet) = (TM3_DRAFT_U32(bucket) & 0xFFFFFFu)
+                         | (size == 40u ? 0x09000000u : 0x07000000u);
+    TM3_DRAFT_U32(bucket) = packet & 0xFFFFFFu;
+    packet += size;
+    TM3_DRAFT_U32(packet_pointer) = packet;
   }
   return 1;
 }
@@ -745,144 +644,87 @@ uint32 sub_80033F18(uint32 a1)
 }
 
 /* Unverified decompiler-derived draft */
-uint32 sub_800443DC(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, uint32 a6, uint32 a7, uint32 a8, ...)
+uint32 sub_800443DC(uint32 id, uint32 explicit_spawn, uint32 x, uint32 y, uint32 z, uint32 axis_x, uint32 axis_y, uint32 axis_z)
 {
-  int v12; 
-  signed int v13; 
-  int v14; 
-  int v15; 
-  int v16; 
-  int v17; 
-  int v18; 
-  int v19; 
-  int v20; 
-  int v21; 
-  int v22; 
-  uint32 v23; 
-  sint16 v24; 
-  sint16 v25; 
-  sint16 v26; 
-  int v27; 
-  int v28; 
-  sint16 v29; 
-  int v30; 
-  int v32; 
-  sint16 position[4];
-  sint16 direction[4];
-  int v39; 
-  int v40; 
-
-  if ( TM3_DRAFT_U32(0x800d2f18u) == 1 )
-    goto LABEL_7;
-  if ( !TM3_DRAFT_U32(0x800d2f2cu) )
-  {
-    if ( a1 >= TM3_DRAFT_U32(0x800d2e90u) + TM3_DRAFT_U32(0x800d2f38u) )
-      goto LABEL_7;
-LABEL_6:
-    v39 = a1 < TM3_DRAFT_U32(0x800d2e90u);
-    goto LABEL_8;
-  }
-  if ( a1 < TM3_DRAFT_U32(0x800d2e90u) )
-    goto LABEL_6;
-LABEL_7:
-  v39 = 2;
-LABEL_8:
-  if ( a2 )
-  {
-    position[0] = a3;
-    position[1] = a4;
-    position[2] = a5;
-    direction[0] = a6;
-    direction[1] = a7;
-    direction[2] = a8;
-  }
-  else
-  {
-    v12 = 0;
-    if ( TM3_DRAFT_U32(0x800d340cu) )
+    uint32 base = 0x800d2e88u;
+    uint32 role = 2u, selected = 0u, slot = id;
+    sint16 position[4], direction[4];
+    if (TM3_DRAFT_U32(base + 0x90u) != 1u)
     {
-      v16 = 0;
-      v17 = 0;
-      v18 = 0x2000;
-      v19 = 0;
-      do
-      {
-        if ( TM3_DRAFT_U16(dword_80089C98 + v19 + 0x2000) || TM3_DRAFT_U16(dword_80089C98 + v19 + 8196) )
-        {
-          v20 = 0x7FFFFFFF;
-          v21 = 0;
-          if ( TM3_DRAFT_U32(0x800d340cu) > 0 )
-          {
-            v22 = 0;
-            do
-            {
-              v23 = (uint32)(TM3_DRAFT_U32(v22 - 2146619768 + 1424) - 20);
-              v24 = TM3_DRAFT_I16(v23);
-              v25 = TM3_DRAFT_I16(v23 + (1) * 2u);
-              LOWORD(v23) = TM3_DRAFT_I16(v23 + (2) * 2u);
-              position[0] = v24;
-              position[1] = v25;
-              position[2] = (sint16)v23;
-              v26 = TM3_DRAFT_U16(dword_80089C98 + v18 + 2);
-              LOWORD(v23) = (_WORD)v23 - TM3_DRAFT_U16(dword_80089C98 + v18 + 4);
-              position[0] = v24 - TM3_DRAFT_U16(dword_80089C98 + v18);
-              position[1] = v25 - v26;
-              position[2] = (sint16)v23;
-              v40 = v16;
-              v27 = sub_80015764(position[0], (sint16)(v25 - v26), (sint16)v23);
-              v16 = v40;
-              if ( v27 < v20 )
-                v20 = v27;
-              ++v21;
-              v22 = 4 * v21;
-            }
-            while ( v21 < TM3_DRAFT_U32(0x800d340cu) );
-          }
-          if ( v16 < v20 )
-          {
-            v16 = v20;
-            v12 = v17;
-          }
-        }
-        v18 += 16;
-        ++v17;
-        v19 += 16;
-      }
-      while ( v17 < 64 );
+        if ((!TM3_DRAFT_U32(base + 0xa4u) && (sint32)id < (sint32)(TM3_DRAFT_U32(base + 8u) + TM3_DRAFT_U32(base + 0xb0u))) ||
+            (TM3_DRAFT_U32(base + 0xa4u) && (sint32)id < TM3_DRAFT_I32(base + 8u)))
+            role = (sint32)id < TM3_DRAFT_I32(base + 8u);
+    }
+    if (explicit_spawn)
+    {
+        position[0] = (sint16)x;
+        position[1] = (sint16)y;
+        position[2] = (sint16)z;
+        direction[0] = (sint16)axis_x;
+        direction[1] = (sint16)axis_y;
+        direction[2] = (sint16)axis_z;
     }
     else
     {
-      do
-      {
-        v13 = sub_80039FD4();
-        v14 = v13 >> 6;
-        if ( v13 < 0 )
-          v14 = (v13 + 63) >> 6;
-        v12 = v13 - (v14 << 6);
-        v15 = dword_80089C98 + 16 * v12;
-      }
-      while ( !TM3_DRAFT_U16(v15 + 0x2000) && !TM3_DRAFT_U16(v15 + 8196) );
+        if (TM3_DRAFT_U32(base + 0x584u))
+        {
+            sint32 farthest = 0;
+            uint32 index;
+            for (index = 0u; index < 64u; ++index)
+            {
+                uint32 spawn = TM3_DRAFT_U32(0x80089c98u) + 0x2000u + index * 16u;
+                sint32 nearest = 0x7fffffff;
+                uint32 other;
+                if (!TM3_DRAFT_I16(spawn) && !TM3_DRAFT_I16(spawn + 4u))
+                    continue;
+                for (other = 0u; (sint32)other < TM3_DRAFT_I32(base + 0x584u); ++other)
+                {
+                    uint32 vehicle = TM3_DRAFT_U32(base + 0x590u + other * 4u);
+                    sint32 distance;
+                    spawn = TM3_DRAFT_U32(0x80089c98u) + 0x2000u + index * 16u;
+                    position[0] = (sint16)(TM3_DRAFT_I16(vehicle - 20u) - TM3_DRAFT_I16(spawn));
+                    position[1] = (sint16)(TM3_DRAFT_I16(vehicle - 18u) - TM3_DRAFT_I16(spawn + 2u));
+                    position[2] = (sint16)(TM3_DRAFT_I16(vehicle - 16u) - TM3_DRAFT_I16(spawn + 4u));
+                    distance = (sint32)sub_80015764((uint32)(sint32)position[0], (uint32)(sint32)position[1], (uint32)(sint32)position[2]);
+                    if (distance < nearest)
+                        nearest = distance;
+                }
+                if (farthest < nearest)
+                {
+                    farthest = nearest;
+                    selected = index;
+                }
+            }
+        }
+        else
+        {
+            uint32 spawn;
+            do
+            {
+                sint32 random = (sint32)sub_80039FD4();
+                selected = (uint32)(random % 64);
+                spawn = TM3_DRAFT_U32(0x80089c98u) + 0x2000u + selected * 16u;
+            } while (!TM3_DRAFT_I16(spawn) && !TM3_DRAFT_I16(spawn + 4u));
+        }
+        {
+            uint32 spawn = TM3_DRAFT_U32(0x80089c98u) + 0x2000u + selected * 16u;
+            position[0] = TM3_DRAFT_I16(spawn);
+            position[2] = TM3_DRAFT_I16(spawn + 4u);
+            position[1] = (sint16)(sub_800133FC((uint32)(sint32)position[0], (uint32)(sint32)position[2]) - 96u);
+            spawn = TM3_DRAFT_U32(0x80089c98u) + 0x2000u + selected * 16u;
+            direction[0] = TM3_DRAFT_I16(spawn + 8u);
+            direction[1] = 0;
+            direction[2] = TM3_DRAFT_I16(spawn + 12u);
+        }
     }
-    v28 = dword_80089C98 + 16 * v12;
-    position[0] = TM3_DRAFT_U16(v28 + 0x2000);
-    position[2] = TM3_DRAFT_U16(v28 + 8196);
-    position[1] = sub_800133FC(position[0], position[2]) - 96;
-    v29 = TM3_DRAFT_U16(dword_80089C98 + 16 * v12 + 8204);
-    direction[0] = TM3_DRAFT_U16(dword_80089C98 + 16 * v12 + 8200);
-    direction[1] = 0;
-    direction[2] = v29;
-  }
-  if ( TM3_DRAFT_U32(0x800d2e8cu) && sub_800474AC() == 1 && a1 < TM3_DRAFT_U32(0x800d2e90u) )
-  {
-    v30 = a1 + TM3_DRAFT_U32(0x800d2e88u);
-    if ( a1 + TM3_DRAFT_U32(0x800d2e88u) >= TM3_DRAFT_U32(0x800d2e90u) )
-      v30 = a1 - TM3_DRAFT_U32(0x800d2e8cu);
-  }
-  else
-  {
-    v30 = a1;
-  }
-  return sub_8004A294(0, TM3_DRAFT_U32(4 * v30 - 2146619768 + 24), a1, v30, v39, TM3_DRAFT_LOCAL_ADDRESS(position, sizeof(position)), TM3_DRAFT_LOCAL_ADDRESS(direction, sizeof(direction)));
+    if (TM3_DRAFT_U32(base + 4u) && sub_800474AC() == 1u && (sint32)id < TM3_DRAFT_I32(base + 8u))
+    {
+        slot = id + TM3_DRAFT_U32(base);
+        if ((sint32)slot >= TM3_DRAFT_I32(base + 8u))
+            slot = id - TM3_DRAFT_U32(base + 4u);
+    }
+    return sub_8004A294(0u, TM3_DRAFT_U32(base + 24u + slot * 4u), id, slot, role,
+        TM3_DRAFT_LOCAL_ADDRESS(position, sizeof(position)), TM3_DRAFT_LOCAL_ADDRESS(direction, sizeof(direction)));
 }
 
 /* Unverified decompiler-derived draft */
@@ -1240,125 +1082,92 @@ uint32 sub_8004864C(uint32 a1, uint32 a2)
 }
 
 /* Unverified decompiler-derived draft */
-uint32 sub_8002EAE0(uint32 a1, uint32 a2)
+uint32 sub_8002EAE0(uint32 object)
 {
-  uint8 tuple_33[16];
-  uint8 tuple_30[16];
-  uint8 tuple_27[16];
-  uint8 tuple_22[8];
-  unsigned int result; 
-  sint16 v4; 
-  int v5; 
-  int v6; 
-  int v7; 
-  int v8; 
-  int v9; 
-  int v10; 
-  int v11; 
-  int v12; 
-  int v13; 
-  int v14; 
-  int v15; 
-  int v16; 
-  sint16 v17; 
-  sint16 v18; 
-  int v19; 
-  sint16 v20; 
-  sint32 v21; 
-  sint16 v25[4]; 
-  int v26[4]; 
+    FUNCTION_MARKER(0x8002EAE0u, "SCUS_942.49");
+    sint16 direction[4], target_direction[4];
+    uint32 delta[4], adjustment[4], velocity[4], normalized[4];
+    uint32 direction_ptr, target_ptr, target, strength, result, component;
+    uint32 adjustment_ptr, velocity_ptr, normalized_ptr, dot, weight, jitter;
+    uint16 countdown = TM3_DRAFT_U16(object + 110u);
 
-  if ( TM3_DRAFT_U16(a1 + 110) )
-  {
-    if ( TM3_DRAFT_U8(a1 + 321) == 1 )
-      sub_8002DF70(a1);
-    result = TM3_DRAFT_U32(a1 + 148) + 1;
-    v4 = TM3_DRAFT_U16(a1 + 110) - 1;
-    TM3_DRAFT_U16(a1 + 110) = v4;
-    TM3_DRAFT_U32(a1 + 148) = result;
-    if ( !v4 )
-      return sub_8004A570(a1);
+    if (countdown != 0u)
+    {
+        if (TM3_DRAFT_U8(object + 321u) == 1u) sub_8002DF70(object);
+        result = TM3_DRAFT_U32(object + 148u) + 1u;
+        countdown = (uint16)(TM3_DRAFT_U16(object + 110u) - 1u);
+        TM3_DRAFT_U16(object + 110u) = countdown;
+        TM3_DRAFT_U32(object + 148u) = result;
+        return countdown == 0u ? sub_8004A570(object) : result;
+    }
+    result = sub_80026F98(object, object, TM3_DRAFT_U16(object + 104u), TM3_DRAFT_U16(object + 104u));
+    for (component = 0u; component < 3u; ++component)
+        TM3_DRAFT_U32(object + 136u + 4u * component) = (uint32)(sint32)TM3_DRAFT_I16(object + 8u + 2u * component);
+    if (!result) return sub_8002DEA4(object);
+    target = TM3_DRAFT_U32(object + 164u);
+    strength = TM3_DRAFT_U16(object + 108u);
+    if (target && !sub_800470DC(target)) target = 0u;
+    if (strength && target)
+    {
+        for (component = 0u; component < 3u; ++component)
+            delta[component] = (uint32)(sint32)TM3_DRAFT_I16(target - 20u + component * 2u) - TM3_DRAFT_U32(object + 136u + component * 4u);
+        direction_ptr = TM3_DRAFT_LOCAL_ADDRESS(direction, sizeof(direction));
+        target_ptr = TM3_DRAFT_LOCAL_ADDRESS(target_direction, sizeof(target_direction));
+        adjustment_ptr = TM3_DRAFT_LOCAL_ADDRESS(adjustment, sizeof(adjustment));
+        velocity_ptr = TM3_DRAFT_LOCAL_ADDRESS(velocity, sizeof(velocity));
+        normalized_ptr = TM3_DRAFT_LOCAL_ADDRESS(normalized, sizeof(normalized));
+        sub_8005B284(object + 16u, direction_ptr);
+        sub_8005B240(TM3_DRAFT_LOCAL_ADDRESS(delta, sizeof(delta)), target_ptr);
+        if (TM3_DRAFT_U16(object + 322u))
+        {
+            jitter = (TM3_DRAFT_U32(object + 148u) << 1) - TM3_DRAFT_U16(object + 322u);
+            jitter = 0u - (jitter & (uint32)((sint32)jitter >> 31));
+            if (jitter)
+            {
+                uint32 random = sub_80039FD4();
+                uint32 remainder = random == 0x80000000u && jitter == 0xffffffffu ? 0u : (uint32)((sint32)random % (sint32)jitter);
+                uint32 angle = jitter + remainder;
+                if (angle & 1u) angle = 0u - angle;
+                sub_80031B90(target_ptr, angle);
+            }
+        }
+        if (TM3_DRAFT_U8(object + 334u)) weight = 4096u;
+        else
+        {
+            dot = 0u;
+            for (component = 0u; component < 3u; ++component)
+                dot += (uint32)((sint32)direction[component] * (sint32)target_direction[component]);
+            dot = 0u - (uint32)((sint32)(dot + 2048u) >> 12);
+            weight = 0u - (dot & (uint32)((sint32)dot >> 31));
+        }
+        weight = (uint32)((sint32)(weight * strength + 2048u) >> 12);
+        sub_80013FB4(adjustment_ptr, weight, target_ptr);
+        for (component = 0u; component < 3u; ++component)
+            direction[component] = (sint16)((uint32)(sint32)direction[component] + adjustment[component]);
+        sub_8005B284(direction_ptr, direction_ptr);
+        sub_80013FB4(velocity_ptr, TM3_DRAFT_U16(object + 112u), direction_ptr);
+        for (component = 0u; component < 3u; ++component)
+            TM3_DRAFT_U16(object + 16u + component * 2u) = (uint16)velocity[component];
+        sub_8005B254(velocity_ptr, normalized_ptr);
+        for (component = 0u; component < 3u; ++component)
+            TM3_DRAFT_U16(object + 120u + component * 6u) = (uint16)normalized[component];
+        if (normalized[0] && normalized[2])
+        {
+            TM3_DRAFT_U16(object + 122u) = 0u;
+            TM3_DRAFT_U16(object + 116u) = (uint16)normalized[2];
+            TM3_DRAFT_U16(object + 128u) = (uint16)(0u - (uint16)normalized[0]);
+        }
+        sub_800150FC(object + 116u, 2u, 0u);
+    }
+    if (TM3_DRAFT_U8(object + 321u)) sub_8002DF70(object);
+    result = TM3_DRAFT_U32(object + 148u) + 1u;
+    TM3_DRAFT_U32(object + 148u) = result;
+    if (TM3_DRAFT_U32(object + 152u) < result)
+    {
+        TM3_DRAFT_U32(object + 68u) = 0u;
+        return sub_8002DEA4(object);
+    }
     return result;
-  }
-  v5 = sub_80026F98(a1, a1, TM3_DRAFT_U16(a1 + 104), TM3_DRAFT_U16(a1 + 104));
-  v6 = TM3_DRAFT_I16(a1 + 10);
-  v7 = TM3_DRAFT_I16(a1 + 12);
-  TM3_DRAFT_U32(a1 + 136) = TM3_DRAFT_I16(a1 + 8);
-  TM3_DRAFT_U32(a1 + 140) = v6;
-  TM3_DRAFT_U32(a1 + 144) = v7;
-  if ( !v5 )
-    return sub_8002DEA4(a1);
-  v8 = TM3_DRAFT_U32(a1 + 164);
-  v9 = TM3_DRAFT_U16(a1 + 108);
-  if ( v8 && !sub_800470DC(TM3_DRAFT_U32(a1 + 164)) )
-    v8 = 0;
-  if ( v9 && v8 )
-  {
-    v10 = TM3_DRAFT_I16(v8 - 20 + 2) - TM3_DRAFT_U32(a1 + 140);
-    v11 = TM3_DRAFT_I16(v8 - 20 + 4) - TM3_DRAFT_U32(a1 + 144);
-    v26[0] = TM3_DRAFT_I16(v8 - 20) - TM3_DRAFT_U32(a1 + 136);
-    v26[1] = v10;
-    v26[2] = v11;
-    sub_8005B284(a1 + 16, (int)(TM3_DRAFT_LOCAL_ADDRESS(tuple_22, sizeof(tuple_22)) + 0u));
-    sub_8005B240(TM3_DRAFT_LOCAL_ADDRESS(v26, sizeof(v26)), TM3_DRAFT_LOCAL_ADDRESS(v25, sizeof(v25)));
-    if ( TM3_DRAFT_U16(a1 + 322) )
-    {
-      v12 = 2 * TM3_DRAFT_U32(a1 + 148) - TM3_DRAFT_U16(a1 + 322);
-      v13 = v12 & (v12 >> 31);
-      if ( v13 )
-      {
-        v14 = (int)sub_80039FD4() % -v13 - v13;
-        if ( (v14 & 1) != 0 )
-          v14 = -v14;
-        sub_80031B90(v25, v14);
-      }
-    }
-    if ( TM3_DRAFT_U8(a1 + 334) )
-    {
-      v16 = 4096;
-    }
-    else
-    {
-      v15 = -((TM3_DRAFT_I16(TM3_DRAFT_LOCAL_ADDRESS(tuple_22, sizeof(tuple_22)) + 0u) * v25[0] + TM3_DRAFT_I16(TM3_DRAFT_LOCAL_ADDRESS(tuple_22, sizeof(tuple_22)) + 2u) * v25[1] + TM3_DRAFT_I16(TM3_DRAFT_LOCAL_ADDRESS(tuple_22, sizeof(tuple_22)) + 4u) * v25[2] + 2048) >> 12);
-      v16 = -(v15 & (v15 >> 31));
-    }
-    sub_80013FB4((int)(TM3_DRAFT_LOCAL_ADDRESS(tuple_27, sizeof(tuple_27)) + 0u), (v16 * v9 + 2048) >> 12, v25);
-    TM3_DRAFT_I16(TM3_DRAFT_LOCAL_ADDRESS(tuple_22, sizeof(tuple_22)) + 0u) += TM3_DRAFT_I32(TM3_DRAFT_LOCAL_ADDRESS(tuple_27, sizeof(tuple_27)) + 0u);
-    TM3_DRAFT_I16(TM3_DRAFT_LOCAL_ADDRESS(tuple_22, sizeof(tuple_22)) + 4u) += TM3_DRAFT_I16(TM3_DRAFT_LOCAL_ADDRESS(tuple_27, sizeof(tuple_27)) + 8u);
-    TM3_DRAFT_I16(TM3_DRAFT_LOCAL_ADDRESS(tuple_22, sizeof(tuple_22)) + 2u) += TM3_DRAFT_I32(TM3_DRAFT_LOCAL_ADDRESS(tuple_27, sizeof(tuple_27)) + 4u);
-    sub_8005B284((int)(TM3_DRAFT_LOCAL_ADDRESS(tuple_22, sizeof(tuple_22)) + 0u), (int)(TM3_DRAFT_LOCAL_ADDRESS(tuple_22, sizeof(tuple_22)) + 0u));
-    sub_80013FB4((int)(TM3_DRAFT_LOCAL_ADDRESS(tuple_30, sizeof(tuple_30)) + 0u), TM3_DRAFT_U16(a1 + 112), (TM3_DRAFT_LOCAL_ADDRESS(tuple_22, sizeof(tuple_22)) + 0u));
-    v17 = TM3_DRAFT_I16(TM3_DRAFT_LOCAL_ADDRESS(tuple_30, sizeof(tuple_30)) + 4u);
-    v18 = TM3_DRAFT_I16(TM3_DRAFT_LOCAL_ADDRESS(tuple_30, sizeof(tuple_30)) + 8u);
-    TM3_DRAFT_U16(a1 + 16) = TM3_DRAFT_I32(TM3_DRAFT_LOCAL_ADDRESS(tuple_30, sizeof(tuple_30)) + 0u);
-    TM3_DRAFT_U16(a1 + 18) = v17;
-    TM3_DRAFT_U16(a1 + 20) = v18;
-    sub_8005B254((uint32)(TM3_DRAFT_LOCAL_ADDRESS(tuple_30, sizeof(tuple_30)) + 0u), (uint32)(TM3_DRAFT_LOCAL_ADDRESS(tuple_33, sizeof(tuple_33)) + 0u));
-    TM3_DRAFT_U16(a1 + 120) = TM3_DRAFT_I32(TM3_DRAFT_LOCAL_ADDRESS(tuple_33, sizeof(tuple_33)) + 0u);
-    TM3_DRAFT_U16(a1 + 126) = TM3_DRAFT_I16(TM3_DRAFT_LOCAL_ADDRESS(tuple_33, sizeof(tuple_33)) + 4u);
-    TM3_DRAFT_U16(a1 + 132) = TM3_DRAFT_I32(TM3_DRAFT_LOCAL_ADDRESS(tuple_33, sizeof(tuple_33)) + 8u);
-    v19 = a1 + 116;
-    if ( TM3_DRAFT_I32(TM3_DRAFT_LOCAL_ADDRESS(tuple_33, sizeof(tuple_33)) + 0u) && TM3_DRAFT_I32(TM3_DRAFT_LOCAL_ADDRESS(tuple_33, sizeof(tuple_33)) + 8u) )
-    {
-      v20 = TM3_DRAFT_I32(TM3_DRAFT_LOCAL_ADDRESS(tuple_33, sizeof(tuple_33)) + 8u);
-      TM3_DRAFT_U16(a1 + 122) = 0;
-      TM3_DRAFT_U16(a1 + 116) = v20;
-      TM3_DRAFT_U16(a1 + 128) = -(sint16)TM3_DRAFT_I32(TM3_DRAFT_LOCAL_ADDRESS(tuple_33, sizeof(tuple_33)) + 0u);
-      v19 = a1 + 116;
-    }
-    sub_800150FC(v19, 2, 0);
-  }
-  if ( TM3_DRAFT_U8(a1 + 321) )
-    sub_8002DF70(a1);
-  result = TM3_DRAFT_U32(a1 + 148) + 1;
-  v21 = TM3_DRAFT_U32(a1 + 152) >= result;
-  TM3_DRAFT_U32(a1 + 148) = result;
-  if ( !v21 )
-  {
-    TM3_DRAFT_U32(a1 + 68) = 0;
-    return sub_8002DEA4(a1);
-  }
-  return result;
 }
 
 /* Unverified decompiler-derived draft */

@@ -40,6 +40,7 @@ uint32 sub_800567F4(uint32 destination, uint32 source);
 uint32 sub_8005B240(uint32 a1, uint32 a2);
 uint32 sub_8005B254(uint32 a1, uint32 a2);
 uint32 sub_8005B284(uint32 a1, uint32 a2);
+uint32 sub_8005B504(uint32 left, uint32 right, uint32 destination);
 uint32 sub_8005B614(uint32 a1, uint32 a2, uint32 a3);
 uint32 sub_8005B774(uint32 a1, uint32 a2, uint32 a3);
 void sub_8005B8D4(void);

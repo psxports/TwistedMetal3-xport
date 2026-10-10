@@ -11,7 +11,8 @@ uint32 sub_8003231C(uint32 object)
     sint32 delta[3];
     uint32 delta_address = TM3_DRAFT_LOCAL_ADDRESS(delta, sizeof(delta));
     FUNCTION_MARKER(0x8003231Cu, "SCUS_942.49");
-    if (TM3_DRAFT_U16(object + 110u)) {
+    if (TM3_DRAFT_U16(object + 110u))
+    {
         if (TM3_DRAFT_U8(object + 321u) == 1u)
             sub_8002DF70(object);
         age = TM3_DRAFT_U32(object + 148u) + 1u;
@@ -31,7 +32,8 @@ uint32 sub_8003231C(uint32 object)
     for (uint32 axis = 0; axis < 3u; ++axis)
         delta[axis] = (sint32)TM3_DRAFT_I16(object + 8u + 2u * axis) - TM3_DRAFT_I16(object + 2u * axis);
     sub_80013D64(delta_address);
-    for (uint32 axis = 0; axis < 3u; ++axis) {
+    for (uint32 axis = 0; axis < 3u; ++axis)
+    {
         sint32 sum = (sint32)TM3_DRAFT_I16(object + 2u * axis) + TM3_DRAFT_I16(object + 8u + 2u * axis);
         TM3_DRAFT_U16(object - 20u + 2u * axis) = (uint16)((sum + (sint32)((uint32)sum >> 31u)) >> 1);
     }
@@ -42,7 +44,8 @@ uint32 sub_8003231C(uint32 object)
     result = TM3_DRAFT_U32(object + 148u) + 1u;
     age = TM3_DRAFT_U32(object + 152u);
     TM3_DRAFT_U32(object + 148u) = result;
-    if (age < result) {
+    if (age < result)
+    {
         TM3_DRAFT_U32(object + 68u) = 0u;
         return sub_8002DEA4(object);
     }
@@ -65,12 +68,12 @@ uint32 sub_800324D0(uint32 object, uint32 ordering_table, uint32 cursor, uint32 
     sub_8005B614(view, object + 116u, address);
     sub_8005BD24(address);
     sub_8005BDB4(address);
-    if (depth > 0) {
+    if (depth > 0)
+    {
         depth >>= 2;
         if (depth >= TM3_DRAFT_I32(0x80089DD0u))
             depth = (sint32)(TM3_DRAFT_U32(0x80089DD0u) - 1u);
-        sub_8002B00C(TM3_DRAFT_U32(object + 160u), (uint32)(sint32)TM3_DRAFT_I16(object + 324u),
-                    ordering_table + (uint32)depth * 4u, cursor, end);
+        sub_8002B00C(TM3_DRAFT_U32(object + 160u), (uint32)(sint32)TM3_DRAFT_I16(object + 324u), ordering_table + (uint32)depth * 4u, cursor, end);
     }
     sub_8005B978();
     result = TM3_DRAFT_U8(object + 335u);
@@ -90,10 +93,7 @@ uint32 sub_800325E0(uint32 object)
     /* TODO Original SVECTOR padding is unspecified */
     for (uint32 axis = 0; axis < 3u; ++axis)
         point[axis] = TM3_DRAFT_I16(object - 20u + 2u * axis);
-    sub_8004A294(9u, position, color_address, 80u, 1024u, 384u, 20u,
-                TM3_DRAFT_U32(object + 160u), 0u, 0u,
-                TM3_DRAFT_U32(TM3_DRAFT_U32(0x80089D14u) + 80u), 1u,
-                TM3_DRAFT_U32(0x80089D30u), TM3_DRAFT_U32(0x80089D34u), 1u);
+    sub_8004A294(9u, position, color_address, 80u, 1024u, 384u, 20u, TM3_DRAFT_U32(object + 160u), 0u, 0u, TM3_DRAFT_U32(TM3_DRAFT_U32(0x80089D14u) + 80u), 1u, TM3_DRAFT_U32(0x80089D30u), TM3_DRAFT_U32(0x80089D34u), 1u);
     point[1] = (sint16)((uint16)point[1] - 200u);
     sub_8002F2A8(position);
     owner = TM3_DRAFT_U32(object + 160u);
@@ -114,7 +114,8 @@ uint32 sub_8002B00C(uint32 model, uint32 group_index, uint32 bucket, uint32 curs
         return 0u;
     vertex = TM3_DRAFT_U32(model + 24u) + (uint32)(sint32)TM3_DRAFT_I16(descriptor + 4u) * 8u;
     remaining = TM3_DRAFT_I16(descriptor + 6u);
-    while (remaining > 0) {
+    while (remaining > 0)
+    {
         for (uint32 reg = 0u; reg < 6u; ++reg)
             tm3_draft_gte_write_data(reg, TM3_DRAFT_U32(vertex + 4u * reg));
         tm3_draft_gte_command(0x280030u);
@@ -125,20 +126,24 @@ uint32 sub_8002B00C(uint32 model, uint32 group_index, uint32 bucket, uint32 curs
         scratch += 12u;
     }
     primitive = TM3_DRAFT_U32(model + 12u) + (uint32)(sint32)TM3_DRAFT_I16(descriptor) * 20u;
-    while (count > 0) {
+    while (count > 0)
+    {
         uint32 opcode = TM3_DRAFT_U8(primitive + 3u), kind = opcode & 0x7Fu;
-        if (kind == 0x24u || kind == 0x2Cu) {
+        if (kind == 0x24u || kind == 0x2Cu)
+        {
             uint32 screen[4], packet;
             uint32 corners = kind == 0x24u ? 3u : 4u;
             sint32 area;
             for (uint32 index = 0u; index < 3u; ++index)
                 screen[index] = TM3_DRAFT_U32(0x1F800000u + 4u * TM3_DRAFT_U8(primitive + 16u + index));
-            if (!(opcode & 0x80u)) {
+            if (!(opcode & 0x80u))
+            {
                 for (uint32 index = 0u; index < 3u; ++index)
                     tm3_draft_gte_write_data(12u + index, screen[index]);
                 tm3_draft_gte_command(0x1400006u);
                 area = (sint32)tm3_draft_gte_read_data(24u);
-                if (area <= 0) {
+                if (area <= 0)
+                {
                     if (kind == 0x24u)
                         goto next_primitive;
                     tm3_draft_gte_write_data(12u, TM3_DRAFT_U32(0x1F800000u + 4u * TM3_DRAFT_U8(primitive + 19u)));
@@ -162,7 +167,7 @@ uint32 sub_8002B00C(uint32 model, uint32 group_index, uint32 bucket, uint32 curs
             TM3_DRAFT_U32(packet + 4u) = ((opcode & 0x7Fu) << 24) | 0x00808080u;
             TM3_DRAFT_U32(cursor) += corners == 4u ? 40u : 32u;
         }
-next_primitive:
+    next_primitive:
         --count;
         primitive += 20u;
     }

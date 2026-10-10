@@ -22,17 +22,38 @@ uint32 sub_80054E34(uint32 a1)
     local_base = tm3_draft_local_address(local_storage, sizeof(local_storage));
     temp_a0 = sub_80054E34;
     temp_a1 = a1;
-label_80054e34:  goto label_80054e38;
-label_80054e38: temp_a3 = (temp_a0 + 0u); goto label_80054e3c;
-label_80054e3c: temp_v0 = 0u + (uint32)(1); goto label_80054e40;
-label_80054e40: temp_a0 = (0u + 0u); goto label_80054e44;
-label_80054e44: temp_a1 = (temp_a0 + 0u); goto label_80054e48;
-label_80054e48: temp_a2 = (temp_v0 + 0u); goto label_80054e4c;
-label_80054e4c:  goto label_80054e50;
-label_80054e50: *(uint32 *)(local_storage + 16) = (uint32)temp_v0; temp_v0 = sub_80054C60(temp_a0, temp_a1, temp_a2, temp_a3, *(uint32 *)(local_storage + 16), *(uint32 *)(local_storage + 20), *(uint32 *)(local_storage + 24), *(uint32 *)(local_storage + 28), *(uint32 *)(local_storage + 32), *(uint32 *)(local_storage + 36), *(uint32 *)(local_storage + 40), *(uint32 *)(local_storage + 44), *(uint32 *)(local_storage + 48)); goto label_80054e58;
-label_80054e54: *(uint32 *)(local_storage + 16) = (uint32)temp_v0; goto label_80054e58;
-label_80054e58:  goto label_80054e5c;
-label_80054e5c:  goto label_80054e60;
-label_80054e60:  return temp_v0;
-label_80054e64:  return temp_v0;
+label_80054e34:
+    goto label_80054e38;
+label_80054e38:
+    temp_a3 = (temp_a0 + 0u);
+    goto label_80054e3c;
+label_80054e3c:
+    temp_v0 = 0u + (uint32)(1);
+    goto label_80054e40;
+label_80054e40:
+    temp_a0 = (0u + 0u);
+    goto label_80054e44;
+label_80054e44:
+    temp_a1 = (temp_a0 + 0u);
+    goto label_80054e48;
+label_80054e48:
+    temp_a2 = (temp_v0 + 0u);
+    goto label_80054e4c;
+label_80054e4c:
+    goto label_80054e50;
+label_80054e50:
+    *(uint32 *)(local_storage + 16) = (uint32)temp_v0;
+    temp_v0 = sub_80054C60(temp_a0, temp_a1, temp_a2, temp_a3, *(uint32 *)(local_storage + 16), *(uint32 *)(local_storage + 20), *(uint32 *)(local_storage + 24), *(uint32 *)(local_storage + 28), *(uint32 *)(local_storage + 32), *(uint32 *)(local_storage + 36), *(uint32 *)(local_storage + 40), *(uint32 *)(local_storage + 44), *(uint32 *)(local_storage + 48));
+    goto label_80054e58;
+label_80054e54:
+    *(uint32 *)(local_storage + 16) = (uint32)temp_v0;
+    goto label_80054e58;
+label_80054e58:
+    goto label_80054e5c;
+label_80054e5c:
+    goto label_80054e60;
+label_80054e60:
+    return temp_v0;
+label_80054e64:
+    return temp_v0;
 }

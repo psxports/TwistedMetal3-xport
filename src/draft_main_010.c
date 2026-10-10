@@ -21,493 +21,1516 @@ uint32 sub_80018338(uint32 a1)
     /* TODO Local buffer address adapter and native aliases */
     local_base = tm3_draft_local_address(local_storage, sizeof(local_storage));
     temp_a0 = a1;
-label_80018338:  goto label_8001833c;
-label_8001833c:  goto label_80018340;
-label_80018340: temp_s2 = (temp_a0 + 0u); goto label_80018344;
-label_80018344:  goto label_80018348;
-label_80018348:  goto label_8001834c;
-label_8001834c:  temp_v0 = sub_8001A390(temp_a0); goto label_80018354;
-label_80018350:  goto label_80018354;
-label_80018354: temp_v0 = TM3_DRAFT_U32(temp_s2 + (uint32)(4100)); goto label_80018358;
-label_80018358:  goto label_8001835c;
-label_8001835c: condition_value = (temp_v0 == 0u); temp_v0 = temp_v0 + (uint32)(-1); if (condition_value) goto label_800183a0; goto label_80018364;
-label_80018360: temp_v0 = temp_v0 + (uint32)(-1); goto label_80018364;
-label_80018364: TM3_DRAFT_U32(temp_s2 + (uint32)(4100)) = (uint32)temp_v0; goto label_80018368;
-label_80018368: temp_v0 = 0u + (uint32)(15); goto label_8001836c;
-label_8001836c: TM3_DRAFT_U32(temp_s2 + (uint32)(3940)) = (uint32)temp_v0; goto label_80018370;
-label_80018370: temp_v0 = 0u + (uint32)(-1); goto label_80018374;
-label_80018374: TM3_DRAFT_U32(temp_s2 + (uint32)(3932)) = (uint32)0u; goto label_80018378;
-label_80018378: TM3_DRAFT_U32(temp_s2 + (uint32)(3936)) = (uint32)0u; goto label_8001837c;
-label_8001837c: TM3_DRAFT_U32(temp_s2 + (uint32)(3956)) = (uint32)0u; goto label_80018380;
-label_80018380: TM3_DRAFT_U32(temp_s2 + (uint32)(3952)) = (uint32)0u; goto label_80018384;
-label_80018384: TM3_DRAFT_U32(temp_s2 + (uint32)(3960)) = (uint32)0u; goto label_80018388;
-label_80018388: TM3_DRAFT_U32(temp_s2 + (uint32)(3964)) = (uint32)0u; goto label_8001838c;
-label_8001838c: TM3_DRAFT_U32(temp_s2 + (uint32)(3996)) = (uint32)temp_v0; goto label_80018390;
-label_80018390: TM3_DRAFT_U16(temp_s2 + (uint32)(112)) = (uint16)0u; goto label_80018394;
-label_80018394: TM3_DRAFT_U16(temp_s2 + (uint32)(192)) = (uint16)0u; goto label_80018398;
-label_80018398: TM3_DRAFT_U16(temp_s2 + (uint32)(352)) = (uint16)0u; goto label_8001839c;
-label_8001839c: TM3_DRAFT_U16(temp_s2 + (uint32)(272)) = (uint16)0u; goto label_800183a0;
-label_800183a0: temp_v0 = TM3_DRAFT_U32(temp_s2 + (uint32)(64)); goto label_800183a4;
-label_800183a4:  goto label_800183a8;
-label_800183a8: condition_value = (temp_v0 == 0u); temp_v0 = temp_v0 + (uint32)(-1); if (condition_value) goto label_800183b4; goto label_800183b0;
-label_800183ac: temp_v0 = temp_v0 + (uint32)(-1); goto label_800183b0;
-label_800183b0: TM3_DRAFT_U32(temp_s2 + (uint32)(64)) = (uint32)temp_v0; goto label_800183b4;
-label_800183b4: temp_a1 = TM3_DRAFT_U32(temp_s2 + (uint32)(3996)); goto label_800183b8;
-label_800183b8: temp_v0 = 0u + (uint32)(-1); goto label_800183bc;
-label_800183bc: condition_value = (temp_a1 == temp_v0); temp_v0 = 0x80080000u; if (condition_value) goto label_800183ec; goto label_800183c4;
-label_800183c0: temp_v0 = 0x80080000u; goto label_800183c4;
-label_800183c4: temp_v0 = temp_v0 + (uint32)(-8544); goto label_800183c8;
-label_800183c8: temp_v1 = (uint32)(temp_a1 << 3); goto label_800183cc;
-label_800183cc: temp_v1 = (temp_v1 - temp_a1); goto label_800183d0;
-label_800183d0: temp_v1 = (uint32)(temp_v1 << 2); goto label_800183d4;
-label_800183d4: temp_v1 = (temp_v1 + temp_v0); goto label_800183d8;
-label_800183d8: temp_a1 = 0x80090000u; goto label_800183dc;
-label_800183dc: temp_a0 = TM3_DRAFT_U32(temp_s2 + (uint32)(3924)); goto label_800183e0;
-label_800183e0: temp_a2 = TM3_DRAFT_U32(temp_v1 + (uint32)(0)); goto label_800183e4;
-label_800183e4: temp_a1 = temp_a1 + (uint32)(-26928); temp_v0 = sub_8004179C(temp_a0, temp_a1, temp_a2); goto label_800183ec;
-label_800183e8: temp_a1 = temp_a1 + (uint32)(-26928); goto label_800183ec;
-label_800183ec: temp_a0 = (temp_s2 + 0u); temp_v0 = sub_8001F82C(temp_a0); goto label_800183f4;
-label_800183f0: temp_a0 = (temp_s2 + 0u); goto label_800183f4;
-label_800183f4: temp_a0 = (0u + 0u); goto label_800183f8;
-label_800183f8: temp_a1 = 0x80090000u; goto label_800183fc;
-label_800183fc: temp_a1 = TM3_DRAFT_U32(temp_a1 + (uint32)(-25452)); goto label_80018400;
-label_80018400: temp_a3 = 0u + (uint32)(7); goto label_80018404;
-label_80018404: temp_a2 = 0u + (uint32)(8); goto label_80018408;
-label_80018408: temp_v1 = (temp_s2 + 0u); goto label_8001840c;
-label_8001840c: temp_v0 = TM3_DRAFT_I16(temp_v1 + (uint32)(1684)); goto label_80018410;
-label_80018410:  goto label_80018414;
-label_80018414: condition_value = (temp_v0 == 0u);  if (condition_value) goto label_80018444; goto label_8001841c;
-label_80018418:  goto label_8001841c;
-label_8001841c: temp_v0 = TM3_DRAFT_U8(temp_v1 + (uint32)(1687)); goto label_80018420;
-label_80018420:  goto label_80018424;
-label_80018424: temp_v0 = (uint32)(temp_v0 << 5); goto label_80018428;
-label_80018428: temp_v0 = (temp_v0 + temp_a1); goto label_8001842c;
-label_8001842c: temp_v0 = TM3_DRAFT_I8(temp_v0 + (uint32)(0)); goto label_80018430;
-label_80018430:  goto label_80018434;
-label_80018434: condition_value = (temp_v0 == temp_a3);  if (condition_value) goto label_80018908; goto label_8001843c;
-label_80018438:  goto label_8001843c;
-label_8001843c: condition_value = (temp_v0 == temp_a2); temp_v0 = 0x80080000u; if (condition_value) goto label_80018484; goto label_80018444;
-label_80018440: temp_v0 = 0x80080000u; goto label_80018444;
-label_80018444: temp_a0 = temp_a0 + (uint32)(1); goto label_80018448;
-label_80018448: temp_v0 = (sint32)temp_a0 < 8; goto label_8001844c;
-label_8001844c: condition_value = (temp_v0 != 0u); temp_v1 = temp_v1 + (uint32)(112); if (condition_value) goto label_8001840c; goto label_80018454;
-label_80018450: temp_v1 = temp_v1 + (uint32)(112); goto label_80018454;
-label_80018454: temp_v1 = TM3_DRAFT_U32(temp_s2 + (uint32)(3928)); goto label_80018458;
-label_80018458:  goto label_8001845c;
-label_8001845c: temp_v0 = temp_v1 < 12u; goto label_80018460;
-label_80018460: condition_value = (temp_v0 == 0u); temp_v0 = 0x80080000u; if (condition_value) goto label_800185a4; goto label_80018468;
-label_80018464: temp_v0 = 0x80080000u; goto label_80018468;
-label_80018468: temp_v0 = temp_v0 + (uint32)(32548); goto label_8001846c;
-label_8001846c: temp_v1 = (uint32)(temp_v1 << 2); goto label_80018470;
-label_80018470: temp_v1 = (temp_v1 + temp_v0); goto label_80018474;
-label_80018474: temp_v0 = TM3_DRAFT_U32(temp_v1 + (uint32)(0)); goto label_80018478;
-label_80018478:  goto label_8001847c;
+label_80018338:
+    goto label_8001833c;
+label_8001833c:
+    goto label_80018340;
+label_80018340:
+    temp_s2 = (temp_a0 + 0u);
+    goto label_80018344;
+label_80018344:
+    goto label_80018348;
+label_80018348:
+    goto label_8001834c;
+label_8001834c:
+    temp_v0 = sub_8001A390(temp_a0);
+    goto label_80018354;
+label_80018350:
+    goto label_80018354;
+label_80018354:
+    temp_v0 = TM3_DRAFT_U32(temp_s2 + (uint32)(4100));
+    goto label_80018358;
+label_80018358:
+    goto label_8001835c;
+label_8001835c:
+    condition_value = (temp_v0 == 0u);
+    temp_v0 = temp_v0 + (uint32)(-1);
+    if (condition_value)
+        goto label_800183a0;
+    goto label_80018364;
+label_80018360:
+    temp_v0 = temp_v0 + (uint32)(-1);
+    goto label_80018364;
+label_80018364:
+    TM3_DRAFT_U32(temp_s2 + (uint32)(4100)) = (uint32)temp_v0;
+    goto label_80018368;
+label_80018368:
+    temp_v0 = 0u + (uint32)(15);
+    goto label_8001836c;
+label_8001836c:
+    TM3_DRAFT_U32(temp_s2 + (uint32)(3940)) = (uint32)temp_v0;
+    goto label_80018370;
+label_80018370:
+    temp_v0 = 0u + (uint32)(-1);
+    goto label_80018374;
+label_80018374:
+    TM3_DRAFT_U32(temp_s2 + (uint32)(3932)) = (uint32)0u;
+    goto label_80018378;
+label_80018378:
+    TM3_DRAFT_U32(temp_s2 + (uint32)(3936)) = (uint32)0u;
+    goto label_8001837c;
+label_8001837c:
+    TM3_DRAFT_U32(temp_s2 + (uint32)(3956)) = (uint32)0u;
+    goto label_80018380;
+label_80018380:
+    TM3_DRAFT_U32(temp_s2 + (uint32)(3952)) = (uint32)0u;
+    goto label_80018384;
+label_80018384:
+    TM3_DRAFT_U32(temp_s2 + (uint32)(3960)) = (uint32)0u;
+    goto label_80018388;
+label_80018388:
+    TM3_DRAFT_U32(temp_s2 + (uint32)(3964)) = (uint32)0u;
+    goto label_8001838c;
+label_8001838c:
+    TM3_DRAFT_U32(temp_s2 + (uint32)(3996)) = (uint32)temp_v0;
+    goto label_80018390;
+label_80018390:
+    TM3_DRAFT_U16(temp_s2 + (uint32)(112)) = (uint16)0u;
+    goto label_80018394;
+label_80018394:
+    TM3_DRAFT_U16(temp_s2 + (uint32)(192)) = (uint16)0u;
+    goto label_80018398;
+label_80018398:
+    TM3_DRAFT_U16(temp_s2 + (uint32)(352)) = (uint16)0u;
+    goto label_8001839c;
+label_8001839c:
+    TM3_DRAFT_U16(temp_s2 + (uint32)(272)) = (uint16)0u;
+    goto label_800183a0;
+label_800183a0:
+    temp_v0 = TM3_DRAFT_U32(temp_s2 + (uint32)(64));
+    goto label_800183a4;
+label_800183a4:
+    goto label_800183a8;
+label_800183a8:
+    condition_value = (temp_v0 == 0u);
+    temp_v0 = temp_v0 + (uint32)(-1);
+    if (condition_value)
+        goto label_800183b4;
+    goto label_800183b0;
+label_800183ac:
+    temp_v0 = temp_v0 + (uint32)(-1);
+    goto label_800183b0;
+label_800183b0:
+    TM3_DRAFT_U32(temp_s2 + (uint32)(64)) = (uint32)temp_v0;
+    goto label_800183b4;
+label_800183b4:
+    temp_a1 = TM3_DRAFT_U32(temp_s2 + (uint32)(3996));
+    goto label_800183b8;
+label_800183b8:
+    temp_v0 = 0u + (uint32)(-1);
+    goto label_800183bc;
+label_800183bc:
+    condition_value = (temp_a1 == temp_v0);
+    temp_v0 = 0x80080000u;
+    if (condition_value)
+        goto label_800183ec;
+    goto label_800183c4;
+label_800183c0:
+    temp_v0 = 0x80080000u;
+    goto label_800183c4;
+label_800183c4:
+    temp_v0 = temp_v0 + (uint32)(-8544);
+    goto label_800183c8;
+label_800183c8:
+    temp_v1 = (uint32)(temp_a1 << 3);
+    goto label_800183cc;
+label_800183cc:
+    temp_v1 = (temp_v1 - temp_a1);
+    goto label_800183d0;
+label_800183d0:
+    temp_v1 = (uint32)(temp_v1 << 2);
+    goto label_800183d4;
+label_800183d4:
+    temp_v1 = (temp_v1 + temp_v0);
+    goto label_800183d8;
+label_800183d8:
+    temp_a1 = 0x80090000u;
+    goto label_800183dc;
+label_800183dc:
+    temp_a0 = TM3_DRAFT_U32(temp_s2 + (uint32)(3924));
+    goto label_800183e0;
+label_800183e0:
+    temp_a2 = TM3_DRAFT_U32(temp_v1 + (uint32)(0));
+    goto label_800183e4;
+label_800183e4:
+    temp_a1 = temp_a1 + (uint32)(-26928);
+    temp_v0 = sub_8004179C(temp_a0, temp_a1, temp_a2);
+    goto label_800183ec;
+label_800183e8:
+    temp_a1 = temp_a1 + (uint32)(-26928);
+    goto label_800183ec;
+label_800183ec:
+    temp_a0 = (temp_s2 + 0u);
+    temp_v0 = sub_8001F82C(temp_a0);
+    goto label_800183f4;
+label_800183f0:
+    temp_a0 = (temp_s2 + 0u);
+    goto label_800183f4;
+label_800183f4:
+    temp_a0 = (0u + 0u);
+    goto label_800183f8;
+label_800183f8:
+    temp_a1 = 0x80090000u;
+    goto label_800183fc;
+label_800183fc:
+    temp_a1 = TM3_DRAFT_U32(temp_a1 + (uint32)(-25452));
+    goto label_80018400;
+label_80018400:
+    temp_a3 = 0u + (uint32)(7);
+    goto label_80018404;
+label_80018404:
+    temp_a2 = 0u + (uint32)(8);
+    goto label_80018408;
+label_80018408:
+    temp_v1 = (temp_s2 + 0u);
+    goto label_8001840c;
+label_8001840c:
+    temp_v0 = TM3_DRAFT_I16(temp_v1 + (uint32)(1684));
+    goto label_80018410;
+label_80018410:
+    goto label_80018414;
+label_80018414:
+    condition_value = (temp_v0 == 0u);
+    if (condition_value)
+        goto label_80018444;
+    goto label_8001841c;
+label_80018418:
+    goto label_8001841c;
+label_8001841c:
+    temp_v0 = TM3_DRAFT_U8(temp_v1 + (uint32)(1687));
+    goto label_80018420;
+label_80018420:
+    goto label_80018424;
+label_80018424:
+    temp_v0 = (uint32)(temp_v0 << 5);
+    goto label_80018428;
+label_80018428:
+    temp_v0 = (temp_v0 + temp_a1);
+    goto label_8001842c;
+label_8001842c:
+    temp_v0 = TM3_DRAFT_I8(temp_v0 + (uint32)(0));
+    goto label_80018430;
+label_80018430:
+    goto label_80018434;
+label_80018434:
+    condition_value = (temp_v0 == temp_a3);
+    if (condition_value)
+        goto label_80018908;
+    goto label_8001843c;
+label_80018438:
+    goto label_8001843c;
+label_8001843c:
+    condition_value = (temp_v0 == temp_a2);
+    temp_v0 = 0x80080000u;
+    if (condition_value)
+        goto label_80018484;
+    goto label_80018444;
+label_80018440:
+    temp_v0 = 0x80080000u;
+    goto label_80018444;
+label_80018444:
+    temp_a0 = temp_a0 + (uint32)(1);
+    goto label_80018448;
+label_80018448:
+    temp_v0 = (sint32)temp_a0 < 8;
+    goto label_8001844c;
+label_8001844c:
+    condition_value = (temp_v0 != 0u);
+    temp_v1 = temp_v1 + (uint32)(112);
+    if (condition_value)
+        goto label_8001840c;
+    goto label_80018454;
+label_80018450:
+    temp_v1 = temp_v1 + (uint32)(112);
+    goto label_80018454;
+label_80018454:
+    temp_v1 = TM3_DRAFT_U32(temp_s2 + (uint32)(3928));
+    goto label_80018458;
+label_80018458:
+    goto label_8001845c;
+label_8001845c:
+    temp_v0 = temp_v1 < 12u;
+    goto label_80018460;
+label_80018460:
+    condition_value = (temp_v0 == 0u);
+    temp_v0 = 0x80080000u;
+    if (condition_value)
+        goto label_800185a4;
+    goto label_80018468;
+label_80018464:
+    temp_v0 = 0x80080000u;
+    goto label_80018468;
+label_80018468:
+    temp_v0 = temp_v0 + (uint32)(32548);
+    goto label_8001846c;
+label_8001846c:
+    temp_v1 = (uint32)(temp_v1 << 2);
+    goto label_80018470;
+label_80018470:
+    temp_v1 = (temp_v1 + temp_v0);
+    goto label_80018474;
+label_80018474:
+    temp_v0 = TM3_DRAFT_U32(temp_v1 + (uint32)(0));
+    goto label_80018478;
+label_80018478:
+    goto label_8001847c;
 label_8001847c:
     switch (TM3_DRAFT_U32(temp_s2 + 0xF58u))
     {
-    case 0: goto label_800184a8;
-    case 1: goto label_800184b8;
-    case 3: case 5: goto label_800184c4;
-    case 6: goto label_800184d8;
-    case 8: goto label_80018524;
-    case 11: goto label_80018560;
-    default: goto label_800185a4;
+        case 0:
+            goto label_800184a8;
+        case 1:
+            goto label_800184b8;
+        case 3:
+        case 5:
+            goto label_800184c4;
+        case 6:
+            goto label_800184d8;
+        case 8:
+            goto label_80018524;
+        case 11:
+            goto label_80018560;
+        default:
+            goto label_800185a4;
     }
-label_80018480:  goto label_80018484;
-label_80018484: temp_v0 = temp_v0 + (uint32)(32408); goto label_80018488;
-label_80018488: *(uint32 *)(local_storage + 16) = (uint32)temp_v0; goto label_8001848c;
-label_8001848c: temp_a0 = (temp_s2 + 0u); goto label_80018490;
-label_80018490: temp_a1 = (0u + 0u); goto label_80018494;
-label_80018494: temp_a2 = 0u + (uint32)(3); goto label_80018498;
-label_80018498: temp_a3 = (temp_a1 + 0u); temp_v0 = sub_800239C0(temp_a0, temp_a1, temp_a2, temp_a3, *(uint32 *)(local_storage + 16)); goto label_800184a0;
-label_8001849c: temp_a3 = (temp_a1 + 0u); goto label_800184a0;
-label_800184a0:  goto label_80018454;
-label_800184a4:  goto label_800184a8;
-label_800184a8: temp_a0 = (temp_s2 + 0u); temp_v0 = sub_80018054(temp_a0); goto label_800184b0;
-label_800184ac: temp_a0 = (temp_s2 + 0u); goto label_800184b0;
-label_800184b0:  goto label_800185a4;
-label_800184b4:  goto label_800184b8;
-label_800184b8: temp_v0 = TM3_DRAFT_I16(temp_s2 + (uint32)(114)); goto label_800184bc;
-label_800184bc: TM3_DRAFT_U32(temp_s2 + (uint32)(4384)) = (uint32)temp_v0; goto label_800185a4;
-label_800184c0: TM3_DRAFT_U32(temp_s2 + (uint32)(4384)) = (uint32)temp_v0; goto label_800184c4;
-label_800184c4: temp_v0 = TM3_DRAFT_I16(temp_s2 + (uint32)(114)); goto label_800184c8;
-label_800184c8:  goto label_800184cc;
-label_800184cc: temp_v0 = (uint32)(temp_v0 << 1); goto label_800184d0;
-label_800184d0: TM3_DRAFT_U32(temp_s2 + (uint32)(4384)) = (uint32)temp_v0; goto label_800185a4;
-label_800184d4: TM3_DRAFT_U32(temp_s2 + (uint32)(4384)) = (uint32)temp_v0; goto label_800184d8;
-label_800184d8: temp_v0 = TM3_DRAFT_U32(temp_s2 + (uint32)(4384)); goto label_800184dc;
-label_800184dc:  goto label_800184e0;
-label_800184e0: condition_value = ((sint32)temp_v0 <= 0); temp_v0 = temp_v0 + (uint32)(-1); if (condition_value) goto label_800184f4; goto label_800184e8;
-label_800184e4: temp_v0 = temp_v0 + (uint32)(-1); goto label_800184e8;
-label_800184e8: TM3_DRAFT_U32(temp_s2 + (uint32)(3952)) = (uint32)0u; goto label_800184ec;
-label_800184ec: TM3_DRAFT_U32(temp_s2 + (uint32)(4384)) = (uint32)temp_v0; goto label_800185a4;
-label_800184f0: TM3_DRAFT_U32(temp_s2 + (uint32)(4384)) = (uint32)temp_v0; goto label_800184f4;
-label_800184f4: temp_a0 = TM3_DRAFT_U32(temp_s2 + (uint32)(4392)); goto label_800184f8;
-label_800184f8:  goto label_800184fc;
-label_800184fc: condition_value = (temp_a0 == 0u);  if (condition_value) goto label_800185a4; goto label_80018504;
-label_80018500:  goto label_80018504;
-label_80018504: temp_s0 = TM3_DRAFT_U32(temp_a0 + (uint32)(4)); goto label_80018508;
-label_80018508:  sub_8004A0F8(temp_a0); goto label_80018510;
-label_8001850c:  goto label_80018510;
-label_80018510: temp_a0 = (temp_s0 + 0u); goto label_80018514;
-label_80018514: condition_value = (temp_a0 != 0u);  if (condition_value) goto label_80018504; goto label_8001851c;
-label_80018518:  goto label_8001851c;
-label_8001851c: TM3_DRAFT_U32(temp_s2 + (uint32)(4392)) = (uint32)0u; goto label_800185a4;
-label_80018520: TM3_DRAFT_U32(temp_s2 + (uint32)(4392)) = (uint32)0u; goto label_80018524;
-label_80018524: temp_v0 = TM3_DRAFT_U32(temp_s2 + (uint32)(4388)); goto label_80018528;
-label_80018528:  goto label_8001852c;
-label_8001852c: temp_v0 = temp_v0 + (uint32)(-1); goto label_80018530;
-label_80018530: condition_value = ((sint32)temp_v0 > 0); TM3_DRAFT_U32(temp_s2 + (uint32)(4388)) = (uint32)temp_v0; if (condition_value) goto label_800185a4; goto label_80018538;
-label_80018534: TM3_DRAFT_U32(temp_s2 + (uint32)(4388)) = (uint32)temp_v0; goto label_80018538;
-label_80018538: temp_v0 = TM3_DRAFT_U32(temp_s2 + (uint32)(4384)); goto label_8001853c;
-label_8001853c: temp_v1 = 0u + (uint32)(3); goto label_80018540;
-label_80018540: TM3_DRAFT_U32(temp_s2 + (uint32)(4388)) = (uint32)temp_v1; goto label_80018544;
-label_80018544: temp_v0 = temp_v0 + (uint32)(1); goto label_80018548;
-label_80018548: TM3_DRAFT_U32(temp_s2 + (uint32)(4384)) = (uint32)temp_v0; goto label_8001854c;
-label_8001854c: temp_v0 = (sint32)temp_v0 < 2; goto label_80018550;
-label_80018550: condition_value = (temp_v0 != 0u);  if (condition_value) goto label_800185a4; goto label_80018558;
-label_80018554:  goto label_80018558;
-label_80018558: TM3_DRAFT_U32(temp_s2 + (uint32)(4384)) = (uint32)0u; goto label_800185a4;
-label_8001855c: TM3_DRAFT_U32(temp_s2 + (uint32)(4384)) = (uint32)0u; goto label_80018560;
-label_80018560: temp_v0 = TM3_DRAFT_U32(temp_s2 + (uint32)(4384)); goto label_80018564;
-label_80018564: temp_v1 = TM3_DRAFT_U32(temp_s2 + (uint32)(4392)); goto label_80018568;
-label_80018568: temp_v0 = temp_v0 + (uint32)(17); goto label_8001856c;
-label_8001856c: temp_v0 = temp_v0 & 0xfffu; goto label_80018570;
-label_80018570: temp_v1 = temp_v1 + (uint32)(-1); goto label_80018574;
-label_80018574: TM3_DRAFT_U32(temp_s2 + (uint32)(4384)) = (uint32)temp_v0; goto label_80018578;
-label_80018578: condition_value = ((sint32)temp_v1 > 0); TM3_DRAFT_U32(temp_s2 + (uint32)(4392)) = (uint32)temp_v1; if (condition_value) goto label_800185a4; goto label_80018580;
-label_8001857c: TM3_DRAFT_U32(temp_s2 + (uint32)(4392)) = (uint32)temp_v1; goto label_80018580;
-label_80018580: temp_v0 = TM3_DRAFT_U32(temp_s2 + (uint32)(4388)); goto label_80018584;
-label_80018584: temp_v1 = 0u + (uint32)(3); goto label_80018588;
-label_80018588: TM3_DRAFT_U32(temp_s2 + (uint32)(4392)) = (uint32)temp_v1; goto label_8001858c;
-label_8001858c: temp_v0 = temp_v0 + (uint32)(1); goto label_80018590;
-label_80018590: TM3_DRAFT_U32(temp_s2 + (uint32)(4388)) = (uint32)temp_v0; goto label_80018594;
-label_80018594: temp_v0 = (sint32)temp_v0 < 2; goto label_80018598;
-label_80018598: condition_value = (temp_v0 != 0u);  if (condition_value) goto label_800185a4; goto label_800185a0;
-label_8001859c:  goto label_800185a0;
-label_800185a0: TM3_DRAFT_U32(temp_s2 + (uint32)(4388)) = (uint32)0u; goto label_800185a4;
-label_800185a4: temp_v0 = TM3_DRAFT_U32(temp_s2 + (uint32)(3960)); goto label_800185a8;
-label_800185a8:  goto label_800185ac;
-label_800185ac: condition_value = (temp_v0 == 0u);  if (condition_value) goto label_800185fc; goto label_800185b4;
-label_800185b0:  goto label_800185b4;
-label_800185b4: temp_v0 = TM3_DRAFT_U32(temp_s2 + (uint32)(4076)); goto label_800185b8;
-label_800185b8:  goto label_800185bc;
-label_800185bc: condition_value = ((sint32)temp_v0 <= 0); temp_a0 = local_base + (uint32)(40); if (condition_value) goto label_800185fc; goto label_800185c4;
-label_800185c0: temp_a0 = local_base + (uint32)(40); goto label_800185c4;
-label_800185c4: temp_a1 = 0u + (uint32)(2); goto label_800185c8;
-label_800185c8: temp_a2 = 0u + (uint32)(100); goto label_800185cc;
-label_800185cc: temp_v0 = temp_s2 + (uint32)(1556); goto label_800185d0;
-label_800185d0: temp_v1 = TM3_DRAFT_U32(temp_s2 + (uint32)(1556)); goto label_800185d4;
-label_800185d4: temp_t0 = TM3_DRAFT_U32(temp_v0 + (uint32)(4)); goto label_800185d8;
-label_800185d8: temp_v0 = TM3_DRAFT_U32(temp_v0 + (uint32)(8)); goto label_800185dc;
-label_800185dc: temp_a3 = (0u + 0u); goto label_800185e0;
-label_800185e0: *(uint16 *)(local_storage + 40) = (uint16)temp_v1; goto label_800185e4;
-label_800185e4: TM3_DRAFT_U16(temp_a0 + (uint32)(4)) = (uint16)temp_v0; goto label_800185e8;
-label_800185e8: temp_v0 = 0u + (uint32)(-2); goto label_800185ec;
-label_800185ec: TM3_DRAFT_U16(temp_a0 + (uint32)(2)) = (uint16)temp_t0; goto label_800185f0;
-label_800185f0: *(uint32 *)(local_storage + 16) = (uint32)0u; goto label_800185f4;
-label_800185f4: *(uint32 *)(local_storage + 20) = (uint32)temp_v0; temp_v0 = sub_800276AC(temp_a0, temp_a1, temp_a2, temp_a3, *(uint32 *)(local_storage + 16), *(uint32 *)(local_storage + 20)); goto label_800185fc;
-label_800185f8: *(uint32 *)(local_storage + 20) = (uint32)temp_v0; goto label_800185fc;
-label_800185fc: temp_v0 = TM3_DRAFT_U32(temp_s2 + (uint32)(3956)); goto label_80018600;
-label_80018600:  goto label_80018604;
-label_80018604: condition_value = (temp_v0 != 0u); TM3_DRAFT_U16(temp_s2 + (uint32)(4118)) = (uint16)0u; if (condition_value) goto label_80018614; goto label_8001860c;
-label_80018608: TM3_DRAFT_U16(temp_s2 + (uint32)(4118)) = (uint16)0u; goto label_8001860c;
-label_8001860c: TM3_DRAFT_U16(temp_s2 + (uint32)(4110)) = (uint16)0u; goto label_80018748;
-label_80018610: TM3_DRAFT_U16(temp_s2 + (uint32)(4110)) = (uint16)0u; goto label_80018614;
-label_80018614: temp_v0 = TM3_DRAFT_I16(temp_s2 + (uint32)(4110)); goto label_80018618;
-label_80018618: temp_v1 = TM3_DRAFT_U16(temp_s2 + (uint32)(4110)); goto label_8001861c;
-label_8001861c: condition_value = ((sint32)temp_v0 <= 0); temp_v0 = temp_v1 + (uint32)(-1); if (condition_value) goto label_8001862c; goto label_80018624;
-label_80018620: temp_v0 = temp_v1 + (uint32)(-1); goto label_80018624;
-label_80018624: TM3_DRAFT_U16(temp_s2 + (uint32)(4110)) = (uint16)temp_v0; goto label_80018748;
-label_80018628: TM3_DRAFT_U16(temp_s2 + (uint32)(4110)) = (uint16)temp_v0; goto label_8001862c;
-label_8001862c: temp_v0 = TM3_DRAFT_I16(temp_s2 + (uint32)(4108)); goto label_80018630;
-label_80018630: temp_s1 = 0u + (uint32)(1); goto label_80018634;
-label_80018634: condition_value = (temp_v0 != 0u); TM3_DRAFT_U16(temp_s2 + (uint32)(4118)) = (uint16)temp_s1; if (condition_value) goto label_80018658; goto label_8001863c;
-label_80018638: TM3_DRAFT_U16(temp_s2 + (uint32)(4118)) = (uint16)temp_s1; goto label_8001863c;
-label_8001863c: temp_s0 = 0u + (uint32)(7); goto label_80018640;
-label_80018640: temp_a0 = (temp_s2 + 0u); goto label_80018644;
-label_80018644: temp_a1 = (0u + 0u); goto label_80018648;
-label_80018648: temp_a2 = temp_s2 + (uint32)(4112); temp_v0 = sub_80026B88(temp_a0, temp_a1, temp_a2); goto label_80018650;
-label_8001864c: temp_a2 = temp_s2 + (uint32)(4112); goto label_80018650;
-label_80018650: TM3_DRAFT_U16(temp_s2 + (uint32)(4108)) = (uint16)temp_s1; goto label_80018670;
-label_80018654: TM3_DRAFT_U16(temp_s2 + (uint32)(4108)) = (uint16)temp_s1; goto label_80018658;
-label_80018658: temp_s0 = 0u + (uint32)(6); goto label_8001865c;
-label_8001865c: temp_a0 = (temp_s2 + 0u); goto label_80018660;
-label_80018660: temp_a1 = 0u + (uint32)(1); goto label_80018664;
-label_80018664: temp_a2 = temp_s2 + (uint32)(4112); temp_v0 = sub_80026B88(temp_a0, temp_a1, temp_a2); goto label_8001866c;
-label_80018668: temp_a2 = temp_s2 + (uint32)(4112); goto label_8001866c;
-label_8001866c: TM3_DRAFT_U16(temp_s2 + (uint32)(4108)) = (uint16)0u; goto label_80018670;
-label_80018670: temp_a0 = (uint32)(temp_s0 << 3); goto label_80018674;
-label_80018674: temp_a0 = (temp_a0 - temp_s0); goto label_80018678;
-label_80018678: temp_a0 = (uint32)(temp_a0 << 4); goto label_8001867c;
-label_8001867c: temp_a0 = (temp_a0 + temp_s2); goto label_80018680;
-label_80018680: temp_a0 = temp_a0 + (uint32)(1624); goto label_80018684;
-label_80018684: temp_s0 = local_base + (uint32)(48); goto label_80018688;
-label_80018688: temp_a1 = (temp_s0 + 0u); goto label_8001868c;
-label_8001868c: temp_v1 = TM3_DRAFT_I16(temp_s2 + (uint32)(1540)); goto label_80018690;
-label_80018690: temp_a2 = TM3_DRAFT_I16(temp_s2 + (uint32)(1546)); goto label_80018694;
-label_80018694: temp_a3 = TM3_DRAFT_I16(temp_s2 + (uint32)(1552)); goto label_80018698;
-label_80018698: temp_v0 = 0u + (uint32)(3); goto label_8001869c;
-label_8001869c: TM3_DRAFT_U16(temp_s2 + (uint32)(4110)) = (uint16)temp_v0; goto label_800186a0;
-label_800186a0: *(uint16 *)(local_storage + 48) = (uint16)temp_v1; goto label_800186a4;
-label_800186a4: TM3_DRAFT_U16(temp_s0 + (uint32)(2)) = (uint16)temp_a2; goto label_800186a8;
-label_800186a8: TM3_DRAFT_U16(temp_s0 + (uint32)(4)) = (uint16)temp_a3; temp_v0 = sub_80013A90(temp_a0, temp_a1); goto label_800186b0;
-label_800186ac: TM3_DRAFT_U16(temp_s0 + (uint32)(4)) = (uint16)temp_a3; goto label_800186b0;
-label_800186b0: temp_a0 = 0u + (uint32)(1); goto label_800186b4;
-label_800186b4: temp_a1 = (temp_s2 + 0u); goto label_800186b8;
-label_800186b8: temp_a2 = temp_s2 + (uint32)(4112); goto label_800186bc;
-label_800186bc: temp_a3 = (temp_s0 + 0u); goto label_800186c0;
-label_800186c0: temp_v0 = temp_v0 + (uint32)(2048); goto label_800186c4;
-label_800186c4: temp_v0 = (uint32)((sint32)temp_v0 >> 12); goto label_800186c8;
-label_800186c8: temp_v0 = temp_v0 + (uint32)(6144); goto label_800186cc;
-label_800186cc: *(uint32 *)(local_storage + 16) = (uint32)temp_v0; temp_v0 = sub_8004A294(temp_a0, temp_a1, temp_a2, temp_a3, *(uint32 *)(local_storage + 16)); goto label_800186d4;
-label_800186d0: *(uint32 *)(local_storage + 16) = (uint32)temp_v0; goto label_800186d4;
-label_800186d4: temp_a0 = (temp_s2 + 0u); goto label_800186d8;
-label_800186d8: temp_a1 = 0u + (uint32)(8); temp_v0 = sub_80040DA8(temp_a0, temp_a1); goto label_800186e0;
-label_800186dc: temp_a1 = 0u + (uint32)(8); goto label_800186e0;
-label_800186e0: condition_value = (temp_v0 == 0u); temp_a0 = 0u + (uint32)(22); if (condition_value) goto label_800186f4; goto label_800186e8;
-label_800186e4: temp_a0 = 0u + (uint32)(22); goto label_800186e8;
-label_800186e8: temp_a0 = (temp_v0 + 0u); temp_v0 = sub_8004A570(temp_a0); goto label_800186f0;
-label_800186ec: temp_a0 = (temp_v0 + 0u); goto label_800186f0;
-label_800186f0: temp_a0 = 0u + (uint32)(22); goto label_800186f4;
-label_800186f4: temp_a1 = 0u + (uint32)(8); goto label_800186f8;
-label_800186f8: temp_v0 = TM3_DRAFT_I16(temp_s2 + (uint32)(4112)); goto label_800186fc;
-label_800186fc: temp_a2 = 0u + (uint32)(15); goto label_80018700;
-label_80018700: *(uint32 *)(local_storage + 16) = (uint32)temp_v0; goto label_80018704;
-label_80018704: temp_v0 = TM3_DRAFT_I16(temp_s2 + (uint32)(4114)); goto label_80018708;
-label_80018708: temp_a3 = (temp_s2 + 0u); goto label_8001870c;
-label_8001870c: *(uint32 *)(local_storage + 20) = (uint32)temp_v0; goto label_80018710;
-label_80018710: temp_v1 = TM3_DRAFT_I16(temp_s2 + (uint32)(4116)); goto label_80018714;
-label_80018714: temp_v0 = 0u + (uint32)(1780); goto label_80018718;
-label_80018718: *(uint32 *)(local_storage + 28) = (uint32)temp_v0; goto label_8001871c;
-label_8001871c: temp_v0 = 0u + (uint32)(132); goto label_80018720;
-label_80018720: *(uint32 *)(local_storage + 32) = (uint32)temp_v0; goto label_80018724;
-label_80018724: *(uint32 *)(local_storage + 24) = (uint32)temp_v1; temp_v0 = sub_8004A294(temp_a0, temp_a1, temp_a2, temp_a3, *(uint32 *)(local_storage + 16), *(uint32 *)(local_storage + 20), *(uint32 *)(local_storage + 24), *(uint32 *)(local_storage + 28), *(uint32 *)(local_storage + 32)); goto label_8001872c;
-label_80018728: *(uint32 *)(local_storage + 24) = (uint32)temp_v1; goto label_8001872c;
-label_8001872c: temp_v1 = TM3_DRAFT_I8(temp_s2 + (uint32)(3328)); goto label_80018730;
-label_80018730: temp_v0 = 0u + (uint32)(1); goto label_80018734;
-label_80018734: condition_value = (temp_v1 != temp_v0);  if (condition_value) goto label_80018748; goto label_8001873c;
-label_80018738:  goto label_8001873c;
-label_8001873c: temp_a0 = TM3_DRAFT_U32(temp_s2 + (uint32)(3924)); goto label_80018740;
-label_80018740: temp_a1 = (0u + 0u); temp_v0 = sub_80047364(temp_a0, temp_a1); goto label_80018748;
-label_80018744: temp_a1 = (0u + 0u); goto label_80018748;
-label_80018748: temp_v0 = TM3_DRAFT_U32(temp_s2 + (uint32)(3968)); goto label_8001874c;
-label_8001874c:  goto label_80018750;
-label_80018750: temp_v0 = (uint32)(temp_v0 << 4); goto label_80018754;
-label_80018754: temp_v0 = (temp_s2 + temp_v0); goto label_80018758;
-label_80018758: temp_v0 = TM3_DRAFT_I16(temp_v0 + (uint32)(4126)); goto label_8001875c;
-label_8001875c:  goto label_80018760;
-label_80018760: condition_value = ((sint32)temp_v0 <= 0);  if (condition_value) goto label_8001879c; goto label_80018768;
-label_80018764:  goto label_80018768;
-label_80018768: temp_a0 = (temp_s2 + 0u); temp_v0 = sub_80033CFC(temp_a0); goto label_80018770;
-label_8001876c: temp_a0 = (temp_s2 + 0u); goto label_80018770;
-label_80018770: condition_value = (temp_v0 != 0u);  if (condition_value) goto label_8001879c; goto label_80018778;
-label_80018774:  goto label_80018778;
-label_80018778: temp_v1 = TM3_DRAFT_U32(temp_s2 + (uint32)(3968)); goto label_8001877c;
-label_8001877c:  goto label_80018780;
-label_80018780: temp_v1 = (uint32)(temp_v1 << 4); goto label_80018784;
-label_80018784: temp_v1 = (temp_s2 + temp_v1); goto label_80018788;
-label_80018788: temp_v0 = TM3_DRAFT_U16(temp_v1 + (uint32)(4126)); goto label_8001878c;
-label_8001878c:  goto label_80018790;
-label_80018790: temp_v0 = temp_v0 + (uint32)(-1); goto label_80018794;
-label_80018794: TM3_DRAFT_U16(temp_v1 + (uint32)(4126)) = (uint16)temp_v0; goto label_80018814;
-label_80018798: TM3_DRAFT_U16(temp_v1 + (uint32)(4126)) = (uint16)temp_v0; goto label_8001879c;
-label_8001879c: temp_v0 = TM3_DRAFT_U32(temp_s2 + (uint32)(3952)); goto label_800187a0;
-label_800187a0:  goto label_800187a4;
-label_800187a4: condition_value = (temp_v0 == 0u);  if (condition_value) goto label_80018814; goto label_800187ac;
-label_800187a8:  goto label_800187ac;
-label_800187ac: temp_v0 = TM3_DRAFT_U32(temp_s2 + (uint32)(3968)); goto label_800187b0;
-label_800187b0:  goto label_800187b4;
-label_800187b4: temp_v0 = (uint32)(temp_v0 << 4); goto label_800187b8;
-label_800187b8: temp_a0 = (temp_s2 + temp_v0); goto label_800187bc;
-label_800187bc: temp_v0 = TM3_DRAFT_U32(temp_a0 + (uint32)(4132)); goto label_800187c0;
-label_800187c0:  goto label_800187c4;
-label_800187c4: condition_value = (temp_v0 == 0u); temp_v0 = 0u + (uint32)(1); if (condition_value) goto label_80018814; goto label_800187cc;
-label_800187c8: temp_v0 = 0u + (uint32)(1); goto label_800187cc;
-label_800187cc: temp_v1 = TM3_DRAFT_I8(temp_s2 + (uint32)(3328)); goto label_800187d0;
-label_800187d0:  goto label_800187d4;
-label_800187d4: condition_value = (temp_v1 != temp_v0);  if (condition_value) goto label_80018804; goto label_800187dc;
-label_800187d8:  goto label_800187dc;
-label_800187dc: temp_v0 = TM3_DRAFT_I16(temp_a0 + (uint32)(4120)); goto label_800187e0;
-label_800187e0:  goto label_800187e4;
-label_800187e4: condition_value = (temp_v0 != 0u); temp_a0 = (temp_s2 + 0u); if (condition_value) goto label_80018808; goto label_800187ec;
-label_800187e8: temp_a0 = (temp_s2 + 0u); goto label_800187ec;
-label_800187ec: temp_a0 = TM3_DRAFT_U32(temp_s2 + (uint32)(3924)); goto label_800187f0;
-label_800187f0: temp_a1 = 0x80080000u; goto label_800187f4;
-label_800187f4: temp_a1 = temp_a1 + (uint32)(32424); temp_v0 = sub_8004179C(temp_a0, temp_a1); goto label_800187fc;
-label_800187f8: temp_a1 = temp_a1 + (uint32)(32424); goto label_800187fc;
-label_800187fc: TM3_DRAFT_U32(temp_s2 + (uint32)(3952)) = (uint32)0u; goto label_80018814;
-label_80018800: TM3_DRAFT_U32(temp_s2 + (uint32)(3952)) = (uint32)0u; goto label_80018804;
-label_80018804: temp_a0 = (temp_s2 + 0u); goto label_80018808;
-label_80018808: temp_a1 = (0u + 0u); temp_v0 = sub_80033BCC(temp_a0, temp_a1); goto label_80018810;
-label_8001880c: temp_a1 = (0u + 0u); goto label_80018810;
-label_80018810: TM3_DRAFT_U32(temp_s2 + (uint32)(3952)) = (uint32)0u; goto label_80018814;
-label_80018814: temp_v1 = TM3_DRAFT_U32(temp_s2 + (uint32)(3996)); goto label_80018818;
-label_80018818: temp_v0 = 0u + (uint32)(-1); goto label_8001881c;
-label_8001881c: condition_value = (temp_v1 == temp_v0); temp_v0 = 0u + (uint32)(1); if (condition_value) goto label_800188d0; goto label_80018824;
-label_80018820: temp_v0 = 0u + (uint32)(1); goto label_80018824;
-label_80018824: condition_value = (temp_v1 != temp_v0); temp_v0 = 0u + (uint32)(2); if (condition_value) goto label_80018844; goto label_8001882c;
-label_80018828: temp_v0 = 0u + (uint32)(2); goto label_8001882c;
-label_8001882c: temp_a0 = (temp_s2 + 0u); goto label_80018830;
-label_80018830: temp_a1 = 0u + (uint32)(3); goto label_80018834;
-label_80018834: temp_a2 = (0u + 0u); temp_v0 = sub_80033754(temp_a0, temp_a1, temp_a2); goto label_8001883c;
-label_80018838: temp_a2 = (0u + 0u); goto label_8001883c;
-label_8001883c: temp_v1 = TM3_DRAFT_U32(temp_s2 + (uint32)(3996)); goto label_80018840;
-label_80018840: temp_v0 = 0u + (uint32)(2); goto label_80018844;
-label_80018844: condition_value = (temp_v1 != temp_v0);  if (condition_value) goto label_800188b0; goto label_8001884c;
-label_80018848:  goto label_8001884c;
-label_8001884c: temp_v0 = TM3_DRAFT_U32(temp_s2 + (uint32)(3968)); goto label_80018850;
-label_80018850:  goto label_80018854;
-label_80018854: temp_v0 = (uint32)(temp_v0 << 4); goto label_80018858;
-label_80018858: temp_v1 = (temp_s2 + temp_v0); goto label_8001885c;
-label_8001885c: temp_v0 = TM3_DRAFT_U32(temp_v1 + (uint32)(4132)); goto label_80018860;
-label_80018860:  goto label_80018864;
-label_80018864: condition_value = (temp_v0 != 0u); temp_a1 = 0x80080000u; if (condition_value) goto label_80018880; goto label_8001886c;
-label_80018868: temp_a1 = 0x80080000u; goto label_8001886c;
-label_8001886c: temp_a0 = TM3_DRAFT_U32(temp_s2 + (uint32)(3924)); goto label_80018870;
-label_80018870: temp_a1 = temp_a1 + (uint32)(32440); temp_v0 = sub_8004179C(temp_a0, temp_a1); goto label_80018878;
-label_80018874: temp_a1 = temp_a1 + (uint32)(32440); goto label_80018878;
-label_80018878:  goto label_800188b0;
-label_8001887c:  goto label_80018880;
-label_80018880: temp_v0 = TM3_DRAFT_I16(temp_v1 + (uint32)(4120)); goto label_80018884;
-label_80018884:  goto label_80018888;
-label_80018888: condition_value = (temp_v0 != 0u); temp_a0 = (temp_s2 + 0u); if (condition_value) goto label_800188a8; goto label_80018890;
-label_8001888c: temp_a0 = (temp_s2 + 0u); goto label_80018890;
-label_80018890: temp_a0 = TM3_DRAFT_U32(temp_s2 + (uint32)(3924)); goto label_80018894;
-label_80018894: temp_a1 = 0x80080000u; goto label_80018898;
-label_80018898: temp_a1 = temp_a1 + (uint32)(32460); temp_v0 = sub_8004179C(temp_a0, temp_a1); goto label_800188a0;
-label_8001889c: temp_a1 = temp_a1 + (uint32)(32460); goto label_800188a0;
-label_800188a0:  goto label_800188b0;
-label_800188a4:  goto label_800188a8;
-label_800188a8: temp_a1 = 0u + (uint32)(1); temp_v0 = sub_80033BCC(temp_a0, temp_a1); goto label_800188b0;
-label_800188ac: temp_a1 = 0u + (uint32)(1); goto label_800188b0;
-label_800188b0: temp_v1 = TM3_DRAFT_U32(temp_s2 + (uint32)(3996)); goto label_800188b4;
-label_800188b4: temp_v0 = 0u + (uint32)(3); goto label_800188b8;
-label_800188b8: condition_value = (temp_v1 != temp_v0); temp_v0 = 0u + (uint32)(-1); if (condition_value) goto label_800188cc; goto label_800188c0;
-label_800188bc: temp_v0 = 0u + (uint32)(-1); goto label_800188c0;
-label_800188c0: temp_v0 = 0u + (uint32)(180); goto label_800188c4;
-label_800188c4: TM3_DRAFT_U32(temp_s2 + (uint32)(64)) = (uint32)temp_v0; goto label_800188c8;
-label_800188c8: temp_v0 = 0u + (uint32)(-1); goto label_800188cc;
-label_800188cc: TM3_DRAFT_U32(temp_s2 + (uint32)(3996)) = (uint32)temp_v0; goto label_800188d0;
-label_800188d0: temp_v0 = TM3_DRAFT_U32(temp_s2 + (uint32)(4084)); goto label_800188d4;
-label_800188d4: temp_v1 = TM3_DRAFT_U32(temp_s2 + (uint32)(4088)); goto label_800188d8;
-label_800188d8: temp_v0 = temp_v0 + (uint32)(2); goto label_800188dc;
-label_800188dc: TM3_DRAFT_U32(temp_s2 + (uint32)(4084)) = (uint32)temp_v0; goto label_800188e0;
-label_800188e0: temp_v0 = ((sint32)temp_v1 < (sint32)temp_v0); goto label_800188e4;
-label_800188e4: condition_value = (temp_v0 == 0u);  if (condition_value) goto label_800188f0; goto label_800188ec;
-label_800188e8:  goto label_800188ec;
-label_800188ec: TM3_DRAFT_U32(temp_s2 + (uint32)(4084)) = (uint32)temp_v1; goto label_800188f0;
-label_800188f0: temp_v0 = TM3_DRAFT_U32(temp_s2 + (uint32)(4056)); goto label_800188f4;
-label_800188f4:  goto label_800188f8;
-label_800188f8: condition_value = (temp_v0 != 0u); temp_v0 = 0x80080000u; if (condition_value) goto label_80018930; goto label_80018900;
-label_800188fc: temp_v0 = 0x80080000u; goto label_80018900;
-label_80018900: TM3_DRAFT_U32(temp_s2 + (uint32)(4052)) = (uint32)0u; goto label_80018978;
-label_80018904: TM3_DRAFT_U32(temp_s2 + (uint32)(4052)) = (uint32)0u; goto label_80018908;
-label_80018908: temp_a0 = (temp_s2 + 0u); goto label_8001890c;
-label_8001890c: temp_a1 = (0u + 0u); goto label_80018910;
-label_80018910: temp_v0 = 0x80080000u; goto label_80018914;
-label_80018914: temp_v0 = temp_v0 + (uint32)(32392); goto label_80018918;
-label_80018918: *(uint32 *)(local_storage + 16) = (uint32)temp_v0; goto label_8001891c;
-label_8001891c: temp_a2 = TM3_DRAFT_U32(temp_a0 + (uint32)(4092)); goto label_80018920;
-label_80018920: temp_a3 = (temp_a1 + 0u); temp_v0 = sub_800239C0(temp_a0, temp_a1, temp_a2, temp_a3, *(uint32 *)(local_storage + 16)); goto label_80018928;
-label_80018924: temp_a3 = (temp_a1 + 0u); goto label_80018928;
-label_80018928:  goto label_80018a9c;
-label_8001892c:  goto label_80018930;
-label_80018930: temp_v0 = temp_v0 + (uint32)(32480); goto label_80018934;
-label_80018934: *(uint32 *)(local_storage + 16) = (uint32)temp_v0; goto label_80018938;
-label_80018938: temp_a0 = (temp_s2 + 0u); goto label_8001893c;
-label_8001893c: temp_a1 = (0u + 0u); goto label_80018940;
-label_80018940: temp_a2 = 0u + (uint32)(5); goto label_80018944;
-label_80018944: temp_a3 = (temp_a1 + 0u); temp_v0 = sub_800239C0(temp_a0, temp_a1, temp_a2, temp_a3, *(uint32 *)(local_storage + 16)); goto label_8001894c;
-label_80018948: temp_a3 = (temp_a1 + 0u); goto label_8001894c;
-label_8001894c: condition_value = (temp_v0 == 0u);  if (condition_value) goto label_80018a9c; goto label_80018954;
-label_80018950:  goto label_80018954;
-label_80018954: temp_v0 = TM3_DRAFT_U32(temp_s2 + (uint32)(4052)); goto label_80018958;
-label_80018958: temp_v1 = TM3_DRAFT_U32(temp_s2 + (uint32)(1580)); goto label_8001895c;
-label_8001895c: temp_a0 = TM3_DRAFT_U32(temp_s2 + (uint32)(1584)); goto label_80018960;
-label_80018960: temp_a1 = TM3_DRAFT_U32(temp_s2 + (uint32)(1588)); goto label_80018964;
-label_80018964: TM3_DRAFT_U16(temp_v0 + (uint32)(-20)) = (uint16)temp_v1; goto label_80018968;
-label_80018968: temp_v0 = temp_v0 + (uint32)(-20); goto label_8001896c;
-label_8001896c: TM3_DRAFT_U16(temp_v0 + (uint32)(2)) = (uint16)temp_a0; goto label_80018970;
-label_80018970: TM3_DRAFT_U16(temp_v0 + (uint32)(4)) = (uint16)temp_a1; goto label_80018974;
-label_80018974: TM3_DRAFT_U32(temp_s2 + (uint32)(4056)) = (uint32)0u; goto label_80018978;
-label_80018978: temp_a0 = (temp_s2 + 0u); temp_v0 = sub_80033B38(temp_a0); goto label_80018980;
-label_8001897c: temp_a0 = (temp_s2 + 0u); goto label_80018980;
-label_80018980: temp_v0 = TM3_DRAFT_U32(temp_s2 + (uint32)(4068)); goto label_80018984;
-label_80018984:  goto label_80018988;
-label_80018988: temp_v0 = (sint32)temp_v0 < 33; goto label_8001898c;
-label_8001898c: condition_value = (temp_v0 != 0u);  if (condition_value) goto label_800189c4; goto label_80018994;
-label_80018990:  goto label_80018994;
-label_80018994: temp_a0 = TM3_DRAFT_U32(temp_s2 + (uint32)(4060)); goto label_80018998;
-label_80018998:  goto label_8001899c;
-label_8001899c: temp_s0 = TM3_DRAFT_U32(temp_a0 + (uint32)(0)); goto label_800189a0;
-label_800189a0:  temp_v0 = sub_8004A570(temp_a0); goto label_800189a8;
-label_800189a4:  goto label_800189a8;
-label_800189a8: temp_v0 = TM3_DRAFT_U32(temp_s2 + (uint32)(4068)); goto label_800189ac;
-label_800189ac:  goto label_800189b0;
-label_800189b0: temp_v0 = temp_v0 + (uint32)(-1); goto label_800189b4;
-label_800189b4: TM3_DRAFT_U32(temp_s2 + (uint32)(4068)) = (uint32)temp_v0; goto label_800189b8;
-label_800189b8: temp_v0 = (sint32)temp_v0 < 33; goto label_800189bc;
-label_800189bc: condition_value = (temp_v0 == 0u); TM3_DRAFT_U32(temp_s2 + (uint32)(4060)) = (uint32)temp_s0; if (condition_value) goto label_80018994; goto label_800189c4;
-label_800189c0: TM3_DRAFT_U32(temp_s2 + (uint32)(4060)) = (uint32)temp_s0; goto label_800189c4;
-label_800189c4: temp_v0 = TM3_DRAFT_U32(temp_s2 + (uint32)(4380)); goto label_800189c8;
-label_800189c8:  goto label_800189cc;
-label_800189cc: condition_value = (temp_v0 == 0u); temp_s1 = temp_s2 + (uint32)(4380); if (condition_value) goto label_80018a20; goto label_800189d4;
-label_800189d0: temp_s1 = temp_s2 + (uint32)(4380); goto label_800189d4;
-label_800189d4: temp_s0 = TM3_DRAFT_U32(temp_s1 + (uint32)(0)); goto label_800189d8;
-label_800189d8:  temp_v0 = sub_80039FC8(); goto label_800189e0;
-label_800189dc:  goto label_800189e0;
-label_800189e0: temp_v1 = TM3_DRAFT_U32(temp_s0 + (uint32)(4)); goto label_800189e4;
-label_800189e4:  goto label_800189e8;
-label_800189e8: condition_value = (temp_v1 != temp_v0);  if (condition_value) goto label_800189fc; goto label_800189f0;
-label_800189ec:  goto label_800189f0;
-label_800189f0: temp_v0 = TM3_DRAFT_U32(temp_s1 + (uint32)(0)); goto label_800189f4;
-label_800189f4: temp_s1 = temp_v0 + (uint32)(8); goto label_80018a10;
-label_800189f8: temp_s1 = temp_v0 + (uint32)(8); goto label_800189fc;
-label_800189fc: temp_a0 = TM3_DRAFT_U32(temp_s1 + (uint32)(0)); goto label_80018a00;
-label_80018a00:  goto label_80018a04;
-label_80018a04: temp_v0 = TM3_DRAFT_U32(temp_a0 + (uint32)(8)); goto label_80018a08;
-label_80018a08: TM3_DRAFT_U32(temp_s1 + (uint32)(0)) = (uint32)temp_v0; sub_8004A0F8(temp_a0); goto label_80018a10;
-label_80018a0c: TM3_DRAFT_U32(temp_s1 + (uint32)(0)) = (uint32)temp_v0; goto label_80018a10;
-label_80018a10: temp_v0 = TM3_DRAFT_U32(temp_s1 + (uint32)(0)); goto label_80018a14;
-label_80018a14:  goto label_80018a18;
-label_80018a18: condition_value = (temp_v0 != 0u);  if (condition_value) goto label_800189d4; goto label_80018a20;
-label_80018a1c:  goto label_80018a20;
-label_80018a20: temp_v0 = TM3_DRAFT_U32(temp_s2 + (uint32)(1580)); goto label_80018a24;
-label_80018a24: temp_v1 = TM3_DRAFT_U32(temp_s2 + (uint32)(1584)); goto label_80018a28;
-label_80018a28: temp_a0 = TM3_DRAFT_U32(temp_s2 + (uint32)(1588)); goto label_80018a2c;
-label_80018a2c: TM3_DRAFT_U16(temp_s2 + (uint32)(-20)) = (uint16)temp_v0; goto label_80018a30;
-label_80018a30: temp_v0 = temp_s2 + (uint32)(-20); goto label_80018a34;
-label_80018a34: TM3_DRAFT_U16(temp_v0 + (uint32)(2)) = (uint16)temp_v1; goto label_80018a38;
-label_80018a38: TM3_DRAFT_U16(temp_v0 + (uint32)(4)) = (uint16)temp_a0; goto label_80018a3c;
-label_80018a3c: temp_a2 = TM3_DRAFT_U32(temp_s2 + (uint32)(4040)); goto label_80018a40;
-label_80018a40: temp_v0 = TM3_DRAFT_U32(temp_s2 + (uint32)(4044)); goto label_80018a44;
-label_80018a44: temp_v1 = TM3_DRAFT_I16(temp_a2 + (uint32)(52)); goto label_80018a48;
-label_80018a48:  goto label_80018a4c;
-label_80018a4c: product = (uint64)((sint64)(sint32)temp_v0 * (sint64)(sint32)temp_v1); lo_value = (uint32)product; hi_value = (uint32)(product >> 32); goto label_80018a50;
-label_80018a50: temp_a0 = TM3_DRAFT_U32(temp_s2 + (uint32)(4376)); goto label_80018a54;
-label_80018a54: temp_v0 = TM3_DRAFT_U16(temp_a2 + (uint32)(50)); goto label_80018a58;
-label_80018a58: temp_t1 = lo_value; goto label_80018a5c;
-label_80018a5c: temp_a1 = temp_t1 + (uint32)(2048); goto label_80018a60;
-label_80018a60: temp_a1 = (uint32)((sint32)temp_a1 >> 12); goto label_80018a64;
-label_80018a64: temp_a1 = (temp_v0 + temp_a1); temp_v0 = sub_80038AFC(temp_a0, temp_a1); goto label_80018a6c;
-label_80018a68: temp_a1 = (temp_v0 + temp_a1); goto label_80018a6c;
-label_80018a6c: temp_a2 = TM3_DRAFT_U32(temp_s2 + (uint32)(4040)); goto label_80018a70;
-label_80018a70: temp_v0 = TM3_DRAFT_U32(temp_s2 + (uint32)(4044)); goto label_80018a74;
-label_80018a74: temp_v1 = TM3_DRAFT_I16(temp_a2 + (uint32)(58)); goto label_80018a78;
-label_80018a78:  goto label_80018a7c;
-label_80018a7c: product = (uint64)((sint64)(sint32)temp_v0 * (sint64)(sint32)temp_v1); lo_value = (uint32)product; hi_value = (uint32)(product >> 32); goto label_80018a80;
-label_80018a80: temp_a0 = TM3_DRAFT_U32(temp_s2 + (uint32)(4376)); goto label_80018a84;
-label_80018a84: temp_v0 = TM3_DRAFT_U16(temp_a2 + (uint32)(56)); goto label_80018a88;
-label_80018a88: temp_t1 = lo_value; goto label_80018a8c;
-label_80018a8c: temp_a1 = temp_t1 + (uint32)(2048); goto label_80018a90;
-label_80018a90: temp_a1 = (uint32)((sint32)temp_a1 >> 12); goto label_80018a94;
-label_80018a94: temp_a1 = (temp_v0 + temp_a1); temp_v0 = sub_80038AE8(temp_a0, temp_a1); goto label_80018a9c;
-label_80018a98: temp_a1 = (temp_v0 + temp_a1); goto label_80018a9c;
-label_80018a9c:  goto label_80018aa0;
-label_80018aa0:  goto label_80018aa4;
-label_80018aa4:  goto label_80018aa8;
-label_80018aa8:  goto label_80018aac;
-label_80018aac:  return temp_v0;
-label_80018ab0:  return temp_v0;
+label_80018480:
+    goto label_80018484;
+label_80018484:
+    temp_v0 = temp_v0 + (uint32)(32408);
+    goto label_80018488;
+label_80018488:
+    *(uint32 *)(local_storage + 16) = (uint32)temp_v0;
+    goto label_8001848c;
+label_8001848c:
+    temp_a0 = (temp_s2 + 0u);
+    goto label_80018490;
+label_80018490:
+    temp_a1 = (0u + 0u);
+    goto label_80018494;
+label_80018494:
+    temp_a2 = 0u + (uint32)(3);
+    goto label_80018498;
+label_80018498:
+    temp_a3 = (temp_a1 + 0u);
+    temp_v0 = sub_800239C0(temp_a0, temp_a1, temp_a2, temp_a3, *(uint32 *)(local_storage + 16));
+    goto label_800184a0;
+label_8001849c:
+    temp_a3 = (temp_a1 + 0u);
+    goto label_800184a0;
+label_800184a0:
+    goto label_80018454;
+label_800184a4:
+    goto label_800184a8;
+label_800184a8:
+    temp_a0 = (temp_s2 + 0u);
+    temp_v0 = sub_80018054(temp_a0);
+    goto label_800184b0;
+label_800184ac:
+    temp_a0 = (temp_s2 + 0u);
+    goto label_800184b0;
+label_800184b0:
+    goto label_800185a4;
+label_800184b4:
+    goto label_800184b8;
+label_800184b8:
+    temp_v0 = TM3_DRAFT_I16(temp_s2 + (uint32)(114));
+    goto label_800184bc;
+label_800184bc:
+    TM3_DRAFT_U32(temp_s2 + (uint32)(4384)) = (uint32)temp_v0;
+    goto label_800185a4;
+label_800184c0:
+    TM3_DRAFT_U32(temp_s2 + (uint32)(4384)) = (uint32)temp_v0;
+    goto label_800184c4;
+label_800184c4:
+    temp_v0 = TM3_DRAFT_I16(temp_s2 + (uint32)(114));
+    goto label_800184c8;
+label_800184c8:
+    goto label_800184cc;
+label_800184cc:
+    temp_v0 = (uint32)(temp_v0 << 1);
+    goto label_800184d0;
+label_800184d0:
+    TM3_DRAFT_U32(temp_s2 + (uint32)(4384)) = (uint32)temp_v0;
+    goto label_800185a4;
+label_800184d4:
+    TM3_DRAFT_U32(temp_s2 + (uint32)(4384)) = (uint32)temp_v0;
+    goto label_800184d8;
+label_800184d8:
+    temp_v0 = TM3_DRAFT_U32(temp_s2 + (uint32)(4384));
+    goto label_800184dc;
+label_800184dc:
+    goto label_800184e0;
+label_800184e0:
+    condition_value = ((sint32)temp_v0 <= 0);
+    temp_v0 = temp_v0 + (uint32)(-1);
+    if (condition_value)
+        goto label_800184f4;
+    goto label_800184e8;
+label_800184e4:
+    temp_v0 = temp_v0 + (uint32)(-1);
+    goto label_800184e8;
+label_800184e8:
+    TM3_DRAFT_U32(temp_s2 + (uint32)(3952)) = (uint32)0u;
+    goto label_800184ec;
+label_800184ec:
+    TM3_DRAFT_U32(temp_s2 + (uint32)(4384)) = (uint32)temp_v0;
+    goto label_800185a4;
+label_800184f0:
+    TM3_DRAFT_U32(temp_s2 + (uint32)(4384)) = (uint32)temp_v0;
+    goto label_800184f4;
+label_800184f4:
+    temp_a0 = TM3_DRAFT_U32(temp_s2 + (uint32)(4392));
+    goto label_800184f8;
+label_800184f8:
+    goto label_800184fc;
+label_800184fc:
+    condition_value = (temp_a0 == 0u);
+    if (condition_value)
+        goto label_800185a4;
+    goto label_80018504;
+label_80018500:
+    goto label_80018504;
+label_80018504:
+    temp_s0 = TM3_DRAFT_U32(temp_a0 + (uint32)(4));
+    goto label_80018508;
+label_80018508:
+    sub_8004A0F8(temp_a0);
+    goto label_80018510;
+label_8001850c:
+    goto label_80018510;
+label_80018510:
+    temp_a0 = (temp_s0 + 0u);
+    goto label_80018514;
+label_80018514:
+    condition_value = (temp_a0 != 0u);
+    if (condition_value)
+        goto label_80018504;
+    goto label_8001851c;
+label_80018518:
+    goto label_8001851c;
+label_8001851c:
+    TM3_DRAFT_U32(temp_s2 + (uint32)(4392)) = (uint32)0u;
+    goto label_800185a4;
+label_80018520:
+    TM3_DRAFT_U32(temp_s2 + (uint32)(4392)) = (uint32)0u;
+    goto label_80018524;
+label_80018524:
+    temp_v0 = TM3_DRAFT_U32(temp_s2 + (uint32)(4388));
+    goto label_80018528;
+label_80018528:
+    goto label_8001852c;
+label_8001852c:
+    temp_v0 = temp_v0 + (uint32)(-1);
+    goto label_80018530;
+label_80018530:
+    condition_value = ((sint32)temp_v0 > 0);
+    TM3_DRAFT_U32(temp_s2 + (uint32)(4388)) = (uint32)temp_v0;
+    if (condition_value)
+        goto label_800185a4;
+    goto label_80018538;
+label_80018534:
+    TM3_DRAFT_U32(temp_s2 + (uint32)(4388)) = (uint32)temp_v0;
+    goto label_80018538;
+label_80018538:
+    temp_v0 = TM3_DRAFT_U32(temp_s2 + (uint32)(4384));
+    goto label_8001853c;
+label_8001853c:
+    temp_v1 = 0u + (uint32)(3);
+    goto label_80018540;
+label_80018540:
+    TM3_DRAFT_U32(temp_s2 + (uint32)(4388)) = (uint32)temp_v1;
+    goto label_80018544;
+label_80018544:
+    temp_v0 = temp_v0 + (uint32)(1);
+    goto label_80018548;
+label_80018548:
+    TM3_DRAFT_U32(temp_s2 + (uint32)(4384)) = (uint32)temp_v0;
+    goto label_8001854c;
+label_8001854c:
+    temp_v0 = (sint32)temp_v0 < 2;
+    goto label_80018550;
+label_80018550:
+    condition_value = (temp_v0 != 0u);
+    if (condition_value)
+        goto label_800185a4;
+    goto label_80018558;
+label_80018554:
+    goto label_80018558;
+label_80018558:
+    TM3_DRAFT_U32(temp_s2 + (uint32)(4384)) = (uint32)0u;
+    goto label_800185a4;
+label_8001855c:
+    TM3_DRAFT_U32(temp_s2 + (uint32)(4384)) = (uint32)0u;
+    goto label_80018560;
+label_80018560:
+    temp_v0 = TM3_DRAFT_U32(temp_s2 + (uint32)(4384));
+    goto label_80018564;
+label_80018564:
+    temp_v1 = TM3_DRAFT_U32(temp_s2 + (uint32)(4392));
+    goto label_80018568;
+label_80018568:
+    temp_v0 = temp_v0 + (uint32)(17);
+    goto label_8001856c;
+label_8001856c:
+    temp_v0 = temp_v0 & 0xfffu;
+    goto label_80018570;
+label_80018570:
+    temp_v1 = temp_v1 + (uint32)(-1);
+    goto label_80018574;
+label_80018574:
+    TM3_DRAFT_U32(temp_s2 + (uint32)(4384)) = (uint32)temp_v0;
+    goto label_80018578;
+label_80018578:
+    condition_value = ((sint32)temp_v1 > 0);
+    TM3_DRAFT_U32(temp_s2 + (uint32)(4392)) = (uint32)temp_v1;
+    if (condition_value)
+        goto label_800185a4;
+    goto label_80018580;
+label_8001857c:
+    TM3_DRAFT_U32(temp_s2 + (uint32)(4392)) = (uint32)temp_v1;
+    goto label_80018580;
+label_80018580:
+    temp_v0 = TM3_DRAFT_U32(temp_s2 + (uint32)(4388));
+    goto label_80018584;
+label_80018584:
+    temp_v1 = 0u + (uint32)(3);
+    goto label_80018588;
+label_80018588:
+    TM3_DRAFT_U32(temp_s2 + (uint32)(4392)) = (uint32)temp_v1;
+    goto label_8001858c;
+label_8001858c:
+    temp_v0 = temp_v0 + (uint32)(1);
+    goto label_80018590;
+label_80018590:
+    TM3_DRAFT_U32(temp_s2 + (uint32)(4388)) = (uint32)temp_v0;
+    goto label_80018594;
+label_80018594:
+    temp_v0 = (sint32)temp_v0 < 2;
+    goto label_80018598;
+label_80018598:
+    condition_value = (temp_v0 != 0u);
+    if (condition_value)
+        goto label_800185a4;
+    goto label_800185a0;
+label_8001859c:
+    goto label_800185a0;
+label_800185a0:
+    TM3_DRAFT_U32(temp_s2 + (uint32)(4388)) = (uint32)0u;
+    goto label_800185a4;
+label_800185a4:
+    temp_v0 = TM3_DRAFT_U32(temp_s2 + (uint32)(3960));
+    goto label_800185a8;
+label_800185a8:
+    goto label_800185ac;
+label_800185ac:
+    condition_value = (temp_v0 == 0u);
+    if (condition_value)
+        goto label_800185fc;
+    goto label_800185b4;
+label_800185b0:
+    goto label_800185b4;
+label_800185b4:
+    temp_v0 = TM3_DRAFT_U32(temp_s2 + (uint32)(4076));
+    goto label_800185b8;
+label_800185b8:
+    goto label_800185bc;
+label_800185bc:
+    condition_value = ((sint32)temp_v0 <= 0);
+    temp_a0 = local_base + (uint32)(40);
+    if (condition_value)
+        goto label_800185fc;
+    goto label_800185c4;
+label_800185c0:
+    temp_a0 = local_base + (uint32)(40);
+    goto label_800185c4;
+label_800185c4:
+    temp_a1 = 0u + (uint32)(2);
+    goto label_800185c8;
+label_800185c8:
+    temp_a2 = 0u + (uint32)(100);
+    goto label_800185cc;
+label_800185cc:
+    temp_v0 = temp_s2 + (uint32)(1556);
+    goto label_800185d0;
+label_800185d0:
+    temp_v1 = TM3_DRAFT_U32(temp_s2 + (uint32)(1556));
+    goto label_800185d4;
+label_800185d4:
+    temp_t0 = TM3_DRAFT_U32(temp_v0 + (uint32)(4));
+    goto label_800185d8;
+label_800185d8:
+    temp_v0 = TM3_DRAFT_U32(temp_v0 + (uint32)(8));
+    goto label_800185dc;
+label_800185dc:
+    temp_a3 = (0u + 0u);
+    goto label_800185e0;
+label_800185e0:
+    *(uint16 *)(local_storage + 40) = (uint16)temp_v1;
+    goto label_800185e4;
+label_800185e4:
+    TM3_DRAFT_U16(temp_a0 + (uint32)(4)) = (uint16)temp_v0;
+    goto label_800185e8;
+label_800185e8:
+    temp_v0 = 0u + (uint32)(-2);
+    goto label_800185ec;
+label_800185ec:
+    TM3_DRAFT_U16(temp_a0 + (uint32)(2)) = (uint16)temp_t0;
+    goto label_800185f0;
+label_800185f0:
+    *(uint32 *)(local_storage + 16) = (uint32)0u;
+    goto label_800185f4;
+label_800185f4:
+    *(uint32 *)(local_storage + 20) = (uint32)temp_v0;
+    temp_v0 = sub_800276AC(temp_a0, temp_a1, temp_a2, temp_a3, *(uint32 *)(local_storage + 16), *(uint32 *)(local_storage + 20));
+    goto label_800185fc;
+label_800185f8:
+    *(uint32 *)(local_storage + 20) = (uint32)temp_v0;
+    goto label_800185fc;
+label_800185fc:
+    temp_v0 = TM3_DRAFT_U32(temp_s2 + (uint32)(3956));
+    goto label_80018600;
+label_80018600:
+    goto label_80018604;
+label_80018604:
+    condition_value = (temp_v0 != 0u);
+    TM3_DRAFT_U16(temp_s2 + (uint32)(4118)) = (uint16)0u;
+    if (condition_value)
+        goto label_80018614;
+    goto label_8001860c;
+label_80018608:
+    TM3_DRAFT_U16(temp_s2 + (uint32)(4118)) = (uint16)0u;
+    goto label_8001860c;
+label_8001860c:
+    TM3_DRAFT_U16(temp_s2 + (uint32)(4110)) = (uint16)0u;
+    goto label_80018748;
+label_80018610:
+    TM3_DRAFT_U16(temp_s2 + (uint32)(4110)) = (uint16)0u;
+    goto label_80018614;
+label_80018614:
+    temp_v0 = TM3_DRAFT_I16(temp_s2 + (uint32)(4110));
+    goto label_80018618;
+label_80018618:
+    temp_v1 = TM3_DRAFT_U16(temp_s2 + (uint32)(4110));
+    goto label_8001861c;
+label_8001861c:
+    condition_value = ((sint32)temp_v0 <= 0);
+    temp_v0 = temp_v1 + (uint32)(-1);
+    if (condition_value)
+        goto label_8001862c;
+    goto label_80018624;
+label_80018620:
+    temp_v0 = temp_v1 + (uint32)(-1);
+    goto label_80018624;
+label_80018624:
+    TM3_DRAFT_U16(temp_s2 + (uint32)(4110)) = (uint16)temp_v0;
+    goto label_80018748;
+label_80018628:
+    TM3_DRAFT_U16(temp_s2 + (uint32)(4110)) = (uint16)temp_v0;
+    goto label_8001862c;
+label_8001862c:
+    temp_v0 = TM3_DRAFT_I16(temp_s2 + (uint32)(4108));
+    goto label_80018630;
+label_80018630:
+    temp_s1 = 0u + (uint32)(1);
+    goto label_80018634;
+label_80018634:
+    condition_value = (temp_v0 != 0u);
+    TM3_DRAFT_U16(temp_s2 + (uint32)(4118)) = (uint16)temp_s1;
+    if (condition_value)
+        goto label_80018658;
+    goto label_8001863c;
+label_80018638:
+    TM3_DRAFT_U16(temp_s2 + (uint32)(4118)) = (uint16)temp_s1;
+    goto label_8001863c;
+label_8001863c:
+    temp_s0 = 0u + (uint32)(7);
+    goto label_80018640;
+label_80018640:
+    temp_a0 = (temp_s2 + 0u);
+    goto label_80018644;
+label_80018644:
+    temp_a1 = (0u + 0u);
+    goto label_80018648;
+label_80018648:
+    temp_a2 = temp_s2 + (uint32)(4112);
+    temp_v0 = sub_80026B88(temp_a0, temp_a1, temp_a2);
+    goto label_80018650;
+label_8001864c:
+    temp_a2 = temp_s2 + (uint32)(4112);
+    goto label_80018650;
+label_80018650:
+    TM3_DRAFT_U16(temp_s2 + (uint32)(4108)) = (uint16)temp_s1;
+    goto label_80018670;
+label_80018654:
+    TM3_DRAFT_U16(temp_s2 + (uint32)(4108)) = (uint16)temp_s1;
+    goto label_80018658;
+label_80018658:
+    temp_s0 = 0u + (uint32)(6);
+    goto label_8001865c;
+label_8001865c:
+    temp_a0 = (temp_s2 + 0u);
+    goto label_80018660;
+label_80018660:
+    temp_a1 = 0u + (uint32)(1);
+    goto label_80018664;
+label_80018664:
+    temp_a2 = temp_s2 + (uint32)(4112);
+    temp_v0 = sub_80026B88(temp_a0, temp_a1, temp_a2);
+    goto label_8001866c;
+label_80018668:
+    temp_a2 = temp_s2 + (uint32)(4112);
+    goto label_8001866c;
+label_8001866c:
+    TM3_DRAFT_U16(temp_s2 + (uint32)(4108)) = (uint16)0u;
+    goto label_80018670;
+label_80018670:
+    temp_a0 = (uint32)(temp_s0 << 3);
+    goto label_80018674;
+label_80018674:
+    temp_a0 = (temp_a0 - temp_s0);
+    goto label_80018678;
+label_80018678:
+    temp_a0 = (uint32)(temp_a0 << 4);
+    goto label_8001867c;
+label_8001867c:
+    temp_a0 = (temp_a0 + temp_s2);
+    goto label_80018680;
+label_80018680:
+    temp_a0 = temp_a0 + (uint32)(1624);
+    goto label_80018684;
+label_80018684:
+    temp_s0 = local_base + (uint32)(48);
+    goto label_80018688;
+label_80018688:
+    temp_a1 = (temp_s0 + 0u);
+    goto label_8001868c;
+label_8001868c:
+    temp_v1 = TM3_DRAFT_I16(temp_s2 + (uint32)(1540));
+    goto label_80018690;
+label_80018690:
+    temp_a2 = TM3_DRAFT_I16(temp_s2 + (uint32)(1546));
+    goto label_80018694;
+label_80018694:
+    temp_a3 = TM3_DRAFT_I16(temp_s2 + (uint32)(1552));
+    goto label_80018698;
+label_80018698:
+    temp_v0 = 0u + (uint32)(3);
+    goto label_8001869c;
+label_8001869c:
+    TM3_DRAFT_U16(temp_s2 + (uint32)(4110)) = (uint16)temp_v0;
+    goto label_800186a0;
+label_800186a0:
+    *(uint16 *)(local_storage + 48) = (uint16)temp_v1;
+    goto label_800186a4;
+label_800186a4:
+    TM3_DRAFT_U16(temp_s0 + (uint32)(2)) = (uint16)temp_a2;
+    goto label_800186a8;
+label_800186a8:
+    TM3_DRAFT_U16(temp_s0 + (uint32)(4)) = (uint16)temp_a3;
+    temp_v0 = sub_80013A90(temp_a0, temp_a1);
+    goto label_800186b0;
+label_800186ac:
+    TM3_DRAFT_U16(temp_s0 + (uint32)(4)) = (uint16)temp_a3;
+    goto label_800186b0;
+label_800186b0:
+    temp_a0 = 0u + (uint32)(1);
+    goto label_800186b4;
+label_800186b4:
+    temp_a1 = (temp_s2 + 0u);
+    goto label_800186b8;
+label_800186b8:
+    temp_a2 = temp_s2 + (uint32)(4112);
+    goto label_800186bc;
+label_800186bc:
+    temp_a3 = (temp_s0 + 0u);
+    goto label_800186c0;
+label_800186c0:
+    temp_v0 = temp_v0 + (uint32)(2048);
+    goto label_800186c4;
+label_800186c4:
+    temp_v0 = (uint32)((sint32)temp_v0 >> 12);
+    goto label_800186c8;
+label_800186c8:
+    temp_v0 = temp_v0 + (uint32)(6144);
+    goto label_800186cc;
+label_800186cc:
+    *(uint32 *)(local_storage + 16) = (uint32)temp_v0;
+    temp_v0 = sub_8004A294(temp_a0, temp_a1, temp_a2, temp_a3, *(uint32 *)(local_storage + 16));
+    goto label_800186d4;
+label_800186d0:
+    *(uint32 *)(local_storage + 16) = (uint32)temp_v0;
+    goto label_800186d4;
+label_800186d4:
+    temp_a0 = (temp_s2 + 0u);
+    goto label_800186d8;
+label_800186d8:
+    temp_a1 = 0u + (uint32)(8);
+    temp_v0 = sub_80040DA8(temp_a0, temp_a1);
+    goto label_800186e0;
+label_800186dc:
+    temp_a1 = 0u + (uint32)(8);
+    goto label_800186e0;
+label_800186e0:
+    condition_value = (temp_v0 == 0u);
+    temp_a0 = 0u + (uint32)(22);
+    if (condition_value)
+        goto label_800186f4;
+    goto label_800186e8;
+label_800186e4:
+    temp_a0 = 0u + (uint32)(22);
+    goto label_800186e8;
+label_800186e8:
+    temp_a0 = (temp_v0 + 0u);
+    temp_v0 = sub_8004A570(temp_a0);
+    goto label_800186f0;
+label_800186ec:
+    temp_a0 = (temp_v0 + 0u);
+    goto label_800186f0;
+label_800186f0:
+    temp_a0 = 0u + (uint32)(22);
+    goto label_800186f4;
+label_800186f4:
+    temp_a1 = 0u + (uint32)(8);
+    goto label_800186f8;
+label_800186f8:
+    temp_v0 = TM3_DRAFT_I16(temp_s2 + (uint32)(4112));
+    goto label_800186fc;
+label_800186fc:
+    temp_a2 = 0u + (uint32)(15);
+    goto label_80018700;
+label_80018700:
+    *(uint32 *)(local_storage + 16) = (uint32)temp_v0;
+    goto label_80018704;
+label_80018704:
+    temp_v0 = TM3_DRAFT_I16(temp_s2 + (uint32)(4114));
+    goto label_80018708;
+label_80018708:
+    temp_a3 = (temp_s2 + 0u);
+    goto label_8001870c;
+label_8001870c:
+    *(uint32 *)(local_storage + 20) = (uint32)temp_v0;
+    goto label_80018710;
+label_80018710:
+    temp_v1 = TM3_DRAFT_I16(temp_s2 + (uint32)(4116));
+    goto label_80018714;
+label_80018714:
+    temp_v0 = 0u + (uint32)(1780);
+    goto label_80018718;
+label_80018718:
+    *(uint32 *)(local_storage + 28) = (uint32)temp_v0;
+    goto label_8001871c;
+label_8001871c:
+    temp_v0 = 0u + (uint32)(132);
+    goto label_80018720;
+label_80018720:
+    *(uint32 *)(local_storage + 32) = (uint32)temp_v0;
+    goto label_80018724;
+label_80018724:
+    *(uint32 *)(local_storage + 24) = (uint32)temp_v1;
+    temp_v0 = sub_8004A294(temp_a0, temp_a1, temp_a2, temp_a3, *(uint32 *)(local_storage + 16), *(uint32 *)(local_storage + 20), *(uint32 *)(local_storage + 24), *(uint32 *)(local_storage + 28), *(uint32 *)(local_storage + 32));
+    goto label_8001872c;
+label_80018728:
+    *(uint32 *)(local_storage + 24) = (uint32)temp_v1;
+    goto label_8001872c;
+label_8001872c:
+    temp_v1 = TM3_DRAFT_I8(temp_s2 + (uint32)(3328));
+    goto label_80018730;
+label_80018730:
+    temp_v0 = 0u + (uint32)(1);
+    goto label_80018734;
+label_80018734:
+    condition_value = (temp_v1 != temp_v0);
+    if (condition_value)
+        goto label_80018748;
+    goto label_8001873c;
+label_80018738:
+    goto label_8001873c;
+label_8001873c:
+    temp_a0 = TM3_DRAFT_U32(temp_s2 + (uint32)(3924));
+    goto label_80018740;
+label_80018740:
+    temp_a1 = (0u + 0u);
+    temp_v0 = sub_80047364(temp_a0, temp_a1);
+    goto label_80018748;
+label_80018744:
+    temp_a1 = (0u + 0u);
+    goto label_80018748;
+label_80018748:
+    temp_v0 = TM3_DRAFT_U32(temp_s2 + (uint32)(3968));
+    goto label_8001874c;
+label_8001874c:
+    goto label_80018750;
+label_80018750:
+    temp_v0 = (uint32)(temp_v0 << 4);
+    goto label_80018754;
+label_80018754:
+    temp_v0 = (temp_s2 + temp_v0);
+    goto label_80018758;
+label_80018758:
+    temp_v0 = TM3_DRAFT_I16(temp_v0 + (uint32)(4126));
+    goto label_8001875c;
+label_8001875c:
+    goto label_80018760;
+label_80018760:
+    condition_value = ((sint32)temp_v0 <= 0);
+    if (condition_value)
+        goto label_8001879c;
+    goto label_80018768;
+label_80018764:
+    goto label_80018768;
+label_80018768:
+    temp_a0 = (temp_s2 + 0u);
+    temp_v0 = sub_80033CFC(temp_a0);
+    goto label_80018770;
+label_8001876c:
+    temp_a0 = (temp_s2 + 0u);
+    goto label_80018770;
+label_80018770:
+    condition_value = (temp_v0 != 0u);
+    if (condition_value)
+        goto label_8001879c;
+    goto label_80018778;
+label_80018774:
+    goto label_80018778;
+label_80018778:
+    temp_v1 = TM3_DRAFT_U32(temp_s2 + (uint32)(3968));
+    goto label_8001877c;
+label_8001877c:
+    goto label_80018780;
+label_80018780:
+    temp_v1 = (uint32)(temp_v1 << 4);
+    goto label_80018784;
+label_80018784:
+    temp_v1 = (temp_s2 + temp_v1);
+    goto label_80018788;
+label_80018788:
+    temp_v0 = TM3_DRAFT_U16(temp_v1 + (uint32)(4126));
+    goto label_8001878c;
+label_8001878c:
+    goto label_80018790;
+label_80018790:
+    temp_v0 = temp_v0 + (uint32)(-1);
+    goto label_80018794;
+label_80018794:
+    TM3_DRAFT_U16(temp_v1 + (uint32)(4126)) = (uint16)temp_v0;
+    goto label_80018814;
+label_80018798:
+    TM3_DRAFT_U16(temp_v1 + (uint32)(4126)) = (uint16)temp_v0;
+    goto label_8001879c;
+label_8001879c:
+    temp_v0 = TM3_DRAFT_U32(temp_s2 + (uint32)(3952));
+    goto label_800187a0;
+label_800187a0:
+    goto label_800187a4;
+label_800187a4:
+    condition_value = (temp_v0 == 0u);
+    if (condition_value)
+        goto label_80018814;
+    goto label_800187ac;
+label_800187a8:
+    goto label_800187ac;
+label_800187ac:
+    temp_v0 = TM3_DRAFT_U32(temp_s2 + (uint32)(3968));
+    goto label_800187b0;
+label_800187b0:
+    goto label_800187b4;
+label_800187b4:
+    temp_v0 = (uint32)(temp_v0 << 4);
+    goto label_800187b8;
+label_800187b8:
+    temp_a0 = (temp_s2 + temp_v0);
+    goto label_800187bc;
+label_800187bc:
+    temp_v0 = TM3_DRAFT_U32(temp_a0 + (uint32)(4132));
+    goto label_800187c0;
+label_800187c0:
+    goto label_800187c4;
+label_800187c4:
+    condition_value = (temp_v0 == 0u);
+    temp_v0 = 0u + (uint32)(1);
+    if (condition_value)
+        goto label_80018814;
+    goto label_800187cc;
+label_800187c8:
+    temp_v0 = 0u + (uint32)(1);
+    goto label_800187cc;
+label_800187cc:
+    temp_v1 = TM3_DRAFT_I8(temp_s2 + (uint32)(3328));
+    goto label_800187d0;
+label_800187d0:
+    goto label_800187d4;
+label_800187d4:
+    condition_value = (temp_v1 != temp_v0);
+    if (condition_value)
+        goto label_80018804;
+    goto label_800187dc;
+label_800187d8:
+    goto label_800187dc;
+label_800187dc:
+    temp_v0 = TM3_DRAFT_I16(temp_a0 + (uint32)(4120));
+    goto label_800187e0;
+label_800187e0:
+    goto label_800187e4;
+label_800187e4:
+    condition_value = (temp_v0 != 0u);
+    temp_a0 = (temp_s2 + 0u);
+    if (condition_value)
+        goto label_80018808;
+    goto label_800187ec;
+label_800187e8:
+    temp_a0 = (temp_s2 + 0u);
+    goto label_800187ec;
+label_800187ec:
+    temp_a0 = TM3_DRAFT_U32(temp_s2 + (uint32)(3924));
+    goto label_800187f0;
+label_800187f0:
+    temp_a1 = 0x80080000u;
+    goto label_800187f4;
+label_800187f4:
+    temp_a1 = temp_a1 + (uint32)(32424);
+    temp_v0 = sub_8004179C(temp_a0, temp_a1);
+    goto label_800187fc;
+label_800187f8:
+    temp_a1 = temp_a1 + (uint32)(32424);
+    goto label_800187fc;
+label_800187fc:
+    TM3_DRAFT_U32(temp_s2 + (uint32)(3952)) = (uint32)0u;
+    goto label_80018814;
+label_80018800:
+    TM3_DRAFT_U32(temp_s2 + (uint32)(3952)) = (uint32)0u;
+    goto label_80018804;
+label_80018804:
+    temp_a0 = (temp_s2 + 0u);
+    goto label_80018808;
+label_80018808:
+    temp_a1 = (0u + 0u);
+    temp_v0 = sub_80033BCC(temp_a0, temp_a1);
+    goto label_80018810;
+label_8001880c:
+    temp_a1 = (0u + 0u);
+    goto label_80018810;
+label_80018810:
+    TM3_DRAFT_U32(temp_s2 + (uint32)(3952)) = (uint32)0u;
+    goto label_80018814;
+label_80018814:
+    temp_v1 = TM3_DRAFT_U32(temp_s2 + (uint32)(3996));
+    goto label_80018818;
+label_80018818:
+    temp_v0 = 0u + (uint32)(-1);
+    goto label_8001881c;
+label_8001881c:
+    condition_value = (temp_v1 == temp_v0);
+    temp_v0 = 0u + (uint32)(1);
+    if (condition_value)
+        goto label_800188d0;
+    goto label_80018824;
+label_80018820:
+    temp_v0 = 0u + (uint32)(1);
+    goto label_80018824;
+label_80018824:
+    condition_value = (temp_v1 != temp_v0);
+    temp_v0 = 0u + (uint32)(2);
+    if (condition_value)
+        goto label_80018844;
+    goto label_8001882c;
+label_80018828:
+    temp_v0 = 0u + (uint32)(2);
+    goto label_8001882c;
+label_8001882c:
+    temp_a0 = (temp_s2 + 0u);
+    goto label_80018830;
+label_80018830:
+    temp_a1 = 0u + (uint32)(3);
+    goto label_80018834;
+label_80018834:
+    temp_a2 = (0u + 0u);
+    temp_v0 = sub_80033754(temp_a0, temp_a1, temp_a2);
+    goto label_8001883c;
+label_80018838:
+    temp_a2 = (0u + 0u);
+    goto label_8001883c;
+label_8001883c:
+    temp_v1 = TM3_DRAFT_U32(temp_s2 + (uint32)(3996));
+    goto label_80018840;
+label_80018840:
+    temp_v0 = 0u + (uint32)(2);
+    goto label_80018844;
+label_80018844:
+    condition_value = (temp_v1 != temp_v0);
+    if (condition_value)
+        goto label_800188b0;
+    goto label_8001884c;
+label_80018848:
+    goto label_8001884c;
+label_8001884c:
+    temp_v0 = TM3_DRAFT_U32(temp_s2 + (uint32)(3968));
+    goto label_80018850;
+label_80018850:
+    goto label_80018854;
+label_80018854:
+    temp_v0 = (uint32)(temp_v0 << 4);
+    goto label_80018858;
+label_80018858:
+    temp_v1 = (temp_s2 + temp_v0);
+    goto label_8001885c;
+label_8001885c:
+    temp_v0 = TM3_DRAFT_U32(temp_v1 + (uint32)(4132));
+    goto label_80018860;
+label_80018860:
+    goto label_80018864;
+label_80018864:
+    condition_value = (temp_v0 != 0u);
+    temp_a1 = 0x80080000u;
+    if (condition_value)
+        goto label_80018880;
+    goto label_8001886c;
+label_80018868:
+    temp_a1 = 0x80080000u;
+    goto label_8001886c;
+label_8001886c:
+    temp_a0 = TM3_DRAFT_U32(temp_s2 + (uint32)(3924));
+    goto label_80018870;
+label_80018870:
+    temp_a1 = temp_a1 + (uint32)(32440);
+    temp_v0 = sub_8004179C(temp_a0, temp_a1);
+    goto label_80018878;
+label_80018874:
+    temp_a1 = temp_a1 + (uint32)(32440);
+    goto label_80018878;
+label_80018878:
+    goto label_800188b0;
+label_8001887c:
+    goto label_80018880;
+label_80018880:
+    temp_v0 = TM3_DRAFT_I16(temp_v1 + (uint32)(4120));
+    goto label_80018884;
+label_80018884:
+    goto label_80018888;
+label_80018888:
+    condition_value = (temp_v0 != 0u);
+    temp_a0 = (temp_s2 + 0u);
+    if (condition_value)
+        goto label_800188a8;
+    goto label_80018890;
+label_8001888c:
+    temp_a0 = (temp_s2 + 0u);
+    goto label_80018890;
+label_80018890:
+    temp_a0 = TM3_DRAFT_U32(temp_s2 + (uint32)(3924));
+    goto label_80018894;
+label_80018894:
+    temp_a1 = 0x80080000u;
+    goto label_80018898;
+label_80018898:
+    temp_a1 = temp_a1 + (uint32)(32460);
+    temp_v0 = sub_8004179C(temp_a0, temp_a1);
+    goto label_800188a0;
+label_8001889c:
+    temp_a1 = temp_a1 + (uint32)(32460);
+    goto label_800188a0;
+label_800188a0:
+    goto label_800188b0;
+label_800188a4:
+    goto label_800188a8;
+label_800188a8:
+    temp_a1 = 0u + (uint32)(1);
+    temp_v0 = sub_80033BCC(temp_a0, temp_a1);
+    goto label_800188b0;
+label_800188ac:
+    temp_a1 = 0u + (uint32)(1);
+    goto label_800188b0;
+label_800188b0:
+    temp_v1 = TM3_DRAFT_U32(temp_s2 + (uint32)(3996));
+    goto label_800188b4;
+label_800188b4:
+    temp_v0 = 0u + (uint32)(3);
+    goto label_800188b8;
+label_800188b8:
+    condition_value = (temp_v1 != temp_v0);
+    temp_v0 = 0u + (uint32)(-1);
+    if (condition_value)
+        goto label_800188cc;
+    goto label_800188c0;
+label_800188bc:
+    temp_v0 = 0u + (uint32)(-1);
+    goto label_800188c0;
+label_800188c0:
+    temp_v0 = 0u + (uint32)(180);
+    goto label_800188c4;
+label_800188c4:
+    TM3_DRAFT_U32(temp_s2 + (uint32)(64)) = (uint32)temp_v0;
+    goto label_800188c8;
+label_800188c8:
+    temp_v0 = 0u + (uint32)(-1);
+    goto label_800188cc;
+label_800188cc:
+    TM3_DRAFT_U32(temp_s2 + (uint32)(3996)) = (uint32)temp_v0;
+    goto label_800188d0;
+label_800188d0:
+    temp_v0 = TM3_DRAFT_U32(temp_s2 + (uint32)(4084));
+    goto label_800188d4;
+label_800188d4:
+    temp_v1 = TM3_DRAFT_U32(temp_s2 + (uint32)(4088));
+    goto label_800188d8;
+label_800188d8:
+    temp_v0 = temp_v0 + (uint32)(2);
+    goto label_800188dc;
+label_800188dc:
+    TM3_DRAFT_U32(temp_s2 + (uint32)(4084)) = (uint32)temp_v0;
+    goto label_800188e0;
+label_800188e0:
+    temp_v0 = ((sint32)temp_v1 < (sint32)temp_v0);
+    goto label_800188e4;
+label_800188e4:
+    condition_value = (temp_v0 == 0u);
+    if (condition_value)
+        goto label_800188f0;
+    goto label_800188ec;
+label_800188e8:
+    goto label_800188ec;
+label_800188ec:
+    TM3_DRAFT_U32(temp_s2 + (uint32)(4084)) = (uint32)temp_v1;
+    goto label_800188f0;
+label_800188f0:
+    temp_v0 = TM3_DRAFT_U32(temp_s2 + (uint32)(4056));
+    goto label_800188f4;
+label_800188f4:
+    goto label_800188f8;
+label_800188f8:
+    condition_value = (temp_v0 != 0u);
+    temp_v0 = 0x80080000u;
+    if (condition_value)
+        goto label_80018930;
+    goto label_80018900;
+label_800188fc:
+    temp_v0 = 0x80080000u;
+    goto label_80018900;
+label_80018900:
+    TM3_DRAFT_U32(temp_s2 + (uint32)(4052)) = (uint32)0u;
+    goto label_80018978;
+label_80018904:
+    TM3_DRAFT_U32(temp_s2 + (uint32)(4052)) = (uint32)0u;
+    goto label_80018908;
+label_80018908:
+    temp_a0 = (temp_s2 + 0u);
+    goto label_8001890c;
+label_8001890c:
+    temp_a1 = (0u + 0u);
+    goto label_80018910;
+label_80018910:
+    temp_v0 = 0x80080000u;
+    goto label_80018914;
+label_80018914:
+    temp_v0 = temp_v0 + (uint32)(32392);
+    goto label_80018918;
+label_80018918:
+    *(uint32 *)(local_storage + 16) = (uint32)temp_v0;
+    goto label_8001891c;
+label_8001891c:
+    temp_a2 = TM3_DRAFT_U32(temp_a0 + (uint32)(4092));
+    goto label_80018920;
+label_80018920:
+    temp_a3 = (temp_a1 + 0u);
+    temp_v0 = sub_800239C0(temp_a0, temp_a1, temp_a2, temp_a3, *(uint32 *)(local_storage + 16));
+    goto label_80018928;
+label_80018924:
+    temp_a3 = (temp_a1 + 0u);
+    goto label_80018928;
+label_80018928:
+    goto label_80018a9c;
+label_8001892c:
+    goto label_80018930;
+label_80018930:
+    temp_v0 = temp_v0 + (uint32)(32480);
+    goto label_80018934;
+label_80018934:
+    *(uint32 *)(local_storage + 16) = (uint32)temp_v0;
+    goto label_80018938;
+label_80018938:
+    temp_a0 = (temp_s2 + 0u);
+    goto label_8001893c;
+label_8001893c:
+    temp_a1 = (0u + 0u);
+    goto label_80018940;
+label_80018940:
+    temp_a2 = 0u + (uint32)(5);
+    goto label_80018944;
+label_80018944:
+    temp_a3 = (temp_a1 + 0u);
+    temp_v0 = sub_800239C0(temp_a0, temp_a1, temp_a2, temp_a3, *(uint32 *)(local_storage + 16));
+    goto label_8001894c;
+label_80018948:
+    temp_a3 = (temp_a1 + 0u);
+    goto label_8001894c;
+label_8001894c:
+    condition_value = (temp_v0 == 0u);
+    if (condition_value)
+        goto label_80018a9c;
+    goto label_80018954;
+label_80018950:
+    goto label_80018954;
+label_80018954:
+    temp_v0 = TM3_DRAFT_U32(temp_s2 + (uint32)(4052));
+    goto label_80018958;
+label_80018958:
+    temp_v1 = TM3_DRAFT_U32(temp_s2 + (uint32)(1580));
+    goto label_8001895c;
+label_8001895c:
+    temp_a0 = TM3_DRAFT_U32(temp_s2 + (uint32)(1584));
+    goto label_80018960;
+label_80018960:
+    temp_a1 = TM3_DRAFT_U32(temp_s2 + (uint32)(1588));
+    goto label_80018964;
+label_80018964:
+    TM3_DRAFT_U16(temp_v0 + (uint32)(-20)) = (uint16)temp_v1;
+    goto label_80018968;
+label_80018968:
+    temp_v0 = temp_v0 + (uint32)(-20);
+    goto label_8001896c;
+label_8001896c:
+    TM3_DRAFT_U16(temp_v0 + (uint32)(2)) = (uint16)temp_a0;
+    goto label_80018970;
+label_80018970:
+    TM3_DRAFT_U16(temp_v0 + (uint32)(4)) = (uint16)temp_a1;
+    goto label_80018974;
+label_80018974:
+    TM3_DRAFT_U32(temp_s2 + (uint32)(4056)) = (uint32)0u;
+    goto label_80018978;
+label_80018978:
+    temp_a0 = (temp_s2 + 0u);
+    temp_v0 = sub_80033B38(temp_a0);
+    goto label_80018980;
+label_8001897c:
+    temp_a0 = (temp_s2 + 0u);
+    goto label_80018980;
+label_80018980:
+    temp_v0 = TM3_DRAFT_U32(temp_s2 + (uint32)(4068));
+    goto label_80018984;
+label_80018984:
+    goto label_80018988;
+label_80018988:
+    temp_v0 = (sint32)temp_v0 < 33;
+    goto label_8001898c;
+label_8001898c:
+    condition_value = (temp_v0 != 0u);
+    if (condition_value)
+        goto label_800189c4;
+    goto label_80018994;
+label_80018990:
+    goto label_80018994;
+label_80018994:
+    temp_a0 = TM3_DRAFT_U32(temp_s2 + (uint32)(4060));
+    goto label_80018998;
+label_80018998:
+    goto label_8001899c;
+label_8001899c:
+    temp_s0 = TM3_DRAFT_U32(temp_a0 + (uint32)(0));
+    goto label_800189a0;
+label_800189a0:
+    temp_v0 = sub_8004A570(temp_a0);
+    goto label_800189a8;
+label_800189a4:
+    goto label_800189a8;
+label_800189a8:
+    temp_v0 = TM3_DRAFT_U32(temp_s2 + (uint32)(4068));
+    goto label_800189ac;
+label_800189ac:
+    goto label_800189b0;
+label_800189b0:
+    temp_v0 = temp_v0 + (uint32)(-1);
+    goto label_800189b4;
+label_800189b4:
+    TM3_DRAFT_U32(temp_s2 + (uint32)(4068)) = (uint32)temp_v0;
+    goto label_800189b8;
+label_800189b8:
+    temp_v0 = (sint32)temp_v0 < 33;
+    goto label_800189bc;
+label_800189bc:
+    condition_value = (temp_v0 == 0u);
+    TM3_DRAFT_U32(temp_s2 + (uint32)(4060)) = (uint32)temp_s0;
+    if (condition_value)
+        goto label_80018994;
+    goto label_800189c4;
+label_800189c0:
+    TM3_DRAFT_U32(temp_s2 + (uint32)(4060)) = (uint32)temp_s0;
+    goto label_800189c4;
+label_800189c4:
+    temp_v0 = TM3_DRAFT_U32(temp_s2 + (uint32)(4380));
+    goto label_800189c8;
+label_800189c8:
+    goto label_800189cc;
+label_800189cc:
+    condition_value = (temp_v0 == 0u);
+    temp_s1 = temp_s2 + (uint32)(4380);
+    if (condition_value)
+        goto label_80018a20;
+    goto label_800189d4;
+label_800189d0:
+    temp_s1 = temp_s2 + (uint32)(4380);
+    goto label_800189d4;
+label_800189d4:
+    temp_s0 = TM3_DRAFT_U32(temp_s1 + (uint32)(0));
+    goto label_800189d8;
+label_800189d8:
+    temp_v0 = sub_80039FC8();
+    goto label_800189e0;
+label_800189dc:
+    goto label_800189e0;
+label_800189e0:
+    temp_v1 = TM3_DRAFT_U32(temp_s0 + (uint32)(4));
+    goto label_800189e4;
+label_800189e4:
+    goto label_800189e8;
+label_800189e8:
+    condition_value = (temp_v1 != temp_v0);
+    if (condition_value)
+        goto label_800189fc;
+    goto label_800189f0;
+label_800189ec:
+    goto label_800189f0;
+label_800189f0:
+    temp_v0 = TM3_DRAFT_U32(temp_s1 + (uint32)(0));
+    goto label_800189f4;
+label_800189f4:
+    temp_s1 = temp_v0 + (uint32)(8);
+    goto label_80018a10;
+label_800189f8:
+    temp_s1 = temp_v0 + (uint32)(8);
+    goto label_800189fc;
+label_800189fc:
+    temp_a0 = TM3_DRAFT_U32(temp_s1 + (uint32)(0));
+    goto label_80018a00;
+label_80018a00:
+    goto label_80018a04;
+label_80018a04:
+    temp_v0 = TM3_DRAFT_U32(temp_a0 + (uint32)(8));
+    goto label_80018a08;
+label_80018a08:
+    TM3_DRAFT_U32(temp_s1 + (uint32)(0)) = (uint32)temp_v0;
+    sub_8004A0F8(temp_a0);
+    goto label_80018a10;
+label_80018a0c:
+    TM3_DRAFT_U32(temp_s1 + (uint32)(0)) = (uint32)temp_v0;
+    goto label_80018a10;
+label_80018a10:
+    temp_v0 = TM3_DRAFT_U32(temp_s1 + (uint32)(0));
+    goto label_80018a14;
+label_80018a14:
+    goto label_80018a18;
+label_80018a18:
+    condition_value = (temp_v0 != 0u);
+    if (condition_value)
+        goto label_800189d4;
+    goto label_80018a20;
+label_80018a1c:
+    goto label_80018a20;
+label_80018a20:
+    temp_v0 = TM3_DRAFT_U32(temp_s2 + (uint32)(1580));
+    goto label_80018a24;
+label_80018a24:
+    temp_v1 = TM3_DRAFT_U32(temp_s2 + (uint32)(1584));
+    goto label_80018a28;
+label_80018a28:
+    temp_a0 = TM3_DRAFT_U32(temp_s2 + (uint32)(1588));
+    goto label_80018a2c;
+label_80018a2c:
+    TM3_DRAFT_U16(temp_s2 + (uint32)(-20)) = (uint16)temp_v0;
+    goto label_80018a30;
+label_80018a30:
+    temp_v0 = temp_s2 + (uint32)(-20);
+    goto label_80018a34;
+label_80018a34:
+    TM3_DRAFT_U16(temp_v0 + (uint32)(2)) = (uint16)temp_v1;
+    goto label_80018a38;
+label_80018a38:
+    TM3_DRAFT_U16(temp_v0 + (uint32)(4)) = (uint16)temp_a0;
+    goto label_80018a3c;
+label_80018a3c:
+    temp_a2 = TM3_DRAFT_U32(temp_s2 + (uint32)(4040));
+    goto label_80018a40;
+label_80018a40:
+    temp_v0 = TM3_DRAFT_U32(temp_s2 + (uint32)(4044));
+    goto label_80018a44;
+label_80018a44:
+    temp_v1 = TM3_DRAFT_I16(temp_a2 + (uint32)(52));
+    goto label_80018a48;
+label_80018a48:
+    goto label_80018a4c;
+label_80018a4c:
+    product = (uint64)((sint64)(sint32)temp_v0 * (sint64)(sint32)temp_v1);
+    lo_value = (uint32)product;
+    hi_value = (uint32)(product >> 32);
+    goto label_80018a50;
+label_80018a50:
+    temp_a0 = TM3_DRAFT_U32(temp_s2 + (uint32)(4376));
+    goto label_80018a54;
+label_80018a54:
+    temp_v0 = TM3_DRAFT_U16(temp_a2 + (uint32)(50));
+    goto label_80018a58;
+label_80018a58:
+    temp_t1 = lo_value;
+    goto label_80018a5c;
+label_80018a5c:
+    temp_a1 = temp_t1 + (uint32)(2048);
+    goto label_80018a60;
+label_80018a60:
+    temp_a1 = (uint32)((sint32)temp_a1 >> 12);
+    goto label_80018a64;
+label_80018a64:
+    temp_a1 = (temp_v0 + temp_a1);
+    temp_v0 = sub_80038AFC(temp_a0, temp_a1);
+    goto label_80018a6c;
+label_80018a68:
+    temp_a1 = (temp_v0 + temp_a1);
+    goto label_80018a6c;
+label_80018a6c:
+    temp_a2 = TM3_DRAFT_U32(temp_s2 + (uint32)(4040));
+    goto label_80018a70;
+label_80018a70:
+    temp_v0 = TM3_DRAFT_U32(temp_s2 + (uint32)(4044));
+    goto label_80018a74;
+label_80018a74:
+    temp_v1 = TM3_DRAFT_I16(temp_a2 + (uint32)(58));
+    goto label_80018a78;
+label_80018a78:
+    goto label_80018a7c;
+label_80018a7c:
+    product = (uint64)((sint64)(sint32)temp_v0 * (sint64)(sint32)temp_v1);
+    lo_value = (uint32)product;
+    hi_value = (uint32)(product >> 32);
+    goto label_80018a80;
+label_80018a80:
+    temp_a0 = TM3_DRAFT_U32(temp_s2 + (uint32)(4376));
+    goto label_80018a84;
+label_80018a84:
+    temp_v0 = TM3_DRAFT_U16(temp_a2 + (uint32)(56));
+    goto label_80018a88;
+label_80018a88:
+    temp_t1 = lo_value;
+    goto label_80018a8c;
+label_80018a8c:
+    temp_a1 = temp_t1 + (uint32)(2048);
+    goto label_80018a90;
+label_80018a90:
+    temp_a1 = (uint32)((sint32)temp_a1 >> 12);
+    goto label_80018a94;
+label_80018a94:
+    temp_a1 = (temp_v0 + temp_a1);
+    temp_v0 = sub_80038AE8(temp_a0, temp_a1);
+    goto label_80018a9c;
+label_80018a98:
+    temp_a1 = (temp_v0 + temp_a1);
+    goto label_80018a9c;
+label_80018a9c:
+    goto label_80018aa0;
+label_80018aa0:
+    goto label_80018aa4;
+label_80018aa4:
+    goto label_80018aa8;
+label_80018aa8:
+    goto label_80018aac;
+label_80018aac:
+    return temp_v0;
+label_80018ab0:
+    return temp_v0;
 }

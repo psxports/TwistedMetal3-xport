@@ -11,10 +11,14 @@ uint16 tm3_serial_register_read(uint32 offset)
 {
     switch (offset)
     {
-        case 4u: return serial_status;
-        case 8u: return serial_mode;
-        case 10u: return serial_control;
-        case 14u: return serial_baud;
+        case 4u:
+            return serial_status;
+        case 8u:
+            return serial_mode;
+        case 10u:
+            return serial_control;
+        case 14u:
+            return serial_baud;
     }
     tm3_draft_unimplemented("Serial register read offset");
 }
@@ -23,13 +27,22 @@ void tm3_serial_register_write(uint32 offset, uint16 value)
 {
     switch (offset)
     {
-        case 4u: serial_status = (uint16)(value & serial_status); return;
-        case 8u: serial_mode = value; return;
-        case 10u: serial_control = value; return;
-        case 14u: serial_baud = value; return;
+        case 4u:
+            serial_status = (uint16)(value & serial_status);
+            return;
+        case 8u:
+            serial_mode = value;
+            return;
+        case 10u:
+            serial_control = value;
+            return;
+        case 14u:
+            serial_baud = value;
+            return;
     }
     tm3_draft_unimplemented("Serial register write offset");
 }
+
 /* Original _comb_control configuration and callback operations */
 uint32 tm3_serial_control(uint32 command, uint32 option, uint32 payload)
 {
@@ -90,6 +103,3 @@ uint32 tm3_serial_control(uint32 command, uint32 option, uint32 payload)
     fprintf(stderr, "TM3 unsupported serial control: command=%u option=%u payload=0x%08x\n", command, option, payload);
     tm3_draft_unimplemented("_comb_control command");
 }
-
-
-

@@ -17,7 +17,5 @@ uint32 sub_80027B00(uint32 object, uint32 ordering_table, uint32 cursor, uint32 
     FUNCTION_MARKER(0x80027B00u, "SCUS_942.49");
     if ((sint32)frame >= TM3_DRAFT_I16(animation))
         return 0u;
-    return sub_8002A190(object + 8u, (uint32)(sint32)TM3_DRAFT_I16(object + 20u),
-        (uint32)(sint32)TM3_DRAFT_I16(object + 22u), TM3_DRAFT_U32(object + 24u),
-        TM3_DRAFT_U32(animation + 8u + frame * 4u), ordering_table, cursor, 1u, end);
+    return sub_8002A190(object + 8u, (uint32)(sint32)TM3_DRAFT_I16(object + 20u), (uint32)(sint32)TM3_DRAFT_I16(object + 22u), TM3_DRAFT_U32(object + 24u), TM3_DRAFT_U32(animation + 8u + frame * 4u), ordering_table, cursor, 1u, end);
 }

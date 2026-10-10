@@ -30,8 +30,7 @@ uint32 sub_8004AFA8(uint32 vehicle, uint32 effect)
         TM3_DRAFT_U32(slot) = 1;
     }
     for (axis = 0; axis < 3; ++axis)
-        delta[axis] = (uint32)(sint32)TM3_DRAFT_I16(vehicle - 20u + 2u * axis)
-                    - (uint32)(sint32)TM3_DRAFT_I16(effect - 20u + 2u * axis);
+        delta[axis] = (uint32)(sint32)TM3_DRAFT_I16(vehicle - 20u + 2u * axis) - (uint32)(sint32)TM3_DRAFT_I16(effect - 20u + 2u * axis);
     delta_address = TM3_DRAFT_LOCAL_ADDRESS(delta, sizeof(delta));
     force_address = TM3_DRAFT_LOCAL_ADDRESS(force, sizeof(force));
     direction_address = TM3_DRAFT_LOCAL_ADDRESS(direction, sizeof(direction));

@@ -72,7 +72,6 @@ uint32 sub_800523C4(uint32 context, uint32 unused, uint32 selected)
     uint32 addresses[4];
     uint32 count = sub_8005230C();
     uint32 index;
-    (void)unused;
     /* Player enumeration limits positive counts to four */
     for (index = 0; (sint32)index < (sint32)count; ++index)
     {
@@ -80,8 +79,7 @@ uint32 sub_800523C4(uint32 context, uint32 unused, uint32 selected)
         sub_800496E0(label, 0x80089c80u, index + 1u);
         addresses[index] = label;
     }
-    return sub_8004E9B8(context, selected, 0x800523c4u, count,
-        TM3_DRAFT_LOCAL_ADDRESS(addresses, sizeof(addresses)), TM3_DRAFT_U32(0x800d28b8u) - 1u, 3u, 0u);
+    return sub_8004E9B8(context, selected, 0x800523c4u, count, TM3_DRAFT_LOCAL_ADDRESS(addresses, sizeof(addresses)), TM3_DRAFT_U32(0x800d28b8u) - 1u, 3u, 0u);
 }
 
 uint32 sub_80023BFC(uint32 object)
@@ -129,13 +127,11 @@ void sub_800569B0(void)
 void sub_800284C8(uint32 object)
 {
     /* Original destructor immediately returns */
-    (void)object;
 }
 
 void sub_8002C32C(uint32 object)
 {
     /* Original update immediately returns */
-    (void)object;
 }
 
 /* Type 13 textured geometry render callback */
@@ -239,35 +235,35 @@ uint32 sub_800361A8(uint32 object)
         return timer;
     switch (TM3_DRAFT_U32(object + 8u))
     {
-    case 0u:
-        tm3_draft_indirect(TM3_DRAFT_U32(object + 4u), 0u);
-        break;
-    case 1u:
-        tm3_draft_indirect(TM3_DRAFT_U32(object + 4u), 1u, TM3_DRAFT_U32(object + 12u));
-        break;
-    case 2u:
-        tm3_draft_indirect(TM3_DRAFT_U32(object + 4u), 2u, TM3_DRAFT_U32(object + 12u), TM3_DRAFT_U32(object + 16u));
-        break;
-    case 3u:
-        tm3_draft_indirect(TM3_DRAFT_U32(object + 4u), 3u, TM3_DRAFT_U32(object + 12u), TM3_DRAFT_U32(object + 16u), TM3_DRAFT_U32(object + 20u));
-        break;
-    case 4u:
-        tm3_draft_indirect(TM3_DRAFT_U32(object + 4u), 4u, TM3_DRAFT_U32(object + 12u), TM3_DRAFT_U32(object + 16u), TM3_DRAFT_U32(object + 20u), TM3_DRAFT_U32(object + 24u));
-        break;
-    case 5u:
-        tm3_draft_indirect(TM3_DRAFT_U32(object + 4u), 5u, TM3_DRAFT_U32(object + 12u), TM3_DRAFT_U32(object + 16u), TM3_DRAFT_U32(object + 20u), TM3_DRAFT_U32(object + 24u), TM3_DRAFT_U32(object + 28u));
-        break;
-    case 6u:
-        tm3_draft_indirect(TM3_DRAFT_U32(object + 4u), 6u, TM3_DRAFT_U32(object + 12u), TM3_DRAFT_U32(object + 16u), TM3_DRAFT_U32(object + 20u), TM3_DRAFT_U32(object + 24u), TM3_DRAFT_U32(object + 28u), TM3_DRAFT_U32(object + 32u));
-        break;
-    case 7u:
-        tm3_draft_indirect(TM3_DRAFT_U32(object + 4u), 7u, TM3_DRAFT_U32(object + 12u), TM3_DRAFT_U32(object + 16u), TM3_DRAFT_U32(object + 20u), TM3_DRAFT_U32(object + 24u), TM3_DRAFT_U32(object + 28u), TM3_DRAFT_U32(object + 32u), TM3_DRAFT_U32(object + 36u));
-        break;
-    case 8u:
-        tm3_draft_indirect(TM3_DRAFT_U32(object + 4u), 8u, TM3_DRAFT_U32(object + 12u), TM3_DRAFT_U32(object + 16u), TM3_DRAFT_U32(object + 20u), TM3_DRAFT_U32(object + 24u), TM3_DRAFT_U32(object + 28u), TM3_DRAFT_U32(object + 32u), TM3_DRAFT_U32(object + 36u), TM3_DRAFT_U32(object + 40u));
-        break;
-    default:
-        break;
+        case 0u:
+            tm3_draft_indirect(TM3_DRAFT_U32(object + 4u), 0u);
+            break;
+        case 1u:
+            tm3_draft_indirect(TM3_DRAFT_U32(object + 4u), 1u, TM3_DRAFT_U32(object + 12u));
+            break;
+        case 2u:
+            tm3_draft_indirect(TM3_DRAFT_U32(object + 4u), 2u, TM3_DRAFT_U32(object + 12u), TM3_DRAFT_U32(object + 16u));
+            break;
+        case 3u:
+            tm3_draft_indirect(TM3_DRAFT_U32(object + 4u), 3u, TM3_DRAFT_U32(object + 12u), TM3_DRAFT_U32(object + 16u), TM3_DRAFT_U32(object + 20u));
+            break;
+        case 4u:
+            tm3_draft_indirect(TM3_DRAFT_U32(object + 4u), 4u, TM3_DRAFT_U32(object + 12u), TM3_DRAFT_U32(object + 16u), TM3_DRAFT_U32(object + 20u), TM3_DRAFT_U32(object + 24u));
+            break;
+        case 5u:
+            tm3_draft_indirect(TM3_DRAFT_U32(object + 4u), 5u, TM3_DRAFT_U32(object + 12u), TM3_DRAFT_U32(object + 16u), TM3_DRAFT_U32(object + 20u), TM3_DRAFT_U32(object + 24u), TM3_DRAFT_U32(object + 28u));
+            break;
+        case 6u:
+            tm3_draft_indirect(TM3_DRAFT_U32(object + 4u), 6u, TM3_DRAFT_U32(object + 12u), TM3_DRAFT_U32(object + 16u), TM3_DRAFT_U32(object + 20u), TM3_DRAFT_U32(object + 24u), TM3_DRAFT_U32(object + 28u), TM3_DRAFT_U32(object + 32u));
+            break;
+        case 7u:
+            tm3_draft_indirect(TM3_DRAFT_U32(object + 4u), 7u, TM3_DRAFT_U32(object + 12u), TM3_DRAFT_U32(object + 16u), TM3_DRAFT_U32(object + 20u), TM3_DRAFT_U32(object + 24u), TM3_DRAFT_U32(object + 28u), TM3_DRAFT_U32(object + 32u), TM3_DRAFT_U32(object + 36u));
+            break;
+        case 8u:
+            tm3_draft_indirect(TM3_DRAFT_U32(object + 4u), 8u, TM3_DRAFT_U32(object + 12u), TM3_DRAFT_U32(object + 16u), TM3_DRAFT_U32(object + 20u), TM3_DRAFT_U32(object + 24u), TM3_DRAFT_U32(object + 28u), TM3_DRAFT_U32(object + 32u), TM3_DRAFT_U32(object + 36u), TM3_DRAFT_U32(object + 40u));
+            break;
+        default:
+            break;
     }
     return sub_8004A570(object);
 }
@@ -295,8 +291,7 @@ uint32 sub_80045B84(uint32 context, uint32 font, uint32 strings, uint32 count, u
         if (text != 0u)
         {
             uint32 color = TM3_DRAFT_U32(0x80089cbcu);
-            sub_80049284(text, font, 160u, y, context, context + 88u, 22u,
-                TM3_DRAFT_U8(color + 3u), TM3_DRAFT_U8(color + 4u), TM3_DRAFT_U8(color + 5u), 2u, 2u);
+            sub_80049284(text, font, 160u, y, context, context + 88u, 22u, TM3_DRAFT_U8(color + 3u), TM3_DRAFT_U8(color + 4u), TM3_DRAFT_U8(color + 5u), 2u, 2u);
         }
         height = TM3_DRAFT_U8(font + 20u);
         y += height + (height >> 1);
@@ -333,7 +328,6 @@ void sub_80031774(uint32 object)
 {
     FUNCTION_MARKER(0x80031774u, "SCUS_942.49");
     /* Original destructor immediately returns */
-    (void)object;
 }
 
 /* Unverified decompiler-derived draft */
@@ -375,7 +369,6 @@ uint32 sub_800321F4(uint32 vehicle, uint32 mode)
         }
     }
     /* Sound flags 5 consume only sound, flags, vehicle and intensity */
-    sub_8004A294(22u, TM3_DRAFT_U8(TM3_DRAFT_U32(vehicle + 4040u) + 55u),
-                5u, vehicle, 1200u);
+    sub_8004A294(22u, TM3_DRAFT_U8(TM3_DRAFT_U32(vehicle + 4040u) + 55u), 5u, vehicle, 1200u);
     return TM3_DRAFT_U32(vehicle + 4368u);
 }

@@ -2,7 +2,12 @@
 #include <stdlib.h>
 
 #define XPORT_LINK_STUB(symbol, address, image) \
-    uint32 symbol() { FUNCTION_MARKER(address, image); abort(); return 0; }
+    uint32 symbol() \
+    { \
+        FUNCTION_MARKER(address, image); \
+        abort(); \
+        return 0; \
+    }
 
 XPORT_LINK_STUB(sub_80012A20, 0x80012A20u, "SCUS_942.49")
 XPORT_LINK_STUB(sub_80012AC8, 0x80012AC8u, "SCUS_942.49")

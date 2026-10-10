@@ -4,8 +4,6 @@
 uint32 sub_8002C178(uint32 vehicle, uint32 pickup)
 {
     FUNCTION_MARKER(0x8002C178u, "SCUS_942.49");
-    (void)vehicle;
-    (void)pickup;
     return 0;
 }
 
@@ -13,7 +11,6 @@ uint32 sub_8002C178(uint32 vehicle, uint32 pickup)
 uint32 sub_8002C1C0(uint32 vehicle, uint32 pickup)
 {
     FUNCTION_MARKER(0x8002C1C0u, "SCUS_942.49");
-    (void)pickup;
     TM3_DRAFT_U32(vehicle + 4076u) = TM3_DRAFT_U32(vehicle + 4080u);
     return 1;
 }

@@ -1,8 +1,8 @@
 #ifndef TM3_GAME_DRAFT_SIGNATURES_H
-#define TM3_GAME_DRAFT_SIGNATURES_H
+    #define TM3_GAME_DRAFT_SIGNATURES_H
 
-#include "game_draft_support.h"
-#include "game_sdk_bindings.h"
+    #include "game_draft_support.h"
+    #include "game_sdk_bindings.h"
 
 /* Unverified selected-function signatures */
 uint32 sub_80023628(uint32 object, uint32 origin);
@@ -27,8 +27,7 @@ void sub_8003A070(void);
 void sub_80056A24(void);
 uint32 sub_80056A14(void);
 uint32 sub_80060794(uint32 value);
-uint32 sub_80039F84(uint32 x, uint32 y, uint32 width, uint32 height,
-                     uint32 red, uint32 green, uint32 blue);
+uint32 sub_80039F84(uint32 x, uint32 y, uint32 width, uint32 height, uint32 red, uint32 green, uint32 blue);
 void sub_80056944(uint32 mode);
 uint32 sub_80056EB4(uint32 mode);
 void sub_800569B0(void);
@@ -491,7 +490,7 @@ uint32 sub_80034388(uint32 a1);
 uint32 sub_800343BC(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, uint32 a6, uint32 a7, uint32 a8, uint32 a9, uint32 a10, uint32 a11, uint32 a12, uint32 a13);
 uint32 sub_80034BEC(uint32 a1, uint32 a2, uint32 a3, uint32 a4);
 uint32 sub_80031DFC(uint32 a1, uint32 a2);
-uint32 sub_80031EA8(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, ...);
+uint32 sub_80031EA8(uint32 object, uint32 ordering_table, uint32 cursor, uint32 end, uint32 view);
 uint32 sub_80031FE8(uint32 a1, uint32 a2);
 uint32 sub_8001C9F8(uint32 a1);
 uint32 sub_80032118(uint32 a1, uint32 a2);
@@ -596,13 +595,12 @@ uint32 sub_8003F098(uint32 a1, uint32 a2, uint32 a3);
 uint32 sub_800438B4(void);
 uint32 sub_800311F0(uint32 a1);
 
-/* Original selected symbol aliases */
-#define nullsub_8 sub_80027A50
-#define nullsub_9 sub_800294B0
-#define nullsub_10 sub_80030558
-#define nullsub_6 sub_80015904
-#define nullsub_7 sub_800267E8
-
+    /* Original selected symbol aliases */
+    #define nullsub_8 sub_80027A50
+    #define nullsub_9 sub_800294B0
+    #define nullsub_10 sub_80030558
+    #define nullsub_6 sub_80015904
+    #define nullsub_7 sub_800267E8
 
 uint32 sub_800321F4(uint32 vehicle, uint32 mode);
 

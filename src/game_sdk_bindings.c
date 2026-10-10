@@ -36,21 +36,24 @@ uint32 sub_800564E4(uint32 a1)
 /* Accepted original SDK boundary: memchr */
 uint32 sub_80056554(uint32 a1, uint32 a2, uint32 a3)
 {
-    if (!a3) return 0u;
+    if (!a3)
+        return 0u;
     return tm3_native_pointer_address(memchr(psx_addr(a1, a3), (int)a2, (size_t)a3));
 }
 
 /* Accepted original SDK boundary: memmove */
 uint32 sub_80056634(uint32 a1, uint32 a2, uint32 a3)
 {
-    if (!a3) return a1;
+    if (!a3)
+        return a1;
     return tm3_native_pointer_address(memmove(psx_addr(a1, a3), psx_addr(a2, a3), (size_t)a3));
 }
 
 /* Accepted original SDK boundary: memset */
 uint32 sub_800566A4(uint32 a1, uint32 a2, uint32 a3)
 {
-    if (!a3) return a1;
+    if (!a3)
+        return a1;
     return tm3_native_pointer_address(memset(psx_addr(a1, a3), (int)a2, (size_t)a3));
 }
 
@@ -75,9 +78,6 @@ uint32 sub_80056884(uint32 a1, uint32 a2, uint32 a3)
 /* Accepted original SDK boundary: _card_write */
 uint32 sub_80056904(uint32 a1, uint32 a2, uint32 a3)
 {
-    (void)a1;
-    (void)a2;
-    (void)a3;
     /* Explicit user-approved absent memory card */
     return 0u;
 }
@@ -97,7 +97,6 @@ void sub_80056924(void)
 /* Accepted original SDK boundary: _card_status */
 uint32 sub_80056934(uint32 a1)
 {
-    (void)a1;
     /* Explicit user-approved absent memory card */
     return 0u;
 }
@@ -251,6 +250,7 @@ uint32 sub_8005B124(uint32 a1)
 extern void tm3_draft_gte_write_data(uint32 index, uint32 value);
 extern uint32 tm3_draft_gte_read_data(uint32 index);
 extern void tm3_draft_gte_command(uint32 instruction);
+
 static uint32 tm3_sdk_vector_normal(uint32 input, uint32 output, uint32 short_input, uint32 short_output)
 {
     uint32 components[3], sum, leading, normalized, shift, i;
@@ -301,29 +301,35 @@ uint32 sub_8005B284(uint32 a1, uint32 a2)
 uint32 sub_8005B614(uint32 a1, uint32 a2, uint32 a3)
 {
     uint32 first[3], second[3], third[3], i;
-    for(i=0u;i<5u;++i) tm3_draft_gte_write_control(i,TM3_DRAFT_U32(a1+4u*i));
-    tm3_draft_gte_write_data(0u,TM3_DRAFT_U16(a2)|(TM3_DRAFT_U32(a2+4u)&0xFFFF0000u));
-    tm3_draft_gte_write_data(1u,TM3_DRAFT_U32(a2+12u));
+    for (i = 0u; i < 5u; ++i)
+        tm3_draft_gte_write_control(i, TM3_DRAFT_U32(a1 + 4u * i));
+    tm3_draft_gte_write_data(0u, TM3_DRAFT_U16(a2) | (TM3_DRAFT_U32(a2 + 4u) & 0xFFFF0000u));
+    tm3_draft_gte_write_data(1u, TM3_DRAFT_U32(a2 + 12u));
     tm3_draft_gte_command(0x486012u);
-    for(i=0u;i<3u;++i) first[i]=tm3_draft_gte_read_data(9u+i);
-    tm3_draft_gte_write_data(0u,TM3_DRAFT_U16(a2+2u)|(TM3_DRAFT_U32(a2+8u)<<16));
-    tm3_draft_gte_write_data(1u,(uint32)TM3_DRAFT_I16(a2+14u));
+    for (i = 0u; i < 3u; ++i)
+        first[i] = tm3_draft_gte_read_data(9u + i);
+    tm3_draft_gte_write_data(0u, TM3_DRAFT_U16(a2 + 2u) | (TM3_DRAFT_U32(a2 + 8u) << 16));
+    tm3_draft_gte_write_data(1u, (uint32)TM3_DRAFT_I16(a2 + 14u));
     tm3_draft_gte_command(0x486012u);
-    for(i=0u;i<3u;++i) second[i]=tm3_draft_gte_read_data(9u+i);
-    tm3_draft_gte_write_data(0u,TM3_DRAFT_U16(a2+4u)|(TM3_DRAFT_U32(a2+8u)&0xFFFF0000u));
-    tm3_draft_gte_write_data(1u,TM3_DRAFT_U32(a2+16u));
+    for (i = 0u; i < 3u; ++i)
+        second[i] = tm3_draft_gte_read_data(9u + i);
+    tm3_draft_gte_write_data(0u, TM3_DRAFT_U16(a2 + 4u) | (TM3_DRAFT_U32(a2 + 8u) & 0xFFFF0000u));
+    tm3_draft_gte_write_data(1u, TM3_DRAFT_U32(a2 + 16u));
     tm3_draft_gte_command(0x486012u);
-    TM3_DRAFT_U32(a3)=(first[0]&0xFFFFu)|(second[0]<<16);
-    TM3_DRAFT_U32(a3+12u)=(first[2]&0xFFFFu)|(second[2]<<16);
-    for(i=0u;i<3u;++i) third[i]=tm3_draft_gte_read_data(9u+i);
-    TM3_DRAFT_U32(a3+16u)=third[2];
-    tm3_draft_gte_write_data(0u,TM3_DRAFT_U16(a2+20u)|(TM3_DRAFT_U32(a2+24u)<<16));
-    tm3_draft_gte_write_data(1u,TM3_DRAFT_U32(a2+28u));
+    TM3_DRAFT_U32(a3) = (first[0] & 0xFFFFu) | (second[0] << 16);
+    TM3_DRAFT_U32(a3 + 12u) = (first[2] & 0xFFFFu) | (second[2] << 16);
+    for (i = 0u; i < 3u; ++i)
+        third[i] = tm3_draft_gte_read_data(9u + i);
+    TM3_DRAFT_U32(a3 + 16u) = third[2];
+    tm3_draft_gte_write_data(0u, TM3_DRAFT_U16(a2 + 20u) | (TM3_DRAFT_U32(a2 + 24u) << 16));
+    tm3_draft_gte_write_data(1u, TM3_DRAFT_U32(a2 + 28u));
     tm3_draft_gte_command(0x486012u);
-    TM3_DRAFT_U32(a3+4u)=(third[0]&0xFFFFu)|(first[1]<<16);
-    TM3_DRAFT_U32(a3+8u)=(second[1]&0xFFFFu)|(third[1]<<16);
-    for(i=0u;i<3u;++i) third[i]=tm3_draft_gte_read_data(25u+i)+TM3_DRAFT_U32(a1+20u+4u*i);
-    for(i=0u;i<3u;++i) TM3_DRAFT_U32(a3+20u+4u*i)=third[i];
+    TM3_DRAFT_U32(a3 + 4u) = (third[0] & 0xFFFFu) | (first[1] << 16);
+    TM3_DRAFT_U32(a3 + 8u) = (second[1] & 0xFFFFu) | (third[1] << 16);
+    for (i = 0u; i < 3u; ++i)
+        third[i] = tm3_draft_gte_read_data(25u + i) + TM3_DRAFT_U32(a1 + 20u + 4u * i);
+    for (i = 0u; i < 3u; ++i)
+        TM3_DRAFT_U32(a3 + 20u + 4u * i) = third[i];
     return a3;
 }
 
@@ -407,16 +413,19 @@ uint32 sub_8005C334(uint32 a1, uint32 a2, uint32 a3, uint32 a4)
 /* Accepted original SDK boundary: RotTransPers3 */
 uint32 sub_8005C364(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, uint32 a6, uint32 a7, uint32 a8)
 {
-    (void)a1;
-    (void)a2;
-    (void)a3;
-    (void)a4;
-    (void)a5;
-    (void)a6;
-    (void)a7;
-    (void)a8;
-    tm3_draft_unimplemented("sub_8005C364 RotTransPers3");
-    return 0u; /* Unreachable after the explicit missing SDK failure */
+    xport_gte_write_data(0u, r_u32(a1));
+    xport_gte_write_data(1u, r_u32(a1 + 4u));
+    xport_gte_write_data(2u, r_u32(a2));
+    xport_gte_write_data(3u, r_u32(a2 + 4u));
+    xport_gte_write_data(4u, r_u32(a3));
+    xport_gte_write_data(5u, r_u32(a3 + 4u));
+    xport_gte_execute(0x4A280030u);
+    w_u32(a4, xport_gte_read_data(12u));
+    w_u32(a5, xport_gte_read_data(13u));
+    w_u32(a6, xport_gte_read_data(14u));
+    w_u32(a7, xport_gte_read_data(8u));
+    w_u32(a8, xport_gte_read_flag());
+    return (uint32)((sint32)xport_gte_read_data(19u) >> 2);
 }
 
 /* Accepted original SDK boundary: RotTrans */
@@ -435,25 +444,25 @@ void sub_8005C3C4(uint32 a1, uint32 a2, uint32 a3)
 /* Accepted original SDK boundary: RotTransPers4 */
 uint32 sub_8005C3F4(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, uint32 a6, uint32 a7, uint32 a8, uint32 a9, uint32 a10)
 {
-  uint32 flags;
-  tm3_draft_gte_write_data(0u,TM3_DRAFT_U32(a1));
-  tm3_draft_gte_write_data(1u,TM3_DRAFT_U32(a1+4u));
-  tm3_draft_gte_write_data(2u,TM3_DRAFT_U32(a2));
-  tm3_draft_gte_write_data(3u,TM3_DRAFT_U32(a2+4u));
-  tm3_draft_gte_write_data(4u,TM3_DRAFT_U32(a3));
-  tm3_draft_gte_write_data(5u,TM3_DRAFT_U32(a3+4u));
-  tm3_draft_gte_command(0x280030u);
-  TM3_DRAFT_U32(a5)=tm3_draft_gte_read_data(12u);
-  TM3_DRAFT_U32(a6)=tm3_draft_gte_read_data(13u);
-  TM3_DRAFT_U32(a7)=tm3_draft_gte_read_data(14u);
-  flags=tm3_draft_gte_read_control(31u);
-  tm3_draft_gte_write_data(0u,TM3_DRAFT_U32(a4));
-  tm3_draft_gte_write_data(1u,TM3_DRAFT_U32(a4+4u));
-  tm3_draft_gte_command(0x180001u);
-  TM3_DRAFT_U32(a8)=tm3_draft_gte_read_data(14u);
-  TM3_DRAFT_U32(a9)=tm3_draft_gte_read_data(8u);
-  TM3_DRAFT_U32(a10)=tm3_draft_gte_read_control(31u)|flags;
-  return (uint32)((sint32)tm3_draft_gte_read_data(19u)>>2);
+    uint32 flags;
+    tm3_draft_gte_write_data(0u, TM3_DRAFT_U32(a1));
+    tm3_draft_gte_write_data(1u, TM3_DRAFT_U32(a1 + 4u));
+    tm3_draft_gte_write_data(2u, TM3_DRAFT_U32(a2));
+    tm3_draft_gte_write_data(3u, TM3_DRAFT_U32(a2 + 4u));
+    tm3_draft_gte_write_data(4u, TM3_DRAFT_U32(a3));
+    tm3_draft_gte_write_data(5u, TM3_DRAFT_U32(a3 + 4u));
+    tm3_draft_gte_command(0x280030u);
+    TM3_DRAFT_U32(a5) = tm3_draft_gte_read_data(12u);
+    TM3_DRAFT_U32(a6) = tm3_draft_gte_read_data(13u);
+    TM3_DRAFT_U32(a7) = tm3_draft_gte_read_data(14u);
+    flags = tm3_draft_gte_read_control(31u);
+    tm3_draft_gte_write_data(0u, TM3_DRAFT_U32(a4));
+    tm3_draft_gte_write_data(1u, TM3_DRAFT_U32(a4 + 4u));
+    tm3_draft_gte_command(0x180001u);
+    TM3_DRAFT_U32(a8) = tm3_draft_gte_read_data(14u);
+    TM3_DRAFT_U32(a9) = tm3_draft_gte_read_data(8u);
+    TM3_DRAFT_U32(a10) = tm3_draft_gte_read_control(31u) | flags;
+    return (uint32)((sint32)tm3_draft_gte_read_data(19u) >> 2);
 }
 
 /* Accepted original SDK boundary: TransposeMatrix */
@@ -500,6 +509,7 @@ uint32 sub_8005CFC4(uint32 a1)
 
 /* Accepted original SDK boundary: CdInit */
 extern sint32 CdInit(void);
+
 uint32 sub_8005D214(void)
 {
     return (uint32)CdInit();
@@ -544,13 +554,13 @@ uint32 sub_8005D740(uint32 a1, uint32 a2, uint32 a3)
 /* Accepted original SDK boundary: CdDataCallback */
 uint32 sub_8005D8EC(uint32 a1)
 {
-    (void)a1;
     tm3_draft_unimplemented("sub_8005D8EC CdDataCallback");
     return 0u; /* Unreachable after the explicit missing SDK failure */
 }
 
 /* Accepted original SDK boundary: CdDataSync */
 extern sint32 CdDataSync(sint32 mode);
+
 uint32 sub_8005D910(uint32 a1)
 {
     return (uint32)CdDataSync((sint32)a1);
@@ -558,6 +568,7 @@ uint32 sub_8005D910(uint32 a1)
 
 /* Accepted original SDK boundary: CdIntToPos */
 extern CdlLOC *CdIntToPos(sint32 sector, CdlLOC *position);
+
 uint32 sub_8005D930(uint32 a1, uint32 a2)
 {
     return tm3_native_pointer_address(CdIntToPos((sint32)a1, a2 ? (CdlLOC *)psx_addr(a2, sizeof(CdlLOC)) : NULL));
@@ -565,6 +576,7 @@ uint32 sub_8005D930(uint32 a1, uint32 a2)
 
 /* Accepted original SDK boundary: CD_getsector */
 extern sint32 CD_getsector(uint32 guest_destination, uint32 words);
+
 uint32 sub_8005EF44(uint32 a1, uint32 a2)
 {
     return (uint32)CD_getsector(a1, a2);
@@ -579,13 +591,13 @@ uint32 sub_8005F214(uint32 a1)
 /* Accepted original SDK boundary: CDREAD_OBJ_32C */
 uint32 sub_8005F5A0(uint32 a1)
 {
-    (void)a1;
     tm3_draft_unimplemented("sub_8005F5A0 CDREAD_OBJ_32C");
     return 0u; /* Unreachable after the explicit missing SDK failure */
 }
 
 /* Accepted original SDK boundary: CdRead */
 extern sint32 CdRead(sint32 count, uint32 *destination, sint32 mode);
+
 uint32 sub_8005F824(uint32 a1, uint32 a2, uint32 a3)
 {
     uint32 bytes = (a3 & 0x20u) ? 2340u : 2048u;
@@ -597,6 +609,7 @@ uint32 sub_8005F824(uint32 a1, uint32 a2, uint32 a3)
 
 /* Accepted original SDK boundary: CdReadSync */
 extern sint32 CdReadSync(sint32 mode, uint8 *result);
+
 uint32 sub_8005F924(uint32 a1, uint32 a2)
 {
     return (uint32)CdReadSync((sint32)a1, a2 ? (uint8 *)psx_addr(a2, 1u) : NULL);
@@ -616,6 +629,7 @@ uint32 sub_8005FCD4(uint32 a1)
 
 /* Accepted original SDK boundary: _SpuInit */
 extern uint32 _SpuInit(uint32 mode);
+
 uint32 sub_800607E4(uint32 a1)
 {
     return _SpuInit(a1);
@@ -750,8 +764,10 @@ uint64 sub_80062664(uint32 a1, uint32 a2, uint32 a3, uint32 a4)
 {
     sint64 left = (sint64)(((uint64)a2 << 32) | a1);
     sint64 right = (sint64)(((uint64)a4 << 32) | a3);
-    if (!right) tm3_draft_unimplemented("__divdi3 division by zero");
-    if (left == INT64_MIN && right == -1) return (uint64)INT64_MIN;
+    if (!right)
+        tm3_draft_unimplemented("__divdi3 division by zero");
+    if (left == INT64_MIN && right == -1)
+        return (uint64)INT64_MIN;
     return (uint64)(left / right);
 }
 
@@ -814,7 +830,6 @@ void sub_800642C8(uint32 a1, uint32 a2, uint32 a3)
 /* Accepted original SDK boundary: setRC2wait */
 uint32 sub_8006760C(uint32 a1)
 {
-    (void)a1;
     tm3_draft_unimplemented("sub_8006760C setRC2wait");
     return 0u; /* Unreachable after the explicit missing SDK failure */
 }
@@ -822,7 +837,6 @@ uint32 sub_8006760C(uint32 a1)
 /* Accepted original SDK boundary: chkRC2wait */
 uint32 sub_8006762C(void)
 {
-
     tm3_draft_unimplemented("sub_8006762C chkRC2wait");
     return 0u; /* Unreachable after the explicit missing SDK failure */
 }
@@ -871,5 +885,12 @@ uint32 sub_800567F4(uint32 destination, uint32 source)
     if (!destination || !source)
         return 0u;
     strcpy((char *)psx_addr(destination, 1u), (const char *)psx_addr(source, 1u));
+    return destination;
+}
+
+/* Original SDK boundary: MulMatrix0 */
+uint32 sub_8005B504(uint32 left, uint32 right, uint32 destination)
+{
+    MulMatrix0((MATRIX *)psx_addr(left, sizeof(MATRIX)), (MATRIX *)psx_addr(right, sizeof(MATRIX)), (MATRIX *)psx_addr(destination, sizeof(MATRIX)));
     return destination;
 }

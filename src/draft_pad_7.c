@@ -17,187 +17,191 @@ uint32 sub_80053C40(uint32 a1, uint32 a2, uint32 a3, uint32 a4)
     uint32 hi, lo;
     uint8 local_bytes[128]; /* Required local storage; uninitialized original values remain TODO */
     uint32 listing_local_address = TM3_DRAFT_LOCAL_ADDRESS(local_bytes, sizeof(local_bytes));
-    L_80053C40:;
-    L_80053C44:;
+L_80053C40:;
+L_80053C44:;
     t0 = arg2 + 0u;
-    L_80053C48:;
+L_80053C48:;
     v1 = 0x00020000u;
-    L_80053C4C:;
+L_80053C4C:;
     v0 = 0x800d0000u;
-    L_80053C50:;
+L_80053C50:;
     v0 = v0 + (uint32)(10424);
-    L_80053C54:;
+L_80053C54:;
     arg3 = arg3 << 2u;
-    L_80053C58:;
+L_80053C58:;
     arg3 = arg3 + v0;
-    L_80053C5C:;
-    L_80053C60:;
-    L_80053C64:;
-    L_80053C68:;
+L_80053C5C:;
+L_80053C60:;
+L_80053C64:;
+L_80053C68:;
     s0 = TM3_DRAFT_U32(arg3 + (uint32)(24));
-    L_80053C6C:;
+L_80053C6C:;
     v1 = v1 | 3016u;
-    L_80053C70:;
+L_80053C70:;
     TM3_DRAFT_U32(listing_local_address + 16u) = (uint32)arg0;
-    L_80053C74:;
+L_80053C74:;
     arg0 = arg0 + v1;
-    L_80053C78:;
+L_80053C78:;
     v0 = 0u + (uint32)(24);
-    L_80053C7C:;
+L_80053C7C:;
     TM3_DRAFT_U32(listing_local_address + 24u) = (uint32)v0;
-    L_80053C80:;
+L_80053C80:;
     v0 = 0u + (uint32)(1);
-    L_80053C84:;
+L_80053C84:;
     v1 = 0x80080000u;
-    L_80053C88:;
+L_80053C88:;
     v1 = v1 + (uint32)(-372);
-    L_80053C8C:;
+L_80053C8C:;
     arg1 = 0x80080000u;
-    L_80053C90:;
+L_80053C90:;
     arg1 = arg1 + (uint32)(-4092);
-    L_80053C94:;
+L_80053C94:;
     arg2 = 0u + (uint32)(300);
-    L_80053C98:;
+L_80053C98:;
     TM3_DRAFT_U32(listing_local_address + 20u) = (uint32)arg0;
-    L_80053C9C:;
+L_80053C9C:;
     TM3_DRAFT_U32(listing_local_address + 28u) = (uint32)v0;
-    L_80053CA0:;
+L_80053CA0:;
     TM3_DRAFT_U32(listing_local_address + 32u) = (uint32)v0;
-    L_80053CA4:;
+L_80053CA4:;
     v0 = s0 << 2u;
-    L_80053CA8:;
+L_80053CA8:;
     v0 = v0 + v1;
-    L_80053CAC:;
+L_80053CAC:;
     arg0 = TM3_DRAFT_U32(v0 + (uint32)(0));
-    L_80053CB0:;
+L_80053CB0:;
     arg3 = t0 + 0u;
     v0 = sub_80049284(arg0, arg1, arg2, arg3, TM3_DRAFT_U32(listing_local_address + 16u) /* TODO: Caller stack argument */, TM3_DRAFT_U32(listing_local_address + 20u) /* TODO: Caller stack argument */, TM3_DRAFT_U32(listing_local_address + 24u) /* TODO: Caller stack argument */, TM3_DRAFT_U32(listing_local_address + 28u) /* TODO: Caller stack argument */, TM3_DRAFT_U32(listing_local_address + 32u) /* TODO: Caller stack argument */);
-    L_80053CB8:;
+L_80053CB8:;
     v0 = 0x800d0000u;
-    L_80053CBC:;
+L_80053CBC:;
     v1 = TM3_DRAFT_U32(v0 + (uint32)(12064));
-    L_80053CC0:;
+L_80053CC0:;
     v0 = 0u + (uint32)(2);
-    L_80053CC4:;
+L_80053CC4:;
     {
         uint32 branch = v1 != v0;
         v1 = 0x800d0000u;
-        if (branch) goto L_80053DA4;
+        if (branch)
+            goto L_80053DA4;
     }
-    L_80053CCC:;
+L_80053CCC:;
     arg0 = TM3_DRAFT_U32(0x80089698u + (uint32)(1364));
-    L_80053CD0:;
+L_80053CD0:;
     v1 = v1 + (uint32)(7424);
-    L_80053CD4:;
+L_80053CD4:;
     v0 = arg0 << 1u;
-    L_80053CD8:;
+L_80053CD8:;
     v0 = v0 + arg0;
-    L_80053CDC:;
+L_80053CDC:;
     v0 = v0 << 3u;
-    L_80053CE0:;
+L_80053CE0:;
     v0 = v0 + v1;
-    L_80053CE4:;
+L_80053CE4:;
     v1 = TM3_DRAFT_U16(v0 + (uint32)(0));
-    L_80053CE8:;
-    L_80053CEC:;
+L_80053CE8:;
+L_80053CEC:;
     v0 = v1 & 2048u;
-    L_80053CF0:;
+L_80053CF0:;
     {
         uint32 branch = v0 != 0u;
-        if (branch) goto L_80053D0C;
+        if (branch)
+            goto L_80053D0C;
     }
-    L_80053CF8:;
+L_80053CF8:;
     v1 = 0x800d0000u;
-    L_80053CFC:;
+L_80053CFC:;
     v1 = v1 + (uint32)(7616);
-    L_80053D00:;
+L_80053D00:;
     v0 = TM3_DRAFT_U32(v1 + (uint32)(92));
-    L_80053D04:;
+L_80053D04:;
     v0 = v0 + (uint32)(25);
     goto L_80053D48;
-    L_80053D0C:;
+L_80053D0C:;
     v0 = v1 & 4u;
-    L_80053D10:;
+L_80053D10:;
     {
         uint32 branch = v0 == 0u;
-        if (branch) goto L_80053D2C;
+        if (branch)
+            goto L_80053D2C;
     }
-    L_80053D18:;
+L_80053D18:;
     v1 = 0x800d0000u;
-    L_80053D1C:;
+L_80053D1C:;
     v1 = v1 + (uint32)(7616);
-    L_80053D20:;
+L_80053D20:;
     v0 = TM3_DRAFT_U32(v1 + (uint32)(92));
-    L_80053D24:;
+L_80053D24:;
     v0 = v0 + (uint32)(25);
     goto L_80053D48;
-    L_80053D2C:;
+L_80053D2C:;
     v0 = v1 & 8u;
-    L_80053D30:;
+L_80053D30:;
     {
         uint32 branch = v0 == 0u;
         v1 = 0x800d0000u;
-        if (branch) goto L_80053D4C;
+        if (branch)
+            goto L_80053D4C;
     }
-    L_80053D38:;
+L_80053D38:;
     v1 = v1 + (uint32)(7616);
-    L_80053D3C:;
+L_80053D3C:;
     v0 = TM3_DRAFT_U32(v1 + (uint32)(92));
-    L_80053D40:;
-    L_80053D44:;
+L_80053D40:;
+L_80053D44:;
     v0 = v0 + (uint32)(-25);
-    L_80053D48:;
+L_80053D48:;
     TM3_DRAFT_U32(v1 + (uint32)(92)) = (uint32)v0;
-    L_80053D4C:;
+L_80053D4C:;
     arg0 = 0x800d0000u;
-    L_80053D50:;
+L_80053D50:;
     arg0 = arg0 + (uint32)(7616);
-    L_80053D54:;
+L_80053D54:;
     v0 = 0x800d0000u;
-    L_80053D58:;
+L_80053D58:;
     v0 = v0 + (uint32)(11912);
-    L_80053D5C:;
+L_80053D5C:;
     v1 = s0 << 2u;
-    L_80053D60:;
+L_80053D60:;
     v1 = v1 + v0;
-    L_80053D64:;
+L_80053D64:;
     s1 = 0u + (uint32)(1);
-    L_80053D68:;
+L_80053D68:;
     arg1 = TM3_DRAFT_U32(v1 + (uint32)(1424));
-    L_80053D6C:;
+L_80053D6C:;
     v0 = 0u + (uint32)(4);
-    L_80053D70:;
+L_80053D70:;
     TM3_DRAFT_U32(arg0 + (uint32)(96)) = (uint32)s1;
-    L_80053D74:;
+L_80053D74:;
     TM3_DRAFT_U32(arg0 + (uint32)(100)) = (uint32)v0;
-    L_80053D78:;
+L_80053D78:;
     TM3_DRAFT_U32(arg0 + (uint32)(104)) = (uint32)arg1;
-    L_80053D7C:;
+L_80053D7C:;
     s0 = TM3_DRAFT_U32(v1 + (uint32)(1424));
-    L_80053D80:;
+L_80053D80:;
     v0 = 0u + (uint32)(15);
-    L_80053D84:;
+L_80053D84:;
     arg0 = s0 + 0u;
-    L_80053D88:;
+L_80053D88:;
     TM3_DRAFT_U32(s0 + (uint32)(3968)) = (uint32)v0;
     v0 = sub_80033CFC(arg0);
-    L_80053D90:;
+L_80053D90:;
     {
         uint32 branch = v0 != 0u;
-        if (branch) goto L_80053DA0;
+        if (branch)
+            goto L_80053DA0;
     }
-    L_80053D98:;
+L_80053D98:;
     TM3_DRAFT_U32(s0 + (uint32)(3952)) = (uint32)s1;
     goto L_80053DA4;
-    L_80053DA0:;
+L_80053DA0:;
     TM3_DRAFT_U32(s0 + (uint32)(3952)) = (uint32)0u;
-    L_80053DA4:;
-    L_80053DA8:;
-    L_80053DAC:;
-    L_80053DB0:;
+L_80053DA4:;
+L_80053DA8:;
+L_80053DAC:;
+L_80053DB0:;
     return v0;
 }
-
 
 /* Unverified draft; TODO items require later review */
 uint32 sub_80040DC8(uint32 a1, uint32 a2)
@@ -233,57 +237,54 @@ uint32 sub_80040DC8(uint32 a1, uint32 a2)
 uint32 sub_80040238(uint32 a1, uint32 a2, uint32 a3)
 {
     FUNCTION_MARKER(0x80040238u, "SCUS_942.49");
-  int v6; 
-  int v7; 
-  int result; 
-  int v9; 
-  int v10; 
-  int v11; 
-  uint32 v12; 
+    int v6;
+    int v7;
+    int result;
+    int v9;
+    int v10;
+    int v11;
+    uint32 v12;
 
-  v6 = (uint32)(TM3_DRAFT_U32(a1 + 4) + 2048) >> 11;
-  v7 = 0;
-  do
-  {
-    while ( !sub_8005D4D0(2u, a1, 0) )
-      sub_80040088();
-    result = sub_8005F824(v6, a2, 128);
-    v9 = v6;
-    if ( !result )
-      v7 = 1;
-    v10 = 0;
-    v11 = 0;
-    if ( !v7 )
-    {
-      do
-      {
-        if ( !v9 )
-          break;
-        v9 = sub_8005F924(1, 0u);
-        if ( v9 >= 0 )
-          v10 = 4096 - (v9 << 12) / v6;
-        else
-          v7 = 1;
-        sub_8005FA24(0);
-        ++v11;
-        if ( a3 )
-          tm3_draft_indirect(a3, 1u, v10);
-        result = v11 < 481;
-        if ( v11 >= 481 )
-          v7 = 1;
-      }
-      while ( !v7 );
-      if ( !v7 )
-        break;
-    }
-    result = sub_80040088();
-    v12 = v7 != 0;
+    v6 = (uint32)(TM3_DRAFT_U32(a1 + 4) + 2048) >> 11;
     v7 = 0;
-  }
-  while ( v12 );
-  return result;
+    do
+    {
+        while (!sub_8005D4D0(2u, a1, 0))
+            sub_80040088();
+        result = sub_8005F824(v6, a2, 128);
+        v9 = v6;
+        if (!result)
+            v7 = 1;
+        v10 = 0;
+        v11 = 0;
+        if (!v7)
+        {
+            do
+            {
+                if (!v9)
+                    break;
+                v9 = sub_8005F924(1, 0u);
+                if (v9 >= 0)
+                    v10 = 4096 - (v9 << 12) / v6;
+                else
+                    v7 = 1;
+                sub_8005FA24(0);
+                ++v11;
+                if (a3)
+                    tm3_draft_indirect(a3, 1u, v10);
+                result = v11 < 481;
+                if (v11 >= 481)
+                    v7 = 1;
+            } while (!v7);
+            if (!v7)
+                break;
+        }
+        result = sub_80040088();
+        v12 = v7 != 0;
+        v7 = 0;
+    } while (v12);
+    return result;
 }
-
 
 /* Unverified draft; TODO items require later review */
 uint32 sub_80030410(uint32 a1)
@@ -292,57 +293,56 @@ uint32 sub_80030410(uint32 a1)
     uint32 original_local_address = TM3_DRAFT_LOCAL_ADDRESS(original_local_words, sizeof(original_local_words));
 
     FUNCTION_MARKER(0x80030410u, "SCUS_942.49");
-  int v2; 
-  int result; 
-  int v4; 
-  int v5; 
-  int v6; 
-  int v7; 
-  int v8; 
-  int v9; 
-  sint16 v10; 
-  sint16 v11; 
-  int v12; 
-  sint16 v13; 
-  sint16 v14; 
+    int v2;
+    int result;
+    int v4;
+    int v5;
+    int v6;
+    int v7;
+    int v8;
+    int v9;
+    sint16 v10;
+    sint16 v11;
+    int v12;
+    sint16 v13;
+    sint16 v14;
 
-  v2 = TM3_DRAFT_U32(a1 + 56);
-  if ( !sub_800470DC(v2) )
-    return 0;
-  v4 = TM3_DRAFT_U32(v2 + 1540);
-  v5 = TM3_DRAFT_U32(v2 + 1544);
-  v6 = TM3_DRAFT_U32(v2 + 1548);
-  TM3_DRAFT_U32(a1 + 24) = TM3_DRAFT_U32(v2 + 1536);
-  TM3_DRAFT_U32(a1 + 28) = v4;
-  TM3_DRAFT_U32(a1 + 32) = v5;
-  TM3_DRAFT_U32(a1 + 36) = v6;
-  v7 = TM3_DRAFT_U32(v2 + 1556);
-  v8 = TM3_DRAFT_U32(v2 + 1560);
-  v9 = TM3_DRAFT_U32(v2 + 1564);
-  TM3_DRAFT_U32(a1 + 40) = TM3_DRAFT_U32(v2 + 1552);
-  TM3_DRAFT_U32(a1 + 44) = v7;
-  TM3_DRAFT_U32(a1 + 48) = v8;
-  TM3_DRAFT_U32(a1 + 52) = v9;
-  sub_80026B88(v2, 2, (uint32)(a1 + 8));
-  v10 = TM3_DRAFT_U16(v2 + 1546);
-  v11 = TM3_DRAFT_U16(v2 + 1552);
-  TM3_DRAFT_U16(a1) = TM3_DRAFT_U16(v2 + 1540);
-  TM3_DRAFT_U16(a1 + 2) = v10;
-  TM3_DRAFT_U16(a1 + 4) = v11;
-  TM3_DRAFT_I32(original_local_address + 16u) = (TM3_DRAFT_U32(v2 + 2408) + TM3_DRAFT_U32(v2 + 2296)) / 2;
-  TM3_DRAFT_I32(original_local_address + 20u) = (TM3_DRAFT_U32(v2 + 2412) + TM3_DRAFT_U32(v2 + 2300)) / 2;
-  TM3_DRAFT_I32(original_local_address + 24u) = (TM3_DRAFT_U32(v2 + 2416) + TM3_DRAFT_U32(v2 + 2304)) / 2;
-  v12 = sub_80013A90(TM3_DRAFT_LOCAL_ADDRESS(&TM3_DRAFT_I32(original_local_address + 16u), sizeof( TM3_DRAFT_I32(original_local_address + 16u))) /* TODO: Local buffer adapter */, (uint32)a1);
-  sub_80013FB4((int)TM3_DRAFT_LOCAL_ADDRESS(&TM3_DRAFT_I32(original_local_address + 16u), sizeof( TM3_DRAFT_I32(original_local_address + 16u))) /* TODO: Local buffer adapter */, ((v12 + 2048) >> 12) + 4000, (uint32)a1);
-  v13 = TM3_DRAFT_I32(original_local_address + 20u);
-  v14 = TM3_DRAFT_I32(original_local_address + 24u);
-  result = 1;
-  TM3_DRAFT_U16(a1 + 16) = TM3_DRAFT_I32(original_local_address + 16u);
-  TM3_DRAFT_U16(a1 + 18) = v13;
-  TM3_DRAFT_U16(a1 + 20) = v14;
-  return result;
+    v2 = TM3_DRAFT_U32(a1 + 56);
+    if (!sub_800470DC(v2))
+        return 0;
+    v4 = TM3_DRAFT_U32(v2 + 1540);
+    v5 = TM3_DRAFT_U32(v2 + 1544);
+    v6 = TM3_DRAFT_U32(v2 + 1548);
+    TM3_DRAFT_U32(a1 + 24) = TM3_DRAFT_U32(v2 + 1536);
+    TM3_DRAFT_U32(a1 + 28) = v4;
+    TM3_DRAFT_U32(a1 + 32) = v5;
+    TM3_DRAFT_U32(a1 + 36) = v6;
+    v7 = TM3_DRAFT_U32(v2 + 1556);
+    v8 = TM3_DRAFT_U32(v2 + 1560);
+    v9 = TM3_DRAFT_U32(v2 + 1564);
+    TM3_DRAFT_U32(a1 + 40) = TM3_DRAFT_U32(v2 + 1552);
+    TM3_DRAFT_U32(a1 + 44) = v7;
+    TM3_DRAFT_U32(a1 + 48) = v8;
+    TM3_DRAFT_U32(a1 + 52) = v9;
+    sub_80026B88(v2, 2, (uint32)(a1 + 8));
+    v10 = TM3_DRAFT_U16(v2 + 1546);
+    v11 = TM3_DRAFT_U16(v2 + 1552);
+    TM3_DRAFT_U16(a1) = TM3_DRAFT_U16(v2 + 1540);
+    TM3_DRAFT_U16(a1 + 2) = v10;
+    TM3_DRAFT_U16(a1 + 4) = v11;
+    TM3_DRAFT_I32(original_local_address + 16u) = (TM3_DRAFT_U32(v2 + 2408) + TM3_DRAFT_U32(v2 + 2296)) / 2;
+    TM3_DRAFT_I32(original_local_address + 20u) = (TM3_DRAFT_U32(v2 + 2412) + TM3_DRAFT_U32(v2 + 2300)) / 2;
+    TM3_DRAFT_I32(original_local_address + 24u) = (TM3_DRAFT_U32(v2 + 2416) + TM3_DRAFT_U32(v2 + 2304)) / 2;
+    v12 = sub_80013A90(TM3_DRAFT_LOCAL_ADDRESS(&TM3_DRAFT_I32(original_local_address + 16u), sizeof(TM3_DRAFT_I32(original_local_address + 16u))) /* TODO: Local buffer adapter */, (uint32)a1);
+    sub_80013FB4((int)TM3_DRAFT_LOCAL_ADDRESS(&TM3_DRAFT_I32(original_local_address + 16u), sizeof(TM3_DRAFT_I32(original_local_address + 16u))) /* TODO: Local buffer adapter */, ((v12 + 2048) >> 12) + 4000, (uint32)a1);
+    v13 = TM3_DRAFT_I32(original_local_address + 20u);
+    v14 = TM3_DRAFT_I32(original_local_address + 24u);
+    result = 1;
+    TM3_DRAFT_U16(a1 + 16) = TM3_DRAFT_I32(original_local_address + 16u);
+    TM3_DRAFT_U16(a1 + 18) = v13;
+    TM3_DRAFT_U16(a1 + 20) = v14;
+    return result;
 }
-
 
 /* Unverified draft; TODO items require later review */
 uint32 sub_80033D4C(uint32 a1, uint32 a2)
@@ -351,100 +351,97 @@ uint32 sub_80033D4C(uint32 a1, uint32 a2)
     uint32 original_local_address = TM3_DRAFT_LOCAL_ADDRESS(original_local_words, sizeof(original_local_words));
 
     FUNCTION_MARKER(0x80033D4Cu, "SCUS_942.49");
-  int v4; 
-  int v5; 
-  int v6; 
-  int v7; 
-  int v8; 
-  uint32 v9; 
-  int v10; 
-  int v11; 
-  int v12; 
-  sint32 v13; 
-  int v14; 
-  int v15; 
-  int v16; 
-  int result; 
+    int v4;
+    int v5;
+    int v6;
+    int v7;
+    int v8;
+    uint32 v9;
+    int v10;
+    int v11;
+    int v12;
+    sint32 v13;
+    int v14;
+    int v15;
+    int v16;
+    int result;
 
-  v4 = sub_80048078(15);
-  v5 = 0;
-  if ( v4 )
-  {
-    v6 = TM3_DRAFT_U32(a2 + 4u * (2));
-    TM3_DRAFT_U32(a2) *= 2;
-    v7 = TM3_DRAFT_U32(a2 + 4u * (1));
-    TM3_DRAFT_U32(a2 + 4u * (2)) = 2 * v6;
-    TM3_DRAFT_U32(a2 + 4u * (1)) = 2 * v7;
-  }
-  v8 = 1592;
-  do
-  {
-    v9 = (uint32)(a1 + v8);
-    v8 += 112;
-    ++v5;
-    v10 = TM3_DRAFT_U32(v9 + 4u * (18));
-    v11 = TM3_DRAFT_U32(a2 + 4u * (1));
-    v12 = TM3_DRAFT_U32(v9 + 4u * (19)) + TM3_DRAFT_U32(a2 + 4u * (2));
-    TM3_DRAFT_U32(v9 + 4u * (17)) += TM3_DRAFT_U32(a2);
-    TM3_DRAFT_U32(v9 + 4u * (19)) = v12;
-    TM3_DRAFT_U32(v9 + 4u * (18)) = v10 + v11;
-  }
-  while ( v5 < 8 );
-  (*(int (*)[4])psx_addr(original_local_address + 16u, sizeof(int[4])))[0] = (TM3_DRAFT_U32(a2) + 2048) >> 12;
-  (*(int (*)[4])psx_addr(original_local_address + 16u, sizeof(int[4])))[1] = (TM3_DRAFT_U32(a2 + 4u * (1)) + 2048) >> 12;
-  (*(int (*)[4])psx_addr(original_local_address + 16u, sizeof(int[4])))[2] = (TM3_DRAFT_U32(a2 + 4u * (2)) + 2048) >> 12;
-  v13 = sub_80013D64(TM3_DRAFT_LOCAL_ADDRESS((*(int (*)[4])psx_addr(original_local_address + 16u, sizeof(int[4]))), sizeof((*(int (*)[4])psx_addr(original_local_address + 16u, sizeof(int[4]))))) /* TODO: Local buffer adapter */);
-  v14 = 1;
-  v15 = 0;
-  v16 = -2146916720;
-  while ( v13 >= TM3_DRAFT_U32(v16) )
-  {
-    ++v15;
-    v16 += 4;
-    if ( v15 >= 6 )
-      goto LABEL_9;
-  }
-  v14 = v15 + 1;
+    v4 = sub_80048078(15);
+    v5 = 0;
+    if (v4)
+    {
+        v6 = TM3_DRAFT_U32(a2 + 4u * (2));
+        TM3_DRAFT_U32(a2) *= 2;
+        v7 = TM3_DRAFT_U32(a2 + 4u * (1));
+        TM3_DRAFT_U32(a2 + 4u * (2)) = 2 * v6;
+        TM3_DRAFT_U32(a2 + 4u * (1)) = 2 * v7;
+    }
+    v8 = 1592;
+    do
+    {
+        v9 = (uint32)(a1 + v8);
+        v8 += 112;
+        ++v5;
+        v10 = TM3_DRAFT_U32(v9 + 4u * (18));
+        v11 = TM3_DRAFT_U32(a2 + 4u * (1));
+        v12 = TM3_DRAFT_U32(v9 + 4u * (19)) + TM3_DRAFT_U32(a2 + 4u * (2));
+        TM3_DRAFT_U32(v9 + 4u * (17)) += TM3_DRAFT_U32(a2);
+        TM3_DRAFT_U32(v9 + 4u * (19)) = v12;
+        TM3_DRAFT_U32(v9 + 4u * (18)) = v10 + v11;
+    } while (v5 < 8);
+    (*(int(*)[4])psx_addr(original_local_address + 16u, sizeof(int[4])))[0] = (TM3_DRAFT_U32(a2) + 2048) >> 12;
+    (*(int(*)[4])psx_addr(original_local_address + 16u, sizeof(int[4])))[1] = (TM3_DRAFT_U32(a2 + 4u * (1)) + 2048) >> 12;
+    (*(int(*)[4])psx_addr(original_local_address + 16u, sizeof(int[4])))[2] = (TM3_DRAFT_U32(a2 + 4u * (2)) + 2048) >> 12;
+    v13 = sub_80013D64(TM3_DRAFT_LOCAL_ADDRESS((*(int(*)[4])psx_addr(original_local_address + 16u, sizeof(int[4]))), sizeof((*(int(*)[4])psx_addr(original_local_address + 16u, sizeof(int[4]))))) /* TODO: Local buffer adapter */);
+    v14 = 1;
+    v15 = 0;
+    v16 = -2146916720;
+    while (v13 >= TM3_DRAFT_U32(v16))
+    {
+        ++v15;
+        v16 += 4;
+        if (v15 >= 6)
+            goto LABEL_9;
+    }
+    v14 = v15 + 1;
 LABEL_9:
-  result = 1;
-  if ( TM3_DRAFT_U8(a1 + 3328) == 1 )
-    return sub_80047364(TM3_DRAFT_U32(a1 + 3924), v14);
-  return result;
+    result = 1;
+    if (TM3_DRAFT_U8(a1 + 3328) == 1)
+        return sub_80047364(TM3_DRAFT_U32(a1 + 3924), v14);
+    return result;
 }
-
 
 /* Unverified draft; TODO items require later review */
 uint32 sub_800644C8(void)
 {
     FUNCTION_MARKER(0x800644C8u, "SCUS_942.49");
-  int v0; 
+    int v0;
 
-  if ( (TM3_DRAFT_U16(TM3_DRAFT_U32(0x80087E10u) + 10) & 2) != 0 )
-  {
-    TM3_DRAFT_U16(TM3_DRAFT_U32(0x80087E10u) + 10) = 0;
-  }
-  else
-  {
-    TM3_DRAFT_U32(0x80087E14u) = 1;
-    if ( TM3_DRAFT_U32(0x80087DFCu) && TM3_DRAFT_U32(0x800D8488u) < 150 )
-      ++TM3_DRAFT_U32(0x800D8488u);
-    if ( !TM3_DRAFT_U32(0x80087E00u) && TM3_DRAFT_U32(0x800D848Cu) < 150 )
-      ++TM3_DRAFT_U32(0x800D848Cu);
-    if ( TM3_DRAFT_U32(0x80087DE4u) && TM3_DRAFT_U32(0x80087E00u) >= TM3_DRAFT_U32(0x80087DFCu) )
+    if ((TM3_DRAFT_U16(TM3_DRAFT_U32(0x80087E10u) + 10) & 2) != 0)
     {
-      TM3_DRAFT_U32(0x80087DF0u) = 0;
-      TM3_DRAFT_U32(0x80087DECu) = TM3_DRAFT_U32(0x80087DFCu);
-      if ( !sub_8006477C(TM3_DRAFT_U32(0x80087DE0u) + 240 * TM3_DRAFT_U32(0x80087DFCu)) )
-        tm3_draft_indirect(TM3_DRAFT_U32(0x80087DACu), 1u, 0xFFFF);
-      v0 = TM3_DRAFT_U32(0x80087DECu);
-      for ( TM3_DRAFT_U32(0x80087DF4u) = 0; TM3_DRAFT_U32(0x80087E00u) >= TM3_DRAFT_U32(0x80087DECu); v0 = TM3_DRAFT_U32(0x80087DECu) )
-        sub_80064AB0(TM3_DRAFT_U32(0x80087DE0u) + 240 * v0);
-      TM3_DRAFT_U16(TM3_DRAFT_U32(0x80087E10u) + 14) = 136;
+        TM3_DRAFT_U16(TM3_DRAFT_U32(0x80087E10u) + 10) = 0;
     }
-  }
-  return 0;
+    else
+    {
+        TM3_DRAFT_U32(0x80087E14u) = 1;
+        if (TM3_DRAFT_U32(0x80087DFCu) && TM3_DRAFT_U32(0x800D8488u) < 150)
+            ++TM3_DRAFT_U32(0x800D8488u);
+        if (!TM3_DRAFT_U32(0x80087E00u) && TM3_DRAFT_U32(0x800D848Cu) < 150)
+            ++TM3_DRAFT_U32(0x800D848Cu);
+        if (TM3_DRAFT_U32(0x80087DE4u) && TM3_DRAFT_U32(0x80087E00u) >= TM3_DRAFT_U32(0x80087DFCu))
+        {
+            TM3_DRAFT_U32(0x80087DF0u) = 0;
+            TM3_DRAFT_U32(0x80087DECu) = TM3_DRAFT_U32(0x80087DFCu);
+            if (!sub_8006477C(TM3_DRAFT_U32(0x80087DE0u) + 240 * TM3_DRAFT_U32(0x80087DFCu)))
+                tm3_draft_indirect(TM3_DRAFT_U32(0x80087DACu), 1u, 0xFFFF);
+            v0 = TM3_DRAFT_U32(0x80087DECu);
+            for (TM3_DRAFT_U32(0x80087DF4u) = 0; TM3_DRAFT_U32(0x80087E00u) >= TM3_DRAFT_U32(0x80087DECu); v0 = TM3_DRAFT_U32(0x80087DECu))
+                sub_80064AB0(TM3_DRAFT_U32(0x80087DE0u) + 240 * v0);
+            TM3_DRAFT_U16(TM3_DRAFT_U32(0x80087E10u) + 14) = 136;
+        }
+    }
+    return 0;
 }
-
 
 /* Unverified draft; TODO items require later review */
 uint32 sub_80031CDC(uint32 object, uint32 ordering_table, uint32 cursor, uint32 end, uint32 view)
@@ -462,8 +459,7 @@ uint32 sub_80031CDC(uint32 object, uint32 ordering_table, uint32 cursor, uint32 
     sub_8005BD24(combined_address);
     sub_8005BDB4(combined_address);
     geometry = TM3_DRAFT_U32(0x80089D14u);
-    sub_80029660(geometry + 48u, TM3_DRAFT_U32(geometry + 912u),
-        TM3_DRAFT_U32(geometry + 916u), 0u, ordering_table, cursor, end);
+    sub_80029660(geometry + 48u, TM3_DRAFT_U32(geometry + 912u), TM3_DRAFT_U32(geometry + 916u), 0u, ordering_table, cursor, end);
     sub_8005B978();
     result = TM3_DRAFT_U8(object + 335u);
     if (result != 0u)
@@ -499,13 +495,10 @@ uint32 sub_8002BDF0(uint32 object, uint32 ordering_table, uint32 packets, uint32
     sub_8005BD24(matrix);
     sub_8005BDB4(matrix);
     uint32 geometry = TM3_DRAFT_U32(0x80089CF8u);
-    result = sub_80029ED8(TM3_DRAFT_U32(object + 44u),
-        TM3_DRAFT_U32(geometry + 144u), TM3_DRAFT_U32(geometry + 148u),
-        ordering_table + 4u * (uint32)bucket, packets, packet_end);
+    result = sub_80029ED8(TM3_DRAFT_U32(object + 44u), TM3_DRAFT_U32(geometry + 144u), TM3_DRAFT_U32(geometry + 148u), ordering_table + 4u * (uint32)bucket, packets, packet_end);
     sub_8005B978();
     return result;
 }
-
 
 /* Unverified draft; TODO items require later review */
 uint32 sub_80014EDC(uint32 a1, uint32 a2, uint32 a3, uint32 a4)
@@ -528,7 +521,6 @@ uint32 sub_80014EDC(uint32 a1, uint32 a2, uint32 a3, uint32 a4)
     return result;
 }
 
-
 /* Unverified draft; TODO items require later review */
 uint32 sub_8002BF14(uint32 vehicle, uint32 pickup)
 {
@@ -538,14 +530,12 @@ uint32 sub_8002BF14(uint32 vehicle, uint32 pickup)
     FUNCTION_MARKER(0x8002BF14u, "SCUS_942.49");
     product = TM3_DRAFT_U32(vehicle + 4096u) * TM3_DRAFT_U16(pickup + 2u);
     magic_product = (sint64)(sint32)product * (sint64)0x51EB851F;
-    amount = (uint32)((sint32)(uint32)((uint64)magic_product >> 32) >> 5)
-           - (uint32)((sint32)product >> 31);
+    amount = (uint32)((sint32)(uint32)((uint64)magic_product >> 32) >> 5) - (uint32)((sint32)product >> 31);
     difference = 1u - TM3_DRAFT_U32(0x800D340Cu);
     divisor = 1u - (difference & (uint32)((sint32)difference >> 31));
     settings = TM3_DRAFT_U32(0x80089CBCu);
     descriptor = TM3_DRAFT_U32(pickup + 48u);
-    scale = (uint32)(sint32)TM3_DRAFT_I16(settings
-            + (TM3_DRAFT_U32(0x800D2F10u) == 2u ? 272u : 268u));
+    scale = (uint32)(sint32)TM3_DRAFT_I16(settings + (TM3_DRAFT_U32(0x800D2F10u) == 2u ? 272u : 268u));
     product = scale * TM3_DRAFT_U8(descriptor + 13u);
     product *= TM3_DRAFT_U32(0x800D2E98u);
     numerator = (sint32)product;
@@ -563,7 +553,6 @@ uint32 sub_8002BF14(uint32 vehicle, uint32 pickup)
     return 1u;
 }
 
-
 /* Unverified draft; TODO items require later review */
 uint32 sub_80028B60(uint32 a1, uint32 a2)
 {
@@ -571,28 +560,27 @@ uint32 sub_80028B60(uint32 a1, uint32 a2)
     uint32 original_local_address = TM3_DRAFT_LOCAL_ADDRESS(original_local_words, sizeof(original_local_words));
 
     FUNCTION_MARKER(0x80028B60u, "SCUS_942.49");
-  int v4; 
-  int v5; 
-  sint32 v6; 
-  sint16 v7; 
-  int v8; 
-  sint16 v9; 
+    int v4;
+    int v5;
+    sint32 v6;
+    sint16 v7;
+    int v8;
+    sint16 v9;
 
-  v4 = 4 * a2 - ((4 * a2 - 128) & ((4 * a2 - 128) >> 31));
-  v5 = a2 / 2 - ((a2 / 2 - 32) & ((a2 / 2 - 32) >> 31));
-  (*(sint16 (*)[4])psx_addr(original_local_address + 32u, sizeof(sint16[4])))[0] = 0;
-  (*(sint16 (*)[4])psx_addr(original_local_address + 32u, sizeof(sint16[4])))[2] = 0;
-  (*(sint16 (*)[4])psx_addr(original_local_address + 32u, sizeof(sint16[4])))[1] = (int)sub_80039FD4() % (v4 >> 1) - v4;
-  v6 = sub_80039FD4();
-  v7 = TM3_DRAFT_U16(a1 + 2u * (1));
-  v8 = v6 % v5 - v5 / 2;
-  v9 = TM3_DRAFT_U16(a1 + 2u * (2));
-  (*(sint16 (*)[8])psx_addr(original_local_address + 40u, sizeof(sint16[8])))[0] = TM3_DRAFT_U16(a1) + v8;
-  (*(sint16 (*)[8])psx_addr(original_local_address + 40u, sizeof(sint16[8])))[1] = v7 + v8 / 4;
-  (*(sint16 (*)[8])psx_addr(original_local_address + 40u, sizeof(sint16[8])))[2] = v9 + v8;
-  return sub_8004A294(4, 5, TM3_DRAFT_LOCAL_ADDRESS((*(sint16 (*)[8])psx_addr(original_local_address + 40u, sizeof(sint16[8]))), sizeof((*(sint16 (*)[8])psx_addr(original_local_address + 40u, sizeof(sint16[8]))))) /* TODO: Local buffer adapter */, TM3_DRAFT_LOCAL_ADDRESS((*(sint16 (*)[4])psx_addr(original_local_address + 32u, sizeof(sint16[4]))), sizeof((*(sint16 (*)[4])psx_addr(original_local_address + 32u, sizeof(sint16[4]))))) /* TODO: Local buffer adapter */, a2, 0, -2, 30);
+    v4 = 4 * a2 - ((4 * a2 - 128) & ((4 * a2 - 128) >> 31));
+    v5 = a2 / 2 - ((a2 / 2 - 32) & ((a2 / 2 - 32) >> 31));
+    (*(sint16(*)[4])psx_addr(original_local_address + 32u, sizeof(sint16[4])))[0] = 0;
+    (*(sint16(*)[4])psx_addr(original_local_address + 32u, sizeof(sint16[4])))[2] = 0;
+    (*(sint16(*)[4])psx_addr(original_local_address + 32u, sizeof(sint16[4])))[1] = (int)sub_80039FD4() % (v4 >> 1) - v4;
+    v6 = sub_80039FD4();
+    v7 = TM3_DRAFT_U16(a1 + 2u * (1));
+    v8 = v6 % v5 - v5 / 2;
+    v9 = TM3_DRAFT_U16(a1 + 2u * (2));
+    (*(sint16(*)[8])psx_addr(original_local_address + 40u, sizeof(sint16[8])))[0] = TM3_DRAFT_U16(a1) + v8;
+    (*(sint16(*)[8])psx_addr(original_local_address + 40u, sizeof(sint16[8])))[1] = v7 + v8 / 4;
+    (*(sint16(*)[8])psx_addr(original_local_address + 40u, sizeof(sint16[8])))[2] = v9 + v8;
+    return sub_8004A294(4, 5, TM3_DRAFT_LOCAL_ADDRESS((*(sint16(*)[8])psx_addr(original_local_address + 40u, sizeof(sint16[8]))), sizeof((*(sint16(*)[8])psx_addr(original_local_address + 40u, sizeof(sint16[8]))))) /* TODO: Local buffer adapter */, TM3_DRAFT_LOCAL_ADDRESS((*(sint16(*)[4])psx_addr(original_local_address + 32u, sizeof(sint16[4]))), sizeof((*(sint16(*)[4])psx_addr(original_local_address + 32u, sizeof(sint16[4]))))) /* TODO: Local buffer adapter */, a2, 0, -2, 30);
 }
-
 
 /* Unverified draft; TODO items require later review */
 uint32 sub_80048A90(uint32 a1, uint32 a2)
@@ -605,237 +593,236 @@ uint32 sub_80048A90(uint32 a1, uint32 a2)
     uint32 arg1 = a2;
     uint32 arg2; /* TODO: Review undefined incoming or temporary value */
     uint32 arg3; /* TODO: Review undefined incoming or temporary value */
-    uint32 t0; /* TODO: Review undefined incoming or temporary value */
-    uint32 t1; /* TODO: Review undefined incoming or temporary value */
-    uint32 s0; /* TODO: Review undefined incoming or temporary value */
-    uint32 s1; /* TODO: Review undefined incoming or temporary value */
-    uint32 s2; /* TODO: Review undefined incoming or temporary value */
-    uint32 s3; /* TODO: Review undefined incoming or temporary value */
-    uint32 s4; /* TODO: Review undefined incoming or temporary value */
+    uint32 t0;   /* TODO: Review undefined incoming or temporary value */
+    uint32 t1;   /* TODO: Review undefined incoming or temporary value */
+    uint32 s0;   /* TODO: Review undefined incoming or temporary value */
+    uint32 s1;   /* TODO: Review undefined incoming or temporary value */
+    uint32 s2;   /* TODO: Review undefined incoming or temporary value */
+    uint32 s3;   /* TODO: Review undefined incoming or temporary value */
+    uint32 s4;   /* TODO: Review undefined incoming or temporary value */
     uint32 hi, lo;
     uint8 local_bytes[128]; /* Required local storage; uninitialized original values remain TODO */
     uint32 listing_local_address = TM3_DRAFT_LOCAL_ADDRESS(local_bytes, sizeof(local_bytes));
-    L_80048A90:;
-    L_80048A94:;
-    L_80048A98:;
+L_80048A90:;
+L_80048A94:;
+L_80048A98:;
     s4 = arg1 + 0u;
-    L_80048A9C:;
-    L_80048AA0:;
+L_80048A9C:;
+L_80048AA0:;
     s0 = 0u + 0u;
-    L_80048AA4:;
+L_80048AA4:;
     v0 = 0x800d0000u;
-    L_80048AA8:;
-    L_80048AAC:;
+L_80048AA8:;
+L_80048AAC:;
     s2 = v0 + (uint32)(15744);
-    L_80048AB0:;
-    L_80048AB4:;
+L_80048AB0:;
+L_80048AB4:;
     s3 = arg0 + 0u;
-    L_80048AB8:;
-    L_80048ABC:;
-    L_80048AC0:;
+L_80048AB8:;
+L_80048ABC:;
+L_80048AC0:;
     arg0 = TM3_DRAFT_U32(s3 + (uint32)(0));
-    L_80048AC4:;
+L_80048AC4:;
     s1 = s3 + 0u;
-    L_80048AC8:;
+L_80048AC8:;
     arg0 = s3 + arg0;
-    L_80048ACC:;
+L_80048ACC:;
     v0 = TM3_DRAFT_U32(arg0 + (uint32)(0));
-    L_80048AD0:;
+L_80048AD0:;
     arg1 = TM3_DRAFT_U32(arg0 + (uint32)(4));
-    L_80048AD4:;
+L_80048AD4:;
     v1 = arg0 + (uint32)(28);
-    L_80048AD8:;
+L_80048AD8:;
     at = 0x80090000u;
-    L_80048ADC:;
+L_80048ADC:;
     TM3_DRAFT_U32(at + (uint32)(-24948)) = (uint32)arg0;
-    L_80048AE0:;
+L_80048AE0:;
     TM3_DRAFT_U32(arg0 + (uint32)(24)) = (uint32)v1;
-    L_80048AE4:;
+L_80048AE4:;
     v0 = v0 << 3u;
-    L_80048AE8:;
+L_80048AE8:;
     v1 = v1 + v0;
-    L_80048AEC:;
+L_80048AEC:;
     v0 = arg1 << 2u;
-    L_80048AF0:;
+L_80048AF0:;
     v0 = v0 + arg1;
-    L_80048AF4:;
+L_80048AF4:;
     v0 = v0 << 2u;
-    L_80048AF8:;
+L_80048AF8:;
     TM3_DRAFT_U32(arg0 + (uint32)(12)) = (uint32)v1;
-    L_80048AFC:;
+L_80048AFC:;
     v1 = v1 + v0;
-    L_80048B00:;
+L_80048B00:;
     TM3_DRAFT_U32(arg0 + (uint32)(16)) = (uint32)v1;
-    L_80048B04:;
+L_80048B04:;
     v0 = s0 + (uint32)(-14);
-    L_80048B08:;
+L_80048B08:;
     v0 = v0 < (uint32)(2);
-    L_80048B0C:;
+L_80048B0C:;
     {
         uint32 branch = v0 != 0u;
-        if (branch) goto L_80048B74;
+        if (branch)
+            goto L_80048B74;
     }
-    L_80048B14:;
+L_80048B14:;
     arg0 = TM3_DRAFT_U32(s1 + (uint32)(4));
-    L_80048B18:;
+L_80048B18:;
     v0 = 0x80090000u;
-    L_80048B1C:;
+L_80048B1C:;
     v0 = TM3_DRAFT_U32(v0 + (uint32)(-24976));
-    L_80048B20:;
+L_80048B20:;
     arg0 = s3 + arg0;
-    L_80048B24:;
+L_80048B24:;
     TM3_DRAFT_U32(s2 + (uint32)(0)) = (uint32)arg0;
-    L_80048B28:;
+L_80048B28:;
     arg3 = TM3_DRAFT_U16(v0 + (uint32)(2));
-    L_80048B2C:;
+L_80048B2C:;
     v1 = TM3_DRAFT_U16(v0 + (uint32)(6));
-    L_80048B30:;
+L_80048B30:;
     t0 = TM3_DRAFT_U8(v0 + (uint32)(0));
-    L_80048B34:;
+L_80048B34:;
     t1 = TM3_DRAFT_U8(v0 + (uint32)(1));
-    L_80048B38:;
+L_80048B38:;
     v0 = arg3 >> 6u;
-    L_80048B3C:;
+L_80048B3C:;
     arg3 = arg3 & 63u;
-    L_80048B40:;
+L_80048B40:;
     arg1 = v1 << 6u;
-    L_80048B44:;
+L_80048B44:;
     arg1 = arg1 & 1984u;
-    L_80048B48:;
+L_80048B48:;
     t0 = t0 >> 1u;
-    L_80048B4C:;
+L_80048B4C:;
     arg2 = v1 << 4u;
-    L_80048B50:;
+L_80048B50:;
     arg2 = arg2 & 256u;
-    L_80048B54:;
+L_80048B54:;
     v1 = v1 >> 2u;
-    L_80048B58:;
+L_80048B58:;
     v1 = v1 & 512u;
-    L_80048B5C:;
+L_80048B5C:;
     arg2 = arg2 | v1;
-    L_80048B60:;
+L_80048B60:;
     arg1 = arg1 + t0;
-    L_80048B64:;
+L_80048B64:;
     arg2 = arg2 | t1;
-    L_80048B68:;
+L_80048B68:;
     arg3 = arg3 << 4u;
-    L_80048B6C:;
+L_80048B6C:;
     TM3_DRAFT_U32(listing_local_address + 16u) = (uint32)v0;
     v0 = sub_8004840C(arg0, arg1, arg2, arg3, TM3_DRAFT_U32(listing_local_address + 16u) /* TODO: Caller stack argument */);
-    L_80048B74:;
+L_80048B74:;
     s2 = s2 + (uint32)(4);
-    L_80048B78:;
+L_80048B78:;
     s0 = s0 + (uint32)(1);
-    L_80048B7C:;
+L_80048B7C:;
     v0 = s0 < (uint32)(16);
-    L_80048B80:;
+L_80048B80:;
     {
         uint32 branch = v0 != 0u;
         s1 = s1 + (uint32)(4);
-        if (branch) goto L_80048B04;
+        if (branch)
+            goto L_80048B04;
     }
-    L_80048B88:;
+L_80048B88:;
     v0 = s4 + 0u;
-    L_80048B8C:;
-    L_80048B90:;
-    L_80048B94:;
-    L_80048B98:;
-    L_80048B9C:;
-    L_80048BA0:;
-    L_80048BA4:;
+L_80048B8C:;
+L_80048B90:;
+L_80048B94:;
+L_80048B98:;
+L_80048B9C:;
+L_80048BA0:;
+L_80048BA4:;
     return v0;
 }
-
 
 /* Unverified draft; TODO items require later review */
 uint32 sub_8002F9F8(uint32 a1, uint32 a2)
 {
     FUNCTION_MARKER(0x8002F9F8u, "SCUS_942.49");
-  uint32 v2; 
-  uint32 v3; 
-  int v5; 
-  int v6; 
-  int v7; 
-  int v8; 
-  int vars0; 
-  int vars4; 
+    uint32 v2;
+    uint32 v3;
+    int v5;
+    int v6;
+    int v7;
+    int v8;
+    int vars0;
+    int vars4;
 
-  v2 = (uint32)(a2 + 4);
-  v3 = TM3_DRAFT_U32(v2);
-  TM3_DRAFT_U32(a1 + 48) = TM3_DRAFT_U16(v2 - 4);
-  TM3_DRAFT_U32(a1 + 4) = 0;
-  TM3_DRAFT_U32(a1 + 12) = 0;
-  TM3_DRAFT_U32(a1) = 4096;
-  TM3_DRAFT_U32(a1 + 8) = 4096;
-  TM3_DRAFT_U16(a1 + 16) = 4096;
-  TM3_DRAFT_U32(a1 + 20) = TM3_DRAFT_U16(v3);
-  TM3_DRAFT_U32(a1 + 24) = sub_80013420(TM3_DRAFT_U16(v3), TM3_DRAFT_U16(v3 + 2u * (1)), TM3_DRAFT_U16(v3 + 2u * (2)));
-  v5 = TM3_DRAFT_U16(v3 + 2u * (2));
-  v6 = TM3_DRAFT_U32(a1 + 24);
-  TM3_DRAFT_U16(a1 - 20) = TM3_DRAFT_U32(a1 + 20);
-  v7 = a1 - 20;
-  TM3_DRAFT_U32(a1 + 28) = v5;
-  TM3_DRAFT_U16(v7 + 2) = v6;
-  TM3_DRAFT_U16(v7 + 4) = v5;
-  TM3_DRAFT_U32(a1 - 24) = 2048;
-  TM3_DRAFT_U32(a1 + 40) = 512;
-  TM3_DRAFT_U32(a1 + 44) = 40960;
-  TM3_DRAFT_U16(a1 + 74) = 1200;
-  TM3_DRAFT_U16(a1 + 72) = 4;
-  v8 = TM3_DRAFT_I16(a1 + 74);
-  TM3_DRAFT_U16(a1 + 34) = 0;
-  TM3_DRAFT_U16(a1 + 36) = 0;
-  sub_8004A294(22, 4, 13, a1, v8, 255);
-  TM3_DRAFT_U16(a1 + 76) = 0;
-  TM3_DRAFT_U32(a1 + 80) = 0;
-  return sub_800288AC((uint32)(a1 + 52), v3, a1);
+    v2 = (uint32)(a2 + 4);
+    v3 = TM3_DRAFT_U32(v2);
+    TM3_DRAFT_U32(a1 + 48) = TM3_DRAFT_U16(v2 - 4);
+    TM3_DRAFT_U32(a1 + 4) = 0;
+    TM3_DRAFT_U32(a1 + 12) = 0;
+    TM3_DRAFT_U32(a1) = 4096;
+    TM3_DRAFT_U32(a1 + 8) = 4096;
+    TM3_DRAFT_U16(a1 + 16) = 4096;
+    TM3_DRAFT_U32(a1 + 20) = TM3_DRAFT_U16(v3);
+    TM3_DRAFT_U32(a1 + 24) = sub_80013420(TM3_DRAFT_U16(v3), TM3_DRAFT_U16(v3 + 2u * (1)), TM3_DRAFT_U16(v3 + 2u * (2)));
+    v5 = TM3_DRAFT_U16(v3 + 2u * (2));
+    v6 = TM3_DRAFT_U32(a1 + 24);
+    TM3_DRAFT_U16(a1 - 20) = TM3_DRAFT_U32(a1 + 20);
+    v7 = a1 - 20;
+    TM3_DRAFT_U32(a1 + 28) = v5;
+    TM3_DRAFT_U16(v7 + 2) = v6;
+    TM3_DRAFT_U16(v7 + 4) = v5;
+    TM3_DRAFT_U32(a1 - 24) = 2048;
+    TM3_DRAFT_U32(a1 + 40) = 512;
+    TM3_DRAFT_U32(a1 + 44) = 40960;
+    TM3_DRAFT_U16(a1 + 74) = 1200;
+    TM3_DRAFT_U16(a1 + 72) = 4;
+    v8 = TM3_DRAFT_I16(a1 + 74);
+    TM3_DRAFT_U16(a1 + 34) = 0;
+    TM3_DRAFT_U16(a1 + 36) = 0;
+    sub_8004A294(22, 4, 13, a1, v8, 255);
+    TM3_DRAFT_U16(a1 + 76) = 0;
+    TM3_DRAFT_U32(a1 + 80) = 0;
+    return sub_800288AC((uint32)(a1 + 52), v3, a1);
 }
-
 
 /* Unverified draft; TODO items require later review */
 uint32 sub_80047534(void)
 {
     FUNCTION_MARKER(0x80047534u, "SCUS_942.49");
-  int result; 
-  int v4; 
-  int v5; 
+    int result;
+    int v4;
+    int v5;
 
-  TM3_DRAFT_U32(0x800D3470u) = 0;
-  sub_800473BC(0u, 8u);
-  result = TM3_DRAFT_U32(0x80089878u);
-  if ( !TM3_DRAFT_U32(0x80089878u) )
-  {
-    TM3_DRAFT_U32(0x80089878u) = 1;
-    sub_80062D0C();
-    sub_80063304(1, 3, 0x1FA400u);
-    sub_80063304(1, 4, 4u);
-    v4 = sub_80056464(0x8008987cu, 2u);
-    TM3_DRAFT_U32(0x800D345Cu) = v4;
-    v5 = sub_80056464(0x8008987cu, 1u);
-    TM3_DRAFT_U32(0x800D3458u) = v5;
-    result = 2;
-    TM3_DRAFT_U32(0x800D347Cu) = 2;
-    TM3_DRAFT_U32(0x800D3478u) = 1;
-    TM3_DRAFT_U32(0x800D3494u) = 1;
-    TM3_DRAFT_U32(0x800D3490u) = 1;
-    TM3_DRAFT_U32(0x800D3488u) = 2;
-    TM3_DRAFT_U32(0x800D3484u) = 2;
-    TM3_DRAFT_U32(0x800D34C4u) = 2;
-    TM3_DRAFT_U32(0x800D34C0u) = 2;
-    TM3_DRAFT_U32(0x800D34DCu) = 2;
-    TM3_DRAFT_U32(0x800D34D8u) = 1;
-    TM3_DRAFT_U32(0x800D34D0u) = 2;
-    TM3_DRAFT_U32(0x800D34CCu) = 2;
-    TM3_DRAFT_U32(0x800D34A0u) = 1;
-    TM3_DRAFT_U32(0x800D349Cu) = 1;
-    TM3_DRAFT_U32(0x800D34B8u) = 1;
-    TM3_DRAFT_U32(0x800D34B4u) = 1;
-    TM3_DRAFT_U32(0x800D34ACu) = 2;
-    TM3_DRAFT_U32(0x800D34A8u) = 1;
-  }
-  return result;
+    TM3_DRAFT_U32(0x800D3470u) = 0;
+    sub_800473BC(0u, 8u);
+    result = TM3_DRAFT_U32(0x80089878u);
+    if (!TM3_DRAFT_U32(0x80089878u))
+    {
+        TM3_DRAFT_U32(0x80089878u) = 1;
+        sub_80062D0C();
+        sub_80063304(1, 3, 0x1FA400u);
+        sub_80063304(1, 4, 4u);
+        v4 = sub_80056464(0x8008987cu, 2u);
+        TM3_DRAFT_U32(0x800D345Cu) = v4;
+        v5 = sub_80056464(0x8008987cu, 1u);
+        TM3_DRAFT_U32(0x800D3458u) = v5;
+        result = 2;
+        TM3_DRAFT_U32(0x800D347Cu) = 2;
+        TM3_DRAFT_U32(0x800D3478u) = 1;
+        TM3_DRAFT_U32(0x800D3494u) = 1;
+        TM3_DRAFT_U32(0x800D3490u) = 1;
+        TM3_DRAFT_U32(0x800D3488u) = 2;
+        TM3_DRAFT_U32(0x800D3484u) = 2;
+        TM3_DRAFT_U32(0x800D34C4u) = 2;
+        TM3_DRAFT_U32(0x800D34C0u) = 2;
+        TM3_DRAFT_U32(0x800D34DCu) = 2;
+        TM3_DRAFT_U32(0x800D34D8u) = 1;
+        TM3_DRAFT_U32(0x800D34D0u) = 2;
+        TM3_DRAFT_U32(0x800D34CCu) = 2;
+        TM3_DRAFT_U32(0x800D34A0u) = 1;
+        TM3_DRAFT_U32(0x800D349Cu) = 1;
+        TM3_DRAFT_U32(0x800D34B8u) = 1;
+        TM3_DRAFT_U32(0x800D34B4u) = 1;
+        TM3_DRAFT_U32(0x800D34ACu) = 2;
+        TM3_DRAFT_U32(0x800D34A8u) = 1;
+    }
+    return result;
 }
-
 
 /* Unverified draft; TODO items require later review */
 uint32 sub_80032D5C(uint32 a1)
@@ -844,110 +831,106 @@ uint32 sub_80032D5C(uint32 a1)
     uint32 original_local_address = TM3_DRAFT_LOCAL_ADDRESS(original_local_words, sizeof(original_local_words));
 
     FUNCTION_MARKER(0x80032D5Cu, "SCUS_942.49");
-  int v2; 
-  int v3; 
-  int v4; 
+    int v2;
+    int v3;
+    int v4;
 
-  v2 = TM3_DRAFT_U32(a1 + 4u * (389));
-  v3 = TM3_DRAFT_U32(a1 + 4u * (390));
-  v4 = TM3_DRAFT_U32(a1 + 4u * (391));
-  TM3_DRAFT_I32(original_local_address + 80u) = 8421504;
-  TM3_DRAFT_I16(original_local_address + 64u) = v2;
-  TM3_DRAFT_I16(original_local_address + 66u) = v3;
-  TM3_DRAFT_I16(original_local_address + 68u) = v4;
-  sub_80032C64((int)a1, TM3_DRAFT_LOCAL_ADDRESS((*(sint16 (*)[4])psx_addr(original_local_address + 72u, sizeof(sint16[4]))), sizeof((*(sint16 (*)[4])psx_addr(original_local_address + 72u, sizeof(sint16[4]))))));
-  TM3_DRAFT_I16(original_local_address + 66u) -= 20;
-  sub_8004A294(9, (int)TM3_DRAFT_LOCAL_ADDRESS(&TM3_DRAFT_I16(original_local_address + 64u), sizeof( TM3_DRAFT_I16(original_local_address + 64u))) /* TODO: Local buffer adapter */, (int)TM3_DRAFT_LOCAL_ADDRESS(&TM3_DRAFT_I32(original_local_address + 80u), sizeof(TM3_DRAFT_I32(original_local_address + 80u))) /* TODO: Local buffer adapter */, 40, 0, 200, 15, (int)a1);
-  return sub_8004A294(22, TM3_DRAFT_U8(TM3_DRAFT_U32(a1 + 4u * (1010)) + 55), 5, (int)a1, 940);
+    v2 = TM3_DRAFT_U32(a1 + 4u * (389));
+    v3 = TM3_DRAFT_U32(a1 + 4u * (390));
+    v4 = TM3_DRAFT_U32(a1 + 4u * (391));
+    TM3_DRAFT_I32(original_local_address + 80u) = 8421504;
+    TM3_DRAFT_I16(original_local_address + 64u) = v2;
+    TM3_DRAFT_I16(original_local_address + 66u) = v3;
+    TM3_DRAFT_I16(original_local_address + 68u) = v4;
+    sub_80032C64((int)a1, TM3_DRAFT_LOCAL_ADDRESS((*(sint16(*)[4])psx_addr(original_local_address + 72u, sizeof(sint16[4]))), sizeof((*(sint16(*)[4])psx_addr(original_local_address + 72u, sizeof(sint16[4]))))));
+    TM3_DRAFT_I16(original_local_address + 66u) -= 20;
+    sub_8004A294(9, (int)TM3_DRAFT_LOCAL_ADDRESS(&TM3_DRAFT_I16(original_local_address + 64u), sizeof(TM3_DRAFT_I16(original_local_address + 64u))) /* TODO: Local buffer adapter */, (int)TM3_DRAFT_LOCAL_ADDRESS(&TM3_DRAFT_I32(original_local_address + 80u), sizeof(TM3_DRAFT_I32(original_local_address + 80u))) /* TODO: Local buffer adapter */, 40, 0, 200, 15, (int)a1);
+    return sub_8004A294(22, TM3_DRAFT_U8(TM3_DRAFT_U32(a1 + 4u * (1010)) + 55), 5, (int)a1, 940);
 }
-
 
 /* Unverified draft; TODO items require later review */
 uint32 sub_80051C04(void)
 {
     FUNCTION_MARKER(0x80051C04u, "SCUS_942.49");
-  int v0; 
-  int v1; 
-  int v2; 
-  sint32 result; 
+    int v0;
+    int v1;
+    int v2;
+    sint32 result;
 
-  if ( TM3_DRAFT_U32(0x800D295Cu) == 1 )
-  {
-    v0 = 4;
-  }
-  else
-  {
-    if ( TM3_DRAFT_I32(0x800D28BCu) >= 2 )
-      TM3_DRAFT_U32(0x800D28BCu) = 1;
-    v0 = 2 - TM3_DRAFT_U32(0x800D28BCu);
-  }
-  if ( v0 <= 0 )
-    v0 = 1;
-  if ( v0 < TM3_DRAFT_I32(0x800D28B8u) )
-    TM3_DRAFT_U32(0x800D28B8u) = v0;
-  v1 = 0;
-  v2 = -2146624256;
-  do
-  {
-    if ( TM3_DRAFT_U32(v2 + 20) )
-      break;
-    ++v1;
-    v2 += 24;
-  }
-  while ( v1 < 4 );
-  if ( TM3_DRAFT_I32(0x800D28B8u) >= v1 + 1 )
-  {
-    if ( v1 <= 0 )
-      TM3_DRAFT_U32(0x800D28B8u) = 1;
+    if (TM3_DRAFT_U32(0x800D295Cu) == 1)
+    {
+        v0 = 4;
+    }
     else
-      TM3_DRAFT_U32(0x800D28B8u) = v1;
-  }
-  result = 1;
-  if ( TM3_DRAFT_U32(0x800D295Cu) == 1 )
-  {
-    result = (sint32)(TM3_DRAFT_U32(0x800D28B8u) + TM3_DRAFT_U32(0x800D28BCu)) < 2;
-    if ( (sint32)(TM3_DRAFT_U32(0x800D28B8u) + TM3_DRAFT_U32(0x800D28BCu)) >= 2 )
-      TM3_DRAFT_U32(0x800D28C4u) = 0;
-  }
-  return result;
+    {
+        if (TM3_DRAFT_I32(0x800D28BCu) >= 2)
+            TM3_DRAFT_U32(0x800D28BCu) = 1;
+        v0 = 2 - TM3_DRAFT_U32(0x800D28BCu);
+    }
+    if (v0 <= 0)
+        v0 = 1;
+    if (v0 < TM3_DRAFT_I32(0x800D28B8u))
+        TM3_DRAFT_U32(0x800D28B8u) = v0;
+    v1 = 0;
+    v2 = -2146624256;
+    do
+    {
+        if (TM3_DRAFT_U32(v2 + 20))
+            break;
+        ++v1;
+        v2 += 24;
+    } while (v1 < 4);
+    if (TM3_DRAFT_I32(0x800D28B8u) >= v1 + 1)
+    {
+        if (v1 <= 0)
+            TM3_DRAFT_U32(0x800D28B8u) = 1;
+        else
+            TM3_DRAFT_U32(0x800D28B8u) = v1;
+    }
+    result = 1;
+    if (TM3_DRAFT_U32(0x800D295Cu) == 1)
+    {
+        result = (sint32)(TM3_DRAFT_U32(0x800D28B8u) + TM3_DRAFT_U32(0x800D28BCu)) < 2;
+        if ((sint32)(TM3_DRAFT_U32(0x800D28B8u) + TM3_DRAFT_U32(0x800D28BCu)) >= 2)
+            TM3_DRAFT_U32(0x800D28C4u) = 0;
+    }
+    return result;
 }
-
 
 /* Unverified draft; TODO items require later review */
 uint32 sub_800416A0(uint32 a1, uint32 a2, uint32 a3)
 {
     FUNCTION_MARKER(0x800416A0u, "SCUS_942.49");
-  int result; 
-  uint32 v7; 
-  uint32 v8; 
+    int result;
+    uint32 v7;
+    uint32 v8;
 
-  result = a1 < 4;
-  if ( a1 < 4 )
-  {
-    result = -2146631680;
-    if ( a1 < TM3_DRAFT_U32(0x800D2E88u) )
+    result = a1 < 4;
+    if (a1 < 4)
     {
-      v7 = (uint32)(200 * a1 - 2146622488);
-      if ( TM3_DRAFT_U32(v7) == TM3_DRAFT_U32(0x80089DFCu) )
-      {
-        sub_800415A8(a1);
-      }
-      else if ( TM3_DRAFT_U32(v7) )
-      {
-LABEL_7:
-        v8 = (uint32)(200 * a1 - 2146622488);
-        sub_80049710(200 * a1 - 2146622480 + (TM3_DRAFT_U32(v8) << 6), a2, a3);
-        result = TM3_DRAFT_U32(v8) + 1;
-        TM3_DRAFT_U32(v8) = result;
-        return result;
-      }
-      TM3_DRAFT_U32(v7 + 4u * (1)) = 60;
-      goto LABEL_7;
+        result = -2146631680;
+        if (a1 < TM3_DRAFT_U32(0x800D2E88u))
+        {
+            v7 = (uint32)(200 * a1 - 2146622488);
+            if (TM3_DRAFT_U32(v7) == TM3_DRAFT_U32(0x80089DFCu))
+            {
+                sub_800415A8(a1);
+            }
+            else if (TM3_DRAFT_U32(v7))
+            {
+            LABEL_7:
+                v8 = (uint32)(200 * a1 - 2146622488);
+                sub_80049710(200 * a1 - 2146622480 + (TM3_DRAFT_U32(v8) << 6), a2, a3);
+                result = TM3_DRAFT_U32(v8) + 1;
+                TM3_DRAFT_U32(v8) = result;
+                return result;
+            }
+            TM3_DRAFT_U32(v7 + 4u * (1)) = 60;
+            goto LABEL_7;
+        }
     }
-  }
-  return result;
+    return result;
 }
-
 
 /* Unverified draft; TODO items require later review */
 uint32 sub_8002F1C0(uint32 object, uint32 ordering_table, uint32 cursor, uint32 end, uint32 view_matrix)
@@ -966,8 +949,7 @@ uint32 sub_8002F1C0(uint32 object, uint32 ordering_table, uint32 cursor, uint32 
     sub_8005BD24(matrix_address);
     sub_8005BDB4(matrix_address);
     geometry = TM3_DRAFT_U32(0x80089d14u);
-    sub_80029660(geometry, TM3_DRAFT_U32(geometry + 0x390u), TM3_DRAFT_U32(geometry + 0x394u),
-        0u, ordering_table, cursor, end);
+    sub_80029660(geometry, TM3_DRAFT_U32(geometry + 0x390u), TM3_DRAFT_U32(geometry + 0x394u), 0u, ordering_table, cursor, end);
     sub_8005B978();
     result = TM3_DRAFT_U8(object + 0x14fu);
     if (result != 0u)
@@ -975,14 +957,14 @@ uint32 sub_8002F1C0(uint32 object, uint32 ordering_table, uint32 cursor, uint32 
     return result;
 }
 
-
 /* Unverified draft; TODO items require later review */
 uint32 sub_8004B500(uint32 vehicle, uint32 effect)
 {
     FUNCTION_MARKER(0x8004B500u, "SCUS_942.49");
     const uint32 active = TM3_DRAFT_U32(vehicle + 4052u);
     TM3_DRAFT_U32(vehicle + 4056u) = 1u;
-    if (active != 0u) {
+    if (active != 0u)
+    {
         if (active == effect)
             return 0u;
         TM3_DRAFT_U8(active + 8u) = 0u;
@@ -1015,68 +997,62 @@ uint32 sub_8004B500(uint32 vehicle, uint32 effect)
     return 1u;
 }
 
-
 /* Unverified draft; TODO items require later review */
 uint32 sub_8001B010(uint32 a1)
 {
     FUNCTION_MARKER(0x8001B010u, "SCUS_942.49");
-  sint16 v2; 
-  uint32 v3; 
+    sint16 v2;
+    uint32 v3;
 
-  uint32 result; /* Guest callback address */ 
-  sint32 v5; 
+    uint32 result; /* Guest callback address */
+    sint32 v5;
 
-  v2 = TM3_DRAFT_U16(a1 + 3430) - 1;
-  TM3_DRAFT_U16(a1 + 3430) = v2;
-  v3 = (v2 & 0x8000) == 0;
-  result = 0;
-  if ( !v3 )
-  {
-    TM3_DRAFT_U16(a1 + 3430) = TM3_DRAFT_U16(a1 + 3428) + (int)sub_80039FD4() % 300 / 4;
-    v5 = sub_80039FD4();
-    if ( sub_8001BF10(a1, v5 % 4 + 2) )
+    v2 = TM3_DRAFT_U16(a1 + 3430) - 1;
+    TM3_DRAFT_U16(a1 + 3430) = v2;
+    v3 = (v2 & 0x8000) == 0;
+    result = 0;
+    if (!v3)
     {
-      sub_8001A8C4(a1, 0, 0);
-      TM3_DRAFT_U8(a1 + 3329) = 5;
-      return 0x8001CA04u;
+        TM3_DRAFT_U16(a1 + 3430) = TM3_DRAFT_U16(a1 + 3428) + (int)sub_80039FD4() % 300 / 4;
+        v5 = sub_80039FD4();
+        if (sub_8001BF10(a1, v5 % 4 + 2))
+        {
+            sub_8001A8C4(a1, 0, 0);
+            TM3_DRAFT_U8(a1 + 3329) = 5;
+            return 0x8001CA04u;
+        }
+        else
+        {
+            return 0;
+        }
     }
-    else
-    {
-      return 0;
-    }
-  }
-  return result;
+    return result;
 }
-
 
 /* Unverified draft; TODO items require later review */
 uint32 sub_8003AEBC(void)
 {
     FUNCTION_MARKER(0x8003AEBCu, "SCUS_942.49");
-  int result; 
-  uint32 v1; 
-  int v2; 
+    int result;
+    uint32 v1;
+    int v2;
 
-  result = TM3_DRAFT_U32(0x80089C98u);
-  if ( TM3_DRAFT_U16(TM3_DRAFT_U32(0x80089C98u) + 10288) )
-  {
-    if ( LOBYTE(TM3_DRAFT_U32(0x8008978Cu + 4u * (2))) >= (uint32)TM3_DRAFT_U16(TM3_DRAFT_U32(0x80089C98u) + 10288) )
-      LOBYTE(TM3_DRAFT_U32(0x8008978Cu + 4u * (2))) = 0;
-    v1 = (uint32)TM3_DRAFT_U32(0x8008978Cu) + LOBYTE(TM3_DRAFT_U32(0x8008978Cu + 4u * (2)));
-    v2 = TM3_DRAFT_U32(0x80089DA4u) + TM3_DRAFT_U32(4 * LOBYTE(TM3_DRAFT_U32(0x8008978Cu + 4u * (2))) + TM3_DRAFT_U32(0x80089DA4u));
-    if ( (uint8)TM3_DRAFT_U8(v1) >= TM3_DRAFT_I32(v2 - 4 + 36) )
-      TM3_DRAFT_U8(v1) = 0;
-    sub_800579FC(
-      (uint32)(v2 + 20),
-      (TM3_DRAFT_U32(v2 - 4 + 4 * TM3_DRAFT_U8(TM3_DRAFT_U32(0x8008978Cu) + LOBYTE(TM3_DRAFT_U32(0x8008978Cu + 4u * (2)))) + 40) & 0xFFFFFF)
-    + TM3_DRAFT_U32(0x80089DA8u));
-    ++TM3_DRAFT_U8(TM3_DRAFT_U32(0x8008978Cu) + LOBYTE(TM3_DRAFT_U32(0x8008978Cu + 4u * (2))));
-    result = LOBYTE(TM3_DRAFT_U32(0x8008978Cu + 4u * (2))) + 1;
-    ++LOBYTE(TM3_DRAFT_U32(0x8008978Cu + 4u * (2)));
-  }
-  return result;
+    result = TM3_DRAFT_U32(0x80089C98u);
+    if (TM3_DRAFT_U16(TM3_DRAFT_U32(0x80089C98u) + 10288))
+    {
+        if (LOBYTE(TM3_DRAFT_U32(0x8008978Cu + 4u * (2))) >= (uint32)TM3_DRAFT_U16(TM3_DRAFT_U32(0x80089C98u) + 10288))
+            LOBYTE(TM3_DRAFT_U32(0x8008978Cu + 4u * (2))) = 0;
+        v1 = (uint32)TM3_DRAFT_U32(0x8008978Cu) + LOBYTE(TM3_DRAFT_U32(0x8008978Cu + 4u * (2)));
+        v2 = TM3_DRAFT_U32(0x80089DA4u) + TM3_DRAFT_U32(4 * LOBYTE(TM3_DRAFT_U32(0x8008978Cu + 4u * (2))) + TM3_DRAFT_U32(0x80089DA4u));
+        if ((uint8)TM3_DRAFT_U8(v1) >= TM3_DRAFT_I32(v2 - 4 + 36))
+            TM3_DRAFT_U8(v1) = 0;
+        sub_800579FC((uint32)(v2 + 20), (TM3_DRAFT_U32(v2 - 4 + 4 * TM3_DRAFT_U8(TM3_DRAFT_U32(0x8008978Cu) + LOBYTE(TM3_DRAFT_U32(0x8008978Cu + 4u * (2)))) + 40) & 0xFFFFFF) + TM3_DRAFT_U32(0x80089DA8u));
+        ++TM3_DRAFT_U8(TM3_DRAFT_U32(0x8008978Cu) + LOBYTE(TM3_DRAFT_U32(0x8008978Cu + 4u * (2))));
+        result = LOBYTE(TM3_DRAFT_U32(0x8008978Cu + 4u * (2))) + 1;
+        ++LOBYTE(TM3_DRAFT_U32(0x8008978Cu + 4u * (2)));
+    }
+    return result;
 }
-
 
 /* Unverified draft; TODO items require later review */
 uint32 sub_80023EC0(uint32 vehicle, uint32 matrix)
@@ -1112,7 +1088,6 @@ uint32 sub_80023EC0(uint32 vehicle, uint32 matrix)
     return 0u;
 }
 
-
 /* Unverified draft; TODO items require later review */
 uint32 sub_8001441C(uint32 a1, uint32 a2, uint32 a3)
 {
@@ -1129,89 +1104,87 @@ uint32 sub_8001441C(uint32 a1, uint32 a2, uint32 a3)
     uint32 temporary_8;
     uint32 temporary_9;
     FUNCTION_MARKER(0x8001441Cu, "SCUS_942.49");
-  uint32 result; 
-  int v4; 
-  int v6; 
-  int v8; 
-  int v10; 
+    uint32 result;
+    int v4;
+    int v6;
+    int v8;
+    int v10;
 
-  result = a3;
-  v4 = (sint32)a1 >> 31;
-  cpu_a0 = TM3_DRAFT_U32(0x80081E38u + 4u * (((uint16)(a1 + (uint32)v4) ^ (uint16)v4) & 0xFFF));
-  v6 = (sint32)a2 >> 31;
-  cpu_a1 = TM3_DRAFT_U32(0x80081E38u + 4u * (((uint16)(a2 + (uint32)v6) ^ (uint16)v6) & 0xFFF));
-  v8 = (sint32)(cpu_a0 << 16);
-  cpu_a0 = (uint32)((sint32)cpu_a0 >> 16);
-  cpu_a2 = ((v8 >> 16) + v4) ^ v4;
-  v10 = (sint32)(cpu_a1 << 16);
-  cpu_a1 = (uint32)((sint32)cpu_a1 >> 16);
-  xport_gte_write_data(8u, (uint32)cpu_a1);
-xport_gte_write_data(9u, (uint32)cpu_a2);
-xport_gte_write_data(10u, (uint32)cpu_a0);
-  cpu_a3 = ((v10 >> 16) + v6) ^ v6;
-  tm3_draft_gte_command(0x198003Du);
-cpu_t9 = xport_gte_read_data(9u);
-cpu_t8 = xport_gte_read_data(10u);
-xport_gte_write_data(8u, (uint32)cpu_a3);
-xport_gte_write_data(9u, (uint32)cpu_a2);
-xport_gte_write_data(10u, (uint32)cpu_a0);
-tm3_draft_gte_command(0x198003Du);
-  TM3_DRAFT_U32(result + 8) = (uint16)cpu_a0 | ((0u - cpu_a2) << 16);
-  TM3_DRAFT_U32(result + 12) = (uint16)-(sint16)cpu_a3 | (cpu_t9 << 16);
-  TM3_DRAFT_U16(result + 16) = cpu_t8;
-  cpu_t7 = xport_gte_read_data(9u);
-cpu_t6 = xport_gte_read_data(10u);
-  TM3_DRAFT_U32(result) = (uint16)cpu_a1 | (cpu_t7 << 16);
-  TM3_DRAFT_U32(result + 4) = (uint16)cpu_t6;
-  return result;
+    result = a3;
+    v4 = (sint32)a1 >> 31;
+    cpu_a0 = TM3_DRAFT_U32(0x80081E38u + 4u * (((uint16)(a1 + (uint32)v4) ^ (uint16)v4) & 0xFFF));
+    v6 = (sint32)a2 >> 31;
+    cpu_a1 = TM3_DRAFT_U32(0x80081E38u + 4u * (((uint16)(a2 + (uint32)v6) ^ (uint16)v6) & 0xFFF));
+    v8 = (sint32)(cpu_a0 << 16);
+    cpu_a0 = (uint32)((sint32)cpu_a0 >> 16);
+    cpu_a2 = ((v8 >> 16) + v4) ^ v4;
+    v10 = (sint32)(cpu_a1 << 16);
+    cpu_a1 = (uint32)((sint32)cpu_a1 >> 16);
+    xport_gte_write_data(8u, (uint32)cpu_a1);
+    xport_gte_write_data(9u, (uint32)cpu_a2);
+    xport_gte_write_data(10u, (uint32)cpu_a0);
+    cpu_a3 = ((v10 >> 16) + v6) ^ v6;
+    tm3_draft_gte_command(0x198003Du);
+    cpu_t9 = xport_gte_read_data(9u);
+    cpu_t8 = xport_gte_read_data(10u);
+    xport_gte_write_data(8u, (uint32)cpu_a3);
+    xport_gte_write_data(9u, (uint32)cpu_a2);
+    xport_gte_write_data(10u, (uint32)cpu_a0);
+    tm3_draft_gte_command(0x198003Du);
+    TM3_DRAFT_U32(result + 8) = (uint16)cpu_a0 | ((0u - cpu_a2) << 16);
+    TM3_DRAFT_U32(result + 12) = (uint16) - (sint16)cpu_a3 | (cpu_t9 << 16);
+    TM3_DRAFT_U16(result + 16) = cpu_t8;
+    cpu_t7 = xport_gte_read_data(9u);
+    cpu_t6 = xport_gte_read_data(10u);
+    TM3_DRAFT_U32(result) = (uint16)cpu_a1 | (cpu_t7 << 16);
+    TM3_DRAFT_U32(result + 4) = (uint16)cpu_t6;
+    return result;
 }
-
 
 /* Unverified draft; TODO items require later review */
 uint32 sub_80038B10(uint32 a1)
 {
     FUNCTION_MARKER(0x80038B10u, "SCUS_942.49");
-  int v1; 
-  int v2; 
-  int v3; 
-  int v4; 
-  char v5; 
-  char v6; 
-  char v7; 
-  char v8; 
-  int result; 
+    int v1;
+    int v2;
+    int v3;
+    int v4;
+    char v5;
+    char v6;
+    char v7;
+    char v8;
+    int result;
 
-  v1 = TM3_DRAFT_I8(32 * TM3_DRAFT_U8(a1 + 13) + TM3_DRAFT_U32(0x80089C94u) + 20) + TM3_DRAFT_I8(a1 + 6);
-  v2 = 8 * v1;
-  v3 = TM3_DRAFT_U8(a1 + 12);
-  v4 = 8 * v1 + TM3_DRAFT_U32(0x80089CB8u);
-  TM3_DRAFT_U16(a1 + 22) = TM3_DRAFT_U16(v4 + 2);
-  TM3_DRAFT_U16(a1 + 26) = TM3_DRAFT_U16(v4 + 6);
-  if ( v3 )
-  {
-    v5 = TM3_DRAFT_U8(v4 + 4);
-    TM3_DRAFT_U8(a1 + 28) = v5;
-    TM3_DRAFT_U8(a1 + 20) = v5;
-    v6 = TM3_DRAFT_U8(v2 + TM3_DRAFT_U32(0x80089CB8u));
-  }
-  else
-  {
-    v7 = TM3_DRAFT_U8(v4);
-    TM3_DRAFT_U8(a1 + 28) = TM3_DRAFT_U8(v4);
-    TM3_DRAFT_U8(a1 + 20) = v7;
-    v6 = TM3_DRAFT_U8(v2 + TM3_DRAFT_U32(0x80089CB8u) + 4);
-  }
-  TM3_DRAFT_U8(a1 + 30) = v6;
-  TM3_DRAFT_U8(a1 + 24) = v6;
-  v8 = TM3_DRAFT_U8(8 * v1 + TM3_DRAFT_U32(0x80089CB8u) + 1);
-  TM3_DRAFT_U8(a1 + 25) = v8;
-  TM3_DRAFT_U8(a1 + 21) = v8;
-  result = TM3_DRAFT_U8(8 * v1 + TM3_DRAFT_U32(0x80089CB8u) + 5);
-  TM3_DRAFT_U8(a1 + 31) = result;
-  TM3_DRAFT_U8(a1 + 29) = result;
-  return result;
+    v1 = TM3_DRAFT_I8(32 * TM3_DRAFT_U8(a1 + 13) + TM3_DRAFT_U32(0x80089C94u) + 20) + TM3_DRAFT_I8(a1 + 6);
+    v2 = 8 * v1;
+    v3 = TM3_DRAFT_U8(a1 + 12);
+    v4 = 8 * v1 + TM3_DRAFT_U32(0x80089CB8u);
+    TM3_DRAFT_U16(a1 + 22) = TM3_DRAFT_U16(v4 + 2);
+    TM3_DRAFT_U16(a1 + 26) = TM3_DRAFT_U16(v4 + 6);
+    if (v3)
+    {
+        v5 = TM3_DRAFT_U8(v4 + 4);
+        TM3_DRAFT_U8(a1 + 28) = v5;
+        TM3_DRAFT_U8(a1 + 20) = v5;
+        v6 = TM3_DRAFT_U8(v2 + TM3_DRAFT_U32(0x80089CB8u));
+    }
+    else
+    {
+        v7 = TM3_DRAFT_U8(v4);
+        TM3_DRAFT_U8(a1 + 28) = TM3_DRAFT_U8(v4);
+        TM3_DRAFT_U8(a1 + 20) = v7;
+        v6 = TM3_DRAFT_U8(v2 + TM3_DRAFT_U32(0x80089CB8u) + 4);
+    }
+    TM3_DRAFT_U8(a1 + 30) = v6;
+    TM3_DRAFT_U8(a1 + 24) = v6;
+    v8 = TM3_DRAFT_U8(8 * v1 + TM3_DRAFT_U32(0x80089CB8u) + 1);
+    TM3_DRAFT_U8(a1 + 25) = v8;
+    TM3_DRAFT_U8(a1 + 21) = v8;
+    result = TM3_DRAFT_U8(8 * v1 + TM3_DRAFT_U32(0x80089CB8u) + 5);
+    TM3_DRAFT_U8(a1 + 31) = result;
+    TM3_DRAFT_U8(a1 + 29) = result;
+    return result;
 }
-
 
 /* Unverified draft; TODO items require later review */
 uint32 sub_8002F938(uint32 a1)
@@ -1220,138 +1193,123 @@ uint32 sub_8002F938(uint32 a1)
     uint32 original_local_address = TM3_DRAFT_LOCAL_ADDRESS(original_local_words, sizeof(original_local_words));
 
     FUNCTION_MARKER(0x8002F938u, "SCUS_942.49");
-  sint16 v1; 
-  sint16 v2; 
+    sint16 v1;
+    sint16 v2;
 
-  v1 = TM3_DRAFT_U16(a1 - 20 + 2);
-  v2 = TM3_DRAFT_U16(a1 - 20 + 4);
-  TM3_DRAFT_I16(original_local_address + 64u) = TM3_DRAFT_U16(a1 - 20);
-  TM3_DRAFT_I16(original_local_address + 68u) = v2;
-  TM3_DRAFT_I32(original_local_address + 72u) = 0x400000;
-  TM3_DRAFT_I16(original_local_address + 66u) = v1 - 100;
-  sub_8004A294(9, (int)TM3_DRAFT_LOCAL_ADDRESS(&TM3_DRAFT_I16(original_local_address + 64u), sizeof(TM3_DRAFT_I16(original_local_address + 64u))) /* TODO: Local buffer adapter */, (int)TM3_DRAFT_LOCAL_ADDRESS(&TM3_DRAFT_I32(original_local_address + 72u), sizeof(TM3_DRAFT_I32(original_local_address + 72u))) /* TODO: Local buffer adapter */, 48, 1024, 384, 15, TM3_DRAFT_U32(a1 + 48));
-  TM3_DRAFT_I16(original_local_address + 66u) -= 100;
-  return sub_8002F2A8((int)TM3_DRAFT_LOCAL_ADDRESS(&TM3_DRAFT_I16(original_local_address + 64u), sizeof(TM3_DRAFT_I16(original_local_address + 64u))) /* TODO: Local buffer adapter */);
+    v1 = TM3_DRAFT_U16(a1 - 20 + 2);
+    v2 = TM3_DRAFT_U16(a1 - 20 + 4);
+    TM3_DRAFT_I16(original_local_address + 64u) = TM3_DRAFT_U16(a1 - 20);
+    TM3_DRAFT_I16(original_local_address + 68u) = v2;
+    TM3_DRAFT_I32(original_local_address + 72u) = 0x400000;
+    TM3_DRAFT_I16(original_local_address + 66u) = v1 - 100;
+    sub_8004A294(9, (int)TM3_DRAFT_LOCAL_ADDRESS(&TM3_DRAFT_I16(original_local_address + 64u), sizeof(TM3_DRAFT_I16(original_local_address + 64u))) /* TODO: Local buffer adapter */, (int)TM3_DRAFT_LOCAL_ADDRESS(&TM3_DRAFT_I32(original_local_address + 72u), sizeof(TM3_DRAFT_I32(original_local_address + 72u))) /* TODO: Local buffer adapter */, 48, 1024, 384, 15, TM3_DRAFT_U32(a1 + 48));
+    TM3_DRAFT_I16(original_local_address + 66u) -= 100;
+    return sub_8002F2A8((int)TM3_DRAFT_LOCAL_ADDRESS(&TM3_DRAFT_I16(original_local_address + 64u), sizeof(TM3_DRAFT_I16(original_local_address + 64u))) /* TODO: Local buffer adapter */);
 }
-
 
 /* Unverified draft; TODO items require later review */
 uint32 sub_8002F584(uint32 a1, uint32 a2)
 {
     FUNCTION_MARKER(0x8002F584u, "SCUS_942.49");
-  uint32 v2; 
-  int v3; 
-  uint32 v4; 
-  int v6; 
-  int v7; 
-  int v8; 
+    uint32 v2;
+    int v3;
+    uint32 v4;
+    int v6;
+    int v7;
+    int v8;
 
-  v2 = (uint32)(a2 + 4);
-  v3 = TM3_DRAFT_U32(v2);
-  v4 = (uint32)TM3_DRAFT_U32(v2 + 4u * (1));
-  TM3_DRAFT_U16(a1 + 32) = TM3_DRAFT_U32(v2 - 4);
-  TM3_DRAFT_U32(a1 + 36) = v3;
-  TM3_DRAFT_U32(a1 + 4) = 0;
-  TM3_DRAFT_U32(a1 + 12) = 0;
-  TM3_DRAFT_U32(a1) = 4096;
-  TM3_DRAFT_U32(a1 + 8) = 4096;
-  TM3_DRAFT_U16(a1 + 16) = 4096;
-  TM3_DRAFT_U32(a1 + 20) = TM3_DRAFT_I16(v4);
-  TM3_DRAFT_U32(a1 + 24) = sub_80013420(TM3_DRAFT_I16(v4), TM3_DRAFT_I16(v4 + 2u * (1)), TM3_DRAFT_I16(v4 + 2u * (2)));
-  v6 = TM3_DRAFT_I16(v4 + 2u * (2));
-  v7 = TM3_DRAFT_U32(a1 + 24);
-  TM3_DRAFT_U16(a1 - 20) = TM3_DRAFT_U32(a1 + 20);
-  v8 = a1 - 20;
-  TM3_DRAFT_U32(a1 + 28) = v6;
-  TM3_DRAFT_U16(v8 + 2) = v7;
-  TM3_DRAFT_U16(v8 + 4) = v6;
-  TM3_DRAFT_U32(a1 - 24) = 28;
-  sub_8004A294(22, 20, 13, a1, 870, 0x3FFF);
-  return 1;
+    v2 = (uint32)(a2 + 4);
+    v3 = TM3_DRAFT_U32(v2);
+    v4 = (uint32)TM3_DRAFT_U32(v2 + 4u * (1));
+    TM3_DRAFT_U16(a1 + 32) = TM3_DRAFT_U32(v2 - 4);
+    TM3_DRAFT_U32(a1 + 36) = v3;
+    TM3_DRAFT_U32(a1 + 4) = 0;
+    TM3_DRAFT_U32(a1 + 12) = 0;
+    TM3_DRAFT_U32(a1) = 4096;
+    TM3_DRAFT_U32(a1 + 8) = 4096;
+    TM3_DRAFT_U16(a1 + 16) = 4096;
+    TM3_DRAFT_U32(a1 + 20) = TM3_DRAFT_I16(v4);
+    TM3_DRAFT_U32(a1 + 24) = sub_80013420(TM3_DRAFT_I16(v4), TM3_DRAFT_I16(v4 + 2u * (1)), TM3_DRAFT_I16(v4 + 2u * (2)));
+    v6 = TM3_DRAFT_I16(v4 + 2u * (2));
+    v7 = TM3_DRAFT_U32(a1 + 24);
+    TM3_DRAFT_U16(a1 - 20) = TM3_DRAFT_U32(a1 + 20);
+    v8 = a1 - 20;
+    TM3_DRAFT_U32(a1 + 28) = v6;
+    TM3_DRAFT_U16(v8 + 2) = v7;
+    TM3_DRAFT_U16(v8 + 4) = v6;
+    TM3_DRAFT_U32(a1 - 24) = 28;
+    sub_8004A294(22, 20, 13, a1, 870, 0x3FFF);
+    return 1;
 }
-
 
 /* Unverified draft; TODO items require later review */
 uint32 sub_80030348(uint32 a1)
 {
     FUNCTION_MARKER(0x80030348u, "SCUS_942.49");
-  int v2; 
-  uint32 v4; 
-  int v5; 
+    int v2;
+    uint32 v4;
+    int v5;
 
-  if ( !sub_80030410((int)a1) )
-    return (uint32)sub_8004A570((int)a1);
-  v2 = TM3_DRAFT_U32(a1 + 4u * (17));
-  if ( v2 >= TM3_DRAFT_U32(a1 + 4u * (15)) )
-    return (uint32)sub_8004A570((int)a1);
-  TM3_DRAFT_U32(a1 + 4u * (17)) = v2 + 1;
-  v4 = (uint32)TM3_DRAFT_U32(a1 + 4u * (19));
-  v5 = TM3_DRAFT_U32(a1 + 4u * (18)) + 1;
-  TM3_DRAFT_U32(a1 + 4u * (18)) = v5;
-  if ( v5 >= TM3_DRAFT_U16(v4) )
-    TM3_DRAFT_U32(a1 + 4u * (18)) = 0;
-  return sub_8004A294(
-           29,
-           TM3_DRAFT_U32(a1 + 4u * (14)),
-           TM3_DRAFT_U32(TM3_DRAFT_U32(a1 + 4u * (19)) + 4 * TM3_DRAFT_U32(a1 + 4u * (18)) + 8),
-           (int)(a1 + 24),
-           (int)(a1 + 8),
-           (int)(a1 + 16),
-           100,
-           40);
+    if (!sub_80030410((int)a1))
+        return (uint32)sub_8004A570((int)a1);
+    v2 = TM3_DRAFT_U32(a1 + 4u * (17));
+    if (v2 >= TM3_DRAFT_U32(a1 + 4u * (15)))
+        return (uint32)sub_8004A570((int)a1);
+    TM3_DRAFT_U32(a1 + 4u * (17)) = v2 + 1;
+    v4 = (uint32)TM3_DRAFT_U32(a1 + 4u * (19));
+    v5 = TM3_DRAFT_U32(a1 + 4u * (18)) + 1;
+    TM3_DRAFT_U32(a1 + 4u * (18)) = v5;
+    if (v5 >= TM3_DRAFT_U16(v4))
+        TM3_DRAFT_U32(a1 + 4u * (18)) = 0;
+    return sub_8004A294(29, TM3_DRAFT_U32(a1 + 4u * (14)), TM3_DRAFT_U32(TM3_DRAFT_U32(a1 + 4u * (19)) + 4 * TM3_DRAFT_U32(a1 + 4u * (18)) + 8), (int)(a1 + 24), (int)(a1 + 8), (int)(a1 + 16), 100, 40);
 }
-
 
 /* Unverified draft; TODO items require later review */
 uint32 sub_80048FF0(uint32 a1, uint32 a2, uint32 a3)
 {
     FUNCTION_MARKER(0x80048FF0u, "SCUS_942.49");
-  uint32 v5; 
+    uint32 v5;
 
-  if ( a3 == 32 )
-    return -(uint8)TM3_DRAFT_U8(a2 + 1u * (18));
-  v5 = (a2 + 1u * (4 * (uint8)sub_800564E4(a3) - 128));
-  TM3_DRAFT_U16(a1 + 16) = TM3_DRAFT_U8(v5 + 1u * (23)) - TM3_DRAFT_U8(v5 + 1u * (21)) + 1;
-  TM3_DRAFT_U16(a1 + 18) = TM3_DRAFT_U8(v5 + 1u * (24)) - TM3_DRAFT_U8(v5 + 1u * (22)) + 1;
-  TM3_DRAFT_U8(a1 + 12) = TM3_DRAFT_U8(v5 + 1u * (21)) + TM3_DRAFT_U8(a2);
-  TM3_DRAFT_U8(a1 + 13) = TM3_DRAFT_U8(v5 + 1u * (22)) + TM3_DRAFT_U8(a2 + 1u * (1));
-  return TM3_DRAFT_U8(v5 + 1u * (23)) - TM3_DRAFT_U8(v5 + 1u * (21)) + (uint8)TM3_DRAFT_U8(a2 + 1u * (19));
+    if (a3 == 32)
+        return -(uint8)TM3_DRAFT_U8(a2 + 1u * (18));
+    v5 = (a2 + 1u * (4 * (uint8)sub_800564E4(a3) - 128));
+    TM3_DRAFT_U16(a1 + 16) = TM3_DRAFT_U8(v5 + 1u * (23)) - TM3_DRAFT_U8(v5 + 1u * (21)) + 1;
+    TM3_DRAFT_U16(a1 + 18) = TM3_DRAFT_U8(v5 + 1u * (24)) - TM3_DRAFT_U8(v5 + 1u * (22)) + 1;
+    TM3_DRAFT_U8(a1 + 12) = TM3_DRAFT_U8(v5 + 1u * (21)) + TM3_DRAFT_U8(a2);
+    TM3_DRAFT_U8(a1 + 13) = TM3_DRAFT_U8(v5 + 1u * (22)) + TM3_DRAFT_U8(a2 + 1u * (1));
+    return TM3_DRAFT_U8(v5 + 1u * (23)) - TM3_DRAFT_U8(v5 + 1u * (21)) + (uint8)TM3_DRAFT_U8(a2 + 1u * (19));
 }
-
 
 /* Unverified draft; TODO items require later review */
 uint32 sub_80049130(uint32 a1, uint32 a2)
 {
     FUNCTION_MARKER(0x80049130u, "SCUS_942.49");
-  uint32 v3; 
-  int i; 
-  uint8 v5; 
+    uint32 v3;
+    int i;
+    uint8 v5;
 
-  v3 = a2;
-  for ( i = 0; TM3_DRAFT_U8(v3); ++v3 )
-  {
-    if ( TM3_DRAFT_U32(a1 + 8) )
+    v3 = a2;
+    for (i = 0; TM3_DRAFT_U8(v3); ++v3)
     {
-      if ( TM3_DRAFT_U8(v3) == 32 )
-      {
-        i += TM3_DRAFT_U8(a1 + 18);
-      }
-      else
-      {
-        v5 = sub_800564E4(TM3_DRAFT_U8(v3));
-        i += TM3_DRAFT_U8(a1 + 4 * (v5 - 32) + 23)
-           - TM3_DRAFT_U8(a1 + 4 * (v5 - 32) + 21)
-           + TM3_DRAFT_U8(a1 + 19);
-      }
+        if (TM3_DRAFT_U32(a1 + 8))
+        {
+            if (TM3_DRAFT_U8(v3) == 32)
+            {
+                i += TM3_DRAFT_U8(a1 + 18);
+            }
+            else
+            {
+                v5 = sub_800564E4(TM3_DRAFT_U8(v3));
+                i += TM3_DRAFT_U8(a1 + 4 * (v5 - 32) + 23) - TM3_DRAFT_U8(a1 + 4 * (v5 - 32) + 21) + TM3_DRAFT_U8(a1 + 19);
+            }
+        }
+        else
+        {
+            i += TM3_DRAFT_U8(a1 + 13);
+        }
     }
-    else
-    {
-      i += TM3_DRAFT_U8(a1 + 13);
-    }
-  }
-  return i;
+    return i;
 }
-
 
 /* Unverified draft; TODO items require later review */
 uint32 sub_8002E560(uint32 object, uint32 target)
@@ -1373,121 +1331,115 @@ uint32 sub_8002E560(uint32 object, uint32 target)
     return sub_80033D4C(target, impulse_ptr);
 }
 
-
 /* Unverified draft; TODO items require later review */
 uint32 sub_80012B64(void)
 {
     FUNCTION_MARKER(0x80012B64u, "SCUS_942.49");
-  int result; 
-  uint32 v1; 
-  int v2; 
-  int v3; 
-  int v4; 
+    int result;
+    uint32 v1;
+    int v2;
+    int v3;
+    int v4;
 
-  result = TM3_DRAFT_U32(TM3_DRAFT_U32(0x80089C98u) + 10280);
-  v1 = 0;
-  if ( result )
-  {
-    v2 = 0;
-    do
+    result = TM3_DRAFT_U32(TM3_DRAFT_U32(0x80089C98u) + 10280);
+    v1 = 0;
+    if (result)
     {
-      v3 = TM3_DRAFT_U32(0x80089CA4u) + v2;
-      v4 = TM3_DRAFT_U8(TM3_DRAFT_U32(0x80089CA4u) + v2 + 1);
-      TM3_DRAFT_U16(v3 + 4) = 0;
-      TM3_DRAFT_U8(v3 + 2) = 0;
-      TM3_DRAFT_U32(v3 + 296) = 0;
-      if ( v4 )
-      {
-        sub_80012A20(v3, v4, 0);
-        sub_80012AC8(v3, 0);
-        TM3_DRAFT_U8(v3 + 1) = 0;
-        sub_80012A20(v3, 0, 1u);
-        sub_80012AC8(v3, 1);
-      }
-      result = ++v1 < TM3_DRAFT_U32(TM3_DRAFT_U32(0x80089C98u) + 10280);
-      v2 += 316;
+        v2 = 0;
+        do
+        {
+            v3 = TM3_DRAFT_U32(0x80089CA4u) + v2;
+            v4 = TM3_DRAFT_U8(TM3_DRAFT_U32(0x80089CA4u) + v2 + 1);
+            TM3_DRAFT_U16(v3 + 4) = 0;
+            TM3_DRAFT_U8(v3 + 2) = 0;
+            TM3_DRAFT_U32(v3 + 296) = 0;
+            if (v4)
+            {
+                sub_80012A20(v3, v4, 0);
+                sub_80012AC8(v3, 0);
+                TM3_DRAFT_U8(v3 + 1) = 0;
+                sub_80012A20(v3, 0, 1u);
+                sub_80012AC8(v3, 1);
+            }
+            result = ++v1 < TM3_DRAFT_U32(TM3_DRAFT_U32(0x80089C98u) + 10280);
+            v2 += 316;
+        } while (v1 < TM3_DRAFT_U32(TM3_DRAFT_U32(0x80089C98u) + 10280));
     }
-    while ( v1 < TM3_DRAFT_U32(TM3_DRAFT_U32(0x80089C98u) + 10280) );
-  }
-  return result;
+    return result;
 }
-
 
 /* Unverified draft; TODO items require later review */
 uint32 sub_80035E98(uint32 a1, uint32 a2)
 {
     FUNCTION_MARKER(0x80035E98u, "SCUS_942.49");
-  int v3; 
-  uint32 v4; 
-  uint32 v5; 
-  int v6; 
-  int result; 
-  int v8; 
+    int v3;
+    uint32 v4;
+    uint32 v5;
+    int v6;
+    int result;
+    int v8;
 
-  if ( TM3_DRAFT_U16(a1 + 12) )
-  {
-    v8 = TM3_DRAFT_U16(a1 + 12) + TM3_DRAFT_U8(a1 + 11);
-    result = (sint16)v8 < 4097;
-    TM3_DRAFT_U16(a1 + 12) = v8;
-    if ( (sint16)v8 >= 4097 )
+    if (TM3_DRAFT_U16(a1 + 12))
     {
-      result = v8 - 4096;
-      TM3_DRAFT_U16(a1 + 12) = v8 - 4096;
+        v8 = TM3_DRAFT_U16(a1 + 12) + TM3_DRAFT_U8(a1 + 11);
+        result = (sint16)v8 < 4097;
+        TM3_DRAFT_U16(a1 + 12) = v8;
+        if ((sint16)v8 >= 4097)
+        {
+            result = v8 - 4096;
+            TM3_DRAFT_U16(a1 + 12) = v8 - 4096;
+        }
     }
-  }
-  else
-  {
-    v3 = 108 * TM3_DRAFT_U32(0x80089828u) - 2146624064;
-    v4 = abs32(TM3_DRAFT_U16(a2) - TM3_DRAFT_U32(v3 + 48));
-    v5 = abs32(TM3_DRAFT_U16(a2 + 2u * (2)) - TM3_DRAFT_U32(v3 + 56));
-    v6 = (v4 - v5) & ((int)(v4 - v5) >> 31);
-    LOWORD(v4) = v4 - v6;
-    result = (int)(v6 + v5) / 2;
-    TM3_DRAFT_U16(a1 + 12) = v4 + result;
-  }
-  return result;
+    else
+    {
+        v3 = 108 * TM3_DRAFT_U32(0x80089828u) - 2146624064;
+        v4 = abs32(TM3_DRAFT_U16(a2) - TM3_DRAFT_U32(v3 + 48));
+        v5 = abs32(TM3_DRAFT_U16(a2 + 2u * (2)) - TM3_DRAFT_U32(v3 + 56));
+        v6 = (v4 - v5) & ((int)(v4 - v5) >> 31);
+        LOWORD(v4) = v4 - v6;
+        result = (int)(v6 + v5) / 2;
+        TM3_DRAFT_U16(a1 + 12) = v4 + result;
+    }
+    return result;
 }
-
 
 /* Unverified draft; TODO items require later review */
 uint32 sub_80041BE0(void)
 {
     FUNCTION_MARKER(0x80041BE0u, "SCUS_942.49");
-  int result; 
-  int v1; 
-  int v2; 
-  int v3; 
+    int result;
+    int v1;
+    int v2;
+    int v3;
 
-  result = TM3_DRAFT_U32(0x800D2F14u);
-  if ( !TM3_DRAFT_U32(0x800D2F14u) )
-  {
-    result = ((uint16)TM3_DRAFT_U32(0x80089DF8u) + 68) & 0xFFF;
-    TM3_DRAFT_U32(0x80089DF8u) = result;
-    v1 = 0;
-    if ( TM3_DRAFT_U32(0x800D2E88u) > 0 )
+    result = TM3_DRAFT_U32(0x800D2F14u);
+    if (!TM3_DRAFT_U32(0x800D2F14u))
     {
-      v2 = -2146622488;
-      do
-      {
-        if ( TM3_DRAFT_U32(v2) )
+        result = ((uint16)TM3_DRAFT_U32(0x80089DF8u) + 68) & 0xFFF;
+        TM3_DRAFT_U32(0x80089DF8u) = result;
+        v1 = 0;
+        if (TM3_DRAFT_U32(0x800D2E88u) > 0)
         {
-          v3 = TM3_DRAFT_U32(v2 + 4) - 1;
-          TM3_DRAFT_U32(v2 + 4) = v3;
-          if ( v3 <= 0 )
-          {
-            sub_800415A8(v1);
-            TM3_DRAFT_U32(v2 + 4) = 60;
-          }
+            v2 = -2146622488;
+            do
+            {
+                if (TM3_DRAFT_U32(v2))
+                {
+                    v3 = TM3_DRAFT_U32(v2 + 4) - 1;
+                    TM3_DRAFT_U32(v2 + 4) = v3;
+                    if (v3 <= 0)
+                    {
+                        sub_800415A8(v1);
+                        TM3_DRAFT_U32(v2 + 4) = 60;
+                    }
+                }
+                result = ++v1 < TM3_DRAFT_U32(0x800D2E88u);
+                v2 += 200;
+            } while (v1 < TM3_DRAFT_U32(0x800D2E88u));
         }
-        result = ++v1 < TM3_DRAFT_U32(0x800D2E88u);
-        v2 += 200;
-      }
-      while ( v1 < TM3_DRAFT_U32(0x800D2E88u) );
     }
-  }
-  return result;
+    return result;
 }
-
 
 /* Unverified draft; TODO items require later review */
 uint32 sub_8002F880(uint32 a1)
@@ -1496,30 +1448,25 @@ uint32 sub_8002F880(uint32 a1)
     uint32 original_local_address = TM3_DRAFT_LOCAL_ADDRESS(original_local_words, sizeof(original_local_words));
 
     FUNCTION_MARKER(0x8002F880u, "SCUS_942.49");
-  int v3; 
-  int vars0; 
-  int vars4; 
+    int v3;
+    int vars0;
+    int vars4;
 
-  v3 = TM3_DRAFT_U32(a1 + 4208);
-  if ( v3 )
-  {
-    sub_8004A570(v3);
-    TM3_DRAFT_U32(a1 + 4208) = 0;
-  }
-  else
-  {
-    LOWORD(TM3_DRAFT_I32(original_local_address + 16u)) = (TM3_DRAFT_I16(a1 + 2164) + TM3_DRAFT_I16(a1 + 2052)) / 2;
-    HIWORD(TM3_DRAFT_I32(original_local_address + 16u)) = (TM3_DRAFT_I16(a1 + 2166) + TM3_DRAFT_I16(a1 + 2054)) / 2;
-    LOWORD(TM3_DRAFT_I32(original_local_address + 20u)) = (TM3_DRAFT_I16(a1 + 2168) + TM3_DRAFT_I16(a1 + 2056)) / 2;
-    TM3_DRAFT_U32(a1 + 4208) = sub_8004A294(
-                               TM3_DRAFT_I16(a1 + 4202),
-                               TM3_DRAFT_I16(a1 + 4204),
-                               a1,
-                               (int)TM3_DRAFT_LOCAL_ADDRESS(&TM3_DRAFT_I32(original_local_address + 16u), 8u));
-  }
-  return TM3_DRAFT_U32(a1 + 4208);
+    v3 = TM3_DRAFT_U32(a1 + 4208);
+    if (v3)
+    {
+        sub_8004A570(v3);
+        TM3_DRAFT_U32(a1 + 4208) = 0;
+    }
+    else
+    {
+        LOWORD(TM3_DRAFT_I32(original_local_address + 16u)) = (TM3_DRAFT_I16(a1 + 2164) + TM3_DRAFT_I16(a1 + 2052)) / 2;
+        HIWORD(TM3_DRAFT_I32(original_local_address + 16u)) = (TM3_DRAFT_I16(a1 + 2166) + TM3_DRAFT_I16(a1 + 2054)) / 2;
+        LOWORD(TM3_DRAFT_I32(original_local_address + 20u)) = (TM3_DRAFT_I16(a1 + 2168) + TM3_DRAFT_I16(a1 + 2056)) / 2;
+        TM3_DRAFT_U32(a1 + 4208) = sub_8004A294(TM3_DRAFT_I16(a1 + 4202), TM3_DRAFT_I16(a1 + 4204), a1, (int)TM3_DRAFT_LOCAL_ADDRESS(&TM3_DRAFT_I32(original_local_address + 16u), 8u));
+    }
+    return TM3_DRAFT_U32(a1 + 4208);
 }
-
 
 /* Unverified draft; TODO items require later review */
 uint32 sub_80032B74(uint32 vehicle, uint32 mode)
@@ -1537,7 +1484,6 @@ uint32 sub_80032B74(uint32 vehicle, uint32 mode)
     return sub_8004A294(22u, TM3_DRAFT_U8(TM3_DRAFT_U32(vehicle + 4040u) + 55u), 5u, vehicle, 1200u);
 }
 
-
 /* Unverified draft; TODO items require later review */
 uint32 sub_800163A0(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, ...)
 {
@@ -1545,49 +1491,47 @@ uint32 sub_800163A0(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, ...)
     uint32 original_local_address = TM3_DRAFT_LOCAL_ADDRESS(original_local_words, sizeof(original_local_words));
 
     FUNCTION_MARKER(0x800163A0u, "SCUS_942.49");
-  int v13; 
+    int v13;
 
-  (*(int (*)[2])psx_addr(original_local_address + 16u, sizeof(int[2])))[0] = a1;
-  (*(int (*)[2])psx_addr(original_local_address + 16u, sizeof(int[2])))[1] = TM3_DRAFT_U32(a3);
-  TM3_DRAFT_I16(original_local_address + 24u) = TM3_DRAFT_U16(a3) + TM3_DRAFT_U16(a4);
-  TM3_DRAFT_I16(original_local_address + 26u) = TM3_DRAFT_U16(a3 + 2) + TM3_DRAFT_U16(a4 + 2u * (1));
-  TM3_DRAFT_I32(original_local_address + 28u) = TM3_DRAFT_I16(a4);
-  v13 = TM3_DRAFT_I16(a4 + 2u * (1));
-  TM3_DRAFT_I32(original_local_address + 36u) = a5;
-  TM3_DRAFT_I32(original_local_address + 32u) = v13;
-  if ( v13 >= 0 )
-    TM3_DRAFT_I8(original_local_address + 40u) = 0;
-  else
-    TM3_DRAFT_I8(original_local_address + 40u) = 2;
-  if ( TM3_DRAFT_I32(original_local_address + 28u) >= 0 )
-    TM3_DRAFT_I8(original_local_address + 40u) |= 1u;
-  return sub_80016458(a2, (uint32)0x3E7, TM3_DRAFT_LOCAL_ADDRESS((*(int (*)[2])psx_addr(original_local_address + 16u, sizeof(int[2]))), sizeof((*(int (*)[2])psx_addr(original_local_address + 16u, sizeof(int[2]))))) /* TODO: Local buffer adapter */);
+    (*(int(*)[2])psx_addr(original_local_address + 16u, sizeof(int[2])))[0] = a1;
+    (*(int(*)[2])psx_addr(original_local_address + 16u, sizeof(int[2])))[1] = TM3_DRAFT_U32(a3);
+    TM3_DRAFT_I16(original_local_address + 24u) = TM3_DRAFT_U16(a3) + TM3_DRAFT_U16(a4);
+    TM3_DRAFT_I16(original_local_address + 26u) = TM3_DRAFT_U16(a3 + 2) + TM3_DRAFT_U16(a4 + 2u * (1));
+    TM3_DRAFT_I32(original_local_address + 28u) = TM3_DRAFT_I16(a4);
+    v13 = TM3_DRAFT_I16(a4 + 2u * (1));
+    TM3_DRAFT_I32(original_local_address + 36u) = a5;
+    TM3_DRAFT_I32(original_local_address + 32u) = v13;
+    if (v13 >= 0)
+        TM3_DRAFT_I8(original_local_address + 40u) = 0;
+    else
+        TM3_DRAFT_I8(original_local_address + 40u) = 2;
+    if (TM3_DRAFT_I32(original_local_address + 28u) >= 0)
+        TM3_DRAFT_I8(original_local_address + 40u) |= 1u;
+    return sub_80016458(a2, (uint32)0x3E7, TM3_DRAFT_LOCAL_ADDRESS((*(int(*)[2])psx_addr(original_local_address + 16u, sizeof(int[2]))), sizeof((*(int(*)[2])psx_addr(original_local_address + 16u, sizeof(int[2]))))) /* TODO: Local buffer adapter */);
 }
-
 
 /* Unverified draft; TODO items require later review */
 uint32 sub_80065D34(uint32 a1)
 {
     FUNCTION_MARKER(0x80065D34u, "SCUS_942.49");
-  char v2; 
+    char v2;
 
-  if ( TM3_DRAFT_U32(0x80087DECu) == TM3_DRAFT_U32(0x80087DFCu) && TM3_DRAFT_U32(0x80087DE8u) )
-  {
-    tm3_draft_indirect(TM3_DRAFT_U32(0x80087DDCu), 0u);
-    tm3_draft_indirect(TM3_DRAFT_U32(0x80087DD8u), 0u);
-  }
-  if ( TM3_DRAFT_U32(0x80087E2Cu) )
-  {
-    tm3_draft_indirect(TM3_DRAFT_U32(0x80087DC4u), 1u, TM3_DRAFT_U32(a1 + 12));
-    tm3_draft_indirect(TM3_DRAFT_U32(0x80087DC4u), 1u, TM3_DRAFT_U32(a1 + 12) + 240);
-  }
-  if ( TM3_DRAFT_U8(a1 + 55) )
-    v2 = TM3_DRAFT_U8(a1 + 55);
-  else
-    v2 = 66;
-  return sub_80064DB0(a1, v2);
+    if (TM3_DRAFT_U32(0x80087DECu) == TM3_DRAFT_U32(0x80087DFCu) && TM3_DRAFT_U32(0x80087DE8u))
+    {
+        tm3_draft_indirect(TM3_DRAFT_U32(0x80087DDCu), 0u);
+        tm3_draft_indirect(TM3_DRAFT_U32(0x80087DD8u), 0u);
+    }
+    if (TM3_DRAFT_U32(0x80087E2Cu))
+    {
+        tm3_draft_indirect(TM3_DRAFT_U32(0x80087DC4u), 1u, TM3_DRAFT_U32(a1 + 12));
+        tm3_draft_indirect(TM3_DRAFT_U32(0x80087DC4u), 1u, TM3_DRAFT_U32(a1 + 12) + 240);
+    }
+    if (TM3_DRAFT_U8(a1 + 55))
+        v2 = TM3_DRAFT_U8(a1 + 55);
+    else
+        v2 = 66;
+    return sub_80064DB0(a1, v2);
 }
-
 
 /* Unverified draft; TODO items require later review */
 uint32 sub_8003EFF0(uint32 a1)
@@ -1596,51 +1540,46 @@ uint32 sub_8003EFF0(uint32 a1)
     uint32 original_local_address = TM3_DRAFT_LOCAL_ADDRESS(original_local_words, sizeof(original_local_words));
 
     FUNCTION_MARKER(0x8003EFF0u, "SCUS_942.49");
-  sint16 v2; 
-  sint16 v3; 
-  int v4; 
-  sint16 v5; 
-  sint16 v6; 
-  sint16 v7; 
-  sint16 v8; 
-  int v9; 
-  int v10; 
+    sint16 v2;
+    sint16 v3;
+    int v4;
+    sint16 v5;
+    sint16 v6;
+    sint16 v7;
+    sint16 v8;
+    int v9;
+    int v10;
 
-  v2 = TM3_DRAFT_U16(a1 + 4);
-  TM3_DRAFT_U16(a1 + 60) = TM3_DRAFT_U16(a1);
-  v3 = TM3_DRAFT_U16(a1 + 2);
-  v4 = a1 + 60;
-  TM3_DRAFT_U16(v4 + 4) = v2;
-  TM3_DRAFT_U16(v4 + 2) = v3;
-  v5 = TM3_DRAFT_U16(a1 + 10);
-  v6 = TM3_DRAFT_U16(a1 + 12);
-  TM3_DRAFT_U16(a1 + 66) = TM3_DRAFT_U16(a1 + 8);
-  TM3_DRAFT_U16(a1 + 68) = v5;
-  TM3_DRAFT_U16(a1 + 70) = v6;
-  v7 = TM3_DRAFT_U16(a1 + 18);
-  v8 = TM3_DRAFT_U16(a1 + 20);
-  TM3_DRAFT_U16(a1 + 72) = TM3_DRAFT_U16(a1 + 16);
-  TM3_DRAFT_U16(a1 + 74) = v7;
-  TM3_DRAFT_U16(a1 + 76) = v8;
-  v9 = TM3_DRAFT_U32(a1 + 52);
-  v10 = TM3_DRAFT_U32(a1 + 56);
-  (*(int (*)[4])psx_addr(original_local_address + 16u, sizeof(int[4])))[0] = 0u - TM3_DRAFT_U32(a1 + 48);
-  (*(int (*)[4])psx_addr(original_local_address + 16u, sizeof(int[4])))[1] = 0u - (uint32)v9;
-  (*(int (*)[4])psx_addr(original_local_address + 16u, sizeof(int[4])))[2] = 0u - (uint32)v10;
-  return sub_8005B774((uint32)v4, TM3_DRAFT_LOCAL_ADDRESS((*(int (*)[4])psx_addr(original_local_address + 16u, sizeof(int[4]))), sizeof((*(int (*)[4])psx_addr(original_local_address + 16u, sizeof(int[4]))))), (uint32)(a1 + 80));
+    v2 = TM3_DRAFT_U16(a1 + 4);
+    TM3_DRAFT_U16(a1 + 60) = TM3_DRAFT_U16(a1);
+    v3 = TM3_DRAFT_U16(a1 + 2);
+    v4 = a1 + 60;
+    TM3_DRAFT_U16(v4 + 4) = v2;
+    TM3_DRAFT_U16(v4 + 2) = v3;
+    v5 = TM3_DRAFT_U16(a1 + 10);
+    v6 = TM3_DRAFT_U16(a1 + 12);
+    TM3_DRAFT_U16(a1 + 66) = TM3_DRAFT_U16(a1 + 8);
+    TM3_DRAFT_U16(a1 + 68) = v5;
+    TM3_DRAFT_U16(a1 + 70) = v6;
+    v7 = TM3_DRAFT_U16(a1 + 18);
+    v8 = TM3_DRAFT_U16(a1 + 20);
+    TM3_DRAFT_U16(a1 + 72) = TM3_DRAFT_U16(a1 + 16);
+    TM3_DRAFT_U16(a1 + 74) = v7;
+    TM3_DRAFT_U16(a1 + 76) = v8;
+    v9 = TM3_DRAFT_U32(a1 + 52);
+    v10 = TM3_DRAFT_U32(a1 + 56);
+    (*(int(*)[4])psx_addr(original_local_address + 16u, sizeof(int[4])))[0] = 0u - TM3_DRAFT_U32(a1 + 48);
+    (*(int(*)[4])psx_addr(original_local_address + 16u, sizeof(int[4])))[1] = 0u - (uint32)v9;
+    (*(int(*)[4])psx_addr(original_local_address + 16u, sizeof(int[4])))[2] = 0u - (uint32)v10;
+    return sub_8005B774((uint32)v4, TM3_DRAFT_LOCAL_ADDRESS((*(int(*)[4])psx_addr(original_local_address + 16u, sizeof(int[4]))), sizeof((*(int(*)[4])psx_addr(original_local_address + 16u, sizeof(int[4]))))), (uint32)(a1 + 80));
 }
-
 
 /* Unverified draft; TODO items require later review */
 uint32 sub_800148DC(uint32 a1, uint32 a2, uint32 a3, uint32 a4)
 {
     FUNCTION_MARKER(0x800148DCu, "SCUS_942.49");
-    sint32 coordinates[3] = {
-        TM3_DRAFT_I16(a2), TM3_DRAFT_I16(a2 + 2u), TM3_DRAFT_I16(a2 + 4u)
-    };
-    uint32 previous[3] = {
-        TM3_DRAFT_U32(a1), TM3_DRAFT_U32(a1 + 4u), TM3_DRAFT_U32(a1 + 8u)
-    };
+    sint32 coordinates[3] = {TM3_DRAFT_I16(a2), TM3_DRAFT_I16(a2 + 2u), TM3_DRAFT_I16(a2 + 4u)};
+    uint32 previous[3] = {TM3_DRAFT_U32(a1), TM3_DRAFT_U32(a1 + 4u), TM3_DRAFT_U32(a1 + 8u)};
     uint32 result = 32u - a4;
     uint32 lower_shift = (a4 - 1u) & 31u;
     uint32 upper_shift = result & 31u;
@@ -1655,9 +1594,6 @@ uint32 sub_800148DC(uint32 a1, uint32 a2, uint32 a3, uint32 a4)
     return result;
 }
 
-
-
-
 uint32 sub_80053E90(uint32 context, uint32 x, uint32 y)
 {
     FUNCTION_MARKER(0x80053E90u, "SCUS_942.49");
@@ -1667,15 +1603,19 @@ uint32 sub_80053E90(uint32 context, uint32 x, uint32 y)
 void sub_8002BD84(uint32 object)
 {
     FUNCTION_MARKER(0x8002BD84u, "SCUS_942.49");
-    if (TM3_DRAFT_U8(object + 1u) == 1u) {
+    if (TM3_DRAFT_U8(object + 1u) == 1u)
+    {
         uint32 previous = TM3_DRAFT_U16(object + 4u);
         TM3_DRAFT_U16(object + 4u) = previous + 1u;
         uint32 delay = TM3_DRAFT_U16(object + 8u);
-        if (previous >= delay && delay != 255u) {
+        if (previous >= delay && delay != 255u)
+        {
             TM3_DRAFT_U8(object + 1u) = 2u;
             TM3_DRAFT_U16(object + 4u) = 0u;
         }
-    } else {
+    }
+    else
+    {
         TM3_DRAFT_U16(object + 6u) = (TM3_DRAFT_U16(object + 6u) + 200u) & 0xFFFu;
     }
 }
@@ -1685,10 +1625,12 @@ uint32 sub_8002BCE4(uint32 object)
     FUNCTION_MARKER(0x8002BCE4u, "SCUS_942.49");
     uint32 index = TM3_DRAFT_U32(TM3_DRAFT_U32(object + 48u) + 16u);
     uint32 result = index << 2;
-    if ((sint32)index >= 0) {
+    if ((sint32)index >= 0)
+    {
         result = TM3_DRAFT_U32(0x80089CA4u) + 316u * index;
         uint32 buffer = TM3_DRAFT_U32(result + 296u);
-        if (buffer != 0u) {
+        if (buffer != 0u)
+        {
             sub_8004A0F8(buffer);
             index = TM3_DRAFT_U32(TM3_DRAFT_U32(object + 48u) + 16u);
             result = TM3_DRAFT_U32(0x80089CA4u) + 316u * index;

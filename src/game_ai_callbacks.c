@@ -96,8 +96,7 @@ uint32 sub_8001D390(uint32 object)
         {
             dx = (sint16)(TM3_DRAFT_U16(object + 0xD2Cu) - TM3_DRAFT_U16(object + 0xD14u));
             dy = (sint16)(TM3_DRAFT_U16(object + 0xD2Eu) - TM3_DRAFT_U16(object + 0xD16u));
-            ratio = tm3_ai_divide(sub_8005B124(tm3_ai_product(dx, dx) + tm3_ai_product(dy, dy)) << 12,
-                                  TM3_DRAFT_I16(object + 0xD40u));
+            ratio = tm3_ai_divide(sub_8005B124(tm3_ai_product(dx, dx) + tm3_ai_product(dy, dy)) << 12, TM3_DRAFT_I16(object + 0xD40u));
             if (ratio < 0)
                 ratio = 0;
             else if (ratio > 4096)
@@ -116,8 +115,7 @@ uint32 sub_8001D390(uint32 object)
                     vertices = TM3_DRAFT_U32(model + 0x1Cu);
                     x = vertices + 4u * TM3_DRAFT_U16(front + 6u);
                     y = vertices + 4u * TM3_DRAFT_U16(front + 4u);
-                    dot = (sint32)(tm3_ai_product(TM3_DRAFT_I16(object + 0xD1Cu), TM3_DRAFT_I16((uint32)x) - TM3_DRAFT_I16((uint32)y))
-                          + tm3_ai_product(TM3_DRAFT_I16(object + 0xD1Eu), TM3_DRAFT_I16((uint32)x + 2u) - TM3_DRAFT_I16((uint32)y + 2u)));
+                    dot = (sint32)(tm3_ai_product(TM3_DRAFT_I16(object + 0xD1Cu), TM3_DRAFT_I16((uint32)x) - TM3_DRAFT_I16((uint32)y)) + tm3_ai_product(TM3_DRAFT_I16(object + 0xD1Eu), TM3_DRAFT_I16((uint32)x + 2u) - TM3_DRAFT_I16((uint32)y + 2u)));
                     if (dot > 0)
                         turn = -turn;
                 }
@@ -163,34 +161,34 @@ uint32 sub_8001E2BC(uint32 object)
     phase = TM3_DRAFT_I16(object + 0xD0Eu);
     switch (phase)
     {
-    case 0:
-    case 2:
-    case 4:
-        TM3_DRAFT_U8(object + 0xD02u) = phase == 0 ? 0u : (phase == 2 ? 240u : 16u);
-        sub_8001C9EC(object);
-        specification = TM3_DRAFT_U32(object + 0xFC8u);
-        value = TM3_DRAFT_U8(specification + 0x55u);
-        TM3_DRAFT_U8(object + 0xD04u) = 0;
-        TM3_DRAFT_U8(object + 0xD03u) = (uint8)value;
-        break;
-    case 1:
-    case 3:
-    case 5:
-        TM3_DRAFT_U8(object + 0xD02u) = phase == 1 ? 0u : 240u;
-        sub_8001C9F8(object);
-        specification = TM3_DRAFT_U32(object + 0xFC8u);
-        value = TM3_DRAFT_U8(specification + 0x54u);
-        TM3_DRAFT_U8(object + 0xD04u) = 0;
-        TM3_DRAFT_U8(object + 0xD03u) = (uint8)value;
-        break;
-    case 6:
-        TM3_DRAFT_U32(object + 0xF9Cu) = 0;
-        break;
-    case 7:
-        TM3_DRAFT_U16(object + 0xD4Eu) = 30;
-        break;
-    default:
-        break;
+        case 0:
+        case 2:
+        case 4:
+            TM3_DRAFT_U8(object + 0xD02u) = phase == 0 ? 0u : (phase == 2 ? 240u : 16u);
+            sub_8001C9EC(object);
+            specification = TM3_DRAFT_U32(object + 0xFC8u);
+            value = TM3_DRAFT_U8(specification + 0x55u);
+            TM3_DRAFT_U8(object + 0xD04u) = 0;
+            TM3_DRAFT_U8(object + 0xD03u) = (uint8)value;
+            break;
+        case 1:
+        case 3:
+        case 5:
+            TM3_DRAFT_U8(object + 0xD02u) = phase == 1 ? 0u : 240u;
+            sub_8001C9F8(object);
+            specification = TM3_DRAFT_U32(object + 0xFC8u);
+            value = TM3_DRAFT_U8(specification + 0x54u);
+            TM3_DRAFT_U8(object + 0xD04u) = 0;
+            TM3_DRAFT_U8(object + 0xD03u) = (uint8)value;
+            break;
+        case 6:
+            TM3_DRAFT_U32(object + 0xF9Cu) = 0;
+            break;
+        case 7:
+            TM3_DRAFT_U16(object + 0xD4Eu) = 30;
+            break;
+        default:
+            break;
     }
 
     TM3_DRAFT_U16(object + 0xD0Eu) = (uint16)(TM3_DRAFT_U16(object + 0xD0Eu) + 1u);

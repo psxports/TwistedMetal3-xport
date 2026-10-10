@@ -44,7 +44,8 @@ uint32 sub_80044018(void)
     w_u32(base + 0xd0u, 0u);
     w_u32(base + 0xd4u, 0xffffffffu);
     w_u32(base + 0xb8u, 0u);
-    for (uint32 player = 0; player < 8u; ++player) {
+    for (uint32 player = 0; player < 8u; ++player)
+    {
         uint32 record = base + player * 0x90u;
         w_u32(record + 0x184u, 2u);
         w_u32(record + 0x178u, 1u);
@@ -57,7 +58,8 @@ uint32 sub_80044018(void)
     sub_80054C24(0u);
     /* Memory cards are absent by user instruction */
     sub_80054C24(0u);
-    for (uint32 offset = 0; offset < 0x5d0u; offset += 16u) {
+    for (uint32 offset = 0; offset < 0x5d0u; offset += 16u)
+    {
         uint32 t0 = r_u32(base + offset);
         uint32 t1 = r_u32(base + offset + 4u);
         uint32 t2 = r_u32(base + offset + 8u);
@@ -161,7 +163,6 @@ void sub_80056944(uint32 mode)
 {
     FUNCTION_MARKER(0x80056944u, "SCUS_942.49");
     /* Memory cards are absent by user instruction */
-    (void)mode;
 }
 
 uint32 sub_8003E778(void)
@@ -207,8 +208,7 @@ uint32 sub_80054C24(uint32 value)
 uint32 sub_8003E660(void)
 {
     FUNCTION_MARKER(0x8003E660u, "SCUS_942.49");
-    PadInitDirect((uint8 *)psx_addr(0x800d1bd8u, 8u),
-                  (uint8 *)psx_addr(0x800d1bfau, 8u));
+    PadInitDirect((uint8 *)psx_addr(0x800d1bd8u, 8u), (uint8 *)psx_addr(0x800d1bfau, 8u));
     PadStartCom();
     uint32 result = sub_8003E6D8();
     return result;
@@ -238,4 +238,3 @@ uint32 sub_80056EC4(void)
     /* User-authorized unimplemented BIOS boundary */
     abort();
 }
-

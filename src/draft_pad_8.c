@@ -1,5 +1,6 @@
 #include "game_draft_support.h"
 #include "game_draft_signatures.h"
+#include "game_movie.h"
 
 /* Unverified draft; TODO items require later review */
 uint32 sub_8001C23C(uint32 a1)
@@ -170,13 +171,10 @@ uint32 sub_8004A5D8(uint32 a1)
 
 
 /* Unverified draft; TODO items require later review */
-uint32 sub_800562C0(uint32 a1, uint32 a2)
+uint32 sub_800562C0(uint32 movie, uint32 skippable)
 {
     FUNCTION_MARKER(0x800562C0u, "SCUS_942.49");
-    (void)a1;
-    (void)a2;
-    /* Movie playback absent by user instruction */
-    return 0u;
+    return tm3_movie_play(movie, skippable);
 }
 
 /* Unverified draft; TODO items require later review */

@@ -335,3 +335,47 @@ void sub_80031774(uint32 object)
     /* Original destructor immediately returns */
     (void)object;
 }
+
+/* Unverified decompiler-derived draft */
+uint32 sub_800321F4(uint32 vehicle, uint32 mode)
+{
+    uint32 active, target, created, model, point_words[2], matrix_words[8];
+    uint32 point = TM3_DRAFT_LOCAL_ADDRESS(point_words, sizeof(point_words));
+    uint32 matrix = TM3_DRAFT_LOCAL_ADDRESS(matrix_words, sizeof(matrix_words));
+    FUNCTION_MARKER(0x800321F4u, "SCUS_942.49");
+    active = TM3_DRAFT_U32(vehicle + 4368u);
+    if (active != 0u)
+    {
+        sub_8002DEA4(active);
+        TM3_DRAFT_U32(vehicle + 4368u) = 0u;
+    }
+    else
+    {
+        target = sub_8002E964(mode, vehicle, matrix);
+        sub_80026B88(vehicle, 2u, point);
+        created = sub_8004A294(8u, 15u, 16u, vehicle, target, point, matrix, mode);
+        if (created != 0u)
+        {
+            uint32 index = 0u;
+            sint32 count;
+            TM3_DRAFT_U16(created + 324u) = 0u;
+            model = TM3_DRAFT_U32(vehicle);
+            count = TM3_DRAFT_I32(model);
+            while ((sint32)index < count)
+            {
+                if (TM3_DRAFT_I8(model + 59u) == 4)
+                {
+                    TM3_DRAFT_U16(created + 324u) = (uint16)index;
+                    break;
+                }
+                ++index;
+                model += 24u;
+            }
+            TM3_DRAFT_U32(vehicle + 4368u) = created;
+        }
+    }
+    /* Sound flags 5 consume only sound, flags, vehicle and intensity */
+    sub_8004A294(22u, TM3_DRAFT_U8(TM3_DRAFT_U32(vehicle + 4040u) + 55u),
+                5u, vehicle, 1200u);
+    return TM3_DRAFT_U32(vehicle + 4368u);
+}

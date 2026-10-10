@@ -659,84 +659,70 @@ LABEL_15:
 
 
 /* Unverified draft; TODO items require later review */
-uint32 sub_80039CCC(uint32 a1, uint32 a2, uint32 a3, uint32 a4)
+uint32 sub_80039CCC(uint32 object, uint32 ordering_table, uint32 cursor, uint32 end)
 {
-    uint32 original_local_words[22];
-    uint32 original_local_address = TM3_DRAFT_LOCAL_ADDRESS(original_local_words, sizeof(original_local_words));
-
-    sint32 cpu_a0;
-    uint32 cpu_v0;
+    sint16 vertices[4][4];
+    uint32 matrix_words[8], flags;
+    uint32 matrix, flags_address, packet, bucket, result, i;
+    sint32 width, depth;
     FUNCTION_MARKER(0x80039CCCu, "SCUS_942.49");
-  int result; 
-  sint16 v8; 
-  int v10; 
-  int v13; 
-
-  result = TM3_DRAFT_U32(a3) + 40 < a4;
-  if ( TM3_DRAFT_U32(a3) + 40 < a4 )
-  {
+    result = TM3_DRAFT_U32(cursor) + 40u < end;
+    if (!result)
+        return result;
     sub_8005B8D4();
-    TM3_DRAFT_I16(original_local_address + 32u) = ((TM3_DRAFT_I16(a1 + 22) > 0) - TM3_DRAFT_I16(a1 + 22)) >> 1;
-    (*(sint16 (*)[8])psx_addr(original_local_address + 16u, sizeof(sint16[8])))[0] = TM3_DRAFT_I16(original_local_address + 32u);
-    (*(sint16 (*)[4])psx_addr(original_local_address + 40u, sizeof(sint16[4])))[0] = TM3_DRAFT_I16(a1 + 22) / 2;
-    (*(sint16 (*)[8])psx_addr(original_local_address + 16u, sizeof(sint16[8])))[4] = (*(sint16 (*)[4])psx_addr(original_local_address + 40u, sizeof(sint16[4])))[0];
-    v8 = TM3_DRAFT_U16(a1 + 14);
-    (*(sint16 (*)[4])psx_addr(original_local_address + 40u, sizeof(sint16[4])))[2] = 0;
-    TM3_DRAFT_I16(original_local_address + 36u) = 0;
-    (*(sint16 (*)[8])psx_addr(original_local_address + 16u, sizeof(sint16[8])))[6] = 0;
-    (*(sint16 (*)[8])psx_addr(original_local_address + 16u, sizeof(sint16[8])))[2] = 0;
-    (*(sint16 (*)[4])psx_addr(original_local_address + 40u, sizeof(sint16[4])))[1] = 0;
-    TM3_DRAFT_I16(original_local_address + 34u) = 0;
-    (*(sint16 (*)[8])psx_addr(original_local_address + 16u, sizeof(sint16[8])))[5] = -v8;
-    (*(sint16 (*)[8])psx_addr(original_local_address + 16u, sizeof(sint16[8])))[1] = -v8;
-    sub_80014128(TM3_DRAFT_LOCAL_ADDRESS((*(int (*)[5])psx_addr(original_local_address + 48u, sizeof(int[5]))), sizeof((*(int (*)[5])psx_addr(original_local_address + 48u, sizeof(int[5]))))) /* TODO: Local buffer adapter */);
-    sub_8005C3C4(a1, TM3_DRAFT_LOCAL_ADDRESS((*(char (*)[12])psx_addr(original_local_address + 68u, sizeof(char[12]))), sizeof((*(char (*)[12])psx_addr(original_local_address + 68u, sizeof(char[12]))))) /* TODO: Local buffer adapter */, TM3_DRAFT_LOCAL_ADDRESS((*(char (*)[8])psx_addr(original_local_address + 80u, sizeof(char[8]))), sizeof((*(char (*)[8])psx_addr(original_local_address + 80u, sizeof(char[8]))))));
-    sub_8005BD24( TM3_DRAFT_LOCAL_ADDRESS((*(int (*)[5])psx_addr(original_local_address + 48u, sizeof(int[5]))), sizeof((*(int (*)[5])psx_addr(original_local_address + 48u, sizeof(int[5]))))));
-    sub_8005BDB4( TM3_DRAFT_LOCAL_ADDRESS((*(int (*)[5])psx_addr(original_local_address + 48u, sizeof(int[5]))), sizeof((*(int (*)[5])psx_addr(original_local_address + 48u, sizeof(int[5]))))));
-    cpu_v0 = TM3_DRAFT_LOCAL_ADDRESS((*(sint16 (*)[8])psx_addr(original_local_address + 16u, sizeof(sint16[8]))), sizeof((*(sint16 (*)[8])psx_addr(original_local_address + 16u, sizeof(sint16[8])))));
-    v10 = TM3_DRAFT_U32(a3);
-    xport_gte_write_data(0u, TM3_DRAFT_U32(cpu_v0 + 0u));
-xport_gte_write_data(1u, TM3_DRAFT_U32(cpu_v0 + 4u));
-xport_gte_write_data(2u, TM3_DRAFT_U32(cpu_v0 + 8u));
-xport_gte_write_data(3u, TM3_DRAFT_U32(cpu_v0 + 0xCu));
-xport_gte_write_data(4u, TM3_DRAFT_U32(cpu_v0 + 0x10u));
-xport_gte_write_data(5u, TM3_DRAFT_U32(cpu_v0 + 0x14u));
-xport_gte_execute(0x280030u);
-    TM3_DRAFT_U32(v10 + 12) = TM3_DRAFT_U32(a1 + 32);
-    TM3_DRAFT_U32(v10 + 20) = TM3_DRAFT_U32(a1 + 36);
-    TM3_DRAFT_U32(cpu_v0 + 0u) = xport_gte_read_data(12u);
-TM3_DRAFT_U32(cpu_v0 + 0u) = xport_gte_read_data(13u);
-TM3_DRAFT_U32(cpu_v0 + 0u) = xport_gte_read_data(14u);
-cpu_a0 = xport_gte_read_data(19u);
-    cpu_v0 = TM3_DRAFT_LOCAL_ADDRESS((*(sint16 (*)[4])psx_addr(original_local_address + 40u, sizeof(sint16[4]))), sizeof((*(sint16 (*)[4])psx_addr(original_local_address + 40u, sizeof(sint16[4])))));
-    xport_gte_write_data(0u, TM3_DRAFT_U32(cpu_v0 + 0u));
-xport_gte_write_data(1u, TM3_DRAFT_U32(cpu_v0 + 4u));
-xport_gte_execute(0x180001u);
-    TM3_DRAFT_U16(v10 + 28) = TM3_DRAFT_U16(a1 + 40);
-    TM3_DRAFT_U16(v10 + 36) = TM3_DRAFT_U16(a1 + 42);
-    result = TM3_DRAFT_U16(a1 + 42u);
-    if ( cpu_a0 > 0 )
+    width = TM3_DRAFT_I16(object + 22u);
+    vertices[0][0] = vertices[2][0] = (sint16)(-width / 2);
+    vertices[1][0] = vertices[3][0] = (sint16)(width / 2);
+    vertices[0][1] = vertices[1][1] = (sint16)(0u - TM3_DRAFT_U16(object + 14u));
+    vertices[2][1] = vertices[3][1] = 0;
+    for (i = 0; i < 4u; ++i)
+        vertices[i][2] = 0;
+    /* TODO Original SVECTOR and MATRIX padding are undefined */
+    matrix = TM3_DRAFT_LOCAL_ADDRESS(matrix_words, sizeof(matrix_words));
+    flags_address = TM3_DRAFT_LOCAL_ADDRESS(&flags, sizeof(flags));
+    sub_80014128(matrix);
+    sub_8005C3C4(object, matrix + 20u, flags_address);
+    sub_8005BD24(matrix);
+    sub_8005BDB4(matrix);
+    packet = TM3_DRAFT_U32(cursor);
+    for (i = 0; i < 3u; ++i)
     {
-      TM3_DRAFT_U32(cpu_v0 + 0u) = xport_gte_read_data(14u);
-      cpu_a0 = (cpu_a0 >> 2) - 24;
-      if ( cpu_a0 < 0 )
-        cpu_a0 = 0;
-      result = cpu_a0 < TM3_DRAFT_I32(0x80089DD0u);
-      if ( result )
-      {
-        cpu_a0 = 4 * cpu_a0 + a2;
-        TM3_DRAFT_U32(v10 + 4) = TM3_DRAFT_U32(a1 + 28);
-        v13 = v10 & 0xFFFFFF;
-        result = TM3_DRAFT_U32(cpu_a0) & 0xFFFFFF | 0x9000000;
-        TM3_DRAFT_U32(v10) = result;
-        v10 += 40;
-        TM3_DRAFT_U32(cpu_a0) = v13;
-      }
+        xport_gte_write_data(2u * i, (uint16)vertices[i][0] | ((uint32)(uint16)vertices[i][1] << 16));
+        xport_gte_write_data(2u * i + 1u, (uint16)vertices[i][2]);
+    }
+    xport_gte_execute(0x280030u);
+    TM3_DRAFT_U32(packet + 12u) = TM3_DRAFT_U32(object + 32u);
+    TM3_DRAFT_U32(packet + 20u) = TM3_DRAFT_U32(object + 36u);
+    TM3_DRAFT_U32(packet + 8u) = xport_gte_read_data(12u);
+    TM3_DRAFT_U32(packet + 16u) = xport_gte_read_data(13u);
+    TM3_DRAFT_U32(packet + 24u) = xport_gte_read_data(14u);
+    depth = (sint32)xport_gte_read_data(19u);
+    xport_gte_write_data(0u, (uint16)vertices[3][0] | ((uint32)(uint16)vertices[3][1] << 16));
+    xport_gte_write_data(1u, (uint16)vertices[3][2]);
+    xport_gte_execute(0x180001u);
+    TM3_DRAFT_U16(packet + 28u) = TM3_DRAFT_U16(object + 40u);
+    result = TM3_DRAFT_U16(object + 42u);
+    TM3_DRAFT_U16(packet + 36u) = (uint16)result;
+    if (depth > 0)
+    {
+        TM3_DRAFT_U32(packet + 32u) = xport_gte_read_data(14u);
+        depth = (depth >> 2) - 24;
+        if (depth < 0)
+            depth = 0;
+        result = depth < TM3_DRAFT_I32(0x80089DD0u);
+        if (result)
+        {
+            bucket = ordering_table + 4u * (uint32)depth;
+            TM3_DRAFT_U32(packet + 4u) = TM3_DRAFT_U32(object + 28u);
+            result = (TM3_DRAFT_U32(bucket) & 0x00FFFFFFu) | 0x09000000u;
+            TM3_DRAFT_U32(packet) = result;
+            TM3_DRAFT_U32(bucket) = packet & 0x00FFFFFFu;
+            packet += 40u;
+        }
     }
     sub_8005B978();
-    TM3_DRAFT_U32(a3) = v10;
-  }
-  return result;
+    TM3_DRAFT_U32(cursor) = packet;
+    return result;
 }
 
 
@@ -803,73 +789,48 @@ LABEL_12:
 
 
 /* Unverified draft; TODO items require later review */
-uint32 sub_80027E00(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, ...)
+uint32 sub_80027E00(uint32 object, uint32 ordering_table, uint32 cursor, uint32 end, uint32 view)
 {
-    uint32 original_local_words[24];
-    uint32 original_local_address = TM3_DRAFT_LOCAL_ADDRESS(original_local_words, sizeof(original_local_words));
-
+    sint16 vertices[3][4];
+    uint32 matrix_words[8], clip, flags;
+    uint32 matrix, points, clip_address, flags_address, index, size, packet, bucket, result;
+    sint32 depth, negative_half;
     FUNCTION_MARKER(0x80027E00u, "SCUS_942.49");
-  int result; 
-  int v17; 
-  int v18; 
-  uint32 v19; 
-  int v20; 
-  uint32 v21; 
-
-  result = TM3_DRAFT_U32(a3) + 240 < a4;
-  if ( TM3_DRAFT_U32(a3) + 240 < a4 )
-  {
-    v17 = 0;
+    result = TM3_DRAFT_U32(cursor) + 240u < end;
+    if (!result)
+        return result;
     sub_8005B8D4();
-    v18 = 4;
-    do
+    matrix = TM3_DRAFT_LOCAL_ADDRESS(matrix_words, sizeof(matrix_words));
+    points = TM3_DRAFT_LOCAL_ADDRESS(vertices, sizeof(vertices));
+    clip_address = TM3_DRAFT_LOCAL_ADDRESS(&clip, sizeof(clip));
+    flags_address = TM3_DRAFT_LOCAL_ADDRESS(&flags, sizeof(flags));
+    /* TODO Original SVECTOR padding is undefined */
+    for (index = 0; index < 12u; ++index)
     {
-      HIWORD(TM3_DRAFT_I32(original_local_address + 40u)) = ((TM3_DRAFT_U8(a1 + 1) != 0) - TM3_DRAFT_U8(a1 + 1)) >> 1;
-      HIWORD(TM3_DRAFT_I32(original_local_address + 32u)) = HIWORD(TM3_DRAFT_I32(original_local_address + 40u));
-      TM3_DRAFT_I16(original_local_address + 48u) = HIWORD(TM3_DRAFT_I32(original_local_address + 40u));
-      LOWORD(TM3_DRAFT_I32(original_local_address + 32u)) = HIWORD(TM3_DRAFT_I32(original_local_address + 40u));
-      v19 = TM3_DRAFT_U8(a1 + 1);
-      TM3_DRAFT_I16(original_local_address + 52u) = 0;
-      LOWORD(TM3_DRAFT_U32(original_local_address + 44u)) = 0;
-      LOWORD(TM3_DRAFT_I32(original_local_address + 36u)) = 0;
-      TM3_DRAFT_I16(original_local_address + 50u) = v19 >> 1;
-      LOWORD(TM3_DRAFT_I32(original_local_address + 40u)) = TM3_DRAFT_I16(original_local_address + 50u);
-      sub_8005B614((uint32)a5, (uint32)(a1 + v18), TM3_DRAFT_LOCAL_ADDRESS((*(int (*)[8])psx_addr(original_local_address + 56u, sizeof(int[8]))), sizeof((*(int (*)[8])psx_addr(original_local_address + 56u, sizeof(int[8]))))));
-      sub_8005BD24( TM3_DRAFT_LOCAL_ADDRESS((*(int (*)[8])psx_addr(original_local_address + 56u, sizeof(int[8]))), sizeof((*(int (*)[8])psx_addr(original_local_address + 56u, sizeof(int[8]))))));
-      sub_8005BDB4( TM3_DRAFT_LOCAL_ADDRESS((*(int (*)[8])psx_addr(original_local_address + 56u, sizeof(int[8]))), sizeof((*(int (*)[8])psx_addr(original_local_address + 56u, sizeof(int[8]))))));
-      v20 = sub_8005C364(
-              (int)TM3_DRAFT_LOCAL_ADDRESS(&TM3_DRAFT_I32(original_local_address + 32u), sizeof(TM3_DRAFT_I32(original_local_address + 32u))) /* TODO: Local buffer adapter */,
-              (int)TM3_DRAFT_LOCAL_ADDRESS(&TM3_DRAFT_I32(original_local_address + 40u), sizeof(TM3_DRAFT_I32(original_local_address + 40u))) /* TODO: Local buffer adapter */,
-              (int)TM3_DRAFT_LOCAL_ADDRESS(&TM3_DRAFT_I16(original_local_address + 48u), sizeof(TM3_DRAFT_I16(original_local_address + 48u))) /* TODO: Local buffer adapter */,
-              TM3_DRAFT_U32(a3) + 8,
-              TM3_DRAFT_U32(a3) + 12,
-              TM3_DRAFT_U32(a3) + 16,
-              TM3_DRAFT_LOCAL_ADDRESS((*(char (*)[4])psx_addr(original_local_address + 88u, sizeof(char[4]))), sizeof((*(char (*)[4])psx_addr(original_local_address + 88u, sizeof(char[4]))))) /* TODO: Local buffer adapter */,
-              TM3_DRAFT_LOCAL_ADDRESS((*(char (*)[4])psx_addr(original_local_address + 92u, sizeof(char[4]))), sizeof((*(char (*)[4])psx_addr(original_local_address + 92u, sizeof(char[4]))))) /* TODO: Local buffer adapter */);
-      if ( v20 >= 21 )
-      {
-        v21 = v20 >= TM3_DRAFT_U32(0x80089DD0u);
-        v20 *= 4;
-        if ( !v21 )
+        size = TM3_DRAFT_U8(object + 1u);
+        negative_half = -(sint32)size / 2;
+        vertices[0][0] = vertices[0][1] = vertices[1][1] = vertices[2][0] = (sint16)negative_half;
+        vertices[1][0] = vertices[2][1] = (sint16)(size >> 1);
+        vertices[0][2] = vertices[1][2] = vertices[2][2] = 0;
+        sub_8005B614(view, object + 4u + 48u * index, matrix);
+        sub_8005BD24(matrix);
+        sub_8005BDB4(matrix);
+        packet = TM3_DRAFT_U32(cursor);
+        depth = (sint32)sub_8005C364(points, points + 8u, points + 16u,
+            packet + 8u, packet + 12u, packet + 16u, clip_address, flags_address);
+        if (depth >= 21 && depth < TM3_DRAFT_I32(0x80089DD0u))
         {
-          v20 += a2;
-          TM3_DRAFT_U32(TM3_DRAFT_U32(a3) + 4) = TM3_DRAFT_U32(a1 + 580);
-          TM3_DRAFT_U8(TM3_DRAFT_U32(a3) + 3) = 4;
-          TM3_DRAFT_U8(TM3_DRAFT_U32(a3) + 7) = 32;
-          TM3_DRAFT_U32(TM3_DRAFT_U32(a3)) = TM3_DRAFT_U32(TM3_DRAFT_U32(a3)) & 0xFF000000 | TM3_DRAFT_U32(v20) & 0xFFFFFF;
-          TM3_DRAFT_U32(v20) = TM3_DRAFT_U32(v20) & 0xFF000000 | TM3_DRAFT_U32(a3) & 0xFFFFFF;
-          TM3_DRAFT_U32(a3) += 20;
+            bucket = ordering_table + 4u * (uint32)depth;
+            TM3_DRAFT_U32(packet + 4u) = TM3_DRAFT_U32(object + 580u);
+            TM3_DRAFT_U8(packet + 3u) = 4u;
+            TM3_DRAFT_U8(packet + 7u) = 32u;
+            TM3_DRAFT_U32(packet) = (TM3_DRAFT_U32(packet) & 0xFF000000u) | (TM3_DRAFT_U32(bucket) & 0x00FFFFFFu);
+            TM3_DRAFT_U32(bucket) = (TM3_DRAFT_U32(bucket) & 0xFF000000u) | (packet & 0x00FFFFFFu);
+            TM3_DRAFT_U32(cursor) = packet + 20u;
         }
-      }
-      ++v17;
-      v18 += 48;
     }
-    while ( v17 < 12 );
     sub_8005B978();
-    /* Original loop comparison leaves V0 zero before PopMatrix */
     return 0u;
-  }
-  return result;
 }
 
 

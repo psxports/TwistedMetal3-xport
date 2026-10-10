@@ -190,26 +190,20 @@ uint32 sub_80065EB8(uint32 a1)
 }
 
 /* Unverified decompiler-derived draft */
-uint32 sub_8001A728(uint32 a1)
+uint32 sub_8001A728(uint32 vehicle)
 {
-  uint32 result; /* TODO Guest callback signature */ 
-  sint16 v3; 
-  int v4; 
-
-  result = 0x8001CA04u;
-  if ( *(int (*( **)(int))())(a1 + 3320) == 0x8001CA04u )
-  {
-    v3 = TM3_DRAFT_U16(a1 + 1564);
-    TM3_DRAFT_U16(a1 + 3348) = TM3_DRAFT_U16(a1 + 1556);
-    TM3_DRAFT_U16(a1 + 3350) = v3;
-    sub_8001A1C8(a1);
-    v4 = TM3_DRAFT_U8(a1 + 3394);
-    if ( TM3_DRAFT_U8(a1 + 3395) + 1 >= v4 )
-      return sub_8001C23C(a1);
-    else
-      return sub_8001BD70(a1, TM3_DRAFT_U16(a1 + 2 * (v4 - 1) + 3716));
-  }
-  return result;
+    uint32 count;
+    FUNCTION_MARKER(0x8001A728u, "SCUS_942.49");
+    if (TM3_DRAFT_U32(vehicle + 3320u) != 0x8001CA04u)
+        return 0x8001CA04u;
+    TM3_DRAFT_U16(vehicle + 3348u) = TM3_DRAFT_U16(vehicle + 1556u);
+    TM3_DRAFT_U16(vehicle + 3350u) = TM3_DRAFT_U16(vehicle + 1564u);
+    sub_8001A1C8(vehicle);
+    count = TM3_DRAFT_U8(vehicle + 3394u);
+    if (TM3_DRAFT_U8(vehicle + 3395u) + 1u < count)
+        return sub_8001BD70(vehicle,
+            (uint32)(sint32)TM3_DRAFT_I16(vehicle + 3716u + ((count - 1u) << 1)));
+    return sub_8001C23C(vehicle);
 }
 
 /* Unverified decompiler-derived draft */
@@ -545,6 +539,8 @@ void sub_800474D0(void)
 /* Unverified decompiler-derived draft */
 uint32 sub_800264E8(uint32 a1, uint32 a2, uint32 a3)
 {
+  /* Original third argument supplies the node position */
+  (void)a2;
   int v3; 
   int v4; 
 

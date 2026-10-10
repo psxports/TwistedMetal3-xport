@@ -1120,7 +1120,7 @@ uint32 sub_80034890(uint32 a1)
   HIWORD(v22) = TM3_DRAFT_U16(v5 + 2);
   LOWORD(v24) = TM3_DRAFT_U16(v5 + 4);
   v6 = 0;
-  if ( TM3_DRAFT_U32(0x800d340cu) > 0 )
+  if ( TM3_DRAFT_I32(0x800d340cu) > 0 )
   {
     v7 = 0;
     do
@@ -1134,7 +1134,7 @@ uint32 sub_80034890(uint32 a1)
         LOWORD(v27) = TM3_DRAFT_U16(v9 + 4);
         v11 = sub_80015764((sint16)v26 - (sint16)v22, SHIWORD(v26) - SHIWORD(v22), (sint16)v27 - (sint16)v24);
         v10 = sub_80034844(a1, v8, TM3_DRAFT_LOCAL_ADDRESS(&v29, sizeof(v29)));
-        if ( v11 >= TM3_DRAFT_U32(a1 + 112) )
+        if ( v11 >= TM3_DRAFT_I32(a1 + 112) )
         {
           if ( v10 )
           {
@@ -1178,7 +1178,7 @@ uint32 sub_80034890(uint32 a1)
       ++v6;
       v7 = 4 * v6;
     }
-    while ( v6 < TM3_DRAFT_U32(0x800d340cu) );
+    while ( v6 < TM3_DRAFT_I32(0x800d340cu) );
   }
   v17 = TM3_DRAFT_U16(a1 + 162) + 1;
   TM3_DRAFT_U16(a1 + 162) = v17;
@@ -1195,8 +1195,8 @@ uint32 sub_80034890(uint32 a1)
   TM3_DRAFT_U16(a1 + 158) = v20 + 256;
   if ( (uint16)(v20 + 256) >= 0x1001u )
     TM3_DRAFT_U16(a1 + 158) = v20 - 3840;
-  result = TM3_DRAFT_U32(a1 + 108) + 1;
-  v4 = TM3_DRAFT_U32(a1 + 104) >= result;
+  result = (sint32)(TM3_DRAFT_U32(a1 + 108) + 1u);
+  v4 = TM3_DRAFT_I32(a1 + 104) >= result;
   TM3_DRAFT_U32(a1 + 108) = result;
   if ( !v4 )
     return sub_8004A570(a1);

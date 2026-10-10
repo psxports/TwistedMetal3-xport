@@ -440,6 +440,262 @@ uint32 tm3_draft_indirect(uint32 target, uint32 argument_count, ...)
         va_end(arguments);
         return sub_8004B468(vehicle, pickup);
     }
+    if (target == 0x8003431Cu && argument_count == 2u) {
+        va_list arguments;
+        uint32 object, payload;
+        va_start(arguments, argument_count);
+        object = va_arg(arguments, uint32);
+        payload = va_arg(arguments, uint32);
+        va_end(arguments);
+        return sub_8003431C(object, payload);
+    }
+    if (target == 0x80034560u && argument_count == 2u) {
+        va_list arguments;
+        uint32 object, payload;
+        va_start(arguments, argument_count);
+        object = va_arg(arguments, uint32);
+        payload = va_arg(arguments, uint32);
+        va_end(arguments);
+        return sub_80034560(object, payload);
+    }
+    if (target == 0x80034890u && (argument_count == 1u || argument_count == 2u)) {
+        va_list arguments;
+        uint32 object;
+        va_start(arguments, argument_count);
+        object = va_arg(arguments, uint32);
+        va_end(arguments);
+        return sub_80034890(object);
+    }
+    if (target == 0x80034750u && (argument_count == 1u || argument_count == 2u)) {
+        va_list arguments;
+        uint32 object;
+        va_start(arguments, argument_count);
+        object = va_arg(arguments, uint32);
+        va_end(arguments);
+        return sub_80034750(object, 0u);
+    }
+    if (target == 0x80034BECu && argument_count == 5u) {
+        va_list arguments;
+        uint32 object, ordering_table, cursor, end;
+        va_start(arguments, argument_count);
+        object = va_arg(arguments, uint32);
+        ordering_table = va_arg(arguments, uint32);
+        cursor = va_arg(arguments, uint32);
+        end = va_arg(arguments, uint32);
+        va_end(arguments);
+        return sub_80034BEC(object, ordering_table, cursor, end);
+    }
+    if (target == 0x80032B74u && argument_count == 2u) {
+        va_list arguments;
+        uint32 vehicle, mode;
+        va_start(arguments, argument_count);
+        vehicle = va_arg(arguments, uint32);
+        mode = va_arg(arguments, uint32);
+        va_end(arguments);
+        return sub_80032B74(vehicle, mode);
+    }
+    if (target == 0x80032AA4u && argument_count == 5u) {
+        va_list arguments;
+        uint32 object, ordering_table, cursor, end, view;
+        va_start(arguments, argument_count);
+        object = va_arg(arguments, uint32);
+        ordering_table = va_arg(arguments, uint32);
+        cursor = va_arg(arguments, uint32);
+        end = va_arg(arguments, uint32);
+        view = va_arg(arguments, uint32);
+        va_end(arguments);
+        return sub_80032AA4(object, ordering_table, cursor, end, view);
+    }
+    if (target == 0x8003992Cu && argument_count == 2u) {
+        va_list arguments;
+        uint32 object, payload;
+        va_start(arguments, argument_count);
+        object = va_arg(arguments, uint32);
+        payload = va_arg(arguments, uint32);
+        va_end(arguments);
+        return sub_8003992C(object, payload);
+    }
+    if (target == 0x80039BA8u && (argument_count == 1u || argument_count == 2u)) {
+        va_list arguments;
+        uint32 object;
+        va_start(arguments, argument_count);
+        object = va_arg(arguments, uint32);
+        va_end(arguments);
+        return sub_80039BA8(object);
+    }
+    if (target == 0x80039CCCu && argument_count == 5u) {
+        va_list arguments;
+        uint32 object, ordering_table, cursor, end;
+        va_start(arguments, argument_count);
+        object = va_arg(arguments, uint32);
+        ordering_table = va_arg(arguments, uint32);
+        cursor = va_arg(arguments, uint32);
+        end = va_arg(arguments, uint32);
+        va_end(arguments);
+        return sub_80039CCC(object, ordering_table, cursor, end);
+    }
+    if (target == 0x80027CDCu && (argument_count == 1u || argument_count == 2u)) {
+        va_list arguments;
+        uint32 object;
+        va_start(arguments, argument_count);
+        object = va_arg(arguments, uint32);
+        va_end(arguments);
+        return sub_80027CDC(object, 0u);
+    }
+    if (target == 0x80027E00u && argument_count == 5u) {
+        va_list arguments;
+        uint32 object, ordering_table, cursor, end, view;
+        va_start(arguments, argument_count);
+        object = va_arg(arguments, uint32);
+        ordering_table = va_arg(arguments, uint32);
+        cursor = va_arg(arguments, uint32);
+        end = va_arg(arguments, uint32);
+        view = va_arg(arguments, uint32);
+        va_end(arguments);
+        return sub_80027E00(object, ordering_table, cursor, end, view);
+    }
+    if (target == 0x800264E8u && argument_count == 3u) {
+        va_list arguments;
+        uint32 object, kind, node;
+        va_start(arguments, argument_count);
+        object = va_arg(arguments, uint32);
+        kind = va_arg(arguments, uint32);
+        node = va_arg(arguments, uint32);
+        va_end(arguments);
+        return sub_800264E8(object, kind, node);
+    }
+    if (target == 0x80024648u && argument_count == 6u) {
+        va_list arguments;
+        uint32 groups, ordering_entry, cursor, end, model, selection;
+        va_start(arguments, argument_count);
+        groups = va_arg(arguments, uint32);
+        ordering_entry = va_arg(arguments, uint32);
+        cursor = va_arg(arguments, uint32);
+        end = va_arg(arguments, uint32);
+        model = va_arg(arguments, uint32);
+        selection = va_arg(arguments, uint32);
+        va_end(arguments);
+        return sub_80024648(groups, ordering_entry, cursor, end, model, selection);
+    }
+    if (target == 0x800330F8u && (argument_count == 1u || argument_count == 2u)) {
+        va_list arguments;
+        uint32 vehicle;
+        va_start(arguments, argument_count);
+        vehicle = va_arg(arguments, uint32);
+        va_end(arguments);
+        return sub_800330F8(vehicle);
+    }
+    if (target == 0x80038C00u && argument_count == 2u) {
+        va_list arguments;
+        uint32 object, payload;
+        va_start(arguments, argument_count);
+        object = va_arg(arguments, uint32);
+        payload = va_arg(arguments, uint32);
+        va_end(arguments);
+        return sub_80038C00(object, payload);
+    }
+    if (target == 0x80038E30u && (argument_count == 1u || argument_count == 2u)) {
+        va_list arguments;
+        uint32 object;
+        va_start(arguments, argument_count);
+        object = va_arg(arguments, uint32);
+        va_end(arguments);
+        return sub_80038E30(object);
+    }
+    if (target == 0x80038F24u && argument_count == 5u) {
+        va_list arguments;
+        uint32 object, ordering_table, cursor, end, view;
+        va_start(arguments, argument_count);
+        object = va_arg(arguments, uint32);
+        ordering_table = va_arg(arguments, uint32);
+        cursor = va_arg(arguments, uint32);
+        end = va_arg(arguments, uint32);
+        view = va_arg(arguments, uint32);
+        va_end(arguments);
+        return sub_80038F24(object, ordering_table, cursor, end, view);
+    }
+    if (target == 0x80030E80u && argument_count == 2u) {
+        va_list arguments;
+        uint32 object, mode;
+        va_start(arguments, argument_count);
+        object = va_arg(arguments, uint32);
+        mode = va_arg(arguments, uint32);
+        va_end(arguments);
+        return sub_80030E80(object, mode);
+    }
+    if (target == 0x80030EA0u && argument_count == 2u) {
+        va_list arguments;
+        uint32 object, value;
+        va_start(arguments, argument_count);
+        object = va_arg(arguments, uint32);
+        value = va_arg(arguments, uint32);
+        va_end(arguments);
+        return sub_80030EA0(object, value);
+    }
+    if (target == 0x80030EF4u && argument_count == 2u) {
+        va_list arguments;
+        uint32 object, value;
+        va_start(arguments, argument_count);
+        object = va_arg(arguments, uint32);
+        value = va_arg(arguments, uint32);
+        va_end(arguments);
+        return sub_80030EF4(object, value);
+    }
+    if (target == 0x8003231Cu && (argument_count == 1u || argument_count == 2u)) {
+        va_list arguments;
+        uint32 object;
+        va_start(arguments, argument_count);
+        object = va_arg(arguments, uint32);
+        va_end(arguments);
+        return sub_8003231C(object);
+    }
+    if (target == 0x800325E0u && (argument_count == 1u || argument_count == 2u)) {
+        va_list arguments;
+        uint32 object;
+        va_start(arguments, argument_count);
+        object = va_arg(arguments, uint32);
+        va_end(arguments);
+        return sub_800325E0(object);
+    }
+    if (target == 0x800324D0u && argument_count == 5u) {
+        va_list arguments;
+        uint32 object, ordering_table, cursor, end, view;
+        va_start(arguments, argument_count);
+        object = va_arg(arguments, uint32);
+        ordering_table = va_arg(arguments, uint32);
+        cursor = va_arg(arguments, uint32);
+        end = va_arg(arguments, uint32);
+        view = va_arg(arguments, uint32);
+        va_end(arguments);
+        return sub_800324D0(object, ordering_table, cursor, end, view);
+    }
+    if (target == 0x800321F4u && argument_count == 2u) {
+        va_list arguments;
+        uint32 vehicle, mode;
+        va_start(arguments, argument_count);
+        vehicle = va_arg(arguments, uint32);
+        mode = va_arg(arguments, uint32);
+        va_end(arguments);
+        return sub_800321F4(vehicle, mode);
+    }
+    if (target == 0x80032720u && argument_count == 2u) {
+        va_list arguments;
+        uint32 vehicle, mode;
+        va_start(arguments, argument_count);
+        vehicle = va_arg(arguments, uint32);
+        mode = va_arg(arguments, uint32);
+        va_end(arguments);
+        return sub_80032720(vehicle, mode);
+    }
+    if (target == 0x8004B75Cu && argument_count == 2u) {
+        va_list arguments;
+        uint32 vehicle, gate;
+        va_start(arguments, argument_count);
+        vehicle = va_arg(arguments, uint32);
+        gate = va_arg(arguments, uint32);
+        va_end(arguments);
+        return sub_8004B75C(vehicle, gate);
+    }
     if (target == 0x8004B500u && argument_count == 2u) {
         va_list arguments;
         uint32 vehicle, effect;

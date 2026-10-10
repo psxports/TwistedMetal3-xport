@@ -550,9 +550,9 @@ uint32 sub_80033F18(uint32 a1)
   v4 = 0;
   if ( !v3 || (v5 = sub_800470DC(TM3_DRAFT_U32(a1 + 68)) == 0, v6 = v3 - 20, v5) )
   {
-    TM3_DRAFT_I16(TM3_DRAFT_LOCAL_ADDRESS(tuple_38, sizeof(tuple_38)) + 0u) = ((sub_8005AFF4(TM3_DRAFT_U32(a1 + 92) << 7) << 10) + 2048) >> 12;
+    TM3_DRAFT_I16(TM3_DRAFT_LOCAL_ADDRESS(tuple_38, sizeof(tuple_38)) + 0u) = (sint32)((sub_8005AFF4(TM3_DRAFT_U32(a1 + 92) << 7) << 10) + 2048u) >> 12;
     TM3_DRAFT_I16(TM3_DRAFT_LOCAL_ADDRESS(tuple_38, sizeof(tuple_38)) + 2u) = 64;
-    TM3_DRAFT_I16(TM3_DRAFT_LOCAL_ADDRESS(tuple_38, sizeof(tuple_38)) + 4u) = ((sub_8005AF24(TM3_DRAFT_U32(a1 + 92) << 7) << 10) + 2048) >> 12;
+    TM3_DRAFT_I16(TM3_DRAFT_LOCAL_ADDRESS(tuple_38, sizeof(tuple_38)) + 4u) = (sint32)((sub_8005AF24(TM3_DRAFT_U32(a1 + 92) << 7) << 10) + 2048u) >> 12;
     sub_8005BB84((uint32)(v2 + 8), (int)(TM3_DRAFT_LOCAL_ADDRESS(tuple_38, sizeof(tuple_38)) + 0u), (TM3_DRAFT_LOCAL_ADDRESS(tuple_41, sizeof(tuple_41)) + 0u));
     TM3_DRAFT_I16(TM3_DRAFT_LOCAL_ADDRESS(tuple_38, sizeof(tuple_38)) + 0u) = v30 + TM3_DRAFT_I16(TM3_DRAFT_LOCAL_ADDRESS(tuple_41, sizeof(tuple_41)) + 0u);
     TM3_DRAFT_I16(TM3_DRAFT_LOCAL_ADDRESS(tuple_38, sizeof(tuple_38)) + 2u) = v31 + TM3_DRAFT_I16(TM3_DRAFT_LOCAL_ADDRESS(tuple_41, sizeof(tuple_41)) + 2u);

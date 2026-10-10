@@ -831,104 +831,72 @@ uint32 sub_800317D0(uint32 object)
 }
 
 /* Unverified decompiler-derived draft */
-uint32 sub_80038F24(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, ...)
+uint32 sub_80038F24(uint32 object, uint32 ordering_table, uint32 cursor, uint32 end, uint32 view)
 {
-  uint32 ida_A0, ida_V0; /* TODO Explicit adapter values */
-  int result; 
-  sint16 v17; 
-  int v18; 
-  int v19; 
-  int v20; 
-  int v22; 
-  int v25; 
-  int v26; 
-  uint32 v27; 
-  int v28; 
-  sint16 v29[5]; 
-  sint16 v30; 
-  sint16 v31; 
-  sint16 v32; 
-  sint16 v33; 
-  sint16 v34; 
-  sint16 v35; 
-  sint16 v36; 
-  sint16 v37; 
-  sint16 v38[2]; 
-  sint16 v39; 
-
-  result = TM3_DRAFT_I32(a3) + 40 < a4;
-  if ( TM3_DRAFT_I32(a3) + 40 < a4 )
-  {
-    v17 = TM3_DRAFT_U16(a5 + 4);
-    v38[0] = TM3_DRAFT_U16(a5);
-    v38[1] = 0;
-    v39 = v17;
-    sub_8005B284((int)v38, (int)v38);
-    v18 = TM3_DRAFT_I16(a1 + 8);
-    v19 = (v38[0] * (v18 / 32)) >> 12;
-    v32 = TM3_DRAFT_U16(a1) - v19;
-    v29[0] = v32;
-    v35 = TM3_DRAFT_U16(a1) + v19;
-    v29[4] = v35;
-    v20 = (v39 * (v18 / 32)) >> 12;
-    v30 = TM3_DRAFT_U16(a1 + 2) - TM3_DRAFT_I16(a1 + 10) / 16;
-    v29[1] = v30;
-    v36 = TM3_DRAFT_U16(a1 + 2);
-    v33 = v36;
-    v34 = TM3_DRAFT_U16(a1 + 4) - v20;
-    v29[2] = v34;
-    v37 = TM3_DRAFT_U16(a1 + 4) + v20;
-    v31 = v37;
-    ida_V0 = v29;
-    v22 = TM3_DRAFT_I32(a3);
-    /* TODO GTE adapters */
-  tm3_draft_unimplemented("TODO lwc2    $0, 0($v0)");
-  tm3_draft_unimplemented("TODO lwc2    $1, 4($v0)");
-  tm3_draft_unimplemented("TODO lwc2    $2, 8($v0)");
-  tm3_draft_unimplemented("TODO lwc2    $3, 0xC($v0)");
-  tm3_draft_unimplemented("TODO lwc2    $4, 0x10($v0)");
-  tm3_draft_unimplemented("TODO lwc2    $5, 0x14($v0)");
-  tm3_draft_gte_command(0x280030u);
-    TM3_DRAFT_U32(v22 + 12) = TM3_DRAFT_U32(a1 + 20);
-    TM3_DRAFT_U32(v22 + 20) = TM3_DRAFT_U32(a1 + 24);
-    /* TODO GTE adapters */
-  tm3_draft_unimplemented("TODO swc2    $12, 0($v0)");
-  tm3_draft_unimplemented("TODO swc2    $13, 0($v0)");
-  tm3_draft_unimplemented("TODO swc2    $14, 0($v0)");
-  ida_A0 = tm3_draft_gte_read_data(19u);
-    ida_V0 = &v35;
-    /* TODO GTE adapters */
-  tm3_draft_unimplemented("TODO lwc2    $0, 0($v0)");
-  tm3_draft_unimplemented("TODO lwc2    $1, 4($v0)");
-  tm3_draft_gte_command(0x180001u);
-    TM3_DRAFT_U16(v22 + 28) = TM3_DRAFT_U16(a1 + 28);
-    result = TM3_DRAFT_U16(a1 + 30);
-    TM3_DRAFT_U16(v22 + 36) = result;
-    if ( ida_A0 > 0 )
+    sint16 direction[4];
+    sint16 vertices[4][4];
+    sint32 width, height, offset_x, offset_z, depth;
+    uint32 direction_address, packet, result, bucket, i;
+    FUNCTION_MARKER(0x80038F24u, "SCUS_942.49");
+    result = TM3_DRAFT_U32(cursor) + 40u < end;
+    if (!result)
+        return result;
+    direction[0] = TM3_DRAFT_I16(view);
+    direction[1] = 0;
+    direction[2] = TM3_DRAFT_I16(view + 4u);
+    /* TODO Original SVECTOR padding is undefined and unused by the GTE */
+    direction_address = TM3_DRAFT_LOCAL_ADDRESS(direction, sizeof(direction));
+    sub_8005B284(direction_address, direction_address);
+    width = TM3_DRAFT_I16(object + 8u) / 32;
+    height = TM3_DRAFT_I16(object + 10u) / 16;
+    offset_x = (sint32)((uint32)direction[0] * (uint32)width) >> 12;
+    offset_z = (sint32)((uint32)direction[2] * (uint32)width) >> 12;
+    vertices[0][0] = vertices[2][0] = (sint16)(TM3_DRAFT_U16(object) - (uint32)offset_x);
+    vertices[1][0] = vertices[3][0] = (sint16)(TM3_DRAFT_U16(object) + (uint32)offset_x);
+    vertices[0][1] = vertices[1][1] = (sint16)(TM3_DRAFT_U16(object + 2u) - (uint32)height);
+    vertices[2][1] = vertices[3][1] = TM3_DRAFT_I16(object + 2u);
+    vertices[0][2] = vertices[2][2] = (sint16)(TM3_DRAFT_U16(object + 4u) - (uint32)offset_z);
+    vertices[1][2] = vertices[3][2] = (sint16)(TM3_DRAFT_U16(object + 4u) + (uint32)offset_z);
+    packet = TM3_DRAFT_U32(cursor);
+    for (i = 0; i < 3u; ++i)
     {
-      /* TODO GTE adapters */
-  tm3_draft_unimplemented("TODO swc2    $14, 0($v0)");
-      v25 = (ida_A0 >> 2) - 24;
-      if ( v25 < 0 )
-        v25 = 0;
-      result = v25 < dword_80089DD0;
-      if ( v25 < dword_80089DD0 )
-      {
-        v26 = TM3_DRAFT_U32(a1 + 16);
-        TM3_DRAFT_U8(v22 + 3) = 9;
-        v27 = (uint32)(4 * v25 + a2);
-        TM3_DRAFT_U32(v22 + 4) = v26;
-        TM3_DRAFT_U8(v22 + 7) = 44;
-        result = TM3_DRAFT_I32(v27) & 0xFFFFFF | 0x9000000;
-        v28 = v22 & 0xFFFFFF;
-        TM3_DRAFT_U32(v22) = result;
-        v22 += 40;
-        TM3_DRAFT_I32(v27) = v28;
-      }
+        tm3_draft_gte_write_data(2u * i, (uint16)vertices[i][0] | ((uint32)(uint16)vertices[i][1] << 16));
+        tm3_draft_gte_write_data(2u * i + 1u, (uint16)vertices[i][2]);
     }
-    TM3_DRAFT_I32(a3) = v22;
-  }
-  return result;
+    tm3_draft_gte_command(0x280030u);
+    TM3_DRAFT_U32(packet + 12u) = TM3_DRAFT_U32(object + 20u);
+    TM3_DRAFT_U32(packet + 20u) = TM3_DRAFT_U32(object + 24u);
+    TM3_DRAFT_U32(packet + 8u) = tm3_draft_gte_read_data(12u);
+    TM3_DRAFT_U32(packet + 16u) = tm3_draft_gte_read_data(13u);
+    TM3_DRAFT_U32(packet + 24u) = tm3_draft_gte_read_data(14u);
+    depth = (sint32)tm3_draft_gte_read_data(19u);
+    tm3_draft_gte_write_data(0u, (uint16)vertices[3][0] | ((uint32)(uint16)vertices[3][1] << 16));
+    tm3_draft_gte_write_data(1u, (uint16)vertices[3][2]);
+    tm3_draft_gte_command(0x180001u);
+    TM3_DRAFT_U16(packet + 28u) = TM3_DRAFT_U16(object + 28u);
+    result = TM3_DRAFT_U16(object + 30u);
+    TM3_DRAFT_U16(packet + 36u) = (uint16)result;
+    if (depth > 0)
+    {
+        TM3_DRAFT_U32(packet + 32u) = tm3_draft_gte_read_data(14u);
+        depth = (depth >> 2) - 24;
+        if (depth < 0)
+            depth = 0;
+        result = depth < TM3_DRAFT_I32(0x80089DD0u);
+        if (result)
+        {
+            TM3_DRAFT_U8(packet + 3u) = 9u;
+            bucket = ordering_table + 4u * (uint32)depth;
+            TM3_DRAFT_U32(packet + 4u) = TM3_DRAFT_U32(object + 16u);
+            TM3_DRAFT_U8(packet + 7u) = 44u;
+            result = (TM3_DRAFT_U32(bucket) & 0x00FFFFFFu) | 0x09000000u;
+            TM3_DRAFT_U32(packet) = result;
+            TM3_DRAFT_U32(bucket) = packet & 0x00FFFFFFu;
+            packet += 40u;
+        }
+    }
+    TM3_DRAFT_U32(cursor) = packet;
+    return result;
 }
 
 /* Unverified decompiler-derived draft */

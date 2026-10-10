@@ -479,7 +479,7 @@ uint32 sub_8004B5DC(uint32 a1, uint32 a2);
 uint32 sub_80031210(uint32 a1, uint32 a2);
 void sub_8001C9EC(uint32 a1);
 uint32 sub_80032B74(uint32 a1, uint32 a2);
-uint32 sub_80032AA4(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, uint32 a6, uint32 a7, uint32 a8, uint32 a9, uint32 a10, uint32 a11, uint32 a12, uint32 a13);
+uint32 sub_80032AA4(uint32 object, uint32 ordering_table, uint32 cursor, uint32 end, uint32 view);
 void sub_800294B0(void);
 uint32 sub_800330F8(uint32 a1);
 uint32 sub_80034560(uint32 a1, uint32 a2);
@@ -514,7 +514,7 @@ uint32 sub_8002F2A8(uint32 a1);
 uint32 sub_80027B74(uint32 a1, uint32 a2);
 uint32 sub_8002F36C(uint32 a1);
 uint32 sub_80027CDC(uint32 a1, uint32 a2);
-uint32 sub_80027E00(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, ...);
+uint32 sub_80027E00(uint32 object, uint32 ordering_table, uint32 cursor, uint32 end, uint32 view);
 uint32 sub_800565A4(uint32 a1, uint32 a2, uint32 a3);
 void sub_80015904(void);
 uint32 sub_80034750(uint32 a1, uint32 a2);
@@ -574,14 +574,14 @@ uint32 sub_80033A80(uint32 a1, uint32 a2);
 uint32 sub_80033A4C(uint32 a1, uint32 a2);
 uint32 sub_8002C0F8(uint32 a1, uint32 a2);
 uint32 sub_80030EA0(uint32 a1, uint32 a2);
-uint32 sub_80024648(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, uint32 a6, ...);
+uint32 sub_80024648(uint32 groups, uint32 ordering_entry, uint32 cursor, uint32 end, uint32 model, uint32 selection);
 uint32 sub_80038C00(uint32 a1, uint32 a2);
 uint32 sub_80038B10(uint32 a1);
 uint32 sub_8003992C(uint32 a1, uint32 a2);
 uint32 sub_8003983C(uint32 a1);
 uint32 sub_80039BA8(uint32 a1);
 uint32 sub_80038E30(uint32 a1);
-uint32 sub_80038F24(uint32 a1, uint32 a2, uint32 a3, uint32 a4, uint32 a5, ...);
+uint32 sub_80038F24(uint32 object, uint32 ordering_table, uint32 cursor, uint32 end, uint32 view);
 uint32 sub_80039CCC(uint32 a1, uint32 a2, uint32 a3, uint32 a4);
 void sub_80014128(uint32 a1);
 uint32 sub_80015298(uint32 a1);
@@ -603,6 +603,13 @@ uint32 sub_800311F0(uint32 a1);
 #define nullsub_6 sub_80015904
 #define nullsub_7 sub_800267E8
 
+
+uint32 sub_800321F4(uint32 vehicle, uint32 mode);
+
+uint32 sub_8003231C(uint32 object);
+uint32 sub_800324D0(uint32 object, uint32 ordering_table, uint32 cursor, uint32 end, uint32 view);
+uint32 sub_800325E0(uint32 object);
+uint32 sub_8002B00C(uint32 model, uint32 group, uint32 bucket, uint32 cursor, uint32 end);
 
 /* Original pickup callback ABI */
 uint32 sub_8002C118(uint32 vehicle, uint32 pickup);

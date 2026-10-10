@@ -1079,68 +1079,37 @@ uint32 sub_8003AEBC(void)
 
 
 /* Unverified draft; TODO items require later review */
-uint32 sub_80023EC0(uint32 a1, uint32 a2)
+uint32 sub_80023EC0(uint32 vehicle, uint32 matrix)
 {
+    uint32 words[4], index, block;
     FUNCTION_MARKER(0x80023EC0u, "SCUS_942.49");
-  int v3; 
-  int v4; 
-  int v5; 
-  int v6; 
-  int v7; 
-  int v8; 
-  int v9; 
-  int v10; 
-  uint32 v11; 
-  sint16 v12; 
-  sint16 v13; 
-  int v14; 
-  uint32 v15; 
-  sint32 result; 
-
-  v3 = TM3_DRAFT_U32(a2 + 4u * (1));
-  v4 = TM3_DRAFT_U32(a2 + 4u * (2));
-  v5 = TM3_DRAFT_U32(a2 + 4u * (3));
-  TM3_DRAFT_U32(a1 + 4u * (384)) = TM3_DRAFT_U32(a2);
-  TM3_DRAFT_U32(a1 + 4u * (385)) = v3;
-  TM3_DRAFT_U32(a1 + 4u * (386)) = v4;
-  TM3_DRAFT_U32(a1 + 4u * (387)) = v5;
-  v6 = TM3_DRAFT_U32(a2 + 4u * (5));
-  v7 = TM3_DRAFT_U32(a2 + 4u * (6));
-  v8 = TM3_DRAFT_U32(a2 + 4u * (7));
-  TM3_DRAFT_U32(a1 + 4u * (388)) = TM3_DRAFT_U32(a2 + 4u * (4));
-  TM3_DRAFT_U32(a1 + 4u * (389)) = v6;
-  TM3_DRAFT_U32(a1 + 4u * (390)) = v7;
-  TM3_DRAFT_U32(a1 + 4u * (391)) = v8;
-  sub_80023B38((int)a1);
-  v9 = 0;
-  v10 = 398;
-  do
-  {
-    v11 = (a1 + 4u * (v10));
-    v10 += 28;
-    ++v9;
-    v12 = TM3_DRAFT_U16(v11 + 56);
-    v13 = TM3_DRAFT_U16(v11 + 64);
-    TM3_DRAFT_U16(v11 + 16) = TM3_DRAFT_U16(v11 + 48);
-    TM3_DRAFT_U16(v11 + 24) = v12;
-    TM3_DRAFT_U16(v11 + 32) = v13;
-    TM3_DRAFT_U32(v11 + 4u * (8)) = 0;
-    v11 += 4u * (8);
-    TM3_DRAFT_U32(v11 + 4u * (1)) = 0;
-    TM3_DRAFT_U32(v11 + 4u * (2)) = 0;
-  }
-  while ( v9 < 8 );
-  v14 = 0;
-  v15 = a1;
-  do
-  {
-    TM3_DRAFT_U32(v15 + 4u * (24)) = 0;
-    TM3_DRAFT_U32(v15 + 4u * (27)) = 0;
-    result = ++v14 < 4;
-    v15 += 4u * (20);
-  }
-  while ( v14 < 4 );
-  return result;
+    for (block = 0u; block < 2u; ++block)
+    {
+        for (index = 0u; index < 4u; ++index)
+            words[index] = TM3_DRAFT_U32(matrix + block * 16u + index * 4u);
+        for (index = 0u; index < 4u; ++index)
+            TM3_DRAFT_U32(vehicle + 1536u + block * 16u + index * 4u) = words[index];
+    }
+    sub_80023B38(vehicle);
+    for (index = 0u; index < 8u; ++index)
+    {
+        uint32 suspension = vehicle + 1592u + index * 112u;
+        sint16 x = TM3_DRAFT_I16(suspension + 12u);
+        sint16 y = TM3_DRAFT_I16(suspension + 14u);
+        sint16 z = TM3_DRAFT_I16(suspension + 16u);
+        TM3_DRAFT_U16(suspension + 4u) = (uint16)x;
+        TM3_DRAFT_U16(suspension + 6u) = (uint16)y;
+        TM3_DRAFT_U16(suspension + 8u) = (uint16)z;
+        TM3_DRAFT_U32(suspension + 32u) = 0u;
+        TM3_DRAFT_U32(suspension + 36u) = 0u;
+        TM3_DRAFT_U32(suspension + 40u) = 0u;
+    }
+    for (index = 0u; index < 4u; ++index)
+    {
+        TM3_DRAFT_U32(vehicle + index * 80u + 96u) = 0u;
+        TM3_DRAFT_U32(vehicle + index * 80u + 108u) = 0u;
+    }
+    return 0u;
 }
 
 
@@ -1553,18 +1522,19 @@ uint32 sub_8002F880(uint32 a1)
 
 
 /* Unverified draft; TODO items require later review */
-uint32 sub_80032B74(uint32 a1, uint32 a2)
+uint32 sub_80032B74(uint32 vehicle, uint32 mode)
 {
-    uint32 original_local_words[18];
-    uint32 original_local_address = TM3_DRAFT_LOCAL_ADDRESS(original_local_words, sizeof(original_local_words));
-
+    uint32 matrix_words[8];
+    sint16 position[4];
+    uint32 matrix, position_address, target;
     FUNCTION_MARKER(0x80032B74u, "SCUS_942.49");
-  int v4; 
-
-  v4 = sub_8002E964(a2, a1, TM3_DRAFT_LOCAL_ADDRESS((*(char (*)[32])psx_addr(original_local_address + 40u, sizeof(char[32]))), sizeof((*(char (*)[32])psx_addr(original_local_address + 40u, sizeof(char[32]))))) /* TODO: Local buffer adapter */);
-  sub_80026B88(a1, 2, TM3_DRAFT_LOCAL_ADDRESS((*(sint16 (*)[4])psx_addr(original_local_address + 32u, sizeof(sint16[4]))), sizeof((*(sint16 (*)[4])psx_addr(original_local_address + 32u, sizeof(sint16[4]))))));
-  sub_8004A294(8, 15, 18, a1, v4, TM3_DRAFT_LOCAL_ADDRESS((*(sint16 (*)[4])psx_addr(original_local_address + 32u, sizeof(sint16[4]))), sizeof((*(sint16 (*)[4])psx_addr(original_local_address + 32u, sizeof(sint16[4]))))) /* TODO: Local buffer adapter */, TM3_DRAFT_LOCAL_ADDRESS((*(char (*)[32])psx_addr(original_local_address + 40u, sizeof(char[32]))), sizeof((*(char (*)[32])psx_addr(original_local_address + 40u, sizeof(char[32]))))) /* TODO: Local buffer adapter */, a2);
-  return sub_8004A294(22, TM3_DRAFT_U8(TM3_DRAFT_U32(a1 + 4040) + 55), 5, a1, 1200);
+    matrix = TM3_DRAFT_LOCAL_ADDRESS(matrix_words, sizeof(matrix_words));
+    position_address = TM3_DRAFT_LOCAL_ADDRESS(position, sizeof(position));
+    target = sub_8002E964(mode, vehicle, matrix);
+    sub_80026B88(vehicle, 2u, position_address);
+    /* TODO Original SVECTOR and MATRIX padding remain undefined */
+    sub_8004A294(8u, 15u, 18u, vehicle, target, position_address, matrix, mode);
+    return sub_8004A294(22u, TM3_DRAFT_U8(TM3_DRAFT_U32(vehicle + 4040u) + 55u), 5u, vehicle, 1200u);
 }
 
 

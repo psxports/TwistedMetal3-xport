@@ -22,6 +22,7 @@
   </ItemDefinitionGroup>
   <ItemGroup><ClCompile Include="..\..\game_main.c" /><ClCompile Include="..\..\..\..\xport\src\psx.c" /><ClCompile Include="..\..\..\..\xport\src\psx_gpu.c" /><ClCompile Include="..\..\..\..\xport\src\psx_spu.c" /><ClCompile Include="..\..\..\..\xport\src\psx_xa.c" /><ClCompile Include="..\..\..\..\xport\src\xport_trace.c" /><ClCompile Include="..\..\..\..\xport\src\platform\win\main.c"><ObjectFileName>$(IntDir)xport_main.obj</ObjectFileName></ClCompile></ItemGroup>
   <ItemGroup><ClInclude Include="..\..\..\..\xport\src\xport.h" /><ClInclude Include="..\..\..\..\xport\src\psx.h" /><ClInclude Include="..\..\..\..\xport\src\xport_trace.h" /><ClInclude Include="..\..\..\..\xport\src\psx_gpu.h" /><ClInclude Include="..\..\..\..\xport\src\psx_spu.h" /></ItemGroup>
+<ItemGroup><ClCompile Include="..\..\game_movie.c" /><ClCompile Include="..\..\..\..\xport\src\psx_mdec.c" /><ClCompile Include="..\..\..\..\xport\src\psx_press.c" /><ClCompile Include="..\..\..\..\xport\src\psx_vlc.c" /><ClCompile Include="..\..\..\..\xport\src\psx_stream.c" /></ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
 <ItemGroup><ClCompile Include="..\..\game_link_stubs.c" /></ItemGroup>
   <ItemGroup>
@@ -69,5 +70,5 @@
     <ClCompile Include="..\..\draft_pad_7.c"><TreatWarningAsError>false</TreatWarningAsError><WarningLevel>Level3</WarningLevel></ClCompile>
     <ClCompile Include="..\..\draft_pad_8.c"><TreatWarningAsError>false</TreatWarningAsError><WarningLevel>Level3</WarningLevel></ClCompile>
   </ItemGroup>
-<ItemGroup><ClCompile Include="..\..\game_native_adapters.c" /><ClCompile Include="..\..\game_sdk_bindings.c" /><ClCompile Include="..\..\game_serial_control.c" /><ClCompile Include="..\..\game_serial_game.c" /><ClCompile Include="..\..\game_ai_callbacks.c" /><ClCompile Include="..\..\game_pickup_callbacks.c" /><ClCompile Include="..\..\game_pickup_special.c" /></ItemGroup>
+<ItemGroup><ClCompile Include="..\..\game_native_adapters.c" /><ClCompile Include="..\..\game_sdk_bindings.c" /><ClCompile Include="..\..\game_serial_control.c" /><ClCompile Include="..\..\game_serial_game.c" /><ClCompile Include="..\..\game_ai_callbacks.c" /><ClCompile Include="..\..\game_pickup_callbacks.c" /><ClCompile Include="..\..\game_pickup_special.c" /><ClCompile Include="..\..\game_weapon16.c" /></ItemGroup>
 </Project>
